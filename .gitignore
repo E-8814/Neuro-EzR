@@ -1,0 +1,34 @@
+# Virtual environments
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Model checkpoints
+*.pt
+checkpoints_v1/
+checkpoints_v2/
+
+# Logs
+*.log
+training_log.txt
+
+# Data (large public datasets - download separately)
+data/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Old directories (preserved locally, not tracked)
+src_diff/
+src_diff_gpu/
+ezreader_repo
+efereadme.md
+claude.txt

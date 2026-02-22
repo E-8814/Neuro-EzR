@@ -1,0 +1,24 @@
+# PyTorch - Deep Learning Framework
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+
+# Transformers - For BERT models
+transformers>=4.30.0
+
+# Core dependencies
+numpy>=1.21.0
+simpy>=4.0.0
+
+# Data processing
+pandas>=1.3.0
+
+# Visualization
+matplotlib>=3.4.0
+seaborn>=0.11.0
+
+# Scientific computing
+scipy>=1.7.0
+
+# Fast package installer
+uv>=0.7.0
