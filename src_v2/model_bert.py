@@ -64,6 +64,14 @@ class NeuralEZReaderBERT(nn.Module):
             nn.Softplus(),  # L2 > 0
         )
 
+        # --- Skip prediction head (learned from context) ---
+        self.skip_head = nn.Sequential(
+            nn.Linear(hidden_dim, hidden_dim // 2),
+            nn.ReLU(),
+            nn.Linear(hidden_dim // 2, 1),
+            nn.Sigmoid(),
+        )
+
         # Scale + bias to start in reasonable ms range
         self.l1_scale = nn.Parameter(torch.tensor(50.0))
         self.l2_scale = nn.Parameter(torch.tensor(30.0))
@@ -172,13 +180,17 @@ class NeuralEZReaderBERT(nn.Module):
         L1 = L1.clamp(min=1.0, max=500.0)
         L2 = L2.clamp(min=1.0, max=500.0)
 
+        # --- Predict skip probability from context ---
+        skip_prob = self.skip_head(projected).squeeze(-1)  # (B, T)
+
         # Trim to match actual sequence lengths
         seq_len = predictability.size(1)
         L1 = L1[:, :seq_len]
         L2 = L2[:, :seq_len]
+        skip_prob = skip_prob[:, :seq_len]
 
         # --- Differentiable EZ Reader v2 produces reading metrics ---
-        result = self.ezreader(L1, L2, predictability, word_lengths)
+        result = self.ezreader(L1, L2, skip_prob, word_lengths, input_is_prob=True)
 
         # Add L1/L2 to result for logging
         result['L1'] = L1

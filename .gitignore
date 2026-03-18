@@ -9,8 +9,12 @@ __pycache__/
 
 # Model checkpoints
 *.pt
+*.pth
 checkpoints_v1/
 checkpoints_v2/
+checkpoints_v3/
+checkpoints_v4/
+previous_implementations_of_word_level_predictions/checkpoints_ohio_state_roberta_base/
 
 # Logs
 *.log
@@ -26,9 +30,11 @@ data/
 # OS
 .DS_Store
 
+# Claude Code
+.claude/
+
 # Old directories (preserved locally, not tracked)
 src_diff/
 src_diff_gpu/
 ezreader_repo
 efereadme.md
-claude.txt

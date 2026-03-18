@@ -1,0 +1,121 @@
+================================================================================
+  Neural E-Z Reader: Aligned Simulation Evaluation
+  Diff EZR and simulation share parameter semantics
+================================================================================
+  Simulation runs: 50
+  Model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+  Device: cuda:0
+
+Loading GECO...
+  Loading GECO material...
+    5285 sentences, 54362 words
+    Loaded predictability for 5285 sentences
+  Loading GECO reading data...
+    72669 participant × sentence combinations
+  GECO test: 500 sentences, 5501 words
+Loading Provo...
+  Provo: 151 sentences, 2654 words
+Loading SUBTLEXus...
+  74,286 entries
+
+Loading: /home/u384661/Neuro_EZR/src_v2/src_inference_v2/../../checkpoints_v4/geco_TinyLlama_TinyLlama-1.1B-Chat-v1.0/best_model.pt
+  Loaded (epoch 2)
+
+  Simulation parameters (from checkpoint):
+    saccade_programming: 124.97605895996094
+    saccade_finishing: 24.976009368896484
+    time_attention_shift: 24.976009368896484
+    eccentricity: 0.1357463300228119
+    integration_threshold: 50.42609405517578
+    integration_sharpness: 0.24358060956001282
+    delta: 0.3144245743751526
+
+================================================================================
+  GECO Test Set (in-distribution)
+================================================================================
+  [GECO] 50/500 (9s elapsed, ~79s remaining)
+  [GECO] 100/500 (13s elapsed, ~50s remaining)
+  [GECO] 150/500 (16s elapsed, ~38s remaining)
+  [GECO] 200/500 (19s elapsed, ~29s remaining)
+  [GECO] 250/500 (23s elapsed, ~23s remaining)
+  [GECO] 300/500 (26s elapsed, ~17s remaining)
+  [GECO] 350/500 (29s elapsed, ~13s remaining)
+  [GECO] 400/500 (33s elapsed, ~8s remaining)
+  [GECO] 450/500 (37s elapsed, ~4s remaining)
+  [GECO] 500/500 (41s elapsed, ~0s remaining)
+
+  GECO took 41s
+
+================================================================================
+  GECO Test (5501 words)
+================================================================================
+  Measure     Human     DiffEZR   r_diff     FullSim    r_sim     OrigEZR   r_orig
+  --------------------------------------------------------------------------------
+  TRT         265.3       163.0    0.465       121.2    0.303       184.1    0.295
+  FFD         210.4       127.3    0.195       120.6    0.110       183.4    0.098
+  Gaze        229.0       139.5    0.393       120.6    0.255       183.4    0.240
+  Skip          0.5         0.5    0.705         0.5    0.448         0.3    0.405
+
+  Measure    r_diff    r_sim    delta     winner
+  ------------------------------------------
+  TRT         0.465    0.303   -0.162    DiffEZR
+  FFD         0.195    0.110   -0.085    DiffEZR
+  Gaze        0.393    0.255   -0.138    DiffEZR
+  Skip        0.705    0.448   -0.257    DiffEZR
+
+  MAE (ms):
+  Measure     DiffEZR    FullSim    OrigEZR
+  TRT           108.7      155.3      116.8
+  FFD            88.4      111.7       97.4
+  Gaze           93.5      123.9       98.7
+
+================================================================================
+  Provo Corpus (cross-corpus)
+================================================================================
+  [Provo] 50/151 (5s elapsed, ~11s remaining)
+  [Provo] 100/151 (11s elapsed, ~5s remaining)
+  [Provo] 150/151 (16s elapsed, ~0s remaining)
+  [Provo] 151/151 (16s elapsed, ~0s remaining)
+
+  Provo took 16s
+
+================================================================================
+  Provo (cross-corpus) (2654 words)
+================================================================================
+  Measure     Human     DiffEZR   r_diff     FullSim    r_sim     OrigEZR   r_orig
+  --------------------------------------------------------------------------------
+  TRT         289.5       173.5    0.616       125.3    0.464       187.3    0.358
+  FFD         208.7       137.1    0.297       124.7    0.174       186.4    0.157
+  Gaze        244.4       149.6    0.611       124.7    0.427       186.4    0.339
+  Skip          0.4         0.5    0.830         0.5    0.602         0.4    0.390
+
+  Measure    r_diff    r_sim    delta     winner
+  ------------------------------------------
+  TRT         0.616    0.464   -0.152    DiffEZR
+  FFD         0.297    0.174   -0.122    DiffEZR
+  Gaze        0.611    0.427   -0.184    DiffEZR
+  Skip        0.830    0.602   -0.227    DiffEZR
+
+  MAE (ms):
+  Measure     DiffEZR    FullSim    OrigEZR
+  TRT           116.5      166.7      137.0
+  FFD            76.1      101.5      114.8
+  Gaze           95.1      126.6      115.7
+
+================================================================================
+  GRAND SUMMARY
+================================================================================
+
+                        --- GECO Test ---            --- Provo (cross) ---     
+  Measure           r_diff    r_sim    delta     r_diff    r_sim    delta
+  -------------------------------------------------------------------------
+  TRT                0.465    0.303   -0.162      0.616    0.464   -0.152
+  FFD                0.195    0.110   -0.085      0.297    0.174   -0.122
+  Gaze               0.393    0.255   -0.138      0.611    0.427   -0.184
+  Skip               0.705    0.448   -0.257      0.830    0.602   -0.227
+
+  r_diff = Differentiable EZR (parallel, trained)
+  r_sim  = Full Simulation (sequential, learned params)
+  delta  = r_sim - r_diff (positive = simulation is better)
+
+================================================================================

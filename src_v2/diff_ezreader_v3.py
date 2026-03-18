@@ -1,29 +1,30 @@
 """
-Differentiable EZ Reader v2.
+Differentiable EZ Reader v3.
 
-Changes from v1:
-  - FFD formula: L1_scaled + softplus(l2_contribution) * L2_scaled
-  - Explicit regression mechanism: sigmoid threshold on L2
-  - Removed integration_cost parameter (from v1) and ffd_offset (caused L1 collapse)
-  - New parameters: l2_contribution, regression_threshold,
-    regression_sharpness, regression_cost_scale
+Changes from v2:
+  - TRT/FFD/Gaze predict reading time CONDITIONAL on fixation (no skip multiplication)
+  - Skip probability is a separate, independent output
+  - This fixes the systematic under-prediction caused by conflating
+    P(fixated) with reading time in v2's TRT = (1-skip) * reading_time
+
+In the original E-Z Reader, skipping is a discrete event: you either skip
+or you don't. If you don't skip, your reading time is determined by L1/L2/regressions.
+v3 respects this separation.
 """
 
 import torch
 import torch.nn as nn
 
 
-class DifferentiableEZReader(nn.Module):
+class DifferentiableEZReaderV3(nn.Module):
     """
-    Differentiable approximation of the EZ Reader simulation (v2).
+    Differentiable approximation of the EZ Reader simulation (v3).
 
     Takes L1/L2 predictions from a neural network and produces
     predicted reading time metrics using smooth, differentiable operations.
 
-    v2 changes:
-      - FFD includes L2 contribution and motor latency offset
-      - Explicit regression probability based on L2 threshold
-      - Regression cost scales with previous word's gaze duration
+    Key difference from v2: reading times are conditional on fixation.
+    Skip probability is a separate output, not multiplied into TRT.
     """
 
     def __init__(self, ablation=None):
@@ -36,7 +37,7 @@ class DifferentiableEZReader(nn.Module):
         self.skip_sharpness = nn.Parameter(torch.tensor(8.0))     # sigmoid steepness for skip
         self.eccentricity = nn.Parameter(torch.tensor(0.1))       # eccentricity scaling factor
 
-        # v2 new parameters
+        # v2 parameters carried forward
         self.l2_contribution = nn.Parameter(torch.tensor(0.3))            # fraction of L2 in FFD
         self.regression_threshold = nn.Parameter(torch.tensor(50.0))      # L2 threshold for regression
         self.regression_sharpness = nn.Parameter(torch.tensor(0.1))       # sigmoid steepness
@@ -45,6 +46,10 @@ class DifferentiableEZReader(nn.Module):
     def forward(self, L1, L2, skip_input, word_lengths, input_is_prob=False):
         """
         Forward pass: convert L1/L2 predictions into reading time estimates.
+
+        All reading times (TRT, FFD, Gaze) are CONDITIONAL on fixation --
+        they represent how long you spend on a word IF you look at it.
+        Skip probability is a separate output.
 
         Args:
             L1: (batch, seq_len) - familiarity check time per word (ms)
@@ -56,10 +61,10 @@ class DifferentiableEZReader(nn.Module):
 
         Returns:
             dict with:
-                'total_reading_time': (batch, seq_len) predicted TRT (ms)
-                'first_fixation':     (batch, seq_len) predicted FFD (ms)
+                'total_reading_time': (batch, seq_len) predicted TRT | fixated (ms)
+                'first_fixation':     (batch, seq_len) predicted FFD | fixated (ms)
+                'gaze_duration':      (batch, seq_len) predicted Gaze | fixated (ms)
                 'skip_prob':          (batch, seq_len) predicted skip probability
-                'gaze_duration':      (batch, seq_len) predicted gaze duration (ms)
         """
         # --- 1. Soft skip probability ---
         if input_is_prob:
@@ -78,13 +83,13 @@ class DifferentiableEZReader(nn.Module):
         L1_scaled = L1 * ecc_scale
         L2_scaled = L2
 
-        # --- 4. First fixation duration ---
+        # --- 4. First fixation duration (conditional on fixation) ---
         if self.ablation == 'ffd_l1_only':
             first_fixation = L1_scaled  # no L2 contribution
         else:
             first_fixation = L1_scaled + torch.nn.functional.softplus(self.l2_contribution) * L2_scaled
 
-        # --- 5. Gaze duration (first-pass reading) ---
+        # --- 5. Gaze duration (first-pass reading, conditional on fixation) ---
         gaze_duration = L1_scaled + L2_scaled
 
         # --- 6. Regression mechanism ---
@@ -98,10 +103,11 @@ class DifferentiableEZReader(nn.Module):
             prev_gaze[:, 1:] = gaze_duration[:, :-1]
             regression_penalty = regression_prob * torch.nn.functional.softplus(self.regression_cost_scale) * prev_gaze
 
-        # --- 7. Total reading time ---
-        fixate_prob = 1.0 - skip_prob
+        # --- 7. Total reading time (conditional on fixation) ---
+        # v3: NO multiplication by fixate_prob. This is TRT given that
+        # the word was fixated. Skip is handled separately in the loss.
         overhead = self.saccade_time + self.attention_shift
-        total_reading_time = fixate_prob * (gaze_duration + overhead + regression_penalty)
+        total_reading_time = gaze_duration + overhead + regression_penalty
 
         return {
             'total_reading_time': total_reading_time,

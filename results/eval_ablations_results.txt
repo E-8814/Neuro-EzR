@@ -1,0 +1,314 @@
+Loading GECO Corpus (test set)...
+  Loading GECO material...
+    5285 sentences, 54362 words
+    Loaded predictability for 5285 sentences
+  Loading GECO reading data...
+    72669 participant × sentence combinations
+  GECO test: 500 sentences, 5501 words
+
+########################################################################################################################
+#  GECO TEST SET (in-distribution)
+########################################################################################################################
+  Processing sentence 50/500...
+  Processing sentence 100/500...
+  Processing sentence 150/500...
+  Processing sentence 200/500...
+  Processing sentence 250/500...
+  Processing sentence 300/500...
+  Processing sentence 350/500...
+  Processing sentence 400/500...
+  Processing sentence 450/500...
+  Processing sentence 500/500...
+
+  Collected 5501 word predictions in 58.6s
+
+========================================================================================================================
+  WORD-LEVEL CORRELATIONS
+========================================================================================================================
+  Measure               Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  ----------------------------------------------------------------------------------------------------------------
+  FFD (ms)                   0.195           0.198           0.204           0.195           0.181           0.198
+  Gaze (ms)                  0.392           0.393           0.388           0.394           0.388           0.392
+  TRT (ms)                   0.467           0.464           0.465           0.466           0.463           0.467
+  Skip Rate                  0.702           0.688           0.715           0.703           0.657           0.702
+
+========================================================================================================================
+  BIN-LEVEL RMSD (lower is better)
+========================================================================================================================
+  Binning / Measure             Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  ------------------------------------------------------------------------------------------------------------------------
+  Freq / FFD                          87.7            90.4            85.0            88.8            86.0            87.8
+  Freq / TRT                         103.7           104.9           102.9           103.9            98.8           103.8
+  Freq / Gaze                         92.6            92.0            89.8            91.6            97.1            92.6
+  Freq / Skip                        0.052           0.057           0.047           0.051           0.067           0.053
+  Pred / FFD                          83.9            86.4            79.2            85.3            81.8            84.5
+  Pred / TRT                         101.3           102.6            99.7           101.5            95.9           101.4
+  Pred / Gaze                         90.1            89.6            86.4            88.9            95.2            89.9
+  Pred / Skip                        0.033           0.051           0.029           0.033           0.057           0.033
+  Length / FFD                        78.4            80.6            74.6            79.5            77.7            78.7
+  Length / TRT                        94.8            96.3            93.2            94.9            90.0            94.8
+  Length / Gaze                       84.1            83.7            80.8            82.8            89.0            83.7
+  Length / Skip                      0.066           0.084           0.061           0.066           0.079           0.068
+
+========================================================================================================================
+  BIN-LEVEL CORRELATION (higher is better)
+========================================================================================================================
+  Binning / Measure             Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  ------------------------------------------------------------------------------------------------------------------------
+  Freq / FFD                         0.964           0.967           0.979           0.966           0.955           0.972
+  Freq / TRT                         1.000           1.000           1.000           1.000           0.999           1.000
+  Freq / Gaze                        1.000           1.000           0.997           1.000           1.000           1.000
+  Freq / Skip                        0.998           0.998           0.995           0.998           0.989           0.997
+  Pred / FFD                         0.960           0.960           0.963           0.962           0.951           0.965
+  Pred / TRT                         0.998           0.999           0.998           0.999           1.000           0.999
+  Pred / Gaze                        0.999           0.999           0.999           1.000           1.000           1.000
+  Pred / Skip                        1.000           0.999           1.000           1.000           0.999           1.000
+  Length / FFD                       0.965           0.970           0.984           0.966           0.938           0.970
+  Length / TRT                       0.998           0.997           0.998           0.998           0.991           0.998
+  Length / Gaze                      0.995           0.994           0.986           0.997           1.000           0.996
+  Length / Skip                      0.997           0.995           0.999           0.997           0.964           0.996
+  ------------------------------------------------------------------------------------------------------------------------
+  MEAN                               0.990           0.990           0.992           0.990           0.982           0.991
+
+========================================================================================================================
+  PSYCHOLINGUISTIC EFFECTS (direction + magnitude >= 25%)
+========================================================================================================================
+  Effect                  Human      Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  ----------------------------------------------------------------------------------------------------------------------------
+  Freq -> FFD             -21.2        -94.7 OK        -96.4 OK       -108.6 OK        -91.4 OK        -95.8 OK        -88.1 OK
+  Freq -> Gaze            -48.6       -105.5 OK       -104.5 OK       -113.1 OK       -108.8 OK        -98.5 OK       -109.2 OK
+  Freq -> TRT             -80.6       -139.3 OK       -136.9 OK       -146.9 OK       -139.6 OK       -143.0 OK       -139.9 OK
+  Freq -> Skip           +0.374       +0.265 OK       +0.315 OK       +0.275 OK       +0.266 OK       +0.294 OK       +0.263 OK
+  Pred -> FFD             -12.0        -53.7 OK        -54.3 OK        -58.5 OK        -51.2 OK        -53.0 OK        -48.8 OK
+  Pred -> Gaze            -32.0        -59.8 OK        -58.7 OK        -60.7 OK        -62.5 OK        -54.2 OK        -62.2 OK
+  Pred -> TRT             -55.1        -82.3 OK        -79.9 OK        -82.9 OK        -82.1 OK        -82.8 OK        -82.2 OK
+  Pred -> Skip           +0.204       +0.150 OK       +0.203 OK       +0.151 OK       +0.149 OK       +0.165 OK       +0.147 OK
+  Length -> FFD           +16.4       +113.4 OK       +113.5 OK       +120.0 OK       +109.2 OK       +122.8 OK       +104.1 OK
+  Length -> Gaze          +54.5       +124.3 OK       +121.0 OK       +124.2 OK       +129.5 OK       +125.1 OK       +129.7 OK
+  Length -> TRT           +92.9       +164.1 OK       +158.6 OK       +169.1 OK       +164.6 OK       +160.9 OK       +164.8 OK
+  Length -> Skip         -0.448       -0.287 OK       -0.333 OK       -0.299 OK       -0.288 OK       -0.283 OK       -0.282 OK
+
+  Interaction                                                                                                                  
+  FxP -> FFD                               PASS            PASS            PASS            PASS            PASS            PASS
+  FxP -> Gaze                              PASS            PASS            PASS            PASS            PASS            PASS
+  FxP -> TRT                               PASS            PASS            PASS            PASS            PASS            PASS
+
+  ----------------------------------------------------------------------------------------------------------------------------
+  SUMMARY
+  PASS                                       15              15              15              15              15              15
+  FAIL                                        0               0               0               0               0               0
+  Pass Rate                                100%            100%            100%            100%            100%            100%
+
+========================================================================================================================
+  EFFECT MAGNITUDE (% of human effect size)
+  100% = matches human exactly. >100% = overshoots. <100% = undershoots.
+========================================================================================================================
+  Effect                    Human      Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  ------------------------------------------------------------------------------------------------------------------------------
+  Freq -> FFD               -21.2            447%            455%            512%            431%            452%            416%
+  Freq -> Gaze              -48.6            217%            215%            233%            224%            203%            225%
+  Freq -> TRT               -80.6            173%            170%            182%            173%            177%            174%
+  Freq -> Skip             +0.374             71%             84%             74%             71%             79%             70%
+  Pred -> FFD               -12.0            448%            453%            488%            427%            442%            407%
+  Pred -> Gaze              -32.0            187%            183%            189%            195%            169%            194%
+  Pred -> TRT               -55.1            149%            145%            150%            149%            150%            149%
+  Pred -> Skip             +0.204             73%             99%             74%             73%             81%             72%
+  Length -> FFD             +16.4            691%            691%            731%            665%            748%            634%
+  Length -> Gaze            +54.5            228%            222%            228%            238%            230%            238%
+  Length -> TRT             +92.9            177%            171%            182%            177%            173%            177%
+  Length -> Skip           -0.448             64%             74%             67%             64%             63%             63%
+  ------------------------------------------------------------------------------------------------------------------------------
+  MEAN MAGNITUDE                             244%            247%            259%            241%            247%            235%
+
+========================================================================================================================
+  L1/L2 DISTRIBUTION ANALYSIS
+  (E-Z Reader theory: L2 = delta * L1, delta ≈ 0.34)
+========================================================================================================================
+  Statistic                     Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  ------------------------------------------------------------------------------------------------------------------------
+  Mean L1 (ms)                       101.5            76.7           115.6            77.8            82.4           112.6
+  Std L1                              25.0            22.9            50.3            13.6            13.9            28.4
+  Mean L2 (ms)                        23.4            51.1            27.7            50.0            33.3            12.7
+  Std L2                              11.7            15.2             6.9            34.6            14.5            11.4
+  Mean L2/L1 ratio                   0.214           0.667           0.262           0.636           0.386           0.099
+  Median L2/L1 ratio                 0.230           0.667           0.263           0.432           0.452           0.066
+  L1 min                              35.2            20.4            32.0            33.2            41.0            35.8
+  L1 max                             170.0           127.4           252.1           101.7           137.2           180.1
+  L2 min                               1.4            13.6             6.9             2.4             1.0             1.0
+  L2 max                              45.3            84.9            43.7           197.8            49.0            47.5
+  L1 CV (std/mean)                   0.246           0.298           0.435           0.175           0.168           0.253
+  L2 CV (std/mean)                   0.499           0.298           0.251           0.693           0.436           0.899
+  r(L1, L2)                          0.962           1.000           0.886           0.266           0.864           0.758
+
+========================================================================================================================
+  COMPONENT CONTRIBUTION ANALYSIS
+  (Derived measures showing what each component adds)
+========================================================================================================================
+  Measure                           Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  ----------------------------------------------------------------------------------------------------------------------------
+  Mean Gaze - FFD (ms)                    11.2            14.3             9.8            14.2             3.8            12.7
+  Human Gaze - FFD (ms)                   18.5
+  Mean TRT - Gaze (ms)                    25.1            23.2            22.9            23.5            35.9            24.6
+  Human TRT - Gaze (ms)                   36.4
+  Mean skip prob                         0.503           0.578           0.508           0.503           0.472           0.503
+  Human skip rate                        0.527
+  Mean FFD/L1 ratio                      1.232           1.605           1.169           1.628           1.535           1.111
+  Mean Gaze/(L1+L2) ratio                1.094           1.075           1.000           1.081           1.133           1.092
+
+========================================================================================================================
+  L1/L2 CORRELATIONS WITH PSYCHOLINGUISTIC VARIABLES
+  (Theory: L1 driven by frequency+length, L2 driven by frequency+predictability)
+========================================================================================================================
+  Correlation                       Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  ----------------------------------------------------------------------------------------------------------------------------
+  r(L1, log_freq)                       -0.679          -0.742          -0.840          -0.240          -0.737          -0.649  (Negative expected)
+  r(L1, pred)                           -0.361          -0.373          -0.360          -0.196          -0.361          -0.352  (Negative expected)
+  r(L1, wlen)                            0.648           0.730           0.878           0.206           0.722           0.620  (Positive expected (eccentricity))
+  r(L2, log_freq)                       -0.774          -0.742          -0.698          -0.789          -0.589          -0.818  (Negative expected)
+  r(L2, pred)                           -0.386          -0.373          -0.330          -0.360          -0.314          -0.366  (Negative expected)
+  r(L2, wlen)                            0.784           0.730           0.726           0.796           0.611           0.850  (Weak/none expected)
+
+========================================================================================================================
+  WORD LENGTH STRATIFIED ANALYSIS
+  (Tests which ablations hurt long words vs short words specifically)
+========================================================================================================================
+
+  FFD correlation by word length:
+  Length group              N      Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  --------------------------------------------------------------------------------------------------------------------------
+  Short (1-3)            2602           0.164           0.169           0.169           0.165           0.169           0.167
+  Medium (4-6)           1930           0.191           0.194           0.191           0.187           0.162           0.188
+  Long (7+)               969           0.189           0.188           0.216           0.184           0.146           0.182
+
+  TRT correlation by word length:
+  Length group              N      Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  --------------------------------------------------------------------------------------------------------------------------
+  Short (1-3)            2602           0.249           0.252           0.255           0.247           0.250           0.249
+  Medium (4-6)           1930           0.330           0.319           0.310           0.327           0.326           0.329
+  Long (7+)               969           0.399           0.395           0.391           0.396           0.402           0.401
+
+  Gaze correlation by word length:
+  Length group              N      Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  --------------------------------------------------------------------------------------------------------------------------
+  Short (1-3)            2602           0.206           0.210           0.215           0.205           0.208           0.206
+  Medium (4-6)           1930           0.295           0.297           0.283           0.298           0.270           0.297
+  Long (7+)               969           0.406           0.406           0.372           0.411           0.381           0.399
+
+  Skip correlation by word length:
+  Length group              N      Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  --------------------------------------------------------------------------------------------------------------------------
+  Short (1-3)            2602           0.393           0.380           0.416           0.392           0.388           0.393
+  Medium (4-6)           1930           0.310           0.306           0.337           0.307           0.270           0.309
+  Long (7+)               969           0.245           0.233           0.284           0.261           0.122           0.253
+
+========================================================================================================================
+  FREQUENCY STRATIFIED ANALYSIS
+  (Tests which ablations hurt low-frequency words specifically)
+========================================================================================================================
+
+  FFD correlation by frequency:
+  Freq group                N      Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  --------------------------------------------------------------------------------------------------------------------------
+  Low frequency          2763           0.114           0.114           0.121           0.109           0.090           0.109
+  High frequency         2738           0.165           0.170           0.170           0.165           0.165           0.168
+
+  TRT correlation by frequency:
+  Freq group                N      Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  --------------------------------------------------------------------------------------------------------------------------
+  Low frequency          2763           0.423           0.416           0.413           0.421           0.418           0.423
+  High frequency         2738           0.277           0.279           0.283           0.276           0.277           0.277
+
+  Gaze correlation by frequency:
+  Freq group                N      Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  --------------------------------------------------------------------------------------------------------------------------
+  Low frequency          2763           0.373           0.373           0.354           0.376           0.361           0.372
+  High frequency         2738           0.212           0.216           0.222           0.211           0.210           0.211
+
+  Skip correlation by frequency:
+  Freq group                N      Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  --------------------------------------------------------------------------------------------------------------------------
+  Low frequency          2763           0.549           0.524           0.582           0.550           0.416           0.549
+  High frequency         2738           0.478           0.459           0.490           0.477           0.473           0.478
+
+========================================================================================================================
+  ABLATION-SPECIFIC DIAGNOSTICS
+========================================================================================================================
+
+  [no_two_stage] L1/L2 Differentiation Check:
+  (With no_two_stage: L1=0.6*total, L2=0.4*total → L2/L1 fixed at 0.667)
+    Full                : L2/L1 = 0.214 ± 0.075  (L1=101.5±25.0, L2=23.4±11.7)
+    No Two-Stage        : L2/L1 = 0.667 ± 0.000  (L1=76.7±22.9, L2=51.1±15.2)
+    Full r(L1,L2)         = 0.962 (should be moderate)
+    No Two-Stage r(L1,L2) = 1.000 (should be 1.000)
+
+  [no_eccentricity] Word Length Effect on FFD:
+  (Eccentricity scales L1 by word length. Removing it should weaken length->FFD)
+    Full                : FFD(short)=89.7, FFD(long)=203.1, effect=+113.4ms (human=+16.4ms, 691%)
+    No Eccentricity     : FFD(short)=89.6, FFD(long)=209.6, effect=+120.0ms (human=+16.4ms, 731%)
+    Full                : r(L1, wlen) = 0.648
+    No Eccentricity     : r(L1, wlen) = 0.878
+
+  [no_regressions] Regression Contribution Check:
+  (TRT = fixate_prob * (Gaze + overhead + regression). Without regressions, TRT-Gaze shrinks)
+    Full                : Mean TRT-Gaze = 25.1ms (std=20.7)
+    No Regressions      : Mean TRT-Gaze = 23.5ms (std=18.4)
+    Human               : Mean TRT-Gaze = 36.4ms (std=54.9)
+
+    Difficult words (low freq + low pred, N=831):
+      Full                : r_TRT = 0.436
+      No Regressions      : r_TRT = 0.431
+
+  [skip_from_l1] Skip Probability Analysis:
+  (Skip derived from L1 via sigmoid, instead of separate head)
+    Full                : Mean skip = 0.503 (std=0.138, min=0.100, max=0.842)
+    Skip from L1        : Mean skip = 0.472 (std=0.158, min=0.054, max=0.875)
+    Human               : Mean skip = 0.527
+    Full                : r(skip,pred)=0.370  r(skip,freq)=0.799  r(skip,wlen)=-0.836
+    Skip from L1        : r(skip,pred)=0.368  r(skip,freq)=0.745  r(skip,wlen)=-0.732
+
+  [ffd_l1_only] FFD Sensitivity Check:
+  (FFD = L1 only, no L2 contribution. Should lose predictability sensitivity in FFD)
+    Full                : r(FFD,pred)=-0.367  r(FFD,freq)=-0.826
+    FFD L1 Only         : r(FFD,pred)=-0.365  r(FFD,freq)=-0.818
+    Full                : Mean Gaze-FFD = 11.2ms (this IS the L2 contribution to FFD in full model)
+    FFD L1 Only         : Mean Gaze-FFD = 12.7ms (this IS the L2 contribution to FFD in full model)
+
+========================================================================================================================
+  ERROR ANALYSIS vs FULL MODEL
+  (Mean absolute difference between ablation and full model predictions)
+========================================================================================================================
+  Measure                   Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  --------------------------------------------------------------------------------------------------------------------
+  FFD (ms)                         ---             3.5            12.5             2.3             6.5             3.4
+  Gaze (ms)                        ---             3.0            11.9             2.7             8.1             1.9
+  TRT (ms)                         ---             5.5            14.6             2.5             8.7             1.5
+  Skip                             ---           0.075           0.030           0.006           0.038           0.004
+  L1 (ms)                          ---            24.9            24.0            23.7            19.6            11.0
+  L2 (ms)                          ---            27.7             6.2            26.6            10.3            10.7
+
+  No Two-Stage: Biggest divergence in TRT — short words: 4.6ms, long words: 8.4ms
+
+  No Eccentricity: Biggest divergence in TRT — short words: 11.9ms, long words: 21.1ms
+
+  No Regressions: Biggest divergence in GAZE — short words: 1.5ms, long words: 5.8ms
+
+  Skip from L1: Biggest divergence in TRT — short words: 5.4ms, long words: 10.6ms
+
+  FFD L1 Only: Biggest divergence in FFD — short words: 1.9ms, long words: 8.0ms
+
+========================================================================================================================
+  GRAND SUMMARY
+========================================================================================================================
+  Metric                        Full Model    No Two-Stage No Eccentricity  No Regressions    Skip from L1     FFD L1 Only
+  ------------------------------------------------------------------------------------------------------------------------
+  Word r_FFD                         0.195           0.198           0.204           0.195           0.181           0.198
+  Word r_Gaze                        0.392           0.393           0.388           0.394           0.388           0.392
+  Word r_TRT                         0.467           0.464           0.465           0.466           0.463           0.467
+  Word r_Skip                        0.702           0.688           0.715           0.703           0.657           0.702
+  ------------------------------------------------------------------------------------------------------------------------
+  Bin r (mean)                       0.990           0.990           0.992           0.990           0.982           0.991
+  ------------------------------------------------------------------------------------------------------------------------
+  Effects pass rate           15/15 (100%)    15/15 (100%)    15/15 (100%)    15/15 (100%)    15/15 (100%)    15/15 (100%)
+
+
+Done! Results saved to: /home/u384661/Neuro_EZR/src_v2/../results/eval_ablations_results.txt

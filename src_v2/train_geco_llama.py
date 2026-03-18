@@ -1,28 +1,18 @@
 """
-Supervised training for the BERT-based Differentiable Neural EZ Reader v2 on GECO corpus.
-GPU-optimized variant with mini-batching and automatic mixed precision (AMP).
+Supervised training for the LLaMA-based Differentiable Neural EZ Reader v2 on GECO corpus.
+GPU-optimized with mini-batching and automatic mixed precision (AMP).
 
-Changes from v1 (train_geco_bert_gpu_v2.py):
-  - Uses DifferentiableEZReader v2 (improved FFD + regressions)
-  - Added gaze duration loss (was missing in v1 -- caused L2 collapse)
-  - Skip prior regularizer: lambda_prior * (mean_skip - 0.45)^2
-  - L1 range regularizer: lambda_l1 * mean(relu(L1 - 200))
-  - L1 lower bound regularizer: lambda_l1_lower * mean(relu(50 - L1))
-  - TRT scale loss: lambda_trt_scale * (mean_pred_TRT - mean_human_TRT)^2
-  - Skip weight increased to 0.4 (from 0.3) for stronger skip effects
-  - Loss weights: 0.2*TRT + 0.2*FFD + 0.2*Gaze + 0.4*Skip + regularizers
-  - Saves to checkpoints_v2/geco_bert/
+Uses a causal (left-to-right) LM for cognitive plausibility.
 
+Usage:
+  # Default: LLaMA 3.2-1B
+  python3 -u src_v2/train_geco_llama.py
 
-  # Even smaller (11M params, ~10x faster than base)                                                 
-  python3 -u src_v2/train_geco_bert.py --bert prajjwal1/bert-mini
+  # Custom model (any causal HuggingFace model):
+  python3 -u src_v2/train_geco_llama.py --model meta-llama/Llama-3.2-1B
 
-  # Medium (41M params)
-  python3 -u src_v2/train_geco_bert.py --bert prajjwal1/bert-medium
-
-  # Original (110M params)
-  python3 -u src_v2/train_geco_bert.py --bert bert-base-uncased
-
+  # Adjust freeze layers:
+  python3 -u src_v2/train_geco_llama.py --freeze 12
 """
 
 import os
@@ -39,7 +29,7 @@ from torch.nn.utils.rnn import pad_sequence
 sys.path.insert(0, os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'ez_reader'))
 
-from model_bert import NeuralEZReaderBERT
+from model_llama import NeuralEZReaderLLaMA
 from data_loader import aggregate_by_sentence, split_aggregated
 from geco_loader import load_geco, split_geco
 
@@ -48,13 +38,15 @@ from geco_loader import load_geco, split_geco
 #  Regularization hyperparameters
 # --------------------------------------------------------------------------- #
 
-LAMBDA_PRIOR = 10.0   # skip prior weight
-LAMBDA_L1 = 0.01      # L1 upper range penalty weight
-LAMBDA_L1_LOWER = 0.05  # L1 lower bound penalty weight
+LAMBDA_PRIOR = 10.0       # skip prior weight
+LAMBDA_L1 = 0.01          # L1 upper range penalty weight
+LAMBDA_L1_LOWER = 0.05    # L1 lower bound penalty weight
+LAMBDA_L2_LOWER = 0.05    # L2 lower bound penalty weight (prevents L2 collapse)
 LAMBDA_TRT_SCALE = 0.001  # TRT scale matching penalty weight
-SKIP_TARGET = 0.45     # target mean skip rate
-L1_MAX = 200.0         # soft L1 ceiling (ms)
-L1_MIN = 60.0          # soft L1 floor (ms)
+SKIP_TARGET = 0.45        # target mean skip rate
+L1_MAX = 200.0            # soft L1 ceiling (ms)
+L1_MIN = 60.0             # soft L1 floor (ms)
+L2_MIN = 30.0             # soft L2 floor (ms) - prevents collapse
 
 
 # --------------------------------------------------------------------------- #
@@ -146,34 +138,43 @@ class Logger(object):
 
 def compute_loss(pred, human_trt, human_ffd, human_gaze, human_skip):
     """
-    Combined loss with 4 components + 2 regularizers:
-      - MSE on total reading time
-      - MSE on first fixation duration
-      - MSE on gaze duration (NEW in v2 -- prevents L2 collapse)
-      - BCE on skip probability
-      - Skip prior: penalize deviation from target skip rate
-      - L1 range: penalize L1 values above 200ms
+    Combined loss with 4 components + regularizers.
     """
-    trt_loss = nn.functional.mse_loss(pred['total_reading_time'], human_trt)
-    ffd_loss = nn.functional.mse_loss(pred['first_fixation'], human_ffd)
-    gaze_loss = nn.functional.mse_loss(pred['gaze_duration'], human_gaze)
+    # Cast to float32 for stable loss computation under AMP
+    pred_trt = pred['total_reading_time'].float()
+    pred_ffd = pred['first_fixation'].float()
+    pred_gaze = pred['gaze_duration'].float()
+    pred_skip = pred['skip_prob'].float()
+    pred_l1 = pred['L1'].float()
+    pred_l2 = pred['L2'].float()
 
-    skip_pred = pred['skip_prob'].clamp(1e-6, 1 - 1e-6)
+    trt_loss = nn.functional.mse_loss(pred_trt, human_trt)
+    ffd_loss = nn.functional.mse_loss(pred_ffd, human_ffd)
+    gaze_loss = nn.functional.mse_loss(pred_gaze, human_gaze)
+
+    skip_pred = pred_skip.clamp(1e-6, 1 - 1e-6)
     skip_loss = nn.functional.binary_cross_entropy(skip_pred, human_skip)
 
     # Regularizers
-    mean_skip = pred['skip_prob'].mean()
+    mean_skip = pred_skip.mean()
     skip_prior = LAMBDA_PRIOR * (mean_skip - SKIP_TARGET) ** 2
 
-    l1_excess = torch.nn.functional.relu(pred['L1'] - L1_MAX)
+    l1_excess = torch.nn.functional.relu(pred_l1 - L1_MAX)
     l1_reg = LAMBDA_L1 * l1_excess.mean()
 
-    l1_deficit = torch.nn.functional.relu(L1_MIN - pred['L1'])
+    l1_deficit = torch.nn.functional.relu(L1_MIN - pred_l1)
     l1_lower_reg = LAMBDA_L1_LOWER * l1_deficit.mean()
 
-    trt_scale = LAMBDA_TRT_SCALE * (pred['total_reading_time'].mean() - human_trt.mean()) ** 2
+    # L2 floor regularizer (prevents L2 collapse)
+    l2_deficit = torch.nn.functional.relu(L2_MIN - pred_l2)
+    l2_lower_reg = LAMBDA_L2_LOWER * l2_deficit.mean()
 
-    total = 0.2 * trt_loss + 0.2 * ffd_loss + 0.2 * gaze_loss + 0.4 * skip_loss + skip_prior + l1_reg + l1_lower_reg + trt_scale
+    trt_scale = LAMBDA_TRT_SCALE * (pred_trt.mean() - human_trt.mean()) ** 2
+
+    # Gaze weight increased to 0.4 (was 0.2) — forces L2 to stay meaningful
+    # since Gaze = L1 + L2, strong gaze loss prevents L2 from collapsing
+    total = (0.2 * trt_loss + 0.2 * ffd_loss + 0.4 * gaze_loss + 0.4 * skip_loss
+             + skip_prior + l1_reg + l1_lower_reg + l2_lower_reg + trt_scale)
 
     return total, {
         'trt': trt_loss.item(),
@@ -183,6 +184,7 @@ def compute_loss(pred, human_trt, human_ffd, human_gaze, human_skip):
         'skip_prior': skip_prior.item(),
         'l1_reg': l1_reg.item(),
         'l1_lower': l1_lower_reg.item(),
+        'l2_lower': l2_lower_reg.item(),
         'trt_scale': trt_scale.item(),
         'total': total.item(),
     }
@@ -192,7 +194,7 @@ def compute_loss(pred, human_trt, human_ffd, human_gaze, human_skip):
 #  Evaluation (on aggregated data for clean metrics)
 # --------------------------------------------------------------------------- #
 
-def evaluate_detailed(model, agg_data, device, batch_size=16):
+def evaluate_detailed(model, agg_data, device, batch_size=8):
     """Evaluate on aggregated data. Returns loss, correlations, error metrics."""
     model.eval()
     all_pred_trt, all_human_trt = [], []
@@ -208,7 +210,8 @@ def evaluate_detailed(model, agg_data, device, batch_size=16):
             batch = agg_data[i:i + batch_size]
             word_lists, pred_vals, wlens, h_trt, h_ffd, h_gaze, h_skip = collate_aggregated(batch, device)
 
-            pred = model(word_lists, pred_vals, wlens)
+            with torch.amp.autocast("cuda", enabled=(device.type == "cuda")):
+                pred = model(word_lists, pred_vals, wlens)
             loss, _ = compute_loss(pred, h_trt, h_ffd, h_gaze, h_skip)
             total_loss += loss.item() * len(batch)
             n += len(batch)
@@ -252,7 +255,7 @@ def evaluate_detailed(model, agg_data, device, batch_size=16):
 
 
 # --------------------------------------------------------------------------- #
-#  Print sample predictions
+#  Print helpers
 # --------------------------------------------------------------------------- #
 
 def print_sample_predictions(model, agg_data, device, n_sentences=3, n_words=8):
@@ -317,14 +320,15 @@ def print_ezreader_params(model):
 def train(
     data_dir="../data",
     num_epochs=50,
-    bert_lr=2e-5,
+    lm_lr=2e-5,
     head_lr=5e-4,
-    batch_size=16,
-    accumulation_steps=4,
-    save_dir="../checkpoints_v2/geco_bert",
+    batch_size=8,
+    accumulation_steps=8,
+    save_dir="../checkpoints_v2/geco_llama",
     seed=42,
-    bert_model_name="bert-base-uncased",
-    freeze_bert_layers=8,
+    model_name="meta-llama/Llama-3.2-1B",
+    freeze_layers=12,
+    ablation=None,
 ):
     torch.manual_seed(seed)
     np.random.seed(seed)
@@ -346,7 +350,7 @@ def train(
     train_raw, val_raw, test_raw = split_geco(raw_dataset)
     print(f"  Train: {len(train_raw):,} | Val: {len(val_raw):,} | Test: {len(test_raw):,}")
 
-    # Aggregate for clean evaluation metrics (GECO has 14 participants)
+    # Aggregate for clean evaluation metrics
     aggregated = aggregate_by_sentence(raw_dataset, min_participants=5)
     print(f"  Aggregated sentences (min 5 participants): {len(aggregated)}")
 
@@ -359,44 +363,56 @@ def train(
     print(f"  Aggregated: {len(train_agg)} train | {len(val_agg)} val | {len(test_agg)} test sentences")
 
     # ---- Model ----
-    print(f"\nLoading BERT model: {bert_model_name}")
-    print(f"  Freezing first {freeze_bert_layers} BERT layers")
-    model = NeuralEZReaderBERT(
-        bert_model_name=bert_model_name,
-        freeze_bert_layers=freeze_bert_layers,
+    print(f"\nLoading model: {model_name}")
+    print(f"  Freezing first {freeze_layers} layers")
+    if ablation:
+        print(f"  ABLATION: {ablation}")
+    model = NeuralEZReaderLLaMA(
+        model_name=model_name,
+        freeze_layers=freeze_layers,
+        hidden_dim=256,
+        ablation=ablation,
     ).to(device)
 
-    # ---- Differential learning rates ----
-    bert_params = []
+    # ---- Differential learning rates (3 groups) ----
+    lm_params = []
     head_params = []
+    ezr_params = []
 
     for name, param in model.named_parameters():
         if not param.requires_grad:
             continue
-        if name.startswith("bert."):
-            bert_params.append(param)
+        if name.startswith("llama."):
+            lm_params.append(param)
+        elif name.startswith("ezreader."):
+            ezr_params.append(param)
         else:
             head_params.append(param)
 
-    n_bert_trainable = sum(p.numel() for p in bert_params)
+    ezr_lr = head_lr * 2  # EZ Reader params need higher LR (they're scalar params)
+
+    n_lm_trainable = sum(p.numel() for p in lm_params)
     n_head_trainable = sum(p.numel() for p in head_params)
+    n_ezr_trainable = sum(p.numel() for p in ezr_params)
     n_frozen = sum(p.numel() for p in model.parameters() if not p.requires_grad)
     total_params = sum(p.numel() for p in model.parameters())
 
     print(f"  Total parameters:    {total_params:,}")
-    print(f"  Frozen (BERT):       {n_frozen:,}")
-    print(f"  Trainable (BERT):    {n_bert_trainable:,} (lr={bert_lr})")
+    print(f"  Frozen (LM):         {n_frozen:,}")
+    print(f"  Trainable (LM):      {n_lm_trainable:,} (lr={lm_lr})")
     print(f"  Trainable (heads):   {n_head_trainable:,} (lr={head_lr})")
+    print(f"  Trainable (EZR):     {n_ezr_trainable:,} (lr={ezr_lr})")
 
     optimizer = optim.AdamW([
-        {"params": bert_params, "lr": bert_lr, "weight_decay": 0.01},
+        {"params": lm_params, "lr": lm_lr, "weight_decay": 0.01},
         {"params": head_params, "lr": head_lr, "weight_decay": 0.0},
+        {"params": ezr_params, "lr": ezr_lr, "weight_decay": 0.0},
     ])
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(
         optimizer, patience=5, factor=0.5, min_lr=1e-7
     )
 
-    # AMP (mixed precision) -- only on CUDA
+    # AMP (mixed precision)
     use_amp = device.type == "cuda"
     scaler = torch.amp.GradScaler("cuda", enabled=use_amp)
 
@@ -408,15 +424,18 @@ def train(
     best_val_corr = -1.0
 
     print("\n" + "=" * 90)
-    print("Training (BERT + Differentiable EZ Reader v2) on GECO Corpus [GPU-optimized]")
+    ablation_label = f" [ABLATION: {ablation}]" if ablation else ""
+    print(f"Training (LLaMA + Differentiable EZ Reader v2) on GECO Corpus{ablation_label}")
+    print(f"  Model: {model_name}")
     print(f"  Batch size: {batch_size} | Gradient accumulation steps: {accumulation_steps}")
     print(f"  Effective batch size: {batch_size * accumulation_steps}")
     print(f"  Mixed precision (AMP): {use_amp}")
     print(f"  Regularizers: skip_prior(lambda={LAMBDA_PRIOR}, target={SKIP_TARGET}) + "
           f"l1_range(lambda={LAMBDA_L1}, max={L1_MAX}) + "
           f"l1_lower(lambda={LAMBDA_L1_LOWER}, min={L1_MIN}) + "
+          f"l2_lower(lambda={LAMBDA_L2_LOWER}, min={L2_MIN}) + "
           f"trt_scale(lambda={LAMBDA_TRT_SCALE})")
-    print(f"  Loss weights: 0.2*TRT + 0.2*FFD + 0.2*Gaze + 0.4*Skip + regularizers")
+    print(f"  Loss weights: 0.2*TRT + 0.2*FFD + 0.4*Gaze + 0.4*Skip + regularizers")
     print("=" * 90)
 
     for epoch in range(1, num_epochs + 1):
@@ -473,46 +492,42 @@ def train(
         # ---- Detailed validation (on aggregated data) ----
         val_metrics = evaluate_detailed(model, val_agg, device)
         scheduler.step(val_metrics['loss'])
-        bert_lr_now = optimizer.param_groups[0]['lr']
+        lm_lr_now = optimizer.param_groups[0]['lr']
         head_lr_now = optimizer.param_groups[1]['lr']
 
         is_best = val_metrics['r_trt'] > best_val_corr
-        show = True
 
-        if show:
-            print(f"\n[Epoch {epoch:3d}/{num_epochs}] {elapsed:.1f}s | "
-                  f"bert_lr={bert_lr_now:.2e} head_lr={head_lr_now:.2e}")
-            print(f"  Train: loss={epoch_loss:.1f} "
-                  f"(trt={epoch_trt:.0f} ffd={epoch_ffd:.0f} gaze={epoch_gaze:.0f} skip={epoch_skip:.3f}) "
-                  f"| {n_samples:,} samples")
-            print(f"  Val:   loss={val_metrics['loss']:.1f} | "
-                  f"r_TRT={val_metrics['r_trt']:.3f}  "
-                  f"r_FFD={val_metrics['r_ffd']:.3f}  "
-                  f"r_Gaze={val_metrics['r_gaze']:.3f}  "
-                  f"r_skip={val_metrics['r_skip']:.3f}")
-            print(f"  Val:   MAE_TRT={val_metrics['mae_trt']:.1f}ms  "
-                  f"MAE_FFD={val_metrics['mae_ffd']:.1f}ms")
-            print(f"  Pred:  mean_TRT={val_metrics['mean_pred_trt']:.0f}ms "
-                  f"(human={val_metrics['mean_human_trt']:.0f}ms) | "
-                  f"L1={val_metrics['mean_l1']:.0f}+/-{val_metrics['std_l1']:.0f}ms  "
-                  f"L2={val_metrics['mean_l2']:.0f}+/-{val_metrics['std_l2']:.0f}ms")
+        print(f"\n[Epoch {epoch:3d}/{num_epochs}] {elapsed:.1f}s | "
+              f"lm_lr={lm_lr_now:.2e} head_lr={head_lr_now:.2e}")
+        print(f"  Train: loss={epoch_loss:.1f} "
+              f"(trt={epoch_trt:.0f} ffd={epoch_ffd:.0f} gaze={epoch_gaze:.0f} skip={epoch_skip:.3f}) "
+              f"| {n_samples:,} samples")
+        print(f"  Val:   loss={val_metrics['loss']:.1f} | "
+              f"r_TRT={val_metrics['r_trt']:.3f}  "
+              f"r_FFD={val_metrics['r_ffd']:.3f}  "
+              f"r_Gaze={val_metrics['r_gaze']:.3f}  "
+              f"r_skip={val_metrics['r_skip']:.3f}")
+        print(f"  Val:   MAE_TRT={val_metrics['mae_trt']:.1f}ms  "
+              f"MAE_FFD={val_metrics['mae_ffd']:.1f}ms")
+        print(f"  Pred:  mean_TRT={val_metrics['mean_pred_trt']:.0f}ms "
+              f"(human={val_metrics['mean_human_trt']:.0f}ms) | "
+              f"L1={val_metrics['mean_l1']:.0f}+/-{val_metrics['std_l1']:.0f}ms  "
+              f"L2={val_metrics['mean_l2']:.0f}+/-{val_metrics['std_l2']:.0f}ms")
 
-            print_ezreader_params(model)
-            print_sample_predictions(model, train_agg, device, n_sentences=2, n_words=8)
+        print_ezreader_params(model)
+        print_sample_predictions(model, train_agg, device, n_sentences=2, n_words=8)
 
-            if is_best:
-                print(f"  ** NEW BEST (r_TRT={val_metrics['r_trt']:.3f}) **")
-
-        # ---- Save best ----
         if is_best:
+            print(f"  ** NEW BEST (r_TRT={val_metrics['r_trt']:.3f}) **")
             best_val_corr = val_metrics['r_trt']
             torch.save({
                 'epoch': epoch,
                 'model_state_dict': model.state_dict(),
-                'bert_model_name': bert_model_name,
-                'freeze_bert_layers': freeze_bert_layers,
+                'model_name': model_name,
+                'freeze_layers': freeze_layers,
+                'ablation': ablation,
                 'val_metrics': val_metrics,
-            }, os.path.join(save_dir, "best_model_bert.pt"))
+            }, os.path.join(save_dir, "best_model.pt"))
 
     # ---- Final summary ----
     print("\n" + "=" * 90)
@@ -542,38 +557,49 @@ def train(
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--bert", type=str, default="bert-base-uncased",
-                        help="BERT model name (e.g. prajjwal1/bert-small, prajjwal1/bert-mini)")
+    parser.add_argument("--model", type=str, default="meta-llama/Llama-3.2-1B",
+                        help="HuggingFace causal LM name")
     parser.add_argument("--freeze", type=int, default=None,
-                        help="Number of BERT layers to freeze (default: half of total layers)")
+                        help="Number of layers to freeze (default: 3/4 of total layers)")
     parser.add_argument("--epochs", type=int, default=50)
-    parser.add_argument("--batch_size", type=int, default=16)
-    parser.add_argument("--accum", type=int, default=4)
-    parser.add_argument("--bert_lr", type=float, default=2e-5)
+    parser.add_argument("--batch_size", type=int, default=8)
+    parser.add_argument("--accum", type=int, default=8)
+    parser.add_argument("--lm_lr", type=float, default=2e-5)
     parser.add_argument("--head_lr", type=float, default=5e-4)
+    parser.add_argument("--ablation", type=str, default=None,
+                        choices=['no_two_stage', 'no_eccentricity', 'no_regressions',
+                                 'skip_from_l1', 'ffd_l1_only'],
+                        help="Ablation study variant")
     args = parser.parse_args()
 
     # Auto-determine freeze layers if not specified
     if args.freeze is not None:
         freeze_layers = args.freeze
     else:
-        from transformers import BertConfig
-        cfg = BertConfig.from_pretrained(args.bert)
-        freeze_layers = cfg.num_hidden_layers // 2  # freeze half by default
+        from transformers import AutoConfig
+        cfg = AutoConfig.from_pretrained(args.model)
+        n_layers = cfg.num_hidden_layers
+        freeze_layers = int(n_layers * 0.75)  # freeze 3/4 by default
+        print(f"Auto-freeze: {freeze_layers}/{n_layers} layers")
 
-    # Name the save dir after the model
-    model_short = args.bert.replace("/", "_")
+    # Name the save dir after the model (and ablation if applicable)
+    model_short = args.model.replace("/", "_")
     data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
-    save_dir = os.path.join(os.path.dirname(__file__), "..", f"checkpoints_v2/geco_{model_short}")
+    if args.ablation:
+        save_dir = os.path.join(os.path.dirname(__file__), "..",
+                                f"checkpoints_v2/geco_{model_short}_ablation_{args.ablation}")
+    else:
+        save_dir = os.path.join(os.path.dirname(__file__), "..", f"checkpoints_v2/geco_{model_short}")
 
     train(
         data_dir=data_dir,
         num_epochs=args.epochs,
-        bert_lr=args.bert_lr,
+        lm_lr=args.lm_lr,
         head_lr=args.head_lr,
         batch_size=args.batch_size,
         accumulation_steps=args.accum,
         save_dir=save_dir,
-        bert_model_name=args.bert,
-        freeze_bert_layers=freeze_layers,
+        model_name=args.model,
+        freeze_layers=freeze_layers,
+        ablation=args.ablation,
     )

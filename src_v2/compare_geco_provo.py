@@ -22,11 +22,17 @@ sys.path.insert(0, os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'ez_reader'))
 
 from diff_ezreader import DifferentiableEZReader
+import model_lstm
 from model_lstm import NeuralEZReader, Vocabulary
 from model_bert import NeuralEZReaderBERT
+from model_llama import NeuralEZReaderLLaMA
+from model_llama_direct import DirectRegressionLLaMA
+
+# Register under old module name so checkpoints saved as 'model_lstm_v2' can unpickle
+sys.modules['model_lstm_v2'] = model_lstm
 from data_loader import load_provo, aggregate_by_sentence, split_aggregated
 from geco_loader import load_geco, split_geco
-from ez_wrapper import run_simulation_averaged
+from ez_wrapper import run_simulation_averaged, run_original_simulation_averaged
 from utilities import time_familiarity_check, time_lexical_access
 
 # Alias so torch.load can unpickle old checkpoints
@@ -155,14 +161,17 @@ def load_content_function_labels(csv_path):
 # --------------------------------------------------------------------------- #
 
 def run_all_models(sentences, subtlex, diff_ezr, lstm_model, vocab,
-                   bert_model, device):
+                   bert_model, device, llama_model=None, direct_model=None):
     h_trt, h_ffd, h_skip = [], [], []
     orig_trt, orig_ffd = [], []
     diff_trt, diff_ffd, diff_skip = [], [], []
     lstm_trt, lstm_ffd, lstm_skip = [], [], []
     bert_trt, bert_ffd, bert_skip = [], [], []
+    llama_trt, llama_ffd, llama_skip = [], [], []
+    direct_trt, direct_ffd, direct_skip = [], [], []
     lstm_l1, lstm_l2 = [], []
     bert_l1, bert_l2 = [], []
+    llama_l1, llama_l2 = [], []
     formula_l1_all, formula_l2_all = [], []
 
     for agg in sentences:
@@ -178,8 +187,10 @@ def run_all_models(sentences, subtlex, diff_ezr, lstm_model, vocab,
         formula_l1_all.extend(l1f)
         formula_l2_all.extend(l2f)
 
-        # Model 1: Original sim
-        orig_result = run_simulation_averaged(tokens, l1f, l2f, preds, num_runs=20)
+        # Model 1: Original sim (uses real Simulation class with internal L1/L2)
+        freqs = [get_real_frequency(t, subtlex) for t in tokens]
+        orig_result = run_original_simulation_averaged(
+            tokens, freqs, preds, num_runs=20)
         orig_trt.extend(orig_result['total_reading_time'])
         orig_ffd.extend(orig_result['first_fixation_duration'])
 
@@ -222,6 +233,32 @@ def run_all_models(sentences, subtlex, diff_ezr, lstm_model, vocab,
             bert_l1.extend(br['L1'][0].cpu().tolist())
             bert_l2.extend(br['L2'][0].cpu().tolist())
 
+        # Model 5: LLaMA v2
+        if llama_model:
+            with torch.no_grad():
+                lr = llama_model(
+                    [tokens],
+                    torch.tensor([preds], dtype=torch.float32).to(device),
+                    torch.tensor([wlens], dtype=torch.float32).to(device),
+                )
+            llama_trt.extend(lr['total_reading_time'][0].cpu().tolist())
+            llama_ffd.extend(lr['first_fixation'][0].cpu().tolist())
+            llama_skip.extend(lr['skip_prob'][0].cpu().tolist())
+            llama_l1.extend(lr['L1'][0].cpu().tolist())
+            llama_l2.extend(lr['L2'][0].cpu().tolist())
+
+        # Model 6: Direct LLaMA (no EZ Reader)
+        if direct_model:
+            with torch.no_grad():
+                dr_direct = direct_model(
+                    [tokens],
+                    torch.tensor([preds], dtype=torch.float32).to(device),
+                    torch.tensor([wlens], dtype=torch.float32).to(device),
+                )
+            direct_trt.extend(dr_direct['total_reading_time'][0].cpu().tolist())
+            direct_ffd.extend(dr_direct['first_fixation'][0].cpu().tolist())
+            direct_skip.extend(dr_direct['skip_prob'][0].cpu().tolist())
+
     return {
         'h_trt': np.array(h_trt), 'h_ffd': np.array(h_ffd), 'h_skip': np.array(h_skip),
         'orig_trt': np.array(orig_trt), 'orig_ffd': np.array(orig_ffd),
@@ -235,6 +272,14 @@ def run_all_models(sentences, subtlex, diff_ezr, lstm_model, vocab,
         'bert_skip': np.array(bert_skip) if bert_model else np.array([]),
         'bert_l1': np.array(bert_l1) if bert_model else np.array([]),
         'bert_l2': np.array(bert_l2) if bert_model else np.array([]),
+        'llama_trt': np.array(llama_trt) if llama_model else np.array([]),
+        'llama_ffd': np.array(llama_ffd) if llama_model else np.array([]),
+        'llama_skip': np.array(llama_skip) if llama_model else np.array([]),
+        'llama_l1': np.array(llama_l1) if llama_model else np.array([]),
+        'llama_l2': np.array(llama_l2) if llama_model else np.array([]),
+        'direct_trt': np.array(direct_trt) if direct_model else np.array([]),
+        'direct_ffd': np.array(direct_ffd) if direct_model else np.array([]),
+        'direct_skip': np.array(direct_skip) if direct_model else np.array([]),
         'formula_l1': np.array(formula_l1_all), 'formula_l2': np.array(formula_l2_all),
     }
 
@@ -244,9 +289,12 @@ def run_all_models(sentences, subtlex, diff_ezr, lstm_model, vocab,
 # --------------------------------------------------------------------------- #
 
 def collect_per_word_data(sentences, subtlex, diff_ezr, lstm_model, vocab,
-                          bert_model, device, cf_labels=None):
+                          bert_model, device, cf_labels=None, llama_model=None,
+                          direct_model=None):
     words = []
     has_bert = bert_model is not None
+    has_llama = llama_model is not None
+    has_direct = direct_model is not None
 
     for agg in sentences:
         tokens = agg.tokens
@@ -257,7 +305,9 @@ def collect_per_word_data(sentences, subtlex, diff_ezr, lstm_model, vocab,
         cf = (cf_labels or {}).get(sent_key, ['NA'] * len(tokens))
 
         l1f, l2f = compute_real_l1_l2(tokens, preds, subtlex)
-        orig_result = run_simulation_averaged(tokens, l1f, l2f, preds, num_runs=20)
+        freqs = [get_real_frequency(t, subtlex) for t in tokens]
+        orig_result = run_original_simulation_averaged(
+            tokens, freqs, preds, num_runs=20)
 
         with torch.no_grad():
             dr = diff_ezr(
@@ -273,6 +323,18 @@ def collect_per_word_data(sentences, subtlex, diff_ezr, lstm_model, vocab,
             )
             if has_bert:
                 br = bert_model(
+                    [tokens],
+                    torch.tensor([preds], dtype=torch.float32).to(device),
+                    torch.tensor([wlens], dtype=torch.float32).to(device),
+                )
+            if has_llama:
+                lr = llama_model(
+                    [tokens],
+                    torch.tensor([preds], dtype=torch.float32).to(device),
+                    torch.tensor([wlens], dtype=torch.float32).to(device),
+                )
+            if has_direct:
+                dir_r = direct_model(
                     [tokens],
                     torch.tensor([preds], dtype=torch.float32).to(device),
                     torch.tensor([wlens], dtype=torch.float32).to(device),
@@ -307,6 +369,14 @@ def collect_per_word_data(sentences, subtlex, diff_ezr, lstm_model, vocab,
                 'bert_gaze': br['gaze_duration'][0, i].cpu().item() if has_bert else None,
                 'bert_trt': br['total_reading_time'][0, i].cpu().item() if has_bert else None,
                 'bert_skip': br['skip_prob'][0, i].cpu().item() if has_bert else None,
+                'llama_ffd': lr['first_fixation'][0, i].cpu().item() if has_llama else None,
+                'llama_gaze': lr['gaze_duration'][0, i].cpu().item() if has_llama else None,
+                'llama_trt': lr['total_reading_time'][0, i].cpu().item() if has_llama else None,
+                'llama_skip': lr['skip_prob'][0, i].cpu().item() if has_llama else None,
+                'direct_ffd': dir_r['first_fixation'][0, i].cpu().item() if has_direct else None,
+                'direct_gaze': dir_r['gaze_duration'][0, i].cpu().item() if has_direct else None,
+                'direct_trt': dir_r['total_reading_time'][0, i].cpu().item() if has_direct else None,
+                'direct_skip': dir_r['skip_prob'][0, i].cpu().item() if has_direct else None,
             }
             words.append(w)
 
@@ -318,10 +388,13 @@ def collect_per_word_data(sentences, subtlex, diff_ezr, lstm_model, vocab,
 # --------------------------------------------------------------------------- #
 
 def print_results(r, split_name, n_sentences, subtlex, bert_model,
-                  diff_ezr, lstm_model, vocab, device, sentences_for_samples=None):
-    W = 100
+                  diff_ezr, lstm_model, vocab, device, sentences_for_samples=None,
+                  llama_model=None, direct_model=None):
+    W = 110
     n = len(r['h_trt'])
     has_bert = bert_model is not None and len(r['bert_trt']) > 0
+    has_llama = llama_model is not None and len(r['llama_trt']) > 0
+    has_direct = direct_model is not None and len(r['direct_trt']) > 0
 
     print(f"\n{'=' * W}")
     print(f"   {split_name}")
@@ -332,47 +405,69 @@ def print_results(r, split_name, n_sentences, subtlex, bert_model,
     bert_trt_corr = corr(r['bert_trt'], r['h_trt']) if has_bert else 0.0
     bert_ffd_corr = corr(r['bert_ffd'], r['h_ffd']) if has_bert else 0.0
     bert_skip_corr = corr(r['bert_skip'], r['h_skip']) if has_bert else 0.0
+    llama_trt_corr = corr(r['llama_trt'], r['h_trt']) if has_llama else 0.0
+    llama_ffd_corr = corr(r['llama_ffd'], r['h_ffd']) if has_llama else 0.0
+    llama_skip_corr = corr(r['llama_skip'], r['h_skip']) if has_llama else 0.0
+    direct_trt_corr = corr(r['direct_trt'], r['h_trt']) if has_direct else 0.0
+    direct_ffd_corr = corr(r['direct_ffd'], r['h_ffd']) if has_direct else 0.0
+    direct_skip_corr = corr(r['direct_skip'], r['h_skip']) if has_direct else 0.0
 
     print(f"\n{'=' * W}")
     print("  CORRELATION WITH HUMAN DATA (Pearson r)")
     print(f"{'=' * W}")
-    print(f"  {'Metric':<28} {'Orig EZ':>10} {'Diff EZ':>10} {'LSTM+Diff':>10} {'BERT+Diff':>10}")
-    print(f"  {'-'*80}")
-    print(f"  {'Total Reading Time (TRT)':<28} {corr(r['orig_trt'], r['h_trt']):>10.3f} {corr(r['diff_trt'], r['h_trt']):>10.3f} {corr(r['lstm_trt'], r['h_trt']):>10.3f} {bert_trt_corr:>10.3f}")
-    print(f"  {'First Fixation Dur. (FFD)':<28} {corr(r['orig_ffd'], r['h_ffd']):>10.3f} {corr(r['diff_ffd'], r['h_ffd']):>10.3f} {corr(r['lstm_ffd'], r['h_ffd']):>10.3f} {bert_ffd_corr:>10.3f}")
-    print(f"  {'Skip Rate':<28} {'N/A':>10} {corr(r['diff_skip'], r['h_skip']):>10.3f} {corr(r['lstm_skip'], r['h_skip']):>10.3f} {bert_skip_corr:>10.3f}")
+    print(f"  {'Metric':<28} {'Orig EZ':>10} {'Diff EZ':>10} {'LSTM+Diff':>10} {'BERT+Diff':>10} {'LLaMA+Diff':>11} {'Direct':>10}")
+    print(f"  {'-'*100}")
+    print(f"  {'Total Reading Time (TRT)':<28} {corr(r['orig_trt'], r['h_trt']):>10.3f} {corr(r['diff_trt'], r['h_trt']):>10.3f} {corr(r['lstm_trt'], r['h_trt']):>10.3f} {bert_trt_corr:>10.3f} {llama_trt_corr:>11.3f} {direct_trt_corr:>10.3f}")
+    print(f"  {'First Fixation Dur. (FFD)':<28} {corr(r['orig_ffd'], r['h_ffd']):>10.3f} {corr(r['diff_ffd'], r['h_ffd']):>10.3f} {corr(r['lstm_ffd'], r['h_ffd']):>10.3f} {bert_ffd_corr:>10.3f} {llama_ffd_corr:>11.3f} {direct_ffd_corr:>10.3f}")
+    print(f"  {'Skip Rate':<28} {'N/A':>10} {corr(r['diff_skip'], r['h_skip']):>10.3f} {corr(r['lstm_skip'], r['h_skip']):>10.3f} {bert_skip_corr:>10.3f} {llama_skip_corr:>11.3f} {direct_skip_corr:>10.3f}")
 
     # ---- Error ----
     bert_trt_mae = mae(r['bert_trt'], r['h_trt']) if has_bert else 0.0
     bert_ffd_mae = mae(r['bert_ffd'], r['h_ffd']) if has_bert else 0.0
     bert_trt_rmse = rmse(r['bert_trt'], r['h_trt']) if has_bert else 0.0
     bert_ffd_rmse = rmse(r['bert_ffd'], r['h_ffd']) if has_bert else 0.0
+    llama_trt_mae = mae(r['llama_trt'], r['h_trt']) if has_llama else 0.0
+    llama_ffd_mae = mae(r['llama_ffd'], r['h_ffd']) if has_llama else 0.0
+    llama_trt_rmse = rmse(r['llama_trt'], r['h_trt']) if has_llama else 0.0
+    llama_ffd_rmse = rmse(r['llama_ffd'], r['h_ffd']) if has_llama else 0.0
+    direct_trt_mae = mae(r['direct_trt'], r['h_trt']) if has_direct else 0.0
+    direct_ffd_mae = mae(r['direct_ffd'], r['h_ffd']) if has_direct else 0.0
+    direct_trt_rmse = rmse(r['direct_trt'], r['h_trt']) if has_direct else 0.0
+    direct_ffd_rmse = rmse(r['direct_ffd'], r['h_ffd']) if has_direct else 0.0
 
     print(f"\n{'=' * W}")
     print("  ERROR METRICS")
     print(f"{'=' * W}")
-    print(f"  {'Metric':<28} {'Orig EZ':>10} {'Diff EZ':>10} {'LSTM+Diff':>10} {'BERT+Diff':>10}")
-    print(f"  {'-'*80}")
-    print(f"  {'MAE TRT (ms)':<28} {mae(r['orig_trt'], r['h_trt']):>10.1f} {mae(r['diff_trt'], r['h_trt']):>10.1f} {mae(r['lstm_trt'], r['h_trt']):>10.1f} {bert_trt_mae:>10.1f}")
-    print(f"  {'MAE FFD (ms)':<28} {mae(r['orig_ffd'], r['h_ffd']):>10.1f} {mae(r['diff_ffd'], r['h_ffd']):>10.1f} {mae(r['lstm_ffd'], r['h_ffd']):>10.1f} {bert_ffd_mae:>10.1f}")
-    print(f"  {'RMSE TRT (ms)':<28} {rmse(r['orig_trt'], r['h_trt']):>10.1f} {rmse(r['diff_trt'], r['h_trt']):>10.1f} {rmse(r['lstm_trt'], r['h_trt']):>10.1f} {bert_trt_rmse:>10.1f}")
-    print(f"  {'RMSE FFD (ms)':<28} {rmse(r['orig_ffd'], r['h_ffd']):>10.1f} {rmse(r['diff_ffd'], r['h_ffd']):>10.1f} {rmse(r['lstm_ffd'], r['h_ffd']):>10.1f} {bert_ffd_rmse:>10.1f}")
+    print(f"  {'Metric':<28} {'Orig EZ':>10} {'Diff EZ':>10} {'LSTM+Diff':>10} {'BERT+Diff':>10} {'LLaMA+Diff':>11} {'Direct':>10}")
+    print(f"  {'-'*100}")
+    print(f"  {'MAE TRT (ms)':<28} {mae(r['orig_trt'], r['h_trt']):>10.1f} {mae(r['diff_trt'], r['h_trt']):>10.1f} {mae(r['lstm_trt'], r['h_trt']):>10.1f} {bert_trt_mae:>10.1f} {llama_trt_mae:>11.1f} {direct_trt_mae:>10.1f}")
+    print(f"  {'MAE FFD (ms)':<28} {mae(r['orig_ffd'], r['h_ffd']):>10.1f} {mae(r['diff_ffd'], r['h_ffd']):>10.1f} {mae(r['lstm_ffd'], r['h_ffd']):>10.1f} {bert_ffd_mae:>10.1f} {llama_ffd_mae:>11.1f} {direct_ffd_mae:>10.1f}")
+    print(f"  {'RMSE TRT (ms)':<28} {rmse(r['orig_trt'], r['h_trt']):>10.1f} {rmse(r['diff_trt'], r['h_trt']):>10.1f} {rmse(r['lstm_trt'], r['h_trt']):>10.1f} {bert_trt_rmse:>10.1f} {llama_trt_rmse:>11.1f} {direct_trt_rmse:>10.1f}")
+    print(f"  {'RMSE FFD (ms)':<28} {rmse(r['orig_ffd'], r['h_ffd']):>10.1f} {rmse(r['diff_ffd'], r['h_ffd']):>10.1f} {rmse(r['lstm_ffd'], r['h_ffd']):>10.1f} {bert_ffd_rmse:>10.1f} {llama_ffd_rmse:>11.1f} {direct_ffd_rmse:>10.1f}")
 
     # ---- Means ----
     bert_trt_mean = np.mean(r['bert_trt']) if has_bert else 0.0
     bert_ffd_mean = np.mean(r['bert_ffd']) if has_bert else 0.0
     bert_trt_std = np.std(r['bert_trt']) if has_bert else 0.0
     bert_skip_mean = np.mean(r['bert_skip']) if has_bert else 0.0
+    llama_trt_mean = np.mean(r['llama_trt']) if has_llama else 0.0
+    llama_ffd_mean = np.mean(r['llama_ffd']) if has_llama else 0.0
+    llama_trt_std = np.std(r['llama_trt']) if has_llama else 0.0
+    llama_skip_mean = np.mean(r['llama_skip']) if has_llama else 0.0
+    direct_trt_mean = np.mean(r['direct_trt']) if has_direct else 0.0
+    direct_ffd_mean = np.mean(r['direct_ffd']) if has_direct else 0.0
+    direct_trt_std = np.std(r['direct_trt']) if has_direct else 0.0
+    direct_skip_mean = np.mean(r['direct_skip']) if has_direct else 0.0
 
     print(f"\n{'=' * W}")
     print("  MEAN PREDICTIONS (ms)")
     print(f"{'=' * W}")
-    print(f"  {'Metric':<28} {'Human':>10} {'Orig EZ':>10} {'Diff EZ':>10} {'LSTM+Diff':>10} {'BERT+Diff':>10}")
-    print(f"  {'-'*90}")
-    print(f"  {'Mean TRT':<28} {np.mean(r['h_trt']):>10.1f} {np.mean(r['orig_trt']):>10.1f} {np.mean(r['diff_trt']):>10.1f} {np.mean(r['lstm_trt']):>10.1f} {bert_trt_mean:>10.1f}")
-    print(f"  {'Mean FFD':<28} {np.mean(r['h_ffd']):>10.1f} {np.mean(r['orig_ffd']):>10.1f} {np.mean(r['diff_ffd']):>10.1f} {np.mean(r['lstm_ffd']):>10.1f} {bert_ffd_mean:>10.1f}")
-    print(f"  {'Std TRT':<28} {np.std(r['h_trt']):>10.1f} {np.std(r['orig_trt']):>10.1f} {np.std(r['diff_trt']):>10.1f} {np.std(r['lstm_trt']):>10.1f} {bert_trt_std:>10.1f}")
-    print(f"  {'Mean Skip Rate':<28} {np.mean(r['h_skip']):>10.3f} {'N/A':>10} {np.mean(r['diff_skip']):>10.3f} {np.mean(r['lstm_skip']):>10.3f} {bert_skip_mean:>10.3f}")
+    print(f"  {'Metric':<28} {'Human':>10} {'Orig EZ':>10} {'Diff EZ':>10} {'LSTM+Diff':>10} {'BERT+Diff':>10} {'LLaMA+Diff':>11} {'Direct':>10}")
+    print(f"  {'-'*110}")
+    print(f"  {'Mean TRT':<28} {np.mean(r['h_trt']):>10.1f} {np.mean(r['orig_trt']):>10.1f} {np.mean(r['diff_trt']):>10.1f} {np.mean(r['lstm_trt']):>10.1f} {bert_trt_mean:>10.1f} {llama_trt_mean:>11.1f} {direct_trt_mean:>10.1f}")
+    print(f"  {'Mean FFD':<28} {np.mean(r['h_ffd']):>10.1f} {np.mean(r['orig_ffd']):>10.1f} {np.mean(r['diff_ffd']):>10.1f} {np.mean(r['lstm_ffd']):>10.1f} {bert_ffd_mean:>10.1f} {llama_ffd_mean:>11.1f} {direct_ffd_mean:>10.1f}")
+    print(f"  {'Std TRT':<28} {np.std(r['h_trt']):>10.1f} {np.std(r['orig_trt']):>10.1f} {np.std(r['diff_trt']):>10.1f} {np.std(r['lstm_trt']):>10.1f} {bert_trt_std:>10.1f} {llama_trt_std:>11.1f} {direct_trt_std:>10.1f}")
+    print(f"  {'Mean Skip Rate':<28} {np.mean(r['h_skip']):>10.3f} {'N/A':>10} {np.mean(r['diff_skip']):>10.3f} {np.mean(r['lstm_skip']):>10.3f} {bert_skip_mean:>10.3f} {llama_skip_mean:>11.3f} {direct_skip_mean:>10.3f}")
 
     # ---- L1/L2 stats ----
     fl1, fl2 = r['formula_l1'], r['formula_l2']
@@ -380,12 +475,12 @@ def print_results(r, split_name, n_sentences, subtlex, bert_model,
     print(f"\n{'=' * W}")
     print("  L1/L2 STATISTICS")
     print(f"{'=' * W}")
-    print(f"  {'':20} {'Formula':>12} {'LSTM':>12} {'BERT':>12}")
-    print(f"  {'-'*58}")
-    print(f"  {'L1 mean (ms)':<20} {np.mean(fl1):>12.0f} {np.mean(ll1):>12.0f} {np.mean(r['bert_l1']) if has_bert else 0.0:>12.0f}")
-    print(f"  {'L1 std (ms)':<20} {np.std(fl1):>12.0f} {np.std(ll1):>12.0f} {np.std(r['bert_l1']) if has_bert else 0.0:>12.0f}")
-    print(f"  {'L2 mean (ms)':<20} {np.mean(fl2):>12.0f} {np.mean(ll2):>12.0f} {np.mean(r['bert_l2']) if has_bert else 0.0:>12.0f}")
-    print(f"  {'L2 std (ms)':<20} {np.std(fl2):>12.0f} {np.std(ll2):>12.0f} {np.std(r['bert_l2']) if has_bert else 0.0:>12.0f}")
+    print(f"  {'':20} {'Formula':>12} {'LSTM':>12} {'BERT':>12} {'LLaMA':>12}")
+    print(f"  {'-'*70}")
+    print(f"  {'L1 mean (ms)':<20} {np.mean(fl1):>12.0f} {np.mean(ll1):>12.0f} {np.mean(r['bert_l1']) if has_bert else 0.0:>12.0f} {np.mean(r['llama_l1']) if has_llama else 0.0:>12.0f}")
+    print(f"  {'L1 std (ms)':<20} {np.std(fl1):>12.0f} {np.std(ll1):>12.0f} {np.std(r['bert_l1']) if has_bert else 0.0:>12.0f} {np.std(r['llama_l1']) if has_llama else 0.0:>12.0f}")
+    print(f"  {'L2 mean (ms)':<20} {np.mean(fl2):>12.0f} {np.mean(ll2):>12.0f} {np.mean(r['bert_l2']) if has_bert else 0.0:>12.0f} {np.mean(r['llama_l2']) if has_llama else 0.0:>12.0f}")
+    print(f"  {'L2 std (ms)':<20} {np.std(fl2):>12.0f} {np.std(ll2):>12.0f} {np.std(r['bert_l2']) if has_bert else 0.0:>12.0f} {np.std(r['llama_l2']) if has_llama else 0.0:>12.0f}")
 
     # ---- Sample predictions ----
     if sentences_for_samples:
@@ -396,12 +491,14 @@ def print_results(r, split_name, n_sentences, subtlex, bert_model,
         for s_idx, s in enumerate(sentences_for_samples[:4]):
             title = ' '.join(s.tokens[:6]) + ('...' if len(s.tokens) > 6 else '')
             print(f"\n  Sentence (text {s.text_id}): \"{title}\"")
-            print(f"  {'word':<14} {'freq':>8} {'pred':>5} | {'hTRT':>5} {'oTRT':>5} {'dTRT':>5} {'nTRT':>5} {'bTRT':>5} | "
-                  f"{'hSkip':>5} {'nSkip':>5} {'bSkip':>5}")
-            print(f"  {'-'*95}")
+            print(f"  {'word':<14} {'freq':>8} {'pred':>5} | {'hTRT':>5} {'oTRT':>5} {'dTRT':>5} {'nTRT':>5} {'bTRT':>5} {'lTRT':>5} {'xTRT':>5} | "
+                  f"{'hSkip':>5} {'nSkip':>5} {'bSkip':>5} {'lSkip':>5} {'xSkip':>5}")
+            print(f"  {'-'*120}")
 
             l1f, l2f = compute_real_l1_l2(s.tokens, s.predictabilities, subtlex)
-            o = run_simulation_averaged(s.tokens, l1f, l2f, s.predictabilities, num_runs=20)
+            freqs_s = [get_real_frequency(t, subtlex) for t in s.tokens]
+            o = run_original_simulation_averaged(
+                s.tokens, freqs_s, s.predictabilities, num_runs=20)
             with torch.no_grad():
                 dr2 = diff_ezr(
                     torch.tensor([l1f], dtype=torch.float32, device=device),
@@ -420,6 +517,18 @@ def print_results(r, split_name, n_sentences, subtlex, bert_model,
                         torch.tensor([s.predictabilities], dtype=torch.float32).to(device),
                         torch.tensor([[len(t) for t in s.tokens]], dtype=torch.float32).to(device),
                     )
+                if llama_model:
+                    lr2 = llama_model(
+                        [s.tokens],
+                        torch.tensor([s.predictabilities], dtype=torch.float32).to(device),
+                        torch.tensor([[len(t) for t in s.tokens]], dtype=torch.float32).to(device),
+                    )
+                if direct_model:
+                    xr2 = direct_model(
+                        [s.tokens],
+                        torch.tensor([s.predictabilities], dtype=torch.float32).to(device),
+                        torch.tensor([[len(t) for t in s.tokens]], dtype=torch.float32).to(device),
+                    )
 
             for i in range(min(10, len(s.tokens))):
                 freq = get_real_frequency(s.tokens[i], subtlex)
@@ -432,10 +541,14 @@ def print_results(r, split_name, n_sentences, subtlex, bert_model,
                 ns = nr2['skip_prob'][0, i].item()
                 bt = br2['total_reading_time'][0, i].item() if bert_model else 0.0
                 bs = br2['skip_prob'][0, i].item() if bert_model else 0.0
+                lt = lr2['total_reading_time'][0, i].item() if llama_model else 0.0
+                ls = lr2['skip_prob'][0, i].item() if llama_model else 0.0
+                xt = xr2['total_reading_time'][0, i].item() if direct_model else 0.0
+                xs = xr2['skip_prob'][0, i].item() if direct_model else 0.0
                 print(
                     f"  {s.tokens[i]:<14} {freq:>8,} {pred:>5.2f} | "
-                    f"{ht:5.0f} {ot:5.0f} {dt:5.0f} {nt:5.0f} {bt:5.0f} | "
-                    f"{hs:5.2f} {ns:5.2f} {bs:5.2f}"
+                    f"{ht:5.0f} {ot:5.0f} {dt:5.0f} {nt:5.0f} {bt:5.0f} {lt:5.0f} {xt:5.0f} | "
+                    f"{hs:5.2f} {ns:5.2f} {bs:5.2f} {ls:5.2f} {xs:5.2f}"
                 )
 
     # ---- Final summary ----
@@ -449,6 +562,10 @@ def print_results(r, split_name, n_sentences, subtlex, bert_model,
     print(f"  {'3. Neural EZ Reader (LSTM)':<35} {corr(r['lstm_trt'], r['h_trt']):>8.3f} {corr(r['lstm_ffd'], r['h_ffd']):>8.3f} {corr(r['lstm_skip'], r['h_skip']):>8.3f} {mae(r['lstm_trt'], r['h_trt']):>9.1f}ms")
     if has_bert:
         print(f"  {'4. Neural EZ Reader (BERT)':<35} {bert_trt_corr:>8.3f} {bert_ffd_corr:>8.3f} {bert_skip_corr:>8.3f} {mae(r['bert_trt'], r['h_trt']):>9.1f}ms")
+    if has_llama:
+        print(f"  {'5. Neural EZ Reader (LLaMA)':<35} {llama_trt_corr:>8.3f} {llama_ffd_corr:>8.3f} {llama_skip_corr:>8.3f} {mae(r['llama_trt'], r['h_trt']):>9.1f}ms")
+    if has_direct:
+        print(f"  {'6. Direct LLaMA (no EZ Reader)':<35} {direct_trt_corr:>8.3f} {direct_ffd_corr:>8.3f} {direct_skip_corr:>8.3f} {mae(r['direct_trt'], r['h_trt']):>9.1f}ms")
 
     best_list = [
         ('Original EZ', corr(r['orig_trt'], r['h_trt'])),
@@ -457,6 +574,10 @@ def print_results(r, split_name, n_sentences, subtlex, bert_model,
     ]
     if has_bert:
         best_list.append(('BERT+Diff', bert_trt_corr))
+    if has_llama:
+        best_list.append(('LLaMA+Diff', llama_trt_corr))
+    if has_direct:
+        best_list.append(('Direct', direct_trt_corr))
     best = max(best_list, key=lambda x: x[1])
     print(f"\n  WINNER: {best[0]} (r_TRT = {best[1]:.3f})")
 
@@ -530,8 +651,8 @@ def bin_content_function(words):
 #  Effects table printing
 # --------------------------------------------------------------------------- #
 
-MODEL_KEYS = ['h', 'orig', 'diff', 'lstm', 'bert']
-MODEL_NAMES = ['Human', 'Orig EZ', 'Diff EZ', 'LSTM', 'BERT']
+MODEL_KEYS = ['h', 'orig', 'diff', 'lstm', 'bert', 'llama', 'direct']
+MODEL_NAMES = ['Human', 'Orig EZ', 'Diff EZ', 'LSTM', 'BERT', 'LLaMA', 'Direct']
 MEASURES = ['ffd', 'gaze', 'trt', 'skip']
 MEASURE_NAMES = ['FFD (ms)', 'Gaze (ms)', 'TRT (ms)', 'Skip Rate']
 
@@ -543,14 +664,21 @@ def bin_mean(word_list, model, measure):
 
 
 def print_effect_table(effect_name, bins, measure, measure_name,
-                       expected_direction, has_bert):
+                       expected_direction, has_bert, has_llama=False, has_direct=False):
     bin_names = list(bins.keys())
-    W = 90
+    W = 100
 
     print(f"\n  {effect_name} ON {measure_name}")
     print(f"  {'-' * W}")
 
-    models = MODEL_NAMES[:4] if not has_bert else MODEL_NAMES
+    skip_keys = set()
+    if not has_bert:
+        skip_keys.add('bert')
+    if not has_llama:
+        skip_keys.add('llama')
+    if not has_direct:
+        skip_keys.add('direct')
+    models = [mn for mk, mn in zip(MODEL_KEYS, MODEL_NAMES) if mk not in skip_keys]
     header = f"  {'':>20}"
     for m in models:
         header += f"  {m:>10}"
@@ -562,7 +690,7 @@ def print_effect_table(effect_name, bins, measure, measure_name,
     for bname in bin_names:
         row = f"  {bname:>20}"
         for mk, mname in zip(MODEL_KEYS, MODEL_NAMES):
-            if not has_bert and mk == 'bert':
+            if mk in skip_keys:
                 continue
             val = bin_mean(bins[bname], mk, measure)
             means[mk].append(val)
@@ -579,7 +707,7 @@ def print_effect_table(effect_name, bins, measure, measure_name,
     print(f"  {'':>20}", end='')
     effects = {}
     for mk, mname in zip(MODEL_KEYS, MODEL_NAMES):
-        if not has_bert and mk == 'bert':
+        if mk in skip_keys:
             continue
         first, last = means[mk][0], means[mk][-1]
         if first is not None and last is not None:
@@ -599,7 +727,7 @@ def print_effect_table(effect_name, bins, measure, measure_name,
     print(f"  {'Direction correct?':>20}", end='')
     results = {}
     for mk, mname in zip(MODEL_KEYS, MODEL_NAMES):
-        if not has_bert and mk == 'bert':
+        if mk in skip_keys:
             continue
         if mk == 'h':
             print(f"  {'---':>10}", end='')
@@ -620,7 +748,7 @@ def print_effect_table(effect_name, bins, measure, measure_name,
     print(f"  {'Magnitude (% human)':>20}", end='')
     magnitudes = {}
     for mk, mname in zip(MODEL_KEYS, MODEL_NAMES):
-        if not has_bert and mk == 'bert':
+        if mk in skip_keys:
             continue
         if mk == 'h':
             print(f"  {'---':>10}", end='')
@@ -650,32 +778,40 @@ def print_effect_table(effect_name, bins, measure, measure_name,
     return reproduces
 
 
-def analyze_effect(effect_name, bins, expected_directions, has_bert):
+def analyze_effect(effect_name, bins, expected_directions, has_bert, has_llama=False, has_direct=False):
     all_results = {}
     for measure, mname in zip(MEASURES, MEASURE_NAMES):
         direction = expected_directions.get(measure)
         if direction is None:
             continue
         results = print_effect_table(
-            effect_name, bins, measure, mname, direction, has_bert)
+            effect_name, bins, measure, mname, direction, has_bert, has_llama, has_direct)
         for mk, reproduces in results.items():
             all_results[(measure, mk)] = reproduces
     return all_results
 
 
-def analyze_interaction(bins, has_bert):
-    W = 90
+def analyze_interaction(bins, has_bert, has_llama=False, has_direct=False):
+    W = 100
     print(f"\n  FREQ x PRED INTERACTION")
     print(f"  {'-' * W}")
     results = {}
-    models = MODEL_KEYS[:4] if not has_bert else MODEL_KEYS
+    skip_keys = set()
+    if not has_bert:
+        skip_keys.add('bert')
+    if not has_llama:
+        skip_keys.add('llama')
+    if not has_direct:
+        skip_keys.add('direct')
+    models = [mk for mk in MODEL_KEYS if mk not in skip_keys]
 
     for measure, mname in zip(MEASURES, MEASURE_NAMES):
         if measure == 'skip':
             continue
         print(f"\n  {mname}:")
         header = f"  {'':>25}"
-        for m_name in (MODEL_NAMES[:4] if not has_bert else MODEL_NAMES):
+        model_names_filtered = [mn for mk, mn in zip(MODEL_KEYS, MODEL_NAMES) if mk not in skip_keys]
+        for m_name in model_names_filtered:
             header += f"  {m_name:>10}"
         print(header)
 
@@ -752,8 +888,8 @@ def analyze_interaction(bins, has_bert):
     return results
 
 
-def print_effects_summary(all_effects_results, has_bert):
-    W = 100
+def print_effects_summary(all_effects_results, has_bert, has_llama=False, has_direct=False):
+    W = 110
     print(f"\n\n{'=' * W}")
     print(f"  EFFECTS SUMMARY: WHICH EFFECTS DOES EACH MODEL REPRODUCE?")
     print(f"{'=' * W}")
@@ -765,6 +901,12 @@ def print_effects_summary(all_effects_results, has_bert):
     if has_bert:
         models.append('bert')
         mnames.append('BERT')
+    if has_llama:
+        models.append('llama')
+        mnames.append('LLaMA')
+    if has_direct:
+        models.append('direct')
+        mnames.append('Direct')
 
     header = f"  {'Effect / Measure':<35}"
     for mn in mnames:
@@ -815,7 +957,7 @@ def print_effects_summary(all_effects_results, has_bert):
 #  Run full effects analysis on a set of sentences
 # --------------------------------------------------------------------------- #
 
-def run_effects_analysis(corpus_name, words, has_bert, has_cf=False):
+def run_effects_analysis(corpus_name, words, has_bert, has_cf=False, has_llama=False, has_direct=False):
     W = 100
     all_effects = []
 
@@ -840,7 +982,7 @@ def run_effects_analysis(corpus_name, words, has_bert, has_cf=False):
     freq_results = analyze_effect(
         "FREQUENCY", freq_bins,
         {'ffd': 'decrease', 'gaze': 'decrease', 'trt': 'decrease', 'skip': 'increase'},
-        has_bert)
+        has_bert, has_llama, has_direct)
     for measure in MEASURES:
         all_effects.append((("Frequency", measure), freq_results))
 
@@ -854,7 +996,7 @@ def run_effects_analysis(corpus_name, words, has_bert, has_cf=False):
     pred_results = analyze_effect(
         "PREDICTABILITY", pred_bins,
         {'ffd': 'decrease', 'gaze': 'decrease', 'trt': 'decrease', 'skip': 'increase'},
-        has_bert)
+        has_bert, has_llama, has_direct)
     for measure in MEASURES:
         all_effects.append((("Predictability", measure), pred_results))
 
@@ -868,7 +1010,7 @@ def run_effects_analysis(corpus_name, words, has_bert, has_cf=False):
     wlen_results = analyze_effect(
         "WORD LENGTH", wlen_bins,
         {'ffd': 'increase', 'gaze': 'increase', 'trt': 'increase', 'skip': 'decrease'},
-        has_bert)
+        has_bert, has_llama, has_direct)
     for measure in MEASURES:
         all_effects.append((("Word Length", measure), wlen_results))
 
@@ -879,7 +1021,7 @@ def run_effects_analysis(corpus_name, words, has_bert, has_cf=False):
     fxp_bins = bin_freq_x_pred(words)
     for bname, bwords in fxp_bins.items():
         print(f"  {bname}: N={len(bwords)}")
-    interaction_results = analyze_interaction(fxp_bins, has_bert)
+    interaction_results = analyze_interaction(fxp_bins, has_bert, has_llama, has_direct)
     for measure in ['ffd', 'gaze', 'trt']:
         all_effects.append((("Freq x Pred", measure), interaction_results))
 
@@ -897,12 +1039,12 @@ def run_effects_analysis(corpus_name, words, has_bert, has_cf=False):
             cf_results = analyze_effect(
                 "CONTENT vs FUNCTION", cf_bins,
                 {'ffd': 'decrease', 'gaze': 'decrease', 'trt': 'decrease', 'skip': 'increase'},
-                has_bert)
+                has_bert, has_llama, has_direct)
             for measure in MEASURES:
                 all_effects.append((("Content/Function", measure), cf_results))
 
     # Summary
-    print_effects_summary(all_effects, has_bert)
+    print_effects_summary(all_effects, has_bert, has_llama, has_direct)
 
 
 # --------------------------------------------------------------------------- #
@@ -920,6 +1062,8 @@ def main():
     data_dir = os.path.join(os.path.dirname(__file__), '..', 'data')
     geco_lstm_ckpt = os.path.join(os.path.dirname(__file__), '..', 'checkpoints_v2/geco_lstm', 'best_model_lstm.pt')
     geco_bert_ckpt = os.path.join(os.path.dirname(__file__), '..', 'checkpoints_v2/geco_bert', 'best_model_bert.pt')
+    geco_llama_ckpt = os.path.join(os.path.dirname(__file__), '..', 'checkpoints_v2/geco_TinyLlama_TinyLlama-1.1B-Chat-v1.0', 'best_model.pt')
+    geco_direct_ckpt = os.path.join(os.path.dirname(__file__), '..', 'checkpoints_v2/geco_direct_TinyLlama_TinyLlama-1.1B-Chat-v1.0', 'best_model.pt')
 
     if torch.cuda.is_available():
         device = torch.device(f"cuda:{args.gpu}")
@@ -996,12 +1140,42 @@ def main():
     except Exception as e:
         print(f"  BERT v2: SKIPPED ({e})")
 
+    # LLaMA v2
+    llama_model = None
+    try:
+        ckpt_llama = torch.load(geco_llama_ckpt, map_location=device, weights_only=False)
+        llama_model = NeuralEZReaderLLaMA(
+            model_name=ckpt_llama.get('model_name', 'TinyLlama/TinyLlama-1.1B-Chat-v1.0'),
+            freeze_layers=ckpt_llama.get('freeze_layers', 16)
+        ).to(device)
+        llama_model.load_state_dict(ckpt_llama['model_state_dict'], strict=False)
+        llama_model.eval()
+        print(f"  LLaMA v2: loaded (epoch {ckpt_llama.get('epoch', '?')})")
+    except Exception as e:
+        print(f"  LLaMA v2: SKIPPED ({e})")
+
+    # Direct LLaMA (no EZ Reader)
+    direct_model = None
+    try:
+        ckpt_direct = torch.load(geco_direct_ckpt, map_location=device, weights_only=False)
+        direct_model = DirectRegressionLLaMA(
+            model_name=ckpt_direct.get('model_name', 'TinyLlama/TinyLlama-1.1B-Chat-v1.0'),
+            freeze_layers=ckpt_direct.get('freeze_layers', 16)
+        ).to(device)
+        direct_model.load_state_dict(ckpt_direct['model_state_dict'], strict=False)
+        direct_model.eval()
+        print(f"  Direct LLaMA: loaded (epoch {ckpt_direct.get('epoch', '?')})")
+    except Exception as e:
+        print(f"  Direct LLaMA: SKIPPED ({e})")
+
     # Differentiable EZ Reader v2 (untrained formula)
     diff_ezr = DifferentiableEZReader().to(device)
     diff_ezr.eval()
     print("  Diff EZ v2: loaded (untrained formula)")
 
     has_bert = bert_model is not None
+    has_llama = llama_model is not None
+    has_direct = direct_model is not None
 
     # ================================================================
     #  PART 1: GECO TEST SET (in-distribution)
@@ -1013,7 +1187,8 @@ def main():
 
     t0 = time.time()
     geco_test_results = run_all_models(
-        geco_test_agg, subtlex, diff_ezr, lstm_model, vocab, bert_model, device)
+        geco_test_agg, subtlex, diff_ezr, lstm_model, vocab, bert_model, device,
+        llama_model=llama_model, direct_model=direct_model)
     print(f"\n  Done: {len(geco_test_results['h_trt'])} words in {time.time()-t0:.1f}s")
 
     print_results(
@@ -1027,6 +1202,8 @@ def main():
         vocab=vocab,
         device=device,
         sentences_for_samples=geco_test_agg,
+        llama_model=llama_model,
+        direct_model=direct_model,
     )
 
     # ================================================================
@@ -1039,7 +1216,8 @@ def main():
 
     t0 = time.time()
     provo_results = run_all_models(
-        provo_all, subtlex, diff_ezr, lstm_model, vocab, bert_model, device)
+        provo_all, subtlex, diff_ezr, lstm_model, vocab, bert_model, device,
+        llama_model=llama_model, direct_model=direct_model)
     print(f"\n  Done: {len(provo_results['h_trt'])} words in {time.time()-t0:.1f}s")
 
     print_results(
@@ -1053,6 +1231,8 @@ def main():
         vocab=vocab,
         device=device,
         sentences_for_samples=provo_all,
+        llama_model=llama_model,
+        direct_model=direct_model,
     )
 
     # ================================================================
@@ -1062,10 +1242,11 @@ def main():
     t0 = time.time()
     geco_words = collect_per_word_data(
         geco_test_agg, subtlex, diff_ezr, lstm_model, vocab,
-        bert_model, device, cf_labels=None)
+        bert_model, device, cf_labels=None, llama_model=llama_model,
+        direct_model=direct_model)
     print(f"  Done: {len(geco_words)} words in {time.time()-t0:.1f}s")
 
-    run_effects_analysis("GECO TEST SET", geco_words, has_bert, has_cf=False)
+    run_effects_analysis("GECO TEST SET", geco_words, has_bert, has_cf=False, has_llama=has_llama, has_direct=has_direct)
 
     # ================================================================
     #  PART 4: PSYCHOLINGUISTIC EFFECTS -- FULL PROVO
@@ -1074,10 +1255,11 @@ def main():
     t0 = time.time()
     provo_words = collect_per_word_data(
         provo_all, subtlex, diff_ezr, lstm_model, vocab,
-        bert_model, device, cf_labels=cf_labels)
+        bert_model, device, cf_labels=cf_labels, llama_model=llama_model,
+        direct_model=direct_model)
     print(f"  Done: {len(provo_words)} words in {time.time()-t0:.1f}s")
 
-    run_effects_analysis("FULL PROVO CORPUS", provo_words, has_bert, has_cf=True)
+    run_effects_analysis("FULL PROVO CORPUS", provo_words, has_bert, has_cf=True, has_llama=has_llama, has_direct=has_direct)
 
     # ================================================================
     #  PART 5: CROSS-CORPUS SUMMARY
@@ -1104,9 +1286,21 @@ def main():
         drop = r_geco - r_provo
         print(f"  {'Neural EZ Reader v2 (BERT)':<35} {r_geco:>12.3f} {r_provo:>12.3f} {drop:>+8.3f}")
 
+    if has_llama:
+        r_geco = corr(geco_test_results['llama_trt'], geco_test_results['h_trt'])
+        r_provo = corr(provo_results['llama_trt'], provo_results['h_trt'])
+        drop = r_geco - r_provo
+        print(f"  {'Neural EZ Reader v2 (LLaMA)':<35} {r_geco:>12.3f} {r_provo:>12.3f} {drop:>+8.3f}")
+
+    if has_direct:
+        r_geco = corr(geco_test_results['direct_trt'], geco_test_results['h_trt'])
+        r_provo = corr(provo_results['direct_trt'], provo_results['h_trt'])
+        drop = r_geco - r_provo
+        print(f"  {'Direct LLaMA (no EZ Reader)':<35} {r_geco:>12.3f} {r_provo:>12.3f} {drop:>+8.3f}")
+
     print(f"\n  Note: Original EZ and Diff EZ are formula-based (no training),")
     print(f"        so their difference reflects corpus characteristics only.")
-    print(f"        LSTM/BERT drop reflects generalization ability.")
+    print(f"        LSTM/BERT/LLaMA/Direct drop reflects generalization ability.")
 
     print(f"\n\nResults saved to: {output_path}")
 
