@@ -1402,3 +1402,12 @@ optimized for the usage iin simulation. what about that? dont write code for now
   from r=0.23 to something much smaller.
 
   What do you think? Want me to build it?
+
+  the point is this: my original plan was keeping parallel model and publishing about that but now i had this huge idea about       
+training it in a differentiable environment and plugging in that model to the discrete simulation to almost exactly mimic ez        
+readear with maximum cognitive plausibility. but i beleieve pre training for this llama can be make better in a way that it is more 
+ suitable for this discrite simulation that i designed in inferance. so my question for you is think how this pipeline (pretrain in 
+ parallel and differentiable, plug the model to the discrete simulation, evaluating the performance there) can be improved how i    
+should train my model in a way that the training matches to the discrete simulation? how the discrete simulation made more friendly 
+ for this purpose (i want to keep it as close to the original ez reader), so in general how can they be more compatible for each    
+other? i am doing this because nobody in the world ever done word level prediction with cognitively plausible model.

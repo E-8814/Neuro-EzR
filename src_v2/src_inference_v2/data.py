@@ -15,7 +15,7 @@ from torch.nn.utils.rnn import pad_sequence
 _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 _SRC_V2_DIR = os.path.join(_THIS_DIR, '..')
 _ROOT_DIR = os.path.join(_THIS_DIR, '..', '..')
-_EZR_DIR = os.path.join(_ROOT_DIR, 'ez_reader')
+_EZR_DIR = os.path.join(_ROOT_DIR, 'archive', 'original_ezreader')
 
 # src_v2/ first so its data_loader.py (v2, 70/15/15 split) takes priority
 sys.path.insert(0, _EZR_DIR)

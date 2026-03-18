@@ -12,7 +12,7 @@ import sys
 import csv
 from collections import defaultdict
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'ez_reader'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'archive', 'original_ezreader'))
 from data_loader import load_provo, aggregate_by_sentence
 
 

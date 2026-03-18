@@ -27,7 +27,7 @@ import numpy as np
 from torch.nn.utils.rnn import pad_sequence
 
 sys.path.insert(0, os.path.dirname(__file__))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'ez_reader'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'archive', 'original_ezreader'))
 
 from model_llama import NeuralEZReaderLLaMA
 from data_loader import aggregate_by_sentence, split_aggregated

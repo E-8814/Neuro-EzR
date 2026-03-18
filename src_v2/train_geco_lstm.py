@@ -23,7 +23,7 @@ import numpy as np
 from torch.utils.data import Dataset, DataLoader
 
 sys.path.insert(0, os.path.dirname(__file__))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'ez_reader'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'archive', 'original_ezreader'))
 
 from model_lstm import NeuralEZReader, Vocabulary
 from data_loader import aggregate_by_sentence

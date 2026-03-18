@@ -31,8 +31,8 @@ import torch
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
 
 # Add project paths
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src_v2'))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'ez_reader'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'src_v2'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'original_ezreader'))
 
 from data_loader import load_provo, aggregate_by_sentence
 from geco_loader import load_geco, split_geco

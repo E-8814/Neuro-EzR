@@ -13,8 +13,8 @@ import torch
 from transformers import RobertaModel, RobertaTokenizer
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'cmcl21_st'))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src_v2'))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'ez_reader'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'src_v2'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'original_ezreader'))
 
 from model import RobertaForGazePrediction
 from data_loader import load_provo, aggregate_by_sentence

@@ -27,7 +27,7 @@ import torch
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(__file__))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'ez_reader'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'archive', 'original_ezreader'))
 
 from diff_ezreader import DifferentiableEZReader
 import model_lstm

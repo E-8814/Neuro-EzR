@@ -29,7 +29,7 @@ import numpy as np
 from scipy import stats as sp_stats
 
 sys.path.insert(0, os.path.dirname(__file__))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'ez_reader'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'archive', 'original_ezreader'))
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from model_llama import NeuralEZReaderLLaMA

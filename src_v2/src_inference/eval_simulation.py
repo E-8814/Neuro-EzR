@@ -32,7 +32,7 @@ from scipy.stats import pearsonr
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_V2_DIR = os.path.dirname(SCRIPT_DIR)
 ROOT_DIR = os.path.dirname(SRC_V2_DIR)
-EZR_DIR = os.path.join(ROOT_DIR, 'ez_reader')
+EZR_DIR = os.path.join(ROOT_DIR, 'archive', 'original_ezreader')
 
 sys.path.insert(0, SCRIPT_DIR)
 sys.path.insert(0, SRC_V2_DIR)

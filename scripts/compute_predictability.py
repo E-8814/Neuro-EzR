@@ -188,7 +188,7 @@ def calibrate_temperature(model, tokenizer, device):
     Compute GPT-2 surprisal on Provo and find the temperature that best
     matches the distribution of Provo cloze norms (OrthographicMatch).
     """
-    sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'ez_reader'))
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'archive', 'original_ezreader'))
     from data_loader import load_provo, aggregate_by_sentence  # noqa: E402
 
     data_dir = os.path.join(os.path.dirname(__file__), "..", "data")

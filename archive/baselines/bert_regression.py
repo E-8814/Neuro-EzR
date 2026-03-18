@@ -37,8 +37,8 @@ import numpy as np
 from torch.nn.utils.rnn import pad_sequence
 
 # Add project paths
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src_v2'))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'ez_reader'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'src_v2'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'original_ezreader'))
 
 from transformers import BertModel, BertTokenizerFast
 from data_loader import load_provo, aggregate_by_sentence
