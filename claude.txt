@@ -1411,3 +1411,245 @@ readear with maximum cognitive plausibility. but i beleieve pre training for thi
 should train my model in a way that the training matches to the discrete simulation? how the discrete simulation made more friendly 
  for this purpose (i want to keep it as close to the original ez reader), so in general how can they be more compatible for each    
 other? i am doing this because nobody in the world ever done word level prediction with cognitively plausible model.
+
+
+==============================================================================================================
+  GECO TEST SET (in-distribution) (5,501 words)
+==============================================================================================================
+
+  Model                          │   r_TRT   MAE_TRT │   r_FFD   MAE_FFD │  r_Gaze  MAE_Gaze │  r_Skip  MAE_Skip│  Cog?
+  ────────────────────────────── ┼ ───────────────── ┼ ───────────────── ┼ ───────────────── ┼ ─────────────────┼ ─────
+  LLaMA+EZR v2 (ours)            │   0.463    78.4ms │   0.195    87.4ms │   0.392    93.6ms │   0.702   0.1444 │   Yes
+  Direct LLaMA (ours)            │   0.466   105.5ms │   0.208    83.7ms │   0.390    92.3ms │   0.724   0.1564 │    No
+  Ohio State RoBERTa (6th)       │   0.453    59.7ms │   0.140    35.6ms │   0.342    44.4ms │   0.743   0.1299 │    No
+  Toronto CL RoBERTa (3rd)       │  -0.009    66.4ms │  -0.013    35.9ms │  -0.019    46.3ms │   0.023   0.2069 │    No
+  BERT+EZR (ours)                │   0.429    74.1ms │   0.175   163.8ms │   0.373   121.9ms │  -0.221   0.2198 │   Yes
+  GPT-2 surprisal + linear       │   0.428    59.5ms │   0.175    35.1ms │   0.363    42.9ms │   0.730   0.1330 │    No
+  Original EZ Reader             │   0.286   117.8ms │   0.093    98.6ms │     --        --  │     --        -- │   Yes
+  Diff EZ Reader (formula)       │   0.352    84.1ms │   0.143   108.0ms │   0.353   118.4ms │   0.224   0.4357 │   Yes
+
+  Model                          │   Bias_TRT  │   Bias_FFD  │  Bias_Gaze  │  Bias_Skip
+  ────────────────────────────── ┼ ──────────  ┼ ──────────  ┼ ──────────  ┼ ──────────
+  LLaMA+EZR v2 (ours)            │     +50.7ms │     -82.1ms │     -89.4ms │    -0.0239
+  Direct LLaMA (ours)            │     -96.5ms │     -79.7ms │     -87.4ms │    +0.0964
+  Ohio State RoBERTa (6th)       │      +6.5ms │      +2.2ms │      +5.8ms │    -0.0061
+  Toronto CL RoBERTa (3rd)       │     -17.0ms │      -1.3ms │      -5.1ms │    -0.0033
+  BERT+EZR (ours)                │     +19.7ms │    -163.5ms │    -116.7ms │    -0.0617
+  GPT-2 surprisal + linear       │      -1.8ms │      -1.2ms │      -1.3ms │    -0.0036
+  Original EZ Reader             │     -81.3ms │     -27.0ms │          -- │         --
+  Diff EZ Reader (formula)       │      +2.5ms │     -96.6ms │    -112.0ms │    -0.3962
+
+==============================================================================================================
+  PROVO CORPUS (cross-corpus generalization) (2,654 words)
+==============================================================================================================
+
+  Model                          │   r_TRT   MAE_TRT │   r_FFD   MAE_FFD │  r_Gaze  MAE_Gaze │  r_Skip  MAE_Skip│  Cog?
+  ────────────────────────────── ┼ ───────────────── ┼ ───────────────── ┼ ───────────────── ┼ ─────────────────┼ ─────
+  LLaMA+EZR v2 (ours)            │   0.621    59.7ms │   0.298    74.8ms │   0.611    94.6ms │   0.832   0.1224 │   Yes
+  Direct LLaMA (ours)            │   0.603   112.9ms │   0.311    71.7ms │   0.578    95.0ms │   0.841   0.1763 │    No
+  Ohio State RoBERTa (6th)       │   0.601    44.6ms │   0.254    18.1ms │   0.586    31.9ms │   0.871   0.1031 │    No
+  Toronto CL RoBERTa (3rd)       │  -0.151    61.5ms │   0.002    18.2ms │  -0.062    39.0ms │   0.000   0.2104 │    No
+  BERT+EZR (ours)                │   0.558    60.1ms │   0.280   156.0ms │   0.557   122.4ms │  -0.336   0.2079 │   Yes
+  GPT-2 surprisal + linear       │   0.628    44.1ms │   0.324    17.4ms │   0.614    29.6ms │   0.845   0.1059 │    No
+  Original EZ Reader             │   0.342   139.0ms │   0.153   115.2ms │     --        --  │     --        -- │   Yes
+  Diff EZ Reader (formula)       │   0.521    81.0ms │   0.286    99.1ms │   0.618   120.7ms │   0.338   0.3385 │   Yes
+
+  Model                          │   Bias_TRT  │   Bias_FFD  │  Bias_Gaze  │  Bias_Skip
+  ────────────────────────────── ┼ ──────────  ┼ ──────────  ┼ ──────────  ┼ ──────────
+  LLaMA+EZR v2 (ours)            │     +37.5ms │     -70.5ms │     -94.2ms │    +0.0447
+  Direct LLaMA (ours)            │    -111.0ms │     -70.5ms │     -94.3ms │    +0.1585
+  Ohio State RoBERTa (6th)       │     -11.1ms │      +4.8ms │      -6.5ms │    +0.0515
+  Toronto CL RoBERTa (3rd)       │     -41.2ms │      +0.4ms │     -20.5ms │    +0.0828
+  BERT+EZR (ours)                │     +10.0ms │    -156.0ms │    -120.7ms │    +0.0250
+  GPT-2 surprisal + linear       │     -19.0ms │      +2.1ms │     -12.1ms │    +0.0439
+  Original EZ Reader             │    -103.8ms │     -24.1ms │          -- │         --
+  Diff EZ Reader (formula)       │     -27.5ms │     -85.7ms │    -118.2ms │    -0.2459
+
+
+
+
+   1. Motor latency floor (fixes -82ms FFD bias)                                                                                     
+   
+  The problem in detail. Look at the DiffEZReader formula for FFD:                                                                  
+                  
+  # diff_ezreader.py:85                                                                                                             
+  first_fixation = L1_scaled + softplus(l2_contribution) * L2_scaled                                                                
+                                                                                                                                    
+  This says FFD = word processing time only. But human FFD has a physiological floor of ~150ms even for the easiest words — you need
+   time for saccade planning (M1), saccade execution (M2), and retinal processing before any cognitive processing begins. Your model
+   can't output FFD < L1, so L1 is forced to encode both "motor baseline" and "cognitive difficulty" in one number. That's why mean 
+  predicted FFD is 82ms below human.
+
+  Interestingly, TRT already has an overhead term:                                                                                  
+  # diff_ezreader.py:103-104
+  overhead = self.saccade_time + self.attention_shift  # ~175ms                                                                     
+  total_reading_time = fixate_prob * (gaze_duration + overhead + regression_penalty)                                                
+                                                                                                                                    
+  But FFD and Gaze have no such term. That's the asymmetry causing the bias.                                                        
+                                                                                                                                    
+  The fix. Add a motor latency to FFD/Gaze:                                                                                         
+  self.motor_latency = nn.Parameter(torch.tensor(100.0))                                                                            
+  first_fixation = self.motor_latency + L1_scaled + softplus(self.l2_contribution) * L2_scaled                                      
+  gaze_duration = self.motor_latency + L1_scaled + L2_scaled                                                                        
+                                                                                                                                    
+  Expected difference:                                                                                                              
+  - FFD bias goes from -82ms → ~0ms                                                                                                 
+  - L1 no longer needs to encode motor planning — it can focus purely on cognitive word difficulty, making it more interpretable    
+  - L1 values would shift down by ~80-100ms, with the motor_latency absorbing the constant                                          
+  - Accuracy might improve slightly because the model has a better-structured output space                                          
+                                                                                                                                    
+  ---                                                                                                                               
+  2. L1 ↔ surprisal anchor                                                                                                          
+                                                                                                                                    
+  The problem. L1 is supposed to be "familiarity check" — how quickly the reader recognizes a word. In information theory, word     
+  surprisal (negative log probability in context) is the best-known measure of word processing difficulty. If L1 doesn't correlate  
+  with surprisal, it's not really capturing what E-Z Reader theory says it should.
+                                                                                                                                    
+  Right now there's no constraint, so L1 could be anything — the optimizer just finds two numbers that minimize reading time loss   
+  when combined through the EZR formulas.
+                                                                                                                                    
+  The fix. LLaMA is a causal LM, so you can compute surprisal as a free byproduct. During forward pass:                             
+   
+  # Get LLaMA output WITH logits (need lm_head)                                                                                     
+  outputs = self.llama(input_ids, attention_mask)                                                                                   
+  hidden = outputs.last_hidden_state                                                                                                
+                                                                                                                                    
+  # Compute surprisal from the LM head                                                                                              
+  with torch.no_grad():                                                                                                             
+      logits = self.lm_head(hidden)  # need to keep lm_head                                                                         
+      log_probs = F.log_softmax(logits, dim=-1)                                                                                     
+      # surprisal of each token = -log_prob of next token                                                                           
+      surprisal = -log_probs.gather(2, input_ids[:, 1:].unsqueeze(-1)).squeeze(-1)                                                  
+      word_surprisal = pool_to_words(surprisal)  # aggregate per word                                                               
+                                                                                                                                    
+  # Soft constraint: L1 should correlate with surprisal                                                                             
+  l1_centered = L1 - L1.mean()                                                                                                      
+  surp_centered = word_surprisal - word_surprisal.mean()                                                                            
+  corr = (l1_centered * surp_centered).sum() / (L1.std() * word_surprisal.std() + 1e-8)
+  surprisal_loss = LAMBDA_SURP * (1.0 - corr)  # maximize correlation                                                               
+                                                                                                                                    
+  Expected difference:                                                                                                              
+  - L1 becomes interpretable as "information-theoretic word difficulty" — you can make a plot showing L1 vs surprisal with r=0.7+   
+  - L2 is forced to capture something different (since L1 is anchored). It might end up capturing morphological complexity, word    
+  length effects, or integration difficulty                                                                                     
+  - The paper can then say: "L1 maps to surprisal (early word recognition), L2 captures additional processing not explained by      
+  surprisal (deeper lexical access)"                                                                                          
+  - Accuracy impact: probably neutral. If L1 ≈ surprisal is already roughly what the unconstrained model learns, the anchor just    
+  confirms it. If not, slight accuracy loss but huge interpretability gain                                                      
+  - This is the strongest claim you can make in the paper — it connects E-Z Reader theory to information theory                     
+                  
+  ---                                                                                                                               
+  3. Layer separation (L1 from middle layers, L2 from top layers)
+                                                                                                                                    
+  The problem. Both L1 and L2 read from the same representation:
+  projected = self.projection(word_repr)  # same 256-dim vector                                                                     
+  L1 = self.l1_head(projected)  # reads from projected         
+  L2 = self.l2_head(projected)  # reads from SAME projected                                                                         
+                                                                                                                                    
+  They share all information. There's nothing preventing L1 and L2 from capturing the same thing, or from splitting arbitrarily.    
+                                                                                                                                    
+  The fix. LLaMA layers form a hierarchy: lower layers capture surface/orthographic features, upper layers capture                  
+  semantic/contextual features. Map this onto E-Z Reader's two stages:                                                              
+                                                                                                                                    
+  outputs = self.llama(input_ids, attention_mask, output_hidden_states=True)
+  all_hidden = outputs.hidden_states  # tuple of (B, seq, 2048) per layer                                                           
+                                                                                                                                    
+  # L1: mid-level features (orthographic/phonological → familiarity)                                                                
+  l1_hidden = self._pool_subwords(all_hidden[n_layers // 2], word_maps, ...)                                                        
+  L1 = self.l1_head(self.proj_l1(l1_hidden)) * self.l1_scale                                                                        
+                                                                                                                                    
+  # L2: top-level features (semantic/contextual → lexical access)                                                                   
+  l2_hidden = self._pool_subwords(all_hidden[-1], word_maps, ...)                                                                   
+  L2 = self.l2_head(self.proj_l2(l2_hidden)) * self.l2_scale                                                                        
+                                                                                                                                    
+  # Skip: top-level (needs full context to predict skipping)                                                                        
+  skip = self.skip_head(self.proj_skip(l2_hidden))                                                                                  
+                                                                                                                                    
+  Expected difference:                                                                                                              
+  - L1 and L2 are naturally decorrelated because they read from different representations                                           
+  - L1 from middle layers would be more sensitive to word form (length, orthographic regularity) — consistent with "familiarity     
+  check"                                                                                                                       
+  - L2 from top layers would be more sensitive to meaning in context — consistent with "lexical access"                             
+  - You could ablate which layer feeds L1 and show a sweet spot (too low = no linguistic info, too high = redundant with L2)
+  - Potential accuracy improvement if the separation matches how LLaMA actually organizes information                               
+  - Risk: if the assumption is wrong (LLaMA doesn't neatly separate surface vs semantic by layer depth), this could hurt            
+                                                                                                                                    
+  ---                                                                                                                               
+  The convergence problem — this is critical                                                                                        
+                                                                                                                                    
+  You're right, converging in 3 epochs is unhealthy. Here's why it's happening:
+                                                                                                                                    
+  Look at the learning rates:                                                                                                       
+  lm_lr = 2e-5       # LLaMA unfrozen layers                                                                                        
+  head_lr = 5e-4      # projection + L1/L2/skip heads                                                                               
+  ezr_lr = 1e-3       # EZR scalar parameters (saccade_time, etc.)                                                                  
+                                                                                                                                    
+  The EZR parameters learn at 50x the rate of the LLM. Here's what happens:                                                         
+                                                                                                                                    
+  Epoch 1-3: The EZR parameters (saccade_time, l1_scale, l2_scale, attention_shift) quickly find a global scale+shift that maps     
+  L1/L2 → reasonable reading times. The projection and heads do coarse adjustment. Validation r_TRT jumps to ~0.45. The model has   
+  found the right distribution but not the right word-level discrimination.                                                         
+                  
+  Epoch 4+: ReduceLROnPlateau sees no improvement → cuts LR. LLaMA layers have barely moved (they were at 2e-5 and now get cut      
+  further). The model is stuck.
+                                                                                                                                    
+  Compare Ohio State:                                                                                                               
+  lr = 5e-5          # SINGLE learning rate for everything
+  warmup_prop = 0.1  # linear warmup over 10% of training                                                                           
+  epochs = 32                                                                                                                       
+  batch_size = 4     # much smaller                                                                                                 
+                                                                                                                                    
+  Ohio State has one LR, uses warmup, trains longer with smaller batches. RoBERTa has time to learn word-level discrimination.      
+                                                                                                                                    
+  The core issue: Your LLM (the part that actually reads words) is learning 50x slower than the output layer, and the output layer  
+  can find a decent solution by itself by just adjusting scales. The LLM never gets a chance to contribute fine-grained features.   
+                                                                                                                                    
+  Fixes for convergence                                                                                                             
+   
+  1. Add warmup. The LLM needs time to warm up before making big updates:                                                           
+  from transformers import get_linear_schedule_with_warmup
+  total_steps = n_batches * num_epochs // accumulation_steps                                                                        
+  scheduler = get_linear_schedule_with_warmup(                                                                                      
+      optimizer, num_warmup_steps=int(0.1 * total_steps), num_training_steps=total_steps                                            
+  )                                                                                                                                 
+                                                                                                                                    
+  2. Narrow the LR gap. The 50x gap between LLM and EZR is too large:                                                               
+  lm_lr = 5e-5        # increase from 2e-5                                                                                          
+  head_lr = 2e-4      # decrease from 5e-4
+  ezr_lr = 2e-4       # decrease from 1e-3 (same as heads)                                                                          
+                                                                                                                                    
+  This forces the model to rely more on LLaMA features rather than scale hacking.                                                   
+                                                                                                                                    
+  3. Freeze EZR parameters for the first N epochs. Let the LLM learn word discrimination first, then unfreeze EZR to adapt:         
+  # First 5 epochs: freeze EZR, let LLM+heads learn word representations                                                            
+  if epoch <= 5:                                                                                                                    
+      for p in model.ezreader.parameters():                                                                                         
+          p.requires_grad = False          
+  else:                                                                                                                             
+      for p in model.ezreader.parameters():                                                                                         
+          p.requires_grad = True                                                                                                    
+                                                                                                                                    
+  4. Smaller effective batch size. You're at 8×8=64 effective. Ohio State uses 4. Larger batches smooth gradients but reduce the    
+  number of weight updates per epoch. Try:                                                                                          
+  batch_size = 4                                                                                                                    
+  accumulation_steps = 4  # effective = 16                                                                                          
+                                          
+  5. Replace ReduceLROnPlateau with cosine or linear schedule. Plateau scheduler is dangerous because it can kill learning rate too 
+  early. Cosine schedule guarantees the LLM keeps learning throughout training:                                                     
+  scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(                                                                           
+      optimizer, T_max=num_epochs, eta_min=1e-6                                                                                     
+  )                                                                                                                                 
+   
+  Expected impact of convergence fixes                                                                                              
+                                                                                                                                    
+  With these changes, I'd expect:
+  - Convergence at epoch 15-25 instead of 3                                                                                         
+  - r_TRT improvement of +0.02 to +0.05 from better word-level discrimination                                                       
+  - The FFD correlation (currently 0.195, the weakest metric) would improve most, because FFD is the most word-level metric — it
+  requires fine-grained features that only the LLM can provide                                                                      
+  - L1/L2 distributions would have higher variance (currently the model finds a quick low-variance solution)                        
+                                                                                                                                    
+  Honestly, the convergence issue might matter more than any of the architectural changes. If the LLM isn't learning properly, no   
+  amount of interpretability tricks will help.                                                                                      
+                                                                                                                                    
+  Want me to implement a new training script with these fixes?

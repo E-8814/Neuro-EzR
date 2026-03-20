@@ -135,4 +135,8 @@ uv pip list
 
 # Exit compute node
 exit
+
+
+# to start cli
+npx @google/gemini-cli chat
 ```

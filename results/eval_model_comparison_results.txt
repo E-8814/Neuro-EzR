@@ -1,0 +1,421 @@
+Device: cuda
+v2 checkpoint: /home/u384661/Neuro_EZR/src_v2/../checkpoints_v2/geco_TinyLlama_TinyLlama-1.1B-Chat-v1.0/best_model.pt
+v3 checkpoint: /home/u384661/Neuro_EZR/src_v2/../checkpoints_v3/geco_TinyLlama_TinyLlama-1.1B-Chat-v1.0/best_model.pt
+
+Loading GECO corpus...
+  Loading GECO material...
+    5285 sentences, 54362 words
+    Loaded predictability for 5285 sentences
+  Loading GECO reading data...
+    72669 participant × sentence combinations
+  GECO test: 500 aggregated sentences
+Loading Provo corpus...
+  Provo: 151 aggregated sentences (cross-corpus)
+
+Loading v2 model...
+  Loaded: TinyLlama/TinyLlama-1.1B-Chat-v1.0, freeze=16, ablation=None
+  Training val r_TRT: 0.4664732904859702
+
+Loading v3 model...
+  Loaded: TinyLlama/TinyLlama-1.1B-Chat-v1.0, freeze=16, ablation=None
+  Training val r_TRT: 0.4560156281872742
+  Learned delta: 0.2655
+
+===============================================================================================
+  GECO TEST SET (in-distribution)
+===============================================================================================
+  Total words evaluated: 5,501
+
+───────────────────────────────────────────────────────────────────────────────────────────────
+  LLaMA + DiffEZR v2 (independent L1/L2) — GECO test
+───────────────────────────────────────────────────────────────────────────────────────────────
+  Metric                        TRT          FFD         Gaze         Skip
+  ──────────────────── ──────────── ──────────── ──────────── ────────────
+  Pearson r                   0.467        0.195        0.392        0.702
+    significance                ***          ***          ***          ***
+  MAE                       107.8ms       87.4ms       93.6ms       0.1444
+  RMSE                      132.6ms      103.9ms      111.0ms       0.1793
+  Bias (pred-human)        -100.7ms      -82.1ms      -89.4ms      -0.0239
+  R-squared                  -1.101       -3.079       -1.981        0.464
+  Median |error|             94.3ms       82.4ms       86.3ms       0.1236
+  % within 50ms               23.6%        28.4%        24.7%           --
+  % within 100ms              53.3%        63.1%        60.1%           --
+
+  Distribution                  TRT          FFD         Gaze         Skip
+  ──────────────────── ──────────── ──────────── ──────────── ────────────
+  Mean (predicted)          164.7ms      128.3ms      139.6ms        0.503
+  Mean (human)              265.3ms      210.4ms      229.0ms        0.527
+  Std (predicted)            72.8ms       48.9ms       54.2ms        0.138
+  Std (human)                91.5ms       51.4ms       64.3ms        0.245
+
+───────────────────────────────────────────────────────────────────────────────────────────────
+  LLaMA + DiffEZR v3 (L2=delta*L1, conditional TRT) — GECO test
+───────────────────────────────────────────────────────────────────────────────────────────────
+  Metric                        TRT          FFD         Gaze         Skip
+  ──────────────────── ──────────── ──────────── ──────────── ────────────
+  Pearson r                   0.461        0.199        0.398        0.246
+    significance                ***          ***          ***          ***
+  MAE                        91.3ms       40.4ms       72.2ms       0.2102
+  RMSE                      109.3ms       55.8ms       88.4ms       0.2622
+  Bias (pred-human)          69.9ms      -21.3ms      -65.6ms       0.1112
+  R-squared                  -0.428       -0.178       -0.888       -0.146
+  Median |error|             87.3ms       29.9ms       62.4ms       0.1762
+  % within 50ms               26.3%        71.7%        38.3%           --
+  % within 100ms              58.1%        93.3%        75.6%           --
+
+  Distribution                  TRT          FFD         Gaze         Skip
+  ──────────────────── ──────────── ──────────── ──────────── ────────────
+  Mean (predicted)          335.2ms      189.1ms      163.4ms        0.638
+  Mean (human)              265.3ms      210.4ms      229.0ms        0.527
+  Std (predicted)            20.3ms       21.3ms       20.2ms        0.055
+  Std (human)                91.5ms       51.4ms       64.3ms        0.245
+
+===============================================================================================
+  HEAD-TO-HEAD: v2 vs v3 on GECO test
+===============================================================================================
+
+  Metric                       v2         v3     Winner      Delta
+  ──────────────────── ────────── ────────── ────────── ──────────
+  r_TRT                     0.467      0.461         v2      0.005
+  r_FFD                     0.195      0.199         v3      0.004
+  r_Gaze                    0.392      0.398         v3      0.006
+  r_Skip                    0.702      0.246         v2      0.456
+
+  MAE_TRT                  107.8ms      91.3ms         v3      16.4ms
+  MAE_FFD                   87.4ms      40.4ms         v3      47.0ms
+  MAE_Gaze                  93.6ms      72.2ms         v3      21.4ms
+  MAE_Skip                 0.1444     0.2102         v2     0.0659
+
+  RMSE_TRT                 132.6ms     109.3ms         v3      23.3ms
+  RMSE_FFD                 103.9ms      55.8ms         v3      48.1ms
+  RMSE_Gaze                111.0ms      88.4ms         v3      22.7ms
+  RMSE_Skip                0.1793     0.2622         v2     0.0829
+
+  Bias_TRT                -100.7ms     +69.9ms         v3
+  Bias_FFD                 -82.1ms     -21.3ms         v3
+  Bias_Gaze                -89.4ms     -65.6ms         v3
+  Bias_Skip               -0.0239    +0.1112         v2
+
+───────────────────────────────────────────────────────────────────────────────────────────────
+  LLaMA + DiffEZR v2 CORRECTED (TRT / (1-skip)) — GECO test
+───────────────────────────────────────────────────────────────────────────────────────────────
+  Metric                        TRT          FFD         Gaze         Skip
+  ──────────────────── ──────────── ──────────── ──────────── ────────────
+  Pearson r                   0.463        0.195        0.392        0.702
+    significance                ***          ***          ***          ***
+  MAE                        78.4ms       87.4ms       93.6ms       0.1444
+  RMSE                       96.7ms      103.9ms      111.0ms       0.1793
+  Bias (pred-human)          50.7ms      -82.1ms      -89.4ms      -0.0239
+  R-squared                  -0.116       -3.079       -1.981        0.464
+  Median |error|             71.7ms       82.4ms       86.3ms       0.1236
+  % within 50ms               34.2%        28.4%        24.7%           --
+  % within 100ms              70.2%        63.1%        60.1%           --
+
+  Distribution                  TRT          FFD         Gaze         Skip
+  ──────────────────── ──────────── ──────────── ──────────── ────────────
+  Mean (predicted)          316.0ms      128.3ms      139.6ms        0.503
+  Mean (human)              265.3ms      210.4ms      229.0ms        0.527
+  Std (predicted)            56.3ms       48.9ms       54.2ms        0.138
+  Std (human)                91.5ms       51.4ms       64.3ms        0.245
+
+===============================================================================================
+  PROVO CORPUS (cross-corpus generalization)
+===============================================================================================
+  Total words evaluated: 2,654
+
+───────────────────────────────────────────────────────────────────────────────────────────────
+  LLaMA + DiffEZR v2 — Provo (cross-corpus)
+───────────────────────────────────────────────────────────────────────────────────────────────
+  Metric                        TRT          FFD         Gaze         Skip
+  ──────────────────── ──────────── ──────────── ──────────── ────────────
+  Pearson r                   0.615        0.298        0.611        0.832
+    significance                ***          ***          ***          ***
+  MAE                       114.7ms       74.8ms       94.6ms       0.1224
+  RMSE                      132.7ms       86.3ms      106.3ms       0.1470
+  Bias (pred-human)        -113.9ms      -70.5ms      -94.2ms       0.0447
+  R-squared                  -1.634      -12.504       -2.714        0.585
+  Median |error|            110.4ms       74.2ms       92.2ms       0.1145
+  % within 50ms               14.8%        32.8%        17.4%           --
+  % within 100ms              43.2%        69.3%        56.6%           --
+
+  Distribution                  TRT          FFD         Gaze         Skip
+  ──────────────────── ──────────── ──────────── ──────────── ────────────
+  Mean (predicted)          175.6ms      138.2ms      150.2ms        0.485
+  Mean (human)              289.5ms      208.7ms      244.4ms        0.441
+  Std (predicted)            72.4ms       51.4ms       56.5ms        0.130
+  Std (human)                81.8ms       23.5ms       55.1ms        0.228
+
+───────────────────────────────────────────────────────────────────────────────────────────────
+  LLaMA + DiffEZR v3 — Provo (cross-corpus)
+───────────────────────────────────────────────────────────────────────────────────────────────
+  Metric                        TRT          FFD         Gaze         Skip
+  ──────────────────── ──────────── ──────────── ──────────── ────────────
+  Pearson r                   0.642        0.292        0.622        0.324
+    significance                ***          ***          ***          ***
+  MAE                        71.3ms       26.5ms       78.7ms       0.2464
+  RMSE                       84.7ms       32.6ms       90.6ms       0.2986
+  Bias (pred-human)          48.0ms      -17.5ms      -78.7ms       0.2040
+  R-squared                  -0.072       -0.928       -1.698       -0.712
+  Median |error|             71.0ms       23.8ms       71.3ms       0.2233
+  % within 50ms               33.6%        88.4%        22.7%           --
+  % within 100ms              77.8%        99.5%        78.5%           --
+
+  Distribution                  TRT          FFD         Gaze         Skip
+  ──────────────────── ──────────── ──────────── ──────────── ────────────
+  Mean (predicted)          337.5ms      191.2ms      165.7ms        0.645
+  Mean (human)              289.5ms      208.7ms      244.4ms        0.441
+  Std (predicted)            22.0ms       22.7ms       21.9ms        0.044
+  Std (human)                81.8ms       23.5ms       55.1ms        0.228
+
+===============================================================================================
+  HEAD-TO-HEAD: v2 vs v3 on Provo (cross-corpus)
+===============================================================================================
+
+  Metric                       v2         v3     Winner      Delta
+  ──────────────────── ────────── ────────── ────────── ──────────
+  r_TRT                     0.615      0.642         v3      0.027
+  r_FFD                     0.298      0.292         v2      0.006
+  r_Gaze                    0.611      0.622         v3      0.011
+  r_Skip                    0.832      0.324         v2      0.508
+
+  MAE_TRT                  114.7ms      71.3ms         v3      43.4ms
+  MAE_FFD                   74.8ms      26.5ms         v3      48.2ms
+  MAE_Gaze                  94.6ms      78.7ms         v3      15.8ms
+  MAE_Skip                 0.1224     0.2464         v2     0.1240
+
+  RMSE_TRT                 132.7ms      84.7ms         v3      48.0ms
+  RMSE_FFD                  86.3ms      32.6ms         v3      53.7ms
+  RMSE_Gaze                106.3ms      90.6ms         v3      15.7ms
+  RMSE_Skip                0.1470     0.2986         v2     0.1516
+
+  Bias_TRT                -113.9ms     +48.0ms         v3
+  Bias_FFD                 -70.5ms     -17.5ms         v3
+  Bias_Gaze                -94.2ms     -78.7ms         v3
+  Bias_Skip               +0.0447    +0.2040         v2
+
+───────────────────────────────────────────────────────────────────────────────────────────────
+  LLaMA + DiffEZR v2 CORRECTED (TRT / (1-skip)) — Provo (cross-corpus)
+───────────────────────────────────────────────────────────────────────────────────────────────
+  Metric                        TRT          FFD         Gaze         Skip
+  ──────────────────── ──────────── ──────────── ──────────── ────────────
+  Pearson r                   0.621        0.298        0.611        0.832
+    significance                ***          ***          ***          ***
+  MAE                        59.7ms       74.8ms       94.6ms       0.1224
+  RMSE                       74.7ms       86.3ms      106.3ms       0.1470
+  Bias (pred-human)          37.5ms      -70.5ms      -94.2ms       0.0447
+  R-squared                   0.166      -12.504       -2.714        0.585
+  Median |error|             53.2ms       74.2ms       92.2ms       0.1145
+  % within 50ms               46.6%        32.8%        17.4%           --
+  % within 100ms              84.2%        69.3%        56.6%           --
+
+  Distribution                  TRT          FFD         Gaze         Skip
+  ──────────────────── ──────────── ──────────── ──────────── ────────────
+  Mean (predicted)          327.0ms      138.2ms      150.2ms        0.485
+  Mean (human)              289.5ms      208.7ms      244.4ms        0.441
+  Std (predicted)            58.6ms       51.4ms       56.5ms        0.130
+  Std (human)                81.8ms       23.5ms       55.1ms        0.228
+
+───────────────────────────────────────────────────────────────────────────────────────────────
+  Psycholinguistic Effects — v2 — Provo
+───────────────────────────────────────────────────────────────────────────────────────────────
+
+  Word Length Effect (short<=4 vs long>=7):
+  Measure       Short(pred)   Long(pred)    Direction Short(human)  Long(human)    Direction    Match
+  ──────────── ──────────── ──────────── ──────────── ──────────── ──────────── ──────────── ────────
+  TRT                 125.5        266.2   short<long        254.4        359.7   short<long     PASS
+  FFD                 101.3        207.1   short<long        204.0        216.8   short<long     PASS
+  Skip                0.571        0.344   short>long        0.593        0.188   short>long     PASS
+
+  Predictability Effect (low vs high, tertile split):
+  Measure         Low(pred)   High(pred)    Direction   Low(human)  High(human)    Direction    Match
+  ──────────── ──────────── ──────────── ──────────── ──────────── ──────────── ──────────── ────────
+  TRT                 215.2        136.2     low>high        330.4        252.1     low>high     PASS
+  FFD                 165.1        111.1     low>high        215.4        201.3     low>high     PASS
+  Skip                0.415        0.556     low<high        0.328        0.556     low<high     PASS
+
+  Note: Frequency effect uses word length as proxy (corr ~0.6 with log freq)
+
+───────────────────────────────────────────────────────────────────────────────────────────────
+  Psycholinguistic Effects — v3 — Provo
+───────────────────────────────────────────────────────────────────────────────────────────────
+
+  Word Length Effect (short<=4 vs long>=7):
+  Measure       Short(pred)   Long(pred)    Direction Short(human)  Long(human)    Direction    Match
+  ──────────── ──────────── ──────────── ──────────── ──────────── ──────────── ──────────── ────────
+  TRT                 323.4        367.5   short<long        254.4        359.7   short<long     PASS
+  FFD                 177.0        221.2   short<long        204.0        216.8   short<long     PASS
+  Skip                0.652        0.639   short>long        0.593        0.188   short>long     PASS
+
+  Predictability Effect (low vs high, tertile split):
+  Measure         Low(pred)   High(pred)    Direction   Low(human)  High(human)    Direction    Match
+  ──────────── ──────────── ──────────── ──────────── ──────────── ──────────── ──────────── ────────
+  TRT                 349.1        326.1     low>high        330.4        252.1     low>high     PASS
+  FFD                 203.5        179.2     low>high        215.4        201.3     low>high     PASS
+  Skip                0.627        0.661     low<high        0.328        0.556     low<high     PASS
+
+  Note: Frequency effect uses word length as proxy (corr ~0.6 with log freq)
+
+===============================================================================================
+  INTERNAL REPRESENTATIONS
+===============================================================================================
+
+  v2 — GECO test — L1/L2 distributions:
+    L1: mean=101.5ms  std=25.0ms  min=35.2ms  max=169.9ms  median=105.8ms
+    L2: mean=23.4ms  std=11.7ms  min=1.4ms  max=45.3ms  median=24.7ms
+    L2/L1 ratio (mean): 0.230  |  corr(L1, L2): 0.962
+
+  v3 — GECO test — L1/L2 distributions:
+    L1: mean=121.5ms  std=8.7ms  min=75.9ms  max=157.9ms  median=121.1ms
+    L2: mean=32.3ms  std=2.3ms  min=20.2ms  max=41.9ms  median=32.2ms
+    L2/L1 ratio (mean): 0.266  |  corr(L1, L2): 1.000
+
+  v2 — Provo — L1/L2 distributions:
+    L1: mean=105.1ms  std=23.2ms  min=42.5ms  max=170.0ms  median=111.8ms
+    L2: mean=24.9ms  std=11.4ms  min=2.0ms  max=43.3ms  median=28.0ms
+    L2/L1 ratio (mean): 0.237  |  corr(L1, L2): 0.962
+
+  v3 — Provo — L1/L2 distributions:
+    L1: mean=120.5ms  std=7.3ms  min=94.4ms  max=147.8ms  median=120.0ms
+    L2: mean=32.0ms  std=1.9ms  min=25.1ms  max=39.2ms  median=31.9ms
+    L2/L1 ratio (mean): 0.266  |  corr(L1, L2): 1.000
+
+===============================================================================================
+  LEARNED EZ READER PARAMETERS
+===============================================================================================
+
+  v2 (DiffEZR v2, independent L1/L2) — Learned EZ Reader parameters:
+    saccade_time          = 150.0ms
+    attention_shift       = 25.0ms
+    skip_sharpness        = 8.00
+    eccentricity          = 0.1212
+    l2_contribution       = -0.3844
+    regression_threshold  = 50.3ms
+    regression_sharpness  = 0.2562
+    regression_cost_scale = 0.7426
+    l1_scale              = 50.0
+    l2_scale              = 30.0
+
+  v3 (DiffEZR v3, L2=delta*L1) — Learned EZ Reader parameters:
+    saccade_time          = 148.4ms
+    attention_shift       = 23.4ms
+    skip_sharpness        = 8.00
+    eccentricity          = 0.0796
+    l2_contribution       = 1.6160
+    regression_threshold  = 50.6ms
+    regression_sharpness  = 0.4736
+    regression_cost_scale = 0.6030
+    l1_scale              = 50.0
+    delta (L2/L1)         = 0.2655
+
+===============================================================================================
+  SAMPLE PREDICTIONS (Provo)
+===============================================================================================
+
+  v2 — Sample predictions:
+
+    "are now rumblings that apple might..."
+    word             pTRT   hTRT    err |   pFFD   hFFD | pSkip hSkip
+    ------------------------------------------------------------------------
+    are               135    333   -197 |    110    182 |  0.54  0.42
+    now               155    282   -127 |    125    185 |  0.50  0.51
+    rumblings         332    408    -76 |    223    194 |  0.23  0.18
+    that              120    311   -192 |     99    214 |  0.57  0.51
+    apple             202    252    -50 |    165    201 |  0.43  0.29
+    might             169    301   -132 |    139    228 |  0.48  0.24
+    soon              172    233    -61 |    128    204 |  0.46  0.30
+    invade            243    300    -56 |    166    216 |  0.33  0.14
+    the               104    207   -103 |     87    198 |  0.61  0.79
+    smart             187    419   -232 |    150    240 |  0.45  0.31
+
+    "the watch doesn't have a microphone..."
+    word             pTRT   hTRT    err |   pFFD   hFFD | pSkip hSkip
+    ------------------------------------------------------------------------
+    the               113    195    -83 |     92    195 |  0.59  0.92
+    watch             271    377   -106 |    195    241 |  0.32  0.27
+    doesn't           167    272   -105 |    151    201 |  0.51  0.17
+    have              150    237    -86 |    120    203 |  0.51  0.45
+    a                  55    213   -158 |     53    199 |  0.76  0.83
+    microphone        291    307    -15 |    243    216 |  0.33  0.07
+    or                 93    253   -160 |     80    241 |  0.64  0.85
+    speaker           232    294    -61 |    193    218 |  0.40  0.14
+    but                94    209   -115 |     81    204 |  0.64  0.65
+    you               122    226   -104 |    100    205 |  0.57  0.49
+
+    "you can glance at the watch..."
+    word             pTRT   hTRT    err |   pFFD   hFFD | pSkip hSkip
+    ------------------------------------------------------------------------
+    you               100    274   -175 |     85    225 |  0.62  0.74
+    can               145    290   -145 |    115    230 |  0.52  0.45
+    glance            222    251    -29 |    168    206 |  0.39  0.20
+    at                 58    187   -128 |     56    166 |  0.75  0.87
+    the                96    226   -130 |     82    215 |  0.63  0.52
+    watch             231    284    -53 |    175    218 |  0.38  0.39
+    face              167    279   -112 |    127    212 |  0.47  0.35
+    to                 71    268   -197 |     65    237 |  0.71  0.74
+    view              141    341   -200 |    116    242 |  0.53  0.31
+    the                90    249   -159 |     78    213 |  0.65  0.64
+
+  v3 — Sample predictions:
+
+    "are now rumblings that apple might..."
+    word             pTRT   hTRT    err |   pFFD   hFFD | pSkip hSkip
+    ------------------------------------------------------------------------
+    are               327    333     -6 |    181    182 |  0.65  0.42
+    now               335    282    +53 |    191    185 |  0.61  0.51
+    rumblings         391    408    -17 |    247    194 |  0.56  0.18
+    that              328    311    +16 |    182    214 |  0.65  0.51
+    apple             345    252    +93 |    200    201 |  0.62  0.29
+    might             336    301    +34 |    189    228 |  0.65  0.24
+    soon              325    233    +92 |    179    204 |  0.66  0.30
+    invade            348    300    +48 |    202    216 |  0.65  0.14
+    the               324    207   +117 |    178    198 |  0.67  0.79
+    smart             339    419    -80 |    193    240 |  0.64  0.31
+
+    "the watch doesn't have a microphone..."
+    word             pTRT   hTRT    err |   pFFD   hFFD | pSkip hSkip
+    ------------------------------------------------------------------------
+    the               319    195   +124 |    172    195 |  0.69  0.92
+    watch             359    377    -18 |    216    241 |  0.47  0.27
+    doesn't           353    272    +81 |    207    201 |  0.66  0.17
+    have              327    237    +90 |    181    203 |  0.65  0.45
+    a                 320    213   +107 |    173    199 |  0.67  0.83
+    microphone        392    307    +86 |    247    216 |  0.61  0.07
+    or                318    253    +66 |    171    241 |  0.67  0.85
+    speaker           356    294    +63 |    210    218 |  0.63  0.14
+    but               309    209   +100 |    161    204 |  0.68  0.65
+    you               325    226    +99 |    179    205 |  0.66  0.49
+
+    "you can glance at the watch..."
+    word             pTRT   hTRT    err |   pFFD   hFFD | pSkip hSkip
+    ------------------------------------------------------------------------
+    you               323    274    +48 |    176    225 |  0.67  0.74
+    can               337    290    +47 |    193    230 |  0.60  0.45
+    glance            352    251   +100 |    207    206 |  0.63  0.20
+    at                319    187   +132 |    171    166 |  0.67  0.87
+    the               314    226    +87 |    166    215 |  0.69  0.52
+    watch             346    284    +63 |    202    218 |  0.59  0.39
+    face              322    279    +42 |    175    212 |  0.65  0.35
+    to                303    268    +35 |    153    237 |  0.68  0.74
+    view              322    341    -19 |    176    242 |  0.65  0.31
+    the               313    249    +65 |    165    213 |  0.69  0.64
+
+===============================================================================================
+  SUMMARY
+===============================================================================================
+
+  GECO test (5,501 words):
+    v2 raw:       r_TRT=0.467  MAE_TRT=107.8ms  Bias=-100.7ms  r_Skip=0.702
+    v2 corrected: r_TRT=0.463  MAE_TRT=78.4ms  Bias=+50.7ms
+    v3:           r_TRT=0.461  MAE_TRT=91.3ms  Bias=+69.9ms  r_Skip=0.246
+
+  Provo cross-corpus (2,654 words):
+    v2 raw:       r_TRT=0.615  MAE_TRT=114.7ms  Bias=-113.9ms  r_Skip=0.832
+    v2 corrected: r_TRT=0.621  MAE_TRT=59.7ms  Bias=+37.5ms
+    v3:           r_TRT=0.642  MAE_TRT=71.3ms  Bias=+48.0ms  r_Skip=0.324
+
+  Key architectural differences:
+    v2: Independent L1/L2 heads, TRT = (1-skip) * reading_time
+    v3: L2 = delta*L1, TRT conditional on fixation (no skip multiplication)
+    v3 learned delta = 0.2655 (literature: 0.20-0.85)
+
+Results saved to: /home/u384661/Neuro_EZR/src_v2/../results/eval_model_comparison_results.txt

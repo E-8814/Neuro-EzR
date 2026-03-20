@@ -290,11 +290,11 @@ def compute_loss(pred, human_trt, human_ffd, human_gaze, human_skip):
     Combined loss: MSE on reading times + BCE on skip.
     Weights: 0.25*TRT + 0.25*FFD + 0.25*Gaze + 0.25*Skip
     """
-    trt_loss = nn.functional.mse_loss(pred['total_reading_time'], human_trt)
-    ffd_loss = nn.functional.mse_loss(pred['first_fixation'], human_ffd)
-    gaze_loss = nn.functional.mse_loss(pred['gaze_duration'], human_gaze)
+    trt_loss = nn.functional.mse_loss(pred['total_reading_time'].float(), human_trt)
+    ffd_loss = nn.functional.mse_loss(pred['first_fixation'].float(), human_ffd)
+    gaze_loss = nn.functional.mse_loss(pred['gaze_duration'].float(), human_gaze)
 
-    skip_pred = pred['skip_prob'].clamp(1e-6, 1 - 1e-6)
+    skip_pred = pred['skip_prob'].float().clamp(1e-6, 1 - 1e-6)
     skip_loss = nn.functional.binary_cross_entropy(skip_pred, human_skip)
 
     total = 0.25 * trt_loss + 0.25 * ffd_loss + 0.25 * gaze_loss + 0.25 * skip_loss
@@ -646,7 +646,7 @@ if __name__ == "__main__":
         freeze_layers = cfg.num_hidden_layers // 2
 
     model_short = args.bert.replace("/", "_")
-    data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+    data_dir = os.path.join(os.path.dirname(__file__), "..", "..", "data")
     save_dir = os.path.join(os.path.dirname(__file__), f"checkpoints_bert_direct_{model_short}")
 
     train(
