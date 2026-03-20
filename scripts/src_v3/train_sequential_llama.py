@@ -485,8 +485,8 @@ def train(args):
     # ---- Save dir ----
     model_short = args.llama.replace("/", "_")
     save_dir = os.path.join(
-        os.path.dirname(__file__), "..",
-        f"checkpoints_v3/{args.corpus}_llama_{model_short}"
+        os.path.dirname(__file__), "..", "..",
+        "checkpoints", "v3", f"{args.corpus}_llama_{model_short}"
     )
     os.makedirs(save_dir, exist_ok=True)
     sys.stdout = Logger(os.path.join(save_dir, "training_log.txt"))
