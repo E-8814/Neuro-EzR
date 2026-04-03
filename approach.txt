@@ -1,0 +1,674 @@
+********************************************
+  3. Testing the Architecture Itself
+
+  Here's another angle nobody has done. You can ablate the cognitive architecture:
+
+  - What happens if you remove the two-stage structure and just have one processing time? Does performance drop?
+  - What if you remove the regression mechanism? Which effects break?
+  - What if you remove eccentricity scaling?
+
+  Each ablation tests whether that component of E-Z Reader is actually necessary. If you remove L2 and everything still works fine —
+   that's evidence against the two-stage theory. If removing regressions kills the TRT predictions but not FFD — that tells you
+  something specific about what regressions contribute.
+
+  This is something only your differentiable version can do. You can't ablate the original E-Z Reader cleanly because you can't
+  retrain it.
+**********************************************
+
+
+  **************************************************                                                                                                                                  
+  The original formula says:                                                                                                        
+  L1 = α1 - α2 × ln(frequency) - α3 × predictability                                                                                
+                                                                                                                                    
+  This means the formula thinks two words with the same frequency and predictability are equally hard to recognize. That's almost
+  certainly wrong. Your neural network isn't limited this way — it can pick up on anything in the text. The question is: does it?
+
+  How You'd Test This
+
+  Step 1: Find words where the neural model and the formula disagree.
+
+  Take your test set. Run both models. Find words where:
+  - The formula predicts low L1 (easy) but the neural net predicts high L1 (hard)
+  - Or vice versa
+
+  These disagreement words are where the neural network has learned something the formula can't express.
+
+  Step 2: Ask — what's special about those words?
+
+  Analyze the disagreement words. Group them by properties the formula ignores:
+
+  ┌─────────────────────────┬────────────────────────────────────────────────────────────┬────────────────────┬─────────────────┐
+  │        Property         │                          Example                           │    Formula can     │   Neural net    │
+  │                         │                                                            │      capture?      │     might?      │
+  ├─────────────────────────┼────────────────────────────────────────────────────────────┼────────────────────┼─────────────────┤
+  │ Morphological           │ "un-believe-able" vs "table" (same frequency)              │ No                 │ Yes             │
+  │ complexity              │                                                            │                    │                 │
+  ├─────────────────────────┼────────────────────────────────────────────────────────────┼────────────────────┼─────────────────┤
+  │ Syntactic role          │ "run" as noun vs "run" as verb                             │ No                 │ Yes             │
+  ├─────────────────────────┼────────────────────────────────────────────────────────────┼────────────────────┼─────────────────┤
+  │ Semantic fit with       │ "The doctor baked a cake" — "doctor" is common but         │ No                 │ Yes             │
+  │ context                 │ surprising here                                            │                    │                 │
+  ├─────────────────────────┼────────────────────────────────────────────────────────────┼────────────────────┼─────────────────┤
+  │ Orthographic regularity │ "yacht" vs "plant" (irregular spelling)                    │ No                 │ Maybe           │
+  ├─────────────────────────┼────────────────────────────────────────────────────────────┼────────────────────┼─────────────────┤
+  │ Number of syllables     │ "cat" vs "apt" (same length, different syllable structure) │ No                 │ Maybe           │
+  ├─────────────────────────┼────────────────────────────────────────────────────────────┼────────────────────┼─────────────────┤
+  │ Syntactic surprisal     │ A word in an unexpected grammatical position               │ No                 │ Yes             │
+  └─────────────────────────┴────────────────────────────────────────────────────────────┴────────────────────┴─────────────────┘
+
+  If you find that the neural network consistently assigns higher L1 to morphologically complex words even when frequency is
+  controlled — you've discovered that the E-Z Reader formula is missing morphological complexity as a predictor of recognition time.
+   That's a publishable finding about reading, not about neural networks.
+
+  Step 3: Controlled comparisons.
+
+  Pick minimal pairs from your data:
+
+  Same frequency, same predictability, different neural L1:
+    "bright" (L1 = 62ms) vs "knight" (L1 = 94ms)
+    → Why? Maybe orthographic irregularity ("kn-" silent letter)
+
+  Same word, different contexts, different neural L1:
+    "bank" in "He sat by the river bank" (L1 = 78ms)
+    "bank" in "She went to the bank" (L1 = 65ms)
+    → The formula gives identical L1. The neural net doesn't.
+    → Is the difference real? Check against human data.
+
+  Step 4: Quantify the contribution.
+
+  Run a regression analysis:
+  residual_L1 = neural_L1 - formula_L1
+
+  Then: residual_L1 ~ morphological_complexity + syntactic_surprisal +
+                       orthographic_regularity + semantic_similarity + ...
+
+  Whichever predictors explain the residual are what the neural network learned beyond the formula. You're essentially using the
+  neural network as a discovery tool to find missing variables in the cognitive model.
+
+  Why This Matters
+
+  If you find that, say, morphological complexity explains 15% of the residual variance — you'd propose:
+  L1_improved = α1 - α2 × ln(freq) - α3 × pred - α4 × morphological_complexity
+
+  You've used the neural network to improve the original theory. The neural net found a gap, you identified what fills it, and now
+  the formula-based model can be updated. The neural network was a telescope — you looked through it, found something, and now you
+  can describe what you found without needing the telescope.
+
+  ---
+  3. Ablation Studies — Testing the Architecture Itself
+
+  E-Z Reader makes several strong theoretical claims. Each claim corresponds to a component in your differentiable model. You can
+  remove each component, retrain, and see what breaks.
+
+  The Claims and Their Ablations
+
+  Claim 1: Reading has TWO stages (L1 then L2)
+
+  Ablation: merge them into one.
+  # Current: two separate heads
+  L1 = self.l1_head(projected)  # recognition
+  L2 = self.l2_head(projected)  # comprehension
+
+  # Ablation: single processing time
+  L_total = self.single_head(projected)
+  L1 = 0.4 * L_total  # fixed split
+  L2 = 0.6 * L_total
+
+  If performance barely changes → maybe one stage is enough, the two-stage distinction isn't necessary.
+  If performance drops significantly → the model needs independent control of recognition and comprehension, validating the
+  two-stage theory.
+
+  Claim 2: Eccentricity matters (words far from fixation are harder to process)
+
+  Ablation: remove it.
+  # Current
+  ecc_scale = 1.0 + self.eccentricity * (word_lengths - 4.0).clamp(min=0)
+  L1_scaled = L1 * ecc_scale
+
+  # Ablation
+  L1_scaled = L1  # no eccentricity scaling
+
+  If word length effects disappear → eccentricity scaling was doing the heavy lifting for length effects.
+  If word length effects persist → the neural network learned length effects on its own, eccentricity scaling is redundant.
+
+  Claim 3: Difficult words cause regressions to previous words
+
+  Ablation: remove the regression mechanism entirely.
+  # Current
+  regression_prob = sigmoid(sharpness * (L2 - threshold))
+  regression_penalty = regression_prob * cost * prev_gaze
+
+  # Ablation
+  regression_penalty = 0  # no regressions
+
+  This one is particularly interesting. It should hurt TRT (which includes re-reading) but NOT FFD (first fixation doesn't involve
+  regressions). If removing regressions hurts FFD too — something is wrong with the theory, regressions shouldn't affect first
+  fixation.
+
+  Claim 4: Skip probability is a separate decision from processing time
+
+  Ablation: derive skip from L1 instead of having a separate head.
+  # Current: independent skip head
+  skip_prob = self.skip_head(projected)
+
+  # Ablation: skip derived from L1
+  skip_prob = sigmoid(-L1)  # easy words (low L1) get skipped
+
+  If performance is similar → skip is just a function of recognition speed, no separate mechanism needed.
+  If performance drops → skip decisions involve information beyond word processing difficulty.
+
+  Claim 5: L2 contributes partially to first fixation duration
+
+  Ablation: FFD from L1 only.
+  # Current (v2)
+  FFD = L1_scaled + softplus(l2_contribution) * L2_scaled
+
+  # Ablation
+  FFD = L1_scaled  # pure L1
+
+  Tests whether comprehension begins during the first fixation or only after.
+
+  What the Results Table Would Look Like
+
+  Model                    | TRT (r) | FFD (r) | Skip (r) | Effects passed
+  -------------------------|---------|---------|----------|---------------
+  Full model               |  0.440  |  0.175  |  0.276   |  16/16
+  No two-stage (single L)  |  ???    |  ???    |  ???     |  ??/16
+  No eccentricity          |  ???    |  ???    |  ???     |  ??/16
+  No regressions           |  ???    |  ???    |  ???     |  ??/16
+  Skip derived from L1     |  ???    |  ???    |  ???     |  ??/16
+  FFD = L1 only            |  ???    |  ???    |  ???     |  ??/16
+
+  Each row tests a theoretical claim. The pattern of what breaks and what survives tells you which parts of E-Z Reader are actually
+  doing work.
+
+  Why This Is Powerful
+
+  Nobody has done this before because the original E-Z Reader is a stochastic simulation — you can't cleanly remove a component and
+  retrain. Your differentiable version makes this trivial. Each ablation is a few lines of code change, retrain, and compare.
+
+  And every result is interesting:
+  - Component hurts when removed → validates that part of the theory
+  - Component doesn't matter → challenges that part of the theory
+  - Removing component X breaks effect Y specifically → tells you which mechanism produces which effect
+
+  This is the kind of analysis that cognitive scientists would find genuinely valuable. You're not just building a better model —
+  you're using the model as an experimental tool to test theoretical claims.
+
+  ---
+  The Combined Story
+
+  If you do both 2 and 3, your paper has a clear narrative:
+
+  1. We built a differentiable E-Z Reader (method)
+  2. We show it outperforms the original (validation)
+  3. We ablated components to test which theoretical claims hold (analysis 3)
+  4. We analyzed what the neural network learned beyond the formula to identify missing factors in the theory (analysis 2)
+
+  That's a complete scientific contribution. Want me to start implementing the ablations?
+  **********************************************
+
+
+
+  ● Let me lay it out clearly.                                                                                                        
+                                                                                                                                    
+  Research Question                                                                                                                 
+   
+  "Can E-Z Reader's cognitive architecture be learned end-to-end, and which of its theoretical components are actually necessary?"  
+                  
+  What You Build
+
+  Models (4 total)
+
+  1. Original E-Z Reader — the hand-tuned baseline you already have
+  2. GPT-2 + Differentiable E-Z Reader — your main model (causal, cognitively plausible)
+  3. LSTM + Differentiable E-Z Reader — you already have this
+  4. GPT-2 direct regression — no E-Z Reader, just predicts FFD/Gaze/TRT/Skip directly. This proves the cognitive structure matters.
+
+  BERT gets dropped. It's cognitively implausible and you don't need it.
+
+  Experiments (3 phases)
+
+  Phase 1: Does it work?
+  - Train on GECO, test on GECO
+  - Train on GECO, test on Provo (cross-corpus)
+  - Compare all 4 models on correlation + psycholinguistic effects
+  - Key result: GPT-2 + DiffEZR beats original E-Z Reader AND the direct regression baseline reproduces fewer effects
+
+  Phase 2: Which components matter? (Ablations)
+  - Remove two-stage → single processing time
+  - Remove eccentricity scaling
+  - Remove regression mechanism
+  - Remove separate skip head (derive from L1)
+  - Remove L2 from FFD
+  - Each ablation: retrain, measure what breaks
+
+  Phase 3: What did the network learn? (Analysis)
+  - Compare neural L1/L2 vs formula L1/L2 — where do they disagree?
+  - Analyze disagreement words by linguistic properties
+  - Probe what GPT-2 representations encode about word difficulty
+
+  Order of Work
+
+  Step 1: Implement GPT-2 model (swap BERT for GPT-2)
+  Step 2: Implement direct regression baseline (same GPT-2, no E-Z Reader)
+  Step 3: Train all models on GECO
+  Step 4: Run comparison + effects evaluation (Phase 1)
+  Step 5: Implement ablation variants (Phase 2)
+  Step 6: Run analysis on learned representations (Phase 3)
+  Step 7: Write up
+
+  Steps 1-4 give you a working system and initial results. Steps 5-6 are where the scientific contribution lives.
+
+  Does this plan look right to you? If so I'll start with Step 1 — the GPT-2 model.
+
+
+python3 -u src_v2/train_geco_llama.py --model TinyLlama/TinyLlama-1.1B-Chat-v1.0
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------
+
+ bro think more i have 3 months for my research workshop. what is the next direction. i want to be groundbreaking. also tell me    
+what is my research quetion now?                                                                                                    
+
+● OK let me think bigger.
+
+  Your research question right now
+
+  "What does a neural language model learn about reading cognition when constrained by E-Z Reader's cognitive architecture?"
+
+  That's a solid paper. But it's a methods paper — "look, I built a thing and it works." You want more than that.
+
+  The groundbreaking move: Individual Differences
+
+  Right now your model predicts average reading behavior — one set of E-Z Reader parameters for everyone. But people read
+  differently. Fast readers, slow readers, people who skip a lot, people who fixate on everything.
+
+  New research question: "Can a differentiable cognitive reading model capture individual differences in reading strategy, and what
+  do the learned parameters reveal about the cognitive basis of reading skill?"
+
+  How it works:
+
+  - Keep the LLaMA backbone shared — everyone processes language the same way
+  - Let E-Z Reader parameters vary per reader — everyone reads differently
+  - GECO already has per-participant data (you've been averaging it away)
+  - Train: shared LLaMA → L1/L2/skip per word → reader-specific E-Z Reader → reading times per participant
+
+  What you'd discover:
+
+  - Which parameters differ across readers? (skip threshold? saccade time? eccentricity?)
+  - Which are universal? (maybe L1/L2 ratio is constant across all readers)
+  - Can you predict reading speed / skill from a reader's learned parameter profile?
+  - Do fast readers have lower eccentricity cost? Higher skip rates? Shorter attention shifts?
+
+  Why this is groundbreaking:
+
+  1. Nobody has done it. Individual differences in cognitive reading models are always hand-tuned or ignored. You'd be the first to
+  LEARN them from data.
+  2. It answers a real question in cognitive science. The debate about what makes someone a skilled reader is active and unresolved.
+   Your model could quantify it as 2-3 parameters.
+  3. It's the right use of the tool you built. The whole point of making E-Z Reader differentiable is that you can fit it to data.
+  Fitting it to individual data is the natural next step.
+  4. It's feasible. You already load per-participant data. You just need to modify the training loop to have per-reader EZ Reader
+  parameters instead of one global set. Maybe 2-3 weeks of coding.
+
+  The 3-month plan
+
+  ┌─────────┬───────────────────────────────────────────────────────────────────────────────────┐
+  │  Month  │                                       What                                        │
+  ├─────────┼───────────────────────────────────────────────────────────────────────────────────┤
+  │ Month 1 │ Write the current paper (methods + results you have). Implement per-reader model. │
+  ├─────────┼───────────────────────────────────────────────────────────────────────────────────┤
+  │ Month 2 │ Train and analyze individual differences. Find the story.                         │
+  ├─────────┼───────────────────────────────────────────────────────────────────────────────────┤
+  │ Month 3 │ Write the individual differences paper / extend the first paper.                  │
+  └─────────┴───────────────────────────────────────────────────────────────────────────────────┘
+
+  Two other directions (less exciting but worth knowing)
+
+  Architecture comparison: Make a simpler model (no two-stage, no regressions — just "processing time + skip") differentiable. Train
+   both. If the simple model works just as well, that's a finding — E-Z Reader's complexity isn't justified by the data. If E-Z
+  Reader wins, that validates the theory. Less work to implement, but the answer might be boring.
+
+  Adversarial reading: Backpropagate through the cognitive model to the INPUT — generate sentences that maximize regressions, or
+  minimize skip rates, or make reading as slow as possible. Unique application of differentiability. Could be useful for readability
+   assessment or educational text design. Cool but more of a demo than a research contribution.
+
+  My recommendation
+
+  Go with individual differences. Tell Bruno tomorrow: "The current experiments are done. My next step is individual reader modeling
+   — same architecture, but per-reader E-Z Reader parameters. The question is what makes someone a fast or slow reader, expressed as
+   cognitive model parameters."
+
+  That's a thesis-worthy story: you built the tool (paper 1), then used it to discover something about human cognition (paper 2).
+
+✻ Cogitated for 1m 42s
+
+❯ if i want to do word level prediction with a cognitively plausible model is this the best way to do it? think about this          
+
+● Honestly? No. Let me be critical.
+
+  What's good about your approach
+
+  You have a neural LM (LLaMA) that produces word representations, and E-Z Reader sits on top as a set of constraints — eccentricity
+   scaling, skip mechanism, two-stage processing. It works, it predicts well, it's trainable. As a first proof of concept, it's the
+  right move.
+
+  What's not cognitively plausible about it
+
+  The model doesn't actually read. Real reading is sequential — you fixate on a word, you only see nearby words clearly, you decide
+  where to move your eyes next, you sometimes go back. Your model processes the entire sentence through LLaMA in one pass and then
+  slaps E-Z Reader parameters on top. Every word gets a perfect representation regardless of where the "eyes" are.
+
+  No visual span. Humans see maybe 3-4 words to the right of fixation, with quality dropping sharply. Your model gives word 1 and
+  word 20 the same quality LLaMA representation. In real reading, word 20 doesn't even exist yet — you haven't looked there.
+
+  No parafoveal preview. Before you fixate on a word, you get a blurry preview of it from the previous fixation. This preview
+  benefit is a major finding in reading research. Your model has no concept of this.
+
+  The E-Z Reader wrapper is thin. Your lesion study proved this — L2 inactive, regressions inactive. The model is effectively: LLaMA
+   → word difficulty score → scale by eccentricity + skip decision. That's not really E-Z Reader. That's a neural model with two
+  cognitive priors bolted on.
+
+  What a MORE cognitively plausible model would look like
+
+  A model that actually simulates reading step by step:
+
+  1. Fixate on word 1
+  2. LLaMA only processes words within a visual span (e.g., 4 words right, 2 words left), with representations degraded by distance
+  from fixation — not just eccentricity scaling on the output, but degraded INPUT
+  3. Compute L1 → plan saccade to next word
+  4. Compute L2 → shift attention
+  5. Decide: move forward, regress, or refixate?
+  6. Execute saccade (with landing position noise)
+  7. Now you're on a new word — repeat with a new visual span
+
+  This is a recurrent decision-making process. Each fixation is a step. The model learns to read by making sequential decisions.
+  You'd use Gumbel-softmax or straight-through estimators to make the discrete saccade decisions differentiable.
+
+  But...
+
+  That model is much harder to build. Sequential decisions, variable-length episodes, discrete choices — it's closer to
+  reinforcement learning than supervised learning. It might not converge. It's probably a PhD, not a 3-month project.
+
+  So where does that leave you?
+
+  Your current approach is the best practical first step. It's honest to frame it as:
+
+  "We introduce a differentiable approximation of E-Z Reader that enables end-to-end training with neural language models. While
+  this approximation does not simulate the full sequential reading process, it preserves key architectural constraints (two-stage
+  processing, eccentricity, skip mechanism) and achieves word-level prediction."
+
+  Then in the future work section:
+
+  "A natural extension is a fully sequential reading simulation where the cognitive architecture controls not just the output but
+  also what the neural model sees at each fixation step."
+
+  The real research question
+
+  This changes your framing. Instead of "is this the best way?", the question is:
+
+  "How much do cognitive architectural constraints improve word-level reading prediction, and what do the learned parameters reveal
+  about reading cognition?"
+
+  The answer from your data: the constraints help (eccentricity generalizes cross-corpus, skip is learned correctly), but most of
+  the heavy lifting is done by the neural backbone. That's an honest and interesting finding — it tells us that E-Z Reader's value
+  is in the constraints it provides, not in replacing the neural computation.
+
+
+
+
+This is a very sharp critique and it's mostly correct. Let me be honest about what I think.
+
+  The critique is right
+
+  Your current model doesn't read — it post-processes a full sentence representation. The lesion results prove this: L2 and
+  regressions are basically inactive, meaning LLaMA is doing all the work and EZ Reader is just a scaling layer. That's a valid
+  finding in itself ("LLMs already capture word processing difficulty") but it's not a cognitive model of reading.
+
+  The sequential model idea is genuinely good
+
+  The step-by-step architecture you described is what the field actually needs. It would be the first model that:
+  - Has a neural language model inside the reading loop
+  - Processes words with degraded input based on fixation position
+  - Makes sequential saccade decisions that affect future perception
+  - Is still end-to-end differentiable
+
+  Nobody has done this. Hahn & Keller's model makes skip decisions but doesn't degrade input by eccentricity. SWIFT models parallel
+  activation but uses hand-crafted formulas. Your current model has the right cognitive architecture but feeds it perfect
+  representations.
+
+  The hard problems
+
+  It's a significantly harder engineering problem:
+
+  1. Variable-length sequences of fixations. Each sentence produces a different number of steps depending on skips, regressions,
+  refixations. Batching becomes painful.
+  2. Degraded LLaMA input. You can't just mask attention — you need graded degradation. Options:
+    - Multiply attention weights by a Gaussian centered on fixation position
+    - Use a foveal mask on the token embeddings before each forward pass
+    - Run LLaMA incrementally, only adding new tokens as they enter the visual span
+
+  The third option is most plausible but means you're running LLaMA once per fixation, which is very expensive.
+  3. Discrete saccade decisions. Gumbel-softmax works but is noisy. Straight-through estimators have bias. REINFORCE has high
+  variance. All are workable but tricky to train.
+  4. Credit assignment over many steps. If the model makes a bad saccade on word 3, the error signal has to propagate back through
+  many fixation steps to fix it. This is the classic RL problem.
+  5. What's the target? Your current model targets FFD/gaze/TRT per word. The sequential model would naturally produce a scanpath —
+  a sequence of fixations. You'd need to either:
+    - Aggregate the scanpath into per-word durations and compare to human means (easier, loses information)
+    - Compare full scanpaths to individual human scanpaths (harder, more informative, but needs per-trial data)
+
+  My honest assessment
+
+  This is a PhD-level project, possibly a full thesis chapter. Your current work is a solid first paper — "we made EZ Reader
+  differentiable, here's proof it works." The sequential model would be a strong second paper — "now we make it actually read."
+
+  I'd recommend:
+  1. Publish what you have first. It's novel and complete.
+  2. Build the sequential version as the next step. Start simple — don't use LLaMA. Use a small LSTM with a visual span mask. Get
+  the training loop working. Then scale up to LLaMA.
+  3. The visual span alone is a paper. Even without full sequential reading — just degrading LLaMA representations by distance from
+  fixation and showing it changes predictions — would be a meaningful contribution.
+
+  The idea is not just good, it's the natural next step of your research program. But don't let it delay publishing what you already
+   have.
+
+❯ how do i even train this archiotecture?                                                                                           
+
+● This is the key question. There are several options, from easiest to hardest.
+
+  Option 1: Teacher forcing on human scanpaths (start here)
+
+  GECO and Provo have individual fixation sequences — you know that reader 5 fixated word 3 for 220ms, then word 5 for 180ms, then
+  word 4 (regression) for 150ms, then word 6, etc.
+
+  Training loop:
+
+  for each sentence, for each human scanpath:
+      fixation_pos = first_word
+
+      for each step in human_scanpath:
+          # 1. Build degraded input based on current fixation
+          visual_mask = gaussian(center=fixation_pos, sigma=4)
+          degraded_embeddings = lm_embeddings * visual_mask
+
+          # 2. Model predicts duration + next saccade
+          pred_duration, pred_next_pos = model(degraded_embeddings, fixation_pos)
+
+          # 3. Loss on both
+          loss_duration = MSE(pred_duration, human_duration)
+          loss_saccade = cross_entropy(pred_next_pos, human_next_pos)
+
+          # 4. Teacher forcing: use HUMAN next position, not model's
+          fixation_pos = human_next_fixation  # not the model's prediction
+
+  Why start here:
+  - Standard backprop, no RL needed
+  - You already have the data (GECO/Provo have per-trial fixations)
+  - Same idea as training a seq2seq translation model — use ground truth history during training, free-run during inference
+  - You can get this working in a week
+
+  Downside: Exposure bias — during inference the model uses its own predictions, which it never saw during training. Errors
+  compound. But this is a known problem with known mitigations.
+
+  Option 2: Scheduled sampling (easy upgrade from Option 1)
+
+  During training, gradually replace teacher-forced positions with the model's own predictions:
+
+  epoch 1-10:  100% teacher forcing (human fixation positions)
+  epoch 10-20:  80% teacher, 20% model's own predictions
+  epoch 20-30:  50/50
+  epoch 30+:    20% teacher, 80% model
+
+  This bridges the train/inference gap. The model learns to recover from its own mistakes.
+
+  Option 3: Gumbel-softmax for fully differentiable saccades
+
+  Make the saccade decision a soft categorical over word positions:
+
+  # Model outputs logits for next fixation position
+  saccade_logits = saccade_head(hidden_state)  # [batch, num_words]
+
+  # Gumbel-softmax: differentiable approximation to argmax
+  soft_position = gumbel_softmax(saccade_logits, tau=0.5)  # [batch, num_words]
+
+  # Soft visual mask — weighted combination of all possible fixation positions
+  # Instead of hard fixation at word 7, you get 0.8 * mask_at_7 + 0.1 * mask_at_8 + ...
+  visual_mask = soft_position @ precomputed_gaussian_masks  # [batch, num_words]
+
+  # Apply degraded input
+  degraded = embeddings * visual_mask
+
+  Anneal temperature tau from high (soft, easy gradients) to low (approaches hard decisions).
+
+  Why this works: The whole pipeline — saccade decision → visual degradation → processing → next saccade — is differentiable.
+  Standard backprop end to end. No RL.
+
+  Downside: Soft attention is a blurry approximation. The model is "kind of looking at word 7 and a bit at word 8" rather than
+  making a crisp fixation. Biologically wrong, but trainable.
+
+  Option 4: REINFORCE (avoid if possible)
+
+  Treat it as RL: the saccade is a discrete action, reward is negative prediction error on durations.
+
+  # Sample discrete action
+  next_pos = Categorical(softmax(saccade_logits)).sample()
+
+  # Run forward, get prediction error
+  reward = -MSE(pred_duration, human_duration)
+
+  # Policy gradient
+  loss = -log_prob(next_pos) * reward
+
+  Don't start here. High variance, slow convergence, hard to debug. Only use if Options 1-3 fail.
+
+  What I'd actually do
+
+  Phase 1 — Get the architecture working with teacher forcing. Don't use LLaMA yet. Use a small bidirectional LSTM (or even frozen
+  BERT) with a visual span mask. Prove the concept: does degrading input by fixation position change anything?
+
+  class SequentialReader(nn.Module):
+      def __init__(self, lm, hidden_dim):
+          self.lm = lm  # frozen, run ONCE to get embeddings
+          self.reader_rnn = nn.GRU(hidden_dim, hidden_dim)  # tracks reading state
+          self.duration_head = nn.Linear(hidden_dim, 2)  # L1, L2
+          self.saccade_head = nn.Linear(hidden_dim, 1)  # saccade offset
+
+      def step(self, lm_embeddings, fixation_pos, reader_state):
+          # Degrade by distance from fixation
+          distances = abs(word_positions - fixation_pos)
+          visual_mask = exp(-distances**2 / (2 * sigma**2))
+          degraded = lm_embeddings * visual_mask.unsqueeze(-1)
+
+          # Pool what's visible into a fixation representation
+          fixated_repr = (degraded * visual_mask.unsqueeze(-1)).sum(dim=1)
+
+          # Update reading state
+          reader_output, new_state = self.reader_rnn(fixated_repr, reader_state)
+
+          # Predict
+          L1, L2 = self.duration_head(reader_output).chunk(2)
+          saccade_offset = self.saccade_head(reader_output)  # +1, +2, -1, etc.
+
+          return L1, L2, saccade_offset, new_state
+
+  Phase 2 — Once teacher forcing works, add scheduled sampling.
+
+  Phase 3 — Switch to Gumbel-softmax for full differentiability.
+
+  Phase 4 — Scale up: replace LSTM with incremental LLaMA (causal attention + visual span mask).
+
+  The key insight about LLaMA
+
+  Run LLaMA once on the full sentence to get embeddings. Then degrade those embeddings per fixation step. You're not re-running
+  LLaMA at every fixation — that would be impossibly slow. You're masking its output based on where the eyes are.
+
+  This is a compromise: the representations are computed with full context (not cognitively plausible) but the model only accesses
+  them through a foveal window (cognitively plausible). Good enough for a first version. A fully plausible version would use causal
+  LLaMA with incremental decoding, but that's Phase 4.
+
+✻ Churned for 49s
+
+❯ is it insanely better if i use rl, does it make my paper insanely much better? or its better with the other approaches?           
+
+● No. RL would make your paper harder to train, harder to review, and not meaningfully better in results.
+
+  Why RL doesn't help here
+
+  You have supervision. You have actual human scanpaths — you know exactly where people looked and for how long. When you have
+  ground truth trajectories, supervised learning (teacher forcing) is almost always better than RL. RL is for when you don't have
+  demonstrations and need to discover behavior from a reward signal.
+
+  Using RL when you have human scanpaths is like using reinforcement learning to teach a model to translate French→English when you
+  already have a parallel corpus. You can, but why would you?
+
+  What RL adds vs. what it costs
+
+  ┌────────────────────┬───────────────────────────────────────────────────────────────────┬───────────────────────────────────┐
+  │                    │                          RL (REINFORCE)                           │   Teacher forcing + scheduled     │
+  │                    │                                                                   │             sampling              │
+  ├────────────────────┼───────────────────────────────────────────────────────────────────┼───────────────────────────────────┤
+  │ Training stability │ Terrible — high variance, reward hacking, sensitive to            │ Stable, standard backprop         │
+  │                    │ hyperparameters                                                   │                                   │
+  ├────────────────────┼───────────────────────────────────────────────────────────────────┼───────────────────────────────────┤
+  │ Training speed     │ Slow — needs many rollouts                                        │ Fast — one pass per scanpath      │
+  ├────────────────────┼───────────────────────────────────────────────────────────────────┼───────────────────────────────────┤
+  │ Debugging          │ Nightmare                                                         │ Normal                            │
+  ├────────────────────┼───────────────────────────────────────────────────────────────────┼───────────────────────────────────┤
+  │ Results            │ Maybe slightly better at free-running inference                   │ Very good with scheduled sampling │
+  ├────────────────────┼───────────────────────────────────────────────────────────────────┼───────────────────────────────────┤
+  │ Reviewer reaction  │ "Why not just use the human data?"                                │ "Makes sense"                     │
+  ├────────────────────┼───────────────────────────────────────────────────────────────────┼───────────────────────────────────┤
+  │ Implementation     │ Weeks of tuning                                                   │ Days                              │
+  │ time               │                                                                   │                                   │
+  └────────────────────┴───────────────────────────────────────────────────────────────────┴───────────────────────────────────┘
+
+  What actually makes the paper strong
+
+  Reviewers will care about:
+  1. The visual span / degraded input idea — novel, cognitively motivated
+  2. Does it predict human reading measures better? — FFD, gaze, TRT correlations
+  3. Does it produce human-like scanpaths? — regression rates, skip rates, saccade length distributions
+  4. Ablation: does the sequential mechanism matter? — compare to your current one-pass model
+
+  None of that requires RL. Teacher forcing with scheduled sampling gets you there.
+
+  My recommendation
+
+  Teacher forcing → scheduled sampling → Gumbel-softmax. Pick whichever gives the best results. Mention RL as future work in the
+  discussion section — "the architecture could also be trained with policy gradient methods" — and move on. Nobody will fault you
+  for it.
+
+  The novelty is the architecture (sequential reading with degraded neural representations), not the training algorithm.
+  
+
