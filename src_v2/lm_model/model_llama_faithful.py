@@ -1,23 +1,27 @@
 """
-Neural EZ Reader - Refined Model with Proper Cognitive Constraints.
+Neural EZ Reader — Faithful to Reichle et al. (1998, 2003, 2009).
 
-Changes from model_llama_v2_delta.py:
-  1. DiffEZReader has ZERO learnable parameters — all fixed from theory.
-  2. Removed saccade_time and attention_shift from TRT (inter-fixation events,
-     not fixation durations).
-  3. Removed skip_sharpness (dead code when skip head outputs probability).
-  4. Removed eccentricity (LLaMA already captures word length effects).
-  5. Removed l2_contribution — replaced by refixation mechanism.
-  6. FFD = L1 (first fixation = familiarity check, L2 hasn't completed).
-  7. Gaze = L1 + refix_prob * L2, where refix_prob = sigmoid(sharpness * (L1 - threshold)).
-     Harder words (high L1) get refixated; easy words don't. Matches EZ Reader theory.
-  8. TRT = (1 - skip) * (Gaze + regression_penalty). No overhead.
-  9. Regression parameters fixed as constants.
-  10. No ablation branches — single clean path.
-  11. l1_scale fixed at 50.
-  12. delta remains the only learnable cognitive parameter (L2/L1 ratio).
+One clear contribution: replace the frequency-based L1 formula
+  L1 = α1 - α2·ln(freq) - α3·predictability
+with a neural language model that captures full sentential context.
+Everything else follows the published theory.
 
-All learning happens in: LLaMA layers + projection + L1 head + skip head + delta.
+From the EZ Reader literature (no invented mechanisms):
+  L1 = neural_net(context)         replaces frequency formula
+  L2 = δ × L1                     Reichle et al., δ ≈ 0.34
+  skip_prob = predictability       Reichle et al.: skip when predictable
+  FFD = L1                         first fixation ≈ familiarity check
+  Gaze = L1 + L2                   first pass = both processing stages
+
+Differentiable approximation of integration failure (Reichle et al. 2009):
+  regression_prob ≈ f(L2)          harder lexical access → harder integration
+  TRT = Gaze + regression_cost     conditional on fixation
+
+Learnable parameters:
+  Neural:    LLaMA top layers, projection, L1 head
+  Cognitive: delta (L2/L1 ratio), l1_scale (calibration)
+NOT learned:
+  skip (= predictability, from theory), reading time equations (from theory)
 """
 
 import torch
@@ -25,70 +29,69 @@ import torch.nn as nn
 import torch.nn.functional as F
 from transformers import AutoModel, AutoTokenizer
 
-import os
-import sys
-
 
 # --------------------------------------------------------------------------- #
-#  Differentiable EZ Reader — zero learnable parameters
+#  Faithful Differentiable EZ Reader — zero learnable parameters
 # --------------------------------------------------------------------------- #
 
-class DifferentiableEZReader(nn.Module):
+class FaithfulEZReader(nn.Module):
     """
-    Pure deterministic function: (L1, L2, skip_prob, word_lengths) -> reading metrics.
+    Maps (L1, L2, skip_prob) → reading metrics using published EZ Reader
+    equations. Zero learnable parameters.
 
-    All parameters fixed from EZ Reader literature. No nn.Parameters.
+    Literature equations:
+      FFD = L1                        (Reichle et al. 2003)
+      Gaze = L1 + L2                  (Reichle et al. 2003)
+      skip_prob = predictability      (Reichle et al. 1998)
+
+    Integration failure approximation (Reichle et al. 2009, Section 4):
+      In the original, each word has an integration failure probability.
+      Words with harder lexical access (high L2) tend to have higher
+      integration failure. We approximate this with a sigmoid on L2.
     """
 
-    # Fixed constants from literature / model convergence
-    REFIX_THRESHOLD = 150.0   # L1 (ms) above which refixation becomes likely
-    REFIX_SHARPNESS = 0.03    # sigmoid steepness for refixation
-
-    REGRESSION_THRESHOLD = 50.0   # L2 (ms) above which regression is likely
-    REGRESSION_SHARPNESS = 0.1    # sigmoid steepness for regression
-    REGRESSION_COST_SCALE = 1.0   # cost multiplier
+    # Conservative regression constants — integration failure is rare
+    # in the original (~1-10% of words), higher for difficult words.
+    REGRESSION_SHARPNESS = 0.03
+    REGRESSION_THRESHOLD = 100.0    # L2 (ms) above which regression likely
+    REGRESSION_COST_SCALE = 0.25    # fraction of prev gaze as regression cost
 
     def forward(self, L1, L2, skip_prob, word_lengths):
         """
         Args:
             L1:           (batch, seq_len) familiarity check time (ms)
             L2:           (batch, seq_len) lexical access time (ms)
-            skip_prob:    (batch, seq_len) skip probability (0-1)
-            word_lengths: (batch, seq_len) character counts (unused, kept for API compat)
+            skip_prob:    (batch, seq_len) = predictability (0-1)
+            word_lengths: (batch, seq_len) character counts (unused)
 
-        Returns:
-            dict with total_reading_time, first_fixation, gaze_duration, skip_prob
+        Returns dict with reading metrics.
         """
-        # --- FFD: first fixation = L1 only ---
+        # --- FFD = L1 (Reichle et al. 2003) ---
         first_fixation = L1
 
-        # --- Refixation: hard words (high L1) get refixated ---
-        refix_prob = torch.sigmoid(
-            self.REFIX_SHARPNESS * (L1 - self.REFIX_THRESHOLD)
-        )
+        # --- Gaze = L1 + L2 (both processing stages) ---
+        gaze_duration = L1 + L2
 
-        # --- Gaze: first-pass reading = L1 + refixation contribution ---
-        gaze_duration = L1 + refix_prob * L2
-
-        # --- Regression mechanism ---
+        # --- Integration failure → regression (Reichle et al. 2009) ---
+        # High L2 → harder integration → more likely regression
         regression_prob = torch.sigmoid(
             self.REGRESSION_SHARPNESS * (L2 - self.REGRESSION_THRESHOLD)
         )
         prev_gaze = torch.zeros_like(gaze_duration)
         prev_gaze[:, 1:] = gaze_duration[:, :-1]
-        regression_penalty = (
-            regression_prob
-            * F.softplus(torch.tensor(self.REGRESSION_COST_SCALE))
-            * prev_gaze
-        )
+        regression_cost = regression_prob * self.REGRESSION_COST_SCALE * prev_gaze
 
-        # --- TRT: no overhead (saccade/attention are inter-fixation events) ---
-        total_reading_time = (1.0 - skip_prob) * (gaze_duration + regression_penalty)
+        # --- TRT: conditional on fixation ---
+        conditional_trt = gaze_duration + regression_cost
+
+        # --- Expected TRT: for eval compatibility ---
+        total_reading_time = (1.0 - skip_prob.detach()) * conditional_trt
 
         return {
-            'total_reading_time': total_reading_time,
             'first_fixation': first_fixation,
             'gaze_duration': gaze_duration,
+            'conditional_trt': conditional_trt,
+            'total_reading_time': total_reading_time,
             'skip_prob': skip_prob,
         }
 
@@ -99,17 +102,13 @@ class DifferentiableEZReader(nn.Module):
 
 class NeuralEZReaderLLaMA(nn.Module):
     """
-    End-to-end model:
-        word tokens -> LLaMA (causal) -> word-level pooling -> L1 head
-        -> L2 = delta * L1 (theory-constrained)
-        -> skip head
-        -> DifferentiableEZReader -> (TRT, FFD, Gaze, skip)
+    word tokens → LLaMA (causal) → word pooling → L1 head
+    → L2 = delta × L1
+    → skip = predictability (not learned)
+    → FaithfulEZReader → (FFD, Gaze, TRT, skip)
 
-    Learnable: LLaMA top layers, projection, L1 head, skip head, delta.
-    Fixed: l1_scale (50), all EZReader parameters.
+    Learnable: LLaMA top layers, projection, L1 head, delta, l1_scale.
     """
-
-    L1_SCALE = 50.0  # fixed scaling: head output * 50 -> milliseconds
 
     def __init__(
         self,
@@ -145,7 +144,7 @@ class NeuralEZReaderLLaMA(nn.Module):
             nn.Dropout(0.1),
         )
 
-        # --- L1 head ---
+        # --- L1 head: predicts familiarity check time ---
         self.l1_head = nn.Sequential(
             nn.Linear(hidden_dim, hidden_dim // 2),
             nn.GELU(),
@@ -154,21 +153,19 @@ class NeuralEZReaderLLaMA(nn.Module):
             nn.Softplus(),
         )
 
-        # --- Delta: L2 = delta * L1, constrained to (0, 1) via sigmoid ---
+        # --- l1_scale: calibration parameter ---
+        self.l1_scale = nn.Parameter(torch.tensor(50.0))
+
+        # --- Delta: L2 = delta × L1, constrained to (0, 1) via sigmoid ---
+        # Initialized at 0.34 (Reichle et al. 2012)
         self._delta_raw = nn.Parameter(torch.tensor(0.0))
         with torch.no_grad():
             self._delta_raw.fill_(torch.log(torch.tensor(0.34 / (1.0 - 0.34))).item())
 
-        # --- Skip head ---
-        self.skip_head = nn.Sequential(
-            nn.Linear(hidden_dim, hidden_dim // 2),
-            nn.ReLU(),
-            nn.Linear(hidden_dim // 2, 1),
-            nn.Sigmoid(),
-        )
+        # --- NO skip head: skip_prob = predictability (from theory) ---
 
-        # --- Differentiable EZ Reader (zero learnable parameters) ---
-        self.ezreader = DifferentiableEZReader()
+        # --- Faithful EZ Reader (zero learnable parameters) ---
+        self.ezreader = FaithfulEZReader()
 
     @property
     def delta(self):
@@ -257,21 +254,22 @@ class NeuralEZReaderLLaMA(nn.Module):
 
         projected = self.projection(word_repr)
 
-        # --- L1 and L2 ---
-        L1 = self.l1_head(projected).squeeze(-1) * self.L1_SCALE
-        L1 = L1.clamp(min=1.0, max=500.0)
+        # --- L1: neural prediction of familiarity check time ---
+        L1 = self.l1_head(projected).squeeze(-1) * self.l1_scale
+        L1 = L1.clamp(min=1.0, max=600.0)
+
+        # --- L2 = delta × L1 (Reichle et al.) ---
         L2 = self.delta * L1
 
-        # --- Skip ---
-        skip_prob = self.skip_head(projected).squeeze(-1)
+        # --- Skip = predictability (Reichle et al.) ---
+        skip_prob = predictability
 
         # Trim to match actual sequence lengths
         seq_len = predictability.size(1)
         L1 = L1[:, :seq_len]
         L2 = L2[:, :seq_len]
-        skip_prob = skip_prob[:, :seq_len]
 
-        # --- EZ Reader derives FFD, Gaze, TRT ---
+        # --- EZ Reader: FFD, Gaze, TRT from theory ---
         result = self.ezreader(L1, L2, skip_prob, word_lengths)
 
         result['L1'] = L1

@@ -1,0 +1,539 @@
+nohup: ignoring input
+Auto-freeze: 16/22 layers
+Device: cuda
+Loading GECO Corpus...
+  Loading GECO material...
+    5285 sentences, 54362 words
+    Loaded predictability for 5285 sentences
+  Loading GECO reading data...
+    72669 participant × sentence combinations
+  Raw per-participant observations: 68,681
+  Train: 54,930 | Val: 6,871 | Test: 6,880
+  Aggregated sentences (min 5 participants): 4994
+  Aggregated: 3995 train | 499 val | 500 test sentences
+  Train words: 42936 | Val words: 5298 | Test words: 5501
+
+Loading model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+  Freezing first 16 layers
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/200 [00:00<?, ?it/s]Loading weights:   0%|          | 1/200 [00:00<00:00, 7530.17it/s, Materializing param=embed_tokens.weight]Loading weights:   0%|          | 1/200 [00:00<00:00, 2676.65it/s, Materializing param=embed_tokens.weight]Loading weights:   1%|          | 2/200 [00:00<00:00, 1846.08it/s, Materializing param=layers.0.input_layernorm.weight]Loading weights:   1%|          | 2/200 [00:00<00:00, 1432.48it/s, Materializing param=layers.0.input_layernorm.weight]Loading weights:   2%|▏         | 3/200 [00:00<00:00, 1356.36it/s, Materializing param=layers.0.mlp.down_proj.weight]  Loading weights:   2%|▏         | 3/200 [00:00<00:00, 1142.24it/s, Materializing param=layers.0.mlp.down_proj.weight]Loading weights:   2%|▏         | 4/200 [00:00<00:00, 1245.99it/s, Materializing param=layers.0.mlp.gate_proj.weight]Loading weights:   2%|▏         | 4/200 [00:00<00:00, 1136.67it/s, Materializing param=layers.0.mlp.gate_proj.weight]Loading weights:   2%|▎         | 5/200 [00:00<00:08, 22.96it/s, Materializing param=layers.0.mlp.gate_proj.weight]  Loading weights:   2%|▎         | 5/200 [00:00<00:08, 22.96it/s, Materializing param=layers.0.mlp.up_proj.weight]  Loading weights:   2%|▎         | 5/200 [00:00<00:08, 22.96it/s, Materializing param=layers.0.mlp.up_proj.weight]Loading weights:   3%|▎         | 6/200 [00:00<00:08, 22.96it/s, Materializing param=layers.0.post_attention_layernorm.weight]Loading weights:   3%|▎         | 6/200 [00:00<00:08, 22.96it/s, Materializing param=layers.0.post_attention_layernorm.weight]Loading weights:   4%|▎         | 7/200 [00:00<00:08, 22.96it/s, Materializing param=layers.0.self_attn.k_proj.weight]        Loading weights:   4%|▎         | 7/200 [00:00<00:08, 22.96it/s, Materializing param=layers.0.self_attn.k_proj.weight]Loading weights:   4%|▍         | 8/200 [00:00<00:15, 12.78it/s, Materializing param=layers.0.self_attn.k_proj.weight]Loading weights:   4%|▍         | 8/200 [00:00<00:15, 12.78it/s, Materializing param=layers.0.self_attn.o_proj.weight]Loading weights:   4%|▍         | 8/200 [00:00<00:15, 12.78it/s, Materializing param=layers.0.self_attn.o_proj.weight]Loading weights:   4%|▍         | 9/200 [00:00<00:14, 12.78it/s, Materializing param=layers.0.self_attn.q_proj.weight]Loading weights:   4%|▍         | 9/200 [00:00<00:14, 12.78it/s, Materializing param=layers.0.self_attn.q_proj.weight]Loading weights:   5%|▌         | 10/200 [00:00<00:14, 12.78it/s, Materializing param=layers.0.self_attn.v_proj.weight]Loading weights:   5%|▌         | 10/200 [00:00<00:14, 12.78it/s, Materializing param=layers.0.self_attn.v_proj.weight]Loading weights:   6%|▌         | 11/200 [00:00<00:14, 12.78it/s, Materializing param=layers.1.input_layernorm.weight] Loading weights:   6%|▌         | 11/200 [00:00<00:14, 12.78it/s, Materializing param=layers.1.input_layernorm.weight]Loading weights:   6%|▌         | 12/200 [00:00<00:14, 12.78it/s, Materializing param=layers.1.mlp.down_proj.weight]  Loading weights:   6%|▌         | 12/200 [00:00<00:14, 12.78it/s, Materializing param=layers.1.mlp.down_proj.weight]Loading weights:   6%|▋         | 13/200 [00:00<00:14, 12.78it/s, Materializing param=layers.1.mlp.gate_proj.weight]Loading weights:   6%|▋         | 13/200 [00:00<00:14, 12.78it/s, Materializing param=layers.1.mlp.gate_proj.weight]Loading weights:   7%|▋         | 14/200 [00:00<00:14, 12.78it/s, Materializing param=layers.1.mlp.up_proj.weight]  Loading weights:   7%|▋         | 14/200 [00:00<00:14, 12.78it/s, Materializing param=layers.1.mlp.up_proj.weight]Loading weights:   8%|▊         | 15/200 [00:00<00:14, 12.78it/s, Materializing param=layers.1.post_attention_layernorm.weight]Loading weights:   8%|▊         | 15/200 [00:00<00:14, 12.78it/s, Materializing param=layers.1.post_attention_layernorm.weight]Loading weights:   8%|▊         | 16/200 [00:00<00:14, 12.78it/s, Materializing param=layers.1.self_attn.k_proj.weight]        Loading weights:   8%|▊         | 16/200 [00:00<00:14, 12.78it/s, Materializing param=layers.1.self_attn.k_proj.weight]Loading weights:   8%|▊         | 17/200 [00:00<00:07, 23.27it/s, Materializing param=layers.1.self_attn.k_proj.weight]Loading weights:   8%|▊         | 17/200 [00:00<00:07, 23.27it/s, Materializing param=layers.1.self_attn.o_proj.weight]Loading weights:   8%|▊         | 17/200 [00:00<00:07, 23.27it/s, Materializing param=layers.1.self_attn.o_proj.weight]Loading weights:   9%|▉         | 18/200 [00:00<00:07, 23.27it/s, Materializing param=layers.1.self_attn.q_proj.weight]Loading weights:   9%|▉         | 18/200 [00:00<00:07, 23.27it/s, Materializing param=layers.1.self_attn.q_proj.weight]Loading weights:  10%|▉         | 19/200 [00:00<00:07, 23.27it/s, Materializing param=layers.1.self_attn.v_proj.weight]Loading weights:  10%|▉         | 19/200 [00:00<00:07, 23.27it/s, Materializing param=layers.1.self_attn.v_proj.weight]Loading weights:  10%|█         | 20/200 [00:00<00:07, 23.40it/s, Materializing param=layers.1.self_attn.v_proj.weight]Loading weights:  10%|█         | 20/200 [00:00<00:07, 23.40it/s, Materializing param=layers.2.input_layernorm.weight] Loading weights:  10%|█         | 20/200 [00:00<00:07, 23.40it/s, Materializing param=layers.2.input_layernorm.weight]Loading weights:  10%|█         | 21/200 [00:01<00:07, 23.40it/s, Materializing param=layers.2.mlp.down_proj.weight]  Loading weights:  10%|█         | 21/200 [00:01<00:07, 23.40it/s, Materializing param=layers.2.mlp.down_proj.weight]Loading weights:  11%|█         | 22/200 [00:01<00:07, 23.40it/s, Materializing param=layers.2.mlp.gate_proj.weight]Loading weights:  11%|█         | 22/200 [00:01<00:07, 23.40it/s, Materializing param=layers.2.mlp.gate_proj.weight]Loading weights:  12%|█▏        | 23/200 [00:01<00:10, 17.29it/s, Materializing param=layers.2.mlp.gate_proj.weight]Loading weights:  12%|█▏        | 23/200 [00:01<00:10, 17.29it/s, Materializing param=layers.2.mlp.up_proj.weight]  Loading weights:  12%|█▏        | 23/200 [00:01<00:10, 17.29it/s, Materializing param=layers.2.mlp.up_proj.weight]Loading weights:  12%|█▏        | 24/200 [00:01<00:10, 17.29it/s, Materializing param=layers.2.post_attention_layernorm.weight]Loading weights:  12%|█▏        | 24/200 [00:01<00:10, 17.29it/s, Materializing param=layers.2.post_attention_layernorm.weight]Loading weights:  12%|█▎        | 25/200 [00:01<00:10, 17.29it/s, Materializing param=layers.2.self_attn.k_proj.weight]        Loading weights:  12%|█▎        | 25/200 [00:01<00:10, 17.29it/s, Materializing param=layers.2.self_attn.k_proj.weight]Loading weights:  13%|█▎        | 26/200 [00:01<00:08, 19.37it/s, Materializing param=layers.2.self_attn.k_proj.weight]Loading weights:  13%|█▎        | 26/200 [00:01<00:08, 19.37it/s, Materializing param=layers.2.self_attn.o_proj.weight]Loading weights:  13%|█▎        | 26/200 [00:01<00:08, 19.37it/s, Materializing param=layers.2.self_attn.o_proj.weight]Loading weights:  14%|█▎        | 27/200 [00:01<00:08, 19.37it/s, Materializing param=layers.2.self_attn.q_proj.weight]Loading weights:  14%|█▎        | 27/200 [00:01<00:08, 19.37it/s, Materializing param=layers.2.self_attn.q_proj.weight]Loading weights:  14%|█▍        | 28/200 [00:01<00:08, 19.37it/s, Materializing param=layers.2.self_attn.v_proj.weight]Loading weights:  14%|█▍        | 28/200 [00:01<00:08, 19.37it/s, Materializing param=layers.2.self_attn.v_proj.weight]Loading weights:  14%|█▍        | 29/200 [00:01<00:10, 16.55it/s, Materializing param=layers.2.self_attn.v_proj.weight]Loading weights:  14%|█▍        | 29/200 [00:01<00:10, 16.55it/s, Materializing param=layers.3.input_layernorm.weight] Loading weights:  14%|█▍        | 29/200 [00:01<00:10, 16.55it/s, Materializing param=layers.3.input_layernorm.weight]Loading weights:  15%|█▌        | 30/200 [00:01<00:10, 16.55it/s, Materializing param=layers.3.mlp.down_proj.weight]  Loading weights:  15%|█▌        | 30/200 [00:01<00:10, 16.55it/s, Materializing param=layers.3.mlp.down_proj.weight]Loading weights:  16%|█▌        | 31/200 [00:01<00:13, 12.34it/s, Materializing param=layers.3.mlp.down_proj.weight]Loading weights:  16%|█▌        | 31/200 [00:01<00:13, 12.34it/s, Materializing param=layers.3.mlp.gate_proj.weight]Loading weights:  16%|█▌        | 31/200 [00:01<00:13, 12.34it/s, Materializing param=layers.3.mlp.gate_proj.weight]Loading weights:  16%|█▌        | 32/200 [00:01<00:13, 12.34it/s, Materializing param=layers.3.mlp.up_proj.weight]  Loading weights:  16%|█▌        | 32/200 [00:01<00:13, 12.34it/s, Materializing param=layers.3.mlp.up_proj.weight]Loading weights:  16%|█▋        | 33/200 [00:02<00:20,  8.25it/s, Materializing param=layers.3.mlp.up_proj.weight]Loading weights:  16%|█▋        | 33/200 [00:02<00:20,  8.25it/s, Materializing param=layers.3.post_attention_layernorm.weight]Loading weights:  16%|█▋        | 33/200 [00:02<00:20,  8.25it/s, Materializing param=layers.3.post_attention_layernorm.weight]Loading weights:  17%|█▋        | 34/200 [00:02<00:20,  8.25it/s, Materializing param=layers.3.self_attn.k_proj.weight]        Loading weights:  17%|█▋        | 34/200 [00:02<00:20,  8.25it/s, Materializing param=layers.3.self_attn.k_proj.weight]Loading weights:  18%|█▊        | 35/200 [00:02<00:20,  8.25it/s, Materializing param=layers.3.self_attn.o_proj.weight]Loading weights:  18%|█▊        | 35/200 [00:02<00:20,  8.25it/s, Materializing param=layers.3.self_attn.o_proj.weight]Loading weights:  18%|█▊        | 36/200 [00:02<00:19,  8.25it/s, Materializing param=layers.3.self_attn.q_proj.weight]Loading weights:  18%|█▊        | 36/200 [00:02<00:19,  8.25it/s, Materializing param=layers.3.self_attn.q_proj.weight]Loading weights:  18%|█▊        | 37/200 [00:02<00:19,  8.25it/s, Materializing param=layers.3.self_attn.v_proj.weight]Loading weights:  18%|█▊        | 37/200 [00:02<00:19,  8.25it/s, Materializing param=layers.3.self_attn.v_proj.weight]Loading weights:  19%|█▉        | 38/200 [00:02<00:19,  8.25it/s, Materializing param=layers.4.input_layernorm.weight] Loading weights:  19%|█▉        | 38/200 [00:02<00:19,  8.25it/s, Materializing param=layers.4.input_layernorm.weight]Loading weights:  20%|█▉        | 39/200 [00:02<00:19,  8.25it/s, Materializing param=layers.4.mlp.down_proj.weight]  Loading weights:  20%|█▉        | 39/200 [00:02<00:19,  8.25it/s, Materializing param=layers.4.mlp.down_proj.weight]Loading weights:  20%|██        | 40/200 [00:02<00:19,  8.25it/s, Materializing param=layers.4.mlp.gate_proj.weight]Loading weights:  20%|██        | 40/200 [00:02<00:19,  8.25it/s, Materializing param=layers.4.mlp.gate_proj.weight]Loading weights:  20%|██        | 41/200 [00:02<00:19,  8.25it/s, Materializing param=layers.4.mlp.up_proj.weight]  Loading weights:  20%|██        | 41/200 [00:02<00:19,  8.25it/s, Materializing param=layers.4.mlp.up_proj.weight]Loading weights:  21%|██        | 42/200 [00:02<00:09, 17.41it/s, Materializing param=layers.4.mlp.up_proj.weight]Loading weights:  21%|██        | 42/200 [00:02<00:09, 17.41it/s, Materializing param=layers.4.post_attention_layernorm.weight]Loading weights:  21%|██        | 42/200 [00:02<00:09, 17.41it/s, Materializing param=layers.4.post_attention_layernorm.weight]Loading weights:  22%|██▏       | 43/200 [00:02<00:09, 17.41it/s, Materializing param=layers.4.self_attn.k_proj.weight]        Loading weights:  22%|██▏       | 43/200 [00:02<00:09, 17.41it/s, Materializing param=layers.4.self_attn.k_proj.weight]Loading weights:  22%|██▏       | 44/200 [00:02<00:08, 17.41it/s, Materializing param=layers.4.self_attn.o_proj.weight]Loading weights:  22%|██▏       | 44/200 [00:02<00:08, 17.41it/s, Materializing param=layers.4.self_attn.o_proj.weight]Loading weights:  22%|██▎       | 45/200 [00:02<00:11, 13.81it/s, Materializing param=layers.4.self_attn.o_proj.weight]Loading weights:  22%|██▎       | 45/200 [00:02<00:11, 13.81it/s, Materializing param=layers.4.self_attn.q_proj.weight]Loading weights:  22%|██▎       | 45/200 [00:02<00:11, 13.81it/s, Materializing param=layers.4.self_attn.q_proj.weight]Loading weights:  23%|██▎       | 46/200 [00:02<00:11, 13.81it/s, Materializing param=layers.4.self_attn.v_proj.weight]Loading weights:  23%|██▎       | 46/200 [00:02<00:11, 13.81it/s, Materializing param=layers.4.self_attn.v_proj.weight]Loading weights:  24%|██▎       | 47/200 [00:02<00:11, 13.81it/s, Materializing param=layers.5.input_layernorm.weight] Loading weights:  24%|██▎       | 47/200 [00:02<00:11, 13.81it/s, Materializing param=layers.5.input_layernorm.weight]Loading weights:  24%|██▍       | 48/200 [00:02<00:11, 13.81it/s, Materializing param=layers.5.mlp.down_proj.weight]  Loading weights:  24%|██▍       | 48/200 [00:02<00:11, 13.81it/s, Materializing param=layers.5.mlp.down_proj.weight]Loading weights:  24%|██▍       | 49/200 [00:03<00:09, 15.27it/s, Materializing param=layers.5.mlp.down_proj.weight]Loading weights:  24%|██▍       | 49/200 [00:03<00:09, 15.27it/s, Materializing param=layers.5.mlp.gate_proj.weight]Loading weights:  24%|██▍       | 49/200 [00:03<00:09, 15.27it/s, Materializing param=layers.5.mlp.gate_proj.weight]Loading weights:  25%|██▌       | 50/200 [00:03<00:09, 15.27it/s, Materializing param=layers.5.mlp.up_proj.weight]  Loading weights:  25%|██▌       | 50/200 [00:03<00:09, 15.27it/s, Materializing param=layers.5.mlp.up_proj.weight]Loading weights:  26%|██▌       | 51/200 [00:03<00:09, 15.27it/s, Materializing param=layers.5.post_attention_layernorm.weight]Loading weights:  26%|██▌       | 51/200 [00:03<00:09, 15.27it/s, Materializing param=layers.5.post_attention_layernorm.weight]Loading weights:  26%|██▌       | 52/200 [00:03<00:11, 13.09it/s, Materializing param=layers.5.post_attention_layernorm.weight]Loading weights:  26%|██▌       | 52/200 [00:03<00:11, 13.09it/s, Materializing param=layers.5.self_attn.k_proj.weight]        Loading weights:  26%|██▌       | 52/200 [00:03<00:11, 13.09it/s, Materializing param=layers.5.self_attn.k_proj.weight]Loading weights:  26%|██▋       | 53/200 [00:03<00:11, 13.09it/s, Materializing param=layers.5.self_attn.o_proj.weight]Loading weights:  26%|██▋       | 53/200 [00:03<00:11, 13.09it/s, Materializing param=layers.5.self_attn.o_proj.weight]Loading weights:  27%|██▋       | 54/200 [00:03<00:11, 13.09it/s, Materializing param=layers.5.self_attn.q_proj.weight]Loading weights:  27%|██▋       | 54/200 [00:03<00:11, 13.09it/s, Materializing param=layers.5.self_attn.q_proj.weight]Loading weights:  28%|██▊       | 55/200 [00:03<00:11, 13.09it/s, Materializing param=layers.5.self_attn.v_proj.weight]Loading weights:  28%|██▊       | 55/200 [00:03<00:11, 13.09it/s, Materializing param=layers.5.self_attn.v_proj.weight]Loading weights:  28%|██▊       | 56/200 [00:03<00:10, 13.09it/s, Materializing param=layers.6.input_layernorm.weight] Loading weights:  28%|██▊       | 56/200 [00:03<00:10, 13.09it/s, Materializing param=layers.6.input_layernorm.weight]Loading weights:  28%|██▊       | 57/200 [00:03<00:10, 13.09it/s, Materializing param=layers.6.mlp.down_proj.weight]  Loading weights:  28%|██▊       | 57/200 [00:03<00:10, 13.09it/s, Materializing param=layers.6.mlp.down_proj.weight]Loading weights:  29%|██▉       | 58/200 [00:03<00:10, 13.09it/s, Materializing param=layers.6.mlp.gate_proj.weight]Loading weights:  29%|██▉       | 58/200 [00:03<00:10, 13.09it/s, Materializing param=layers.6.mlp.gate_proj.weight]Loading weights:  30%|██▉       | 59/200 [00:03<00:10, 13.09it/s, Materializing param=layers.6.mlp.up_proj.weight]  Loading weights:  30%|██▉       | 59/200 [00:03<00:10, 13.09it/s, Materializing param=layers.6.mlp.up_proj.weight]Loading weights:  30%|███       | 60/200 [00:03<00:07, 19.13it/s, Materializing param=layers.6.mlp.up_proj.weight]Loading weights:  30%|███       | 60/200 [00:03<00:07, 19.13it/s, Materializing param=layers.6.post_attention_layernorm.weight]Loading weights:  30%|███       | 60/200 [00:03<00:07, 19.13it/s, Materializing param=layers.6.post_attention_layernorm.weight]Loading weights:  30%|███       | 61/200 [00:03<00:07, 19.13it/s, Materializing param=layers.6.self_attn.k_proj.weight]        Loading weights:  30%|███       | 61/200 [00:03<00:07, 19.13it/s, Materializing param=layers.6.self_attn.k_proj.weight]Loading weights:  31%|███       | 62/200 [00:03<00:07, 19.13it/s, Materializing param=layers.6.self_attn.o_proj.weight]Loading weights:  31%|███       | 62/200 [00:03<00:07, 19.13it/s, Materializing param=layers.6.self_attn.o_proj.weight]Loading weights:  32%|███▏      | 63/200 [00:03<00:07, 19.13it/s, Materializing param=layers.6.self_attn.q_proj.weight]Loading weights:  32%|███▏      | 63/200 [00:03<00:07, 19.13it/s, Materializing param=layers.6.self_attn.q_proj.weight]Loading weights:  32%|███▏      | 64/200 [00:04<00:11, 11.78it/s, Materializing param=layers.6.self_attn.q_proj.weight]Loading weights:  32%|███▏      | 64/200 [00:04<00:11, 11.78it/s, Materializing param=layers.6.self_attn.v_proj.weight]Loading weights:  32%|███▏      | 64/200 [00:04<00:11, 11.78it/s, Materializing param=layers.6.self_attn.v_proj.weight]Loading weights:  32%|███▎      | 65/200 [00:04<00:11, 11.78it/s, Materializing param=layers.7.input_layernorm.weight] Loading weights:  32%|███▎      | 65/200 [00:04<00:11, 11.78it/s, Materializing param=layers.7.input_layernorm.weight]Loading weights:  33%|███▎      | 66/200 [00:04<00:11, 11.78it/s, Materializing param=layers.7.mlp.down_proj.weight]  Loading weights:  33%|███▎      | 66/200 [00:04<00:11, 11.78it/s, Materializing param=layers.7.mlp.down_proj.weight]Loading weights:  34%|███▎      | 67/200 [00:04<00:11, 11.78it/s, Materializing param=layers.7.mlp.gate_proj.weight]Loading weights:  34%|███▎      | 67/200 [00:04<00:11, 11.78it/s, Materializing param=layers.7.mlp.gate_proj.weight]Loading weights:  34%|███▍      | 68/200 [00:04<00:11, 11.78it/s, Materializing param=layers.7.mlp.up_proj.weight]  Loading weights:  34%|███▍      | 68/200 [00:04<00:11, 11.78it/s, Materializing param=layers.7.mlp.up_proj.weight]Loading weights:  34%|███▍      | 69/200 [00:04<00:11, 11.78it/s, Materializing param=layers.7.post_attention_layernorm.weight]Loading weights:  34%|███▍      | 69/200 [00:04<00:11, 11.78it/s, Materializing param=layers.7.post_attention_layernorm.weight]Loading weights:  35%|███▌      | 70/200 [00:04<00:09, 13.04it/s, Materializing param=layers.7.post_attention_layernorm.weight]Loading weights:  35%|███▌      | 70/200 [00:04<00:09, 13.04it/s, Materializing param=layers.7.self_attn.k_proj.weight]        Loading weights:  35%|███▌      | 70/200 [00:04<00:09, 13.04it/s, Materializing param=layers.7.self_attn.k_proj.weight]Loading weights:  36%|███▌      | 71/200 [00:04<00:09, 13.04it/s, Materializing param=layers.7.self_attn.o_proj.weight]Loading weights:  36%|███▌      | 71/200 [00:04<00:09, 13.04it/s, Materializing param=layers.7.self_attn.o_proj.weight]Loading weights:  36%|███▌      | 72/200 [00:04<00:09, 13.04it/s, Materializing param=layers.7.self_attn.q_proj.weight]Loading weights:  36%|███▌      | 72/200 [00:04<00:09, 13.04it/s, Materializing param=layers.7.self_attn.q_proj.weight]Loading weights:  36%|███▋      | 73/200 [00:04<00:09, 13.04it/s, Materializing param=layers.7.self_attn.v_proj.weight]Loading weights:  36%|███▋      | 73/200 [00:04<00:09, 13.04it/s, Materializing param=layers.7.self_attn.v_proj.weight]Loading weights:  37%|███▋      | 74/200 [00:04<00:09, 13.04it/s, Materializing param=layers.8.input_layernorm.weight] Loading weights:  37%|███▋      | 74/200 [00:04<00:09, 13.04it/s, Materializing param=layers.8.input_layernorm.weight]Loading weights:  38%|███▊      | 75/200 [00:04<00:09, 13.04it/s, Materializing param=layers.8.mlp.down_proj.weight]  Loading weights:  38%|███▊      | 75/200 [00:04<00:09, 13.04it/s, Materializing param=layers.8.mlp.down_proj.weight]Loading weights:  38%|███▊      | 76/200 [00:04<00:07, 17.55it/s, Materializing param=layers.8.mlp.down_proj.weight]Loading weights:  38%|███▊      | 76/200 [00:04<00:07, 17.55it/s, Materializing param=layers.8.mlp.gate_proj.weight]Loading weights:  38%|███▊      | 76/200 [00:04<00:07, 17.55it/s, Materializing param=layers.8.mlp.gate_proj.weight]Loading weights:  38%|███▊      | 77/200 [00:05<00:07, 17.55it/s, Materializing param=layers.8.mlp.up_proj.weight]  Loading weights:  38%|███▊      | 77/200 [00:05<00:07, 17.55it/s, Materializing param=layers.8.mlp.up_proj.weight]Loading weights:  39%|███▉      | 78/200 [00:05<00:06, 17.55it/s, Materializing param=layers.8.post_attention_layernorm.weight]Loading weights:  39%|███▉      | 78/200 [00:05<00:06, 17.55it/s, Materializing param=layers.8.post_attention_layernorm.weight]Loading weights:  40%|███▉      | 79/200 [00:05<00:07, 16.02it/s, Materializing param=layers.8.post_attention_layernorm.weight]Loading weights:  40%|███▉      | 79/200 [00:05<00:07, 16.02it/s, Materializing param=layers.8.self_attn.k_proj.weight]        Loading weights:  40%|███▉      | 79/200 [00:05<00:07, 16.02it/s, Materializing param=layers.8.self_attn.k_proj.weight]Loading weights:  40%|████      | 80/200 [00:05<00:07, 16.02it/s, Materializing param=layers.8.self_attn.o_proj.weight]Loading weights:  40%|████      | 80/200 [00:05<00:07, 16.02it/s, Materializing param=layers.8.self_attn.o_proj.weight]Loading weights:  40%|████      | 81/200 [00:05<00:07, 16.02it/s, Materializing param=layers.8.self_attn.q_proj.weight]Loading weights:  40%|████      | 81/200 [00:05<00:07, 16.02it/s, Materializing param=layers.8.self_attn.q_proj.weight]Loading weights:  41%|████      | 82/200 [00:05<00:07, 16.02it/s, Materializing param=layers.8.self_attn.v_proj.weight]Loading weights:  41%|████      | 82/200 [00:05<00:07, 16.02it/s, Materializing param=layers.8.self_attn.v_proj.weight]Loading weights:  42%|████▏     | 83/200 [00:05<00:07, 16.02it/s, Materializing param=layers.9.input_layernorm.weight] Loading weights:  42%|████▏     | 83/200 [00:05<00:07, 16.02it/s, Materializing param=layers.9.input_layernorm.weight]Loading weights:  42%|████▏     | 84/200 [00:05<00:07, 16.02it/s, Materializing param=layers.9.mlp.down_proj.weight]  Loading weights:  42%|████▏     | 84/200 [00:05<00:07, 16.02it/s, Materializing param=layers.9.mlp.down_proj.weight]Loading weights:  42%|████▎     | 85/200 [00:05<00:07, 16.02it/s, Materializing param=layers.9.mlp.gate_proj.weight]Loading weights:  42%|████▎     | 85/200 [00:05<00:07, 16.02it/s, Materializing param=layers.9.mlp.gate_proj.weight]Loading weights:  43%|████▎     | 86/200 [00:05<00:05, 19.38it/s, Materializing param=layers.9.mlp.gate_proj.weight]Loading weights:  43%|████▎     | 86/200 [00:05<00:05, 19.38it/s, Materializing param=layers.9.mlp.up_proj.weight]  Loading weights:  43%|████▎     | 86/200 [00:05<00:05, 19.38it/s, Materializing param=layers.9.mlp.up_proj.weight]Loading weights:  44%|████▎     | 87/200 [00:05<00:05, 19.38it/s, Materializing param=layers.9.post_attention_layernorm.weight]Loading weights:  44%|████▎     | 87/200 [00:05<00:05, 19.38it/s, Materializing param=layers.9.post_attention_layernorm.weight]Loading weights:  44%|████▍     | 88/200 [00:05<00:05, 19.38it/s, Materializing param=layers.9.self_attn.k_proj.weight]        Loading weights:  44%|████▍     | 88/200 [00:05<00:05, 19.38it/s, Materializing param=layers.9.self_attn.k_proj.weight]Loading weights:  44%|████▍     | 89/200 [00:05<00:05, 20.36it/s, Materializing param=layers.9.self_attn.k_proj.weight]Loading weights:  44%|████▍     | 89/200 [00:05<00:05, 20.36it/s, Materializing param=layers.9.self_attn.o_proj.weight]Loading weights:  44%|████▍     | 89/200 [00:05<00:05, 20.36it/s, Materializing param=layers.9.self_attn.o_proj.weight]Loading weights:  45%|████▌     | 90/200 [00:05<00:05, 20.36it/s, Materializing param=layers.9.self_attn.q_proj.weight]Loading weights:  45%|████▌     | 90/200 [00:05<00:05, 20.36it/s, Materializing param=layers.9.self_attn.q_proj.weight]Loading weights:  46%|████▌     | 91/200 [00:05<00:05, 20.36it/s, Materializing param=layers.9.self_attn.v_proj.weight]Loading weights:  46%|████▌     | 91/200 [00:05<00:05, 20.36it/s, Materializing param=layers.9.self_attn.v_proj.weight]Loading weights:  46%|████▌     | 92/200 [00:05<00:05, 19.48it/s, Materializing param=layers.9.self_attn.v_proj.weight]Loading weights:  46%|████▌     | 92/200 [00:05<00:05, 19.48it/s, Materializing param=layers.10.input_layernorm.weight]Loading weights:  46%|████▌     | 92/200 [00:05<00:05, 19.48it/s, Materializing param=layers.10.input_layernorm.weight]Loading weights:  46%|████▋     | 93/200 [00:05<00:05, 19.48it/s, Materializing param=layers.10.mlp.down_proj.weight]  Loading weights:  46%|████▋     | 93/200 [00:05<00:05, 19.48it/s, Materializing param=layers.10.mlp.down_proj.weight]Loading weights:  47%|████▋     | 94/200 [00:05<00:05, 19.48it/s, Materializing param=layers.10.mlp.gate_proj.weight]Loading weights:  47%|████▋     | 94/200 [00:05<00:05, 19.48it/s, Materializing param=layers.10.mlp.gate_proj.weight]Loading weights:  48%|████▊     | 95/200 [00:06<00:07, 14.86it/s, Materializing param=layers.10.mlp.gate_proj.weight]Loading weights:  48%|████▊     | 95/200 [00:06<00:07, 14.86it/s, Materializing param=layers.10.mlp.up_proj.weight]  Loading weights:  48%|████▊     | 95/200 [00:06<00:07, 14.86it/s, Materializing param=layers.10.mlp.up_proj.weight]Loading weights:  48%|████▊     | 96/200 [00:06<00:06, 14.86it/s, Materializing param=layers.10.post_attention_layernorm.weight]Loading weights:  48%|████▊     | 96/200 [00:06<00:06, 14.86it/s, Materializing param=layers.10.post_attention_layernorm.weight]Loading weights:  48%|████▊     | 97/200 [00:06<00:06, 14.86it/s, Materializing param=layers.10.self_attn.k_proj.weight]        Loading weights:  48%|████▊     | 97/200 [00:06<00:06, 14.86it/s, Materializing param=layers.10.self_attn.k_proj.weight]Loading weights:  49%|████▉     | 98/200 [00:06<00:06, 14.86it/s, Materializing param=layers.10.self_attn.o_proj.weight]Loading weights:  49%|████▉     | 98/200 [00:06<00:06, 14.86it/s, Materializing param=layers.10.self_attn.o_proj.weight]Loading weights:  50%|████▉     | 99/200 [00:06<00:06, 14.86it/s, Materializing param=layers.10.self_attn.q_proj.weight]Loading weights:  50%|████▉     | 99/200 [00:06<00:06, 14.86it/s, Materializing param=layers.10.self_attn.q_proj.weight]Loading weights:  50%|█████     | 100/200 [00:06<00:06, 14.86it/s, Materializing param=layers.10.self_attn.v_proj.weight]Loading weights:  50%|█████     | 100/200 [00:06<00:06, 14.86it/s, Materializing param=layers.10.self_attn.v_proj.weight]Loading weights:  50%|█████     | 101/200 [00:06<00:06, 14.86it/s, Materializing param=layers.11.input_layernorm.weight] Loading weights:  50%|█████     | 101/200 [00:06<00:06, 14.86it/s, Materializing param=layers.11.input_layernorm.weight]Loading weights:  51%|█████     | 102/200 [00:06<00:06, 14.86it/s, Materializing param=layers.11.mlp.down_proj.weight]  Loading weights:  51%|█████     | 102/200 [00:06<00:06, 14.86it/s, Materializing param=layers.11.mlp.down_proj.weight]Loading weights:  52%|█████▏    | 103/200 [00:06<00:04, 22.00it/s, Materializing param=layers.11.mlp.down_proj.weight]Loading weights:  52%|█████▏    | 103/200 [00:06<00:04, 22.00it/s, Materializing param=layers.11.mlp.gate_proj.weight]Loading weights:  52%|█████▏    | 103/200 [00:06<00:04, 22.00it/s, Materializing param=layers.11.mlp.gate_proj.weight]Loading weights:  52%|█████▏    | 104/200 [00:06<00:04, 22.00it/s, Materializing param=layers.11.mlp.up_proj.weight]  Loading weights:  52%|█████▏    | 104/200 [00:06<00:04, 22.00it/s, Materializing param=layers.11.mlp.up_proj.weight]Loading weights:  52%|█████▎    | 105/200 [00:06<00:04, 22.00it/s, Materializing param=layers.11.post_attention_layernorm.weight]Loading weights:  52%|█████▎    | 105/200 [00:06<00:04, 22.00it/s, Materializing param=layers.11.post_attention_layernorm.weight]Loading weights:  53%|█████▎    | 106/200 [00:06<00:06, 15.28it/s, Materializing param=layers.11.post_attention_layernorm.weight]Loading weights:  53%|█████▎    | 106/200 [00:06<00:06, 15.28it/s, Materializing param=layers.11.self_attn.k_proj.weight]        Loading weights:  53%|█████▎    | 106/200 [00:06<00:06, 15.28it/s, Materializing param=layers.11.self_attn.k_proj.weight]Loading weights:  54%|█████▎    | 107/200 [00:06<00:06, 15.28it/s, Materializing param=layers.11.self_attn.o_proj.weight]Loading weights:  54%|█████▎    | 107/200 [00:06<00:06, 15.28it/s, Materializing param=layers.11.self_attn.o_proj.weight]Loading weights:  54%|█████▍    | 108/200 [00:06<00:06, 15.28it/s, Materializing param=layers.11.self_attn.q_proj.weight]Loading weights:  54%|█████▍    | 108/200 [00:06<00:06, 15.28it/s, Materializing param=layers.11.self_attn.q_proj.weight]Loading weights:  55%|█████▍    | 109/200 [00:06<00:05, 15.28it/s, Materializing param=layers.11.self_attn.v_proj.weight]Loading weights:  55%|█████▍    | 109/200 [00:06<00:05, 15.28it/s, Materializing param=layers.11.self_attn.v_proj.weight]Loading weights:  55%|█████▌    | 110/200 [00:06<00:05, 15.28it/s, Materializing param=layers.12.input_layernorm.weight] Loading weights:  55%|█████▌    | 110/200 [00:06<00:05, 15.28it/s, Materializing param=layers.12.input_layernorm.weight]Loading weights:  56%|█████▌    | 111/200 [00:06<00:05, 15.28it/s, Materializing param=layers.12.mlp.down_proj.weight]  Loading weights:  56%|█████▌    | 111/200 [00:06<00:05, 15.28it/s, Materializing param=layers.12.mlp.down_proj.weight]Loading weights:  56%|█████▌    | 112/200 [00:06<00:05, 15.28it/s, Materializing param=layers.12.mlp.gate_proj.weight]Loading weights:  56%|█████▌    | 112/200 [00:06<00:05, 15.28it/s, Materializing param=layers.12.mlp.gate_proj.weight]Loading weights:  56%|█████▋    | 113/200 [00:06<00:04, 19.60it/s, Materializing param=layers.12.mlp.gate_proj.weight]Loading weights:  56%|█████▋    | 113/200 [00:06<00:04, 19.60it/s, Materializing param=layers.12.mlp.up_proj.weight]  Loading weights:  56%|█████▋    | 113/200 [00:06<00:04, 19.60it/s, Materializing param=layers.12.mlp.up_proj.weight]Loading weights:  57%|█████▋    | 114/200 [00:06<00:04, 19.60it/s, Materializing param=layers.12.post_attention_layernorm.weight]Loading weights:  57%|█████▋    | 114/200 [00:06<00:04, 19.60it/s, Materializing param=layers.12.post_attention_layernorm.weight]Loading weights:  57%|█████▊    | 115/200 [00:06<00:04, 19.60it/s, Materializing param=layers.12.self_attn.k_proj.weight]        Loading weights:  57%|█████▊    | 115/200 [00:06<00:04, 19.60it/s, Materializing param=layers.12.self_attn.k_proj.weight]Loading weights:  58%|█████▊    | 116/200 [00:06<00:04, 19.60it/s, Materializing param=layers.12.self_attn.o_proj.weight]Loading weights:  58%|█████▊    | 116/200 [00:06<00:04, 19.60it/s, Materializing param=layers.12.self_attn.o_proj.weight]Loading weights:  58%|█████▊    | 117/200 [00:06<00:04, 19.60it/s, Materializing param=layers.12.self_attn.q_proj.weight]Loading weights:  58%|█████▊    | 117/200 [00:06<00:04, 19.60it/s, Materializing param=layers.12.self_attn.q_proj.weight]Loading weights:  59%|█████▉    | 118/200 [00:07<00:05, 15.90it/s, Materializing param=layers.12.self_attn.q_proj.weight]Loading weights:  59%|█████▉    | 118/200 [00:07<00:05, 15.90it/s, Materializing param=layers.12.self_attn.v_proj.weight]Loading weights:  59%|█████▉    | 118/200 [00:07<00:05, 15.90it/s, Materializing param=layers.12.self_attn.v_proj.weight]Loading weights:  60%|█████▉    | 119/200 [00:07<00:05, 15.90it/s, Materializing param=layers.13.input_layernorm.weight] Loading weights:  60%|█████▉    | 119/200 [00:07<00:05, 15.90it/s, Materializing param=layers.13.input_layernorm.weight]Loading weights:  60%|██████    | 120/200 [00:07<00:05, 15.90it/s, Materializing param=layers.13.mlp.down_proj.weight]  Loading weights:  60%|██████    | 120/200 [00:07<00:05, 15.90it/s, Materializing param=layers.13.mlp.down_proj.weight]Loading weights:  60%|██████    | 121/200 [00:07<00:04, 15.90it/s, Materializing param=layers.13.mlp.gate_proj.weight]Loading weights:  60%|██████    | 121/200 [00:07<00:04, 15.90it/s, Materializing param=layers.13.mlp.gate_proj.weight]Loading weights:  61%|██████    | 122/200 [00:07<00:04, 18.00it/s, Materializing param=layers.13.mlp.gate_proj.weight]Loading weights:  61%|██████    | 122/200 [00:07<00:04, 18.00it/s, Materializing param=layers.13.mlp.up_proj.weight]  Loading weights:  61%|██████    | 122/200 [00:07<00:04, 18.00it/s, Materializing param=layers.13.mlp.up_proj.weight]Loading weights:  62%|██████▏   | 123/200 [00:07<00:04, 18.00it/s, Materializing param=layers.13.post_attention_layernorm.weight]Loading weights:  62%|██████▏   | 123/200 [00:07<00:04, 18.00it/s, Materializing param=layers.13.post_attention_layernorm.weight]Loading weights:  62%|██████▏   | 124/200 [00:07<00:04, 18.00it/s, Materializing param=layers.13.self_attn.k_proj.weight]        Loading weights:  62%|██████▏   | 124/200 [00:07<00:04, 18.00it/s, Materializing param=layers.13.self_attn.k_proj.weight]Loading weights:  62%|██████▎   | 125/200 [00:07<00:06, 11.83it/s, Materializing param=layers.13.self_attn.k_proj.weight]Loading weights:  62%|██████▎   | 125/200 [00:07<00:06, 11.83it/s, Materializing param=layers.13.self_attn.o_proj.weight]Loading weights:  62%|██████▎   | 125/200 [00:07<00:06, 11.83it/s, Materializing param=layers.13.self_attn.o_proj.weight]Loading weights:  63%|██████▎   | 126/200 [00:07<00:06, 11.83it/s, Materializing param=layers.13.self_attn.q_proj.weight]Loading weights:  63%|██████▎   | 126/200 [00:07<00:06, 11.83it/s, Materializing param=layers.13.self_attn.q_proj.weight]Loading weights:  64%|██████▎   | 127/200 [00:07<00:06, 11.83it/s, Materializing param=layers.13.self_attn.v_proj.weight]Loading weights:  64%|██████▎   | 127/200 [00:07<00:06, 11.83it/s, Materializing param=layers.13.self_attn.v_proj.weight]Loading weights:  64%|██████▍   | 128/200 [00:07<00:06, 11.83it/s, Materializing param=layers.14.input_layernorm.weight] Loading weights:  64%|██████▍   | 128/200 [00:07<00:06, 11.83it/s, Materializing param=layers.14.input_layernorm.weight]Loading weights:  64%|██████▍   | 129/200 [00:07<00:05, 11.83it/s, Materializing param=layers.14.mlp.down_proj.weight]  Loading weights:  64%|██████▍   | 129/200 [00:07<00:05, 11.83it/s, Materializing param=layers.14.mlp.down_proj.weight]Loading weights:  65%|██████▌   | 130/200 [00:07<00:05, 11.83it/s, Materializing param=layers.14.mlp.gate_proj.weight]Loading weights:  65%|██████▌   | 130/200 [00:07<00:05, 11.83it/s, Materializing param=layers.14.mlp.gate_proj.weight]Loading weights:  66%|██████▌   | 131/200 [00:08<00:04, 14.51it/s, Materializing param=layers.14.mlp.gate_proj.weight]Loading weights:  66%|██████▌   | 131/200 [00:08<00:04, 14.51it/s, Materializing param=layers.14.mlp.up_proj.weight]  Loading weights:  66%|██████▌   | 131/200 [00:08<00:04, 14.51it/s, Materializing param=layers.14.mlp.up_proj.weight]Loading weights:  66%|██████▌   | 132/200 [00:08<00:04, 14.51it/s, Materializing param=layers.14.post_attention_layernorm.weight]Loading weights:  66%|██████▌   | 132/200 [00:08<00:04, 14.51it/s, Materializing param=layers.14.post_attention_layernorm.weight]Loading weights:  66%|██████▋   | 133/200 [00:08<00:06,  9.81it/s, Materializing param=layers.14.post_attention_layernorm.weight]Loading weights:  66%|██████▋   | 133/200 [00:08<00:06,  9.81it/s, Materializing param=layers.14.self_attn.k_proj.weight]        Loading weights:  66%|██████▋   | 133/200 [00:08<00:06,  9.81it/s, Materializing param=layers.14.self_attn.k_proj.weight]Loading weights:  67%|██████▋   | 134/200 [00:08<00:06,  9.81it/s, Materializing param=layers.14.self_attn.o_proj.weight]Loading weights:  67%|██████▋   | 134/200 [00:08<00:06,  9.81it/s, Materializing param=layers.14.self_attn.o_proj.weight]Loading weights:  68%|██████▊   | 135/200 [00:08<00:06, 10.61it/s, Materializing param=layers.14.self_attn.o_proj.weight]Loading weights:  68%|██████▊   | 135/200 [00:08<00:06, 10.61it/s, Materializing param=layers.14.self_attn.q_proj.weight]Loading weights:  68%|██████▊   | 135/200 [00:08<00:06, 10.61it/s, Materializing param=layers.14.self_attn.q_proj.weight]Loading weights:  68%|██████▊   | 136/200 [00:08<00:06, 10.61it/s, Materializing param=layers.14.self_attn.v_proj.weight]Loading weights:  68%|██████▊   | 136/200 [00:08<00:06, 10.61it/s, Materializing param=layers.14.self_attn.v_proj.weight]Loading weights:  68%|██████▊   | 137/200 [00:08<00:05, 10.61it/s, Materializing param=layers.15.input_layernorm.weight] Loading weights:  68%|██████▊   | 137/200 [00:08<00:05, 10.61it/s, Materializing param=layers.15.input_layernorm.weight]Loading weights:  69%|██████▉   | 138/200 [00:08<00:05, 10.61it/s, Materializing param=layers.15.mlp.down_proj.weight]  Loading weights:  69%|██████▉   | 138/200 [00:08<00:05, 10.61it/s, Materializing param=layers.15.mlp.down_proj.weight]Loading weights:  70%|██████▉   | 139/200 [00:08<00:05, 10.61it/s, Materializing param=layers.15.mlp.gate_proj.weight]Loading weights:  70%|██████▉   | 139/200 [00:08<00:05, 10.61it/s, Materializing param=layers.15.mlp.gate_proj.weight]Loading weights:  70%|███████   | 140/200 [00:08<00:05, 10.61it/s, Materializing param=layers.15.mlp.up_proj.weight]  Loading weights:  70%|███████   | 140/200 [00:08<00:05, 10.61it/s, Materializing param=layers.15.mlp.up_proj.weight]Loading weights:  70%|███████   | 141/200 [00:08<00:05, 10.61it/s, Materializing param=layers.15.post_attention_layernorm.weight]Loading weights:  70%|███████   | 141/200 [00:08<00:05, 10.61it/s, Materializing param=layers.15.post_attention_layernorm.weight]Loading weights:  71%|███████   | 142/200 [00:09<00:03, 16.47it/s, Materializing param=layers.15.post_attention_layernorm.weight]Loading weights:  71%|███████   | 142/200 [00:09<00:03, 16.47it/s, Materializing param=layers.15.self_attn.k_proj.weight]        Loading weights:  71%|███████   | 142/200 [00:09<00:03, 16.47it/s, Materializing param=layers.15.self_attn.k_proj.weight]Loading weights:  72%|███████▏  | 143/200 [00:09<00:03, 16.47it/s, Materializing param=layers.15.self_attn.o_proj.weight]Loading weights:  72%|███████▏  | 143/200 [00:09<00:03, 16.47it/s, Materializing param=layers.15.self_attn.o_proj.weight]Loading weights:  72%|███████▏  | 144/200 [00:09<00:03, 16.47it/s, Materializing param=layers.15.self_attn.q_proj.weight]Loading weights:  72%|███████▏  | 144/200 [00:09<00:03, 16.47it/s, Materializing param=layers.15.self_attn.q_proj.weight]Loading weights:  72%|███████▎  | 145/200 [00:09<00:04, 12.26it/s, Materializing param=layers.15.self_attn.q_proj.weight]Loading weights:  72%|███████▎  | 145/200 [00:09<00:04, 12.26it/s, Materializing param=layers.15.self_attn.v_proj.weight]Loading weights:  72%|███████▎  | 145/200 [00:09<00:04, 12.26it/s, Materializing param=layers.15.self_attn.v_proj.weight]Loading weights:  73%|███████▎  | 146/200 [00:09<00:04, 12.26it/s, Materializing param=layers.16.input_layernorm.weight] Loading weights:  73%|███████▎  | 146/200 [00:09<00:04, 12.26it/s, Materializing param=layers.16.input_layernorm.weight]Loading weights:  74%|███████▎  | 147/200 [00:09<00:04, 11.28it/s, Materializing param=layers.16.input_layernorm.weight]Loading weights:  74%|███████▎  | 147/200 [00:09<00:04, 11.28it/s, Materializing param=layers.16.mlp.down_proj.weight]  Loading weights:  74%|███████▎  | 147/200 [00:10<00:04, 11.28it/s, Materializing param=layers.16.mlp.down_proj.weight]Loading weights:  74%|███████▍  | 148/200 [00:10<00:04, 11.28it/s, Materializing param=layers.16.mlp.gate_proj.weight]Loading weights:  74%|███████▍  | 148/200 [00:10<00:04, 11.28it/s, Materializing param=layers.16.mlp.gate_proj.weight]Loading weights:  74%|███████▍  | 149/200 [00:10<00:05,  9.05it/s, Materializing param=layers.16.mlp.gate_proj.weight]Loading weights:  74%|███████▍  | 149/200 [00:10<00:05,  9.05it/s, Materializing param=layers.16.mlp.up_proj.weight]  Loading weights:  74%|███████▍  | 149/200 [00:10<00:05,  9.05it/s, Materializing param=layers.16.mlp.up_proj.weight]Loading weights:  75%|███████▌  | 150/200 [00:10<00:05,  9.05it/s, Materializing param=layers.16.post_attention_layernorm.weight]Loading weights:  75%|███████▌  | 150/200 [00:10<00:05,  9.05it/s, Materializing param=layers.16.post_attention_layernorm.weight]Loading weights:  76%|███████▌  | 151/200 [00:10<00:07,  6.67it/s, Materializing param=layers.16.post_attention_layernorm.weight]Loading weights:  76%|███████▌  | 151/200 [00:10<00:07,  6.67it/s, Materializing param=layers.16.self_attn.k_proj.weight]        Loading weights:  76%|███████▌  | 151/200 [00:10<00:07,  6.67it/s, Materializing param=layers.16.self_attn.k_proj.weight]Loading weights:  76%|███████▌  | 152/200 [00:11<00:07,  6.21it/s, Materializing param=layers.16.self_attn.k_proj.weight]Loading weights:  76%|███████▌  | 152/200 [00:11<00:07,  6.21it/s, Materializing param=layers.16.self_attn.o_proj.weight]Loading weights:  76%|███████▌  | 152/200 [00:11<00:07,  6.21it/s, Materializing param=layers.16.self_attn.o_proj.weight]Loading weights:  76%|███████▋  | 153/200 [00:11<00:07,  6.55it/s, Materializing param=layers.16.self_attn.o_proj.weight]Loading weights:  76%|███████▋  | 153/200 [00:11<00:07,  6.55it/s, Materializing param=layers.16.self_attn.q_proj.weight]Loading weights:  76%|███████▋  | 153/200 [00:11<00:07,  6.55it/s, Materializing param=layers.16.self_attn.q_proj.weight]Loading weights:  77%|███████▋  | 154/200 [00:11<00:06,  6.68it/s, Materializing param=layers.16.self_attn.q_proj.weight]Loading weights:  77%|███████▋  | 154/200 [00:11<00:06,  6.68it/s, Materializing param=layers.16.self_attn.v_proj.weight]Loading weights:  77%|███████▋  | 154/200 [00:11<00:06,  6.68it/s, Materializing param=layers.16.self_attn.v_proj.weight]Loading weights:  78%|███████▊  | 155/200 [00:11<00:06,  6.68it/s, Materializing param=layers.17.input_layernorm.weight] Loading weights:  78%|███████▊  | 155/200 [00:11<00:06,  6.68it/s, Materializing param=layers.17.input_layernorm.weight]Loading weights:  78%|███████▊  | 156/200 [00:11<00:05,  7.43it/s, Materializing param=layers.17.input_layernorm.weight]Loading weights:  78%|███████▊  | 156/200 [00:11<00:05,  7.43it/s, Materializing param=layers.17.mlp.down_proj.weight]  Loading weights:  78%|███████▊  | 156/200 [00:11<00:05,  7.43it/s, Materializing param=layers.17.mlp.down_proj.weight]Loading weights:  78%|███████▊  | 157/200 [00:11<00:06,  6.97it/s, Materializing param=layers.17.mlp.down_proj.weight]Loading weights:  78%|███████▊  | 157/200 [00:11<00:06,  6.97it/s, Materializing param=layers.17.mlp.gate_proj.weight]Loading weights:  78%|███████▊  | 157/200 [00:11<00:06,  6.97it/s, Materializing param=layers.17.mlp.gate_proj.weight]Loading weights:  79%|███████▉  | 158/200 [00:11<00:07,  5.35it/s, Materializing param=layers.17.mlp.gate_proj.weight]Loading weights:  79%|███████▉  | 158/200 [00:12<00:07,  5.35it/s, Materializing param=layers.17.mlp.up_proj.weight]  Loading weights:  79%|███████▉  | 158/200 [00:12<00:07,  5.35it/s, Materializing param=layers.17.mlp.up_proj.weight]Loading weights:  80%|███████▉  | 159/200 [00:12<00:07,  5.53it/s, Materializing param=layers.17.mlp.up_proj.weight]Loading weights:  80%|███████▉  | 159/200 [00:12<00:07,  5.53it/s, Materializing param=layers.17.post_attention_layernorm.weight]Loading weights:  80%|███████▉  | 159/200 [00:12<00:07,  5.53it/s, Materializing param=layers.17.post_attention_layernorm.weight]Loading weights:  80%|████████  | 160/200 [00:12<00:07,  5.53it/s, Materializing param=layers.17.self_attn.k_proj.weight]        Loading weights:  80%|████████  | 160/200 [00:12<00:07,  5.53it/s, Materializing param=layers.17.self_attn.k_proj.weight]Loading weights:  80%|████████  | 161/200 [00:12<00:07,  5.53it/s, Materializing param=layers.17.self_attn.o_proj.weight]Loading weights:  80%|████████  | 161/200 [00:12<00:07,  5.53it/s, Materializing param=layers.17.self_attn.o_proj.weight]Loading weights:  81%|████████  | 162/200 [00:12<00:04,  9.41it/s, Materializing param=layers.17.self_attn.o_proj.weight]Loading weights:  81%|████████  | 162/200 [00:12<00:04,  9.41it/s, Materializing param=layers.17.self_attn.q_proj.weight]Loading weights:  81%|████████  | 162/200 [00:12<00:04,  9.41it/s, Materializing param=layers.17.self_attn.q_proj.weight]Loading weights:  82%|████████▏ | 163/200 [00:12<00:03,  9.41it/s, Materializing param=layers.17.self_attn.v_proj.weight]Loading weights:  82%|████████▏ | 163/200 [00:12<00:03,  9.41it/s, Materializing param=layers.17.self_attn.v_proj.weight]Loading weights:  82%|████████▏ | 164/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.input_layernorm.weight] Loading weights:  82%|████████▏ | 164/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.input_layernorm.weight]Loading weights:  82%|████████▎ | 165/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.mlp.down_proj.weight]  Loading weights:  82%|████████▎ | 165/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.mlp.down_proj.weight]Loading weights:  83%|████████▎ | 166/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.mlp.gate_proj.weight]Loading weights:  83%|████████▎ | 166/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.mlp.gate_proj.weight]Loading weights:  84%|████████▎ | 167/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.mlp.up_proj.weight]  Loading weights:  84%|████████▎ | 167/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.mlp.up_proj.weight]Loading weights:  84%|████████▍ | 168/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.post_attention_layernorm.weight]Loading weights:  84%|████████▍ | 168/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.post_attention_layernorm.weight]Loading weights:  84%|████████▍ | 169/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.self_attn.k_proj.weight]        Loading weights:  84%|████████▍ | 169/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.self_attn.k_proj.weight]Loading weights:  85%|████████▌ | 170/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.self_attn.o_proj.weight]Loading weights:  85%|████████▌ | 170/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.self_attn.o_proj.weight]Loading weights:  86%|████████▌ | 171/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.self_attn.q_proj.weight]Loading weights:  86%|████████▌ | 171/200 [00:12<00:03,  9.41it/s, Materializing param=layers.18.self_attn.q_proj.weight]Loading weights:  86%|████████▌ | 172/200 [00:12<00:02,  9.41it/s, Materializing param=layers.18.self_attn.v_proj.weight]Loading weights:  86%|████████▌ | 172/200 [00:12<00:02,  9.41it/s, Materializing param=layers.18.self_attn.v_proj.weight]Loading weights:  86%|████████▋ | 173/200 [00:12<00:02,  9.41it/s, Materializing param=layers.19.input_layernorm.weight] Loading weights:  86%|████████▋ | 173/200 [00:12<00:02,  9.41it/s, Materializing param=layers.19.input_layernorm.weight]Loading weights:  87%|████████▋ | 174/200 [00:12<00:02,  9.41it/s, Materializing param=layers.19.mlp.down_proj.weight]  Loading weights:  87%|████████▋ | 174/200 [00:12<00:02,  9.41it/s, Materializing param=layers.19.mlp.down_proj.weight]Loading weights:  88%|████████▊ | 175/200 [00:12<00:00, 31.58it/s, Materializing param=layers.19.mlp.down_proj.weight]Loading weights:  88%|████████▊ | 175/200 [00:12<00:00, 31.58it/s, Materializing param=layers.19.mlp.gate_proj.weight]Loading weights:  88%|████████▊ | 175/200 [00:12<00:00, 31.58it/s, Materializing param=layers.19.mlp.gate_proj.weight]Loading weights:  88%|████████▊ | 176/200 [00:12<00:00, 31.58it/s, Materializing param=layers.19.mlp.up_proj.weight]  Loading weights:  88%|████████▊ | 176/200 [00:12<00:00, 31.58it/s, Materializing param=layers.19.mlp.up_proj.weight]Loading weights:  88%|████████▊ | 177/200 [00:12<00:00, 31.58it/s, Materializing param=layers.19.post_attention_layernorm.weight]Loading weights:  88%|████████▊ | 177/200 [00:12<00:00, 31.58it/s, Materializing param=layers.19.post_attention_layernorm.weight]Loading weights:  89%|████████▉ | 178/200 [00:12<00:00, 31.58it/s, Materializing param=layers.19.self_attn.k_proj.weight]        Loading weights:  89%|████████▉ | 178/200 [00:12<00:00, 31.58it/s, Materializing param=layers.19.self_attn.k_proj.weight]Loading weights:  90%|████████▉ | 179/200 [00:12<00:00, 31.58it/s, Materializing param=layers.19.self_attn.o_proj.weight]Loading weights:  90%|████████▉ | 179/200 [00:12<00:00, 31.58it/s, Materializing param=layers.19.self_attn.o_proj.weight]Loading weights:  90%|█████████ | 180/200 [00:12<00:00, 32.97it/s, Materializing param=layers.19.self_attn.o_proj.weight]Loading weights:  90%|█████████ | 180/200 [00:12<00:00, 32.97it/s, Materializing param=layers.19.self_attn.q_proj.weight]Loading weights:  90%|█████████ | 180/200 [00:12<00:00, 32.97it/s, Materializing param=layers.19.self_attn.q_proj.weight]Loading weights:  90%|█████████ | 181/200 [00:12<00:00, 32.97it/s, Materializing param=layers.19.self_attn.v_proj.weight]Loading weights:  90%|█████████ | 181/200 [00:12<00:00, 32.97it/s, Materializing param=layers.19.self_attn.v_proj.weight]Loading weights:  91%|█████████ | 182/200 [00:12<00:00, 32.97it/s, Materializing param=layers.20.input_layernorm.weight] Loading weights:  91%|█████████ | 182/200 [00:12<00:00, 32.97it/s, Materializing param=layers.20.input_layernorm.weight]Loading weights:  92%|█████████▏| 183/200 [00:12<00:00, 32.97it/s, Materializing param=layers.20.mlp.down_proj.weight]  Loading weights:  92%|█████████▏| 183/200 [00:12<00:00, 32.97it/s, Materializing param=layers.20.mlp.down_proj.weight]Loading weights:  92%|█████████▏| 184/200 [00:12<00:00, 32.97it/s, Materializing param=layers.20.mlp.gate_proj.weight]Loading weights:  92%|█████████▏| 184/200 [00:12<00:00, 32.97it/s, Materializing param=layers.20.mlp.gate_proj.weight]Loading weights:  92%|█████████▎| 185/200 [00:12<00:00, 27.72it/s, Materializing param=layers.20.mlp.gate_proj.weight]Loading weights:  92%|█████████▎| 185/200 [00:12<00:00, 27.72it/s, Materializing param=layers.20.mlp.up_proj.weight]  Loading weights:  92%|█████████▎| 185/200 [00:12<00:00, 27.72it/s, Materializing param=layers.20.mlp.up_proj.weight]Loading weights:  93%|█████████▎| 186/200 [00:12<00:00, 27.72it/s, Materializing param=layers.20.post_attention_layernorm.weight]Loading weights:  93%|█████████▎| 186/200 [00:12<00:00, 27.72it/s, Materializing param=layers.20.post_attention_layernorm.weight]Loading weights:  94%|█████████▎| 187/200 [00:12<00:00, 27.72it/s, Materializing param=layers.20.self_attn.k_proj.weight]        Loading weights:  94%|█████████▎| 187/200 [00:12<00:00, 27.72it/s, Materializing param=layers.20.self_attn.k_proj.weight]Loading weights:  94%|█████████▍| 188/200 [00:12<00:00, 27.72it/s, Materializing param=layers.20.self_attn.o_proj.weight]Loading weights:  94%|█████████▍| 188/200 [00:12<00:00, 27.72it/s, Materializing param=layers.20.self_attn.o_proj.weight]Loading weights:  94%|█████████▍| 189/200 [00:12<00:00, 27.72it/s, Materializing param=layers.20.self_attn.q_proj.weight]Loading weights:  94%|█████████▍| 189/200 [00:12<00:00, 27.72it/s, Materializing param=layers.20.self_attn.q_proj.weight]Loading weights:  95%|█████████▌| 190/200 [00:12<00:00, 27.72it/s, Materializing param=layers.20.self_attn.v_proj.weight]Loading weights:  95%|█████████▌| 190/200 [00:12<00:00, 27.72it/s, Materializing param=layers.20.self_attn.v_proj.weight]Loading weights:  96%|█████████▌| 191/200 [00:12<00:00, 27.72it/s, Materializing param=layers.21.input_layernorm.weight] Loading weights:  96%|█████████▌| 191/200 [00:12<00:00, 27.72it/s, Materializing param=layers.21.input_layernorm.weight]Loading weights:  96%|█████████▌| 192/200 [00:12<00:00, 27.72it/s, Materializing param=layers.21.mlp.down_proj.weight]  Loading weights:  96%|█████████▌| 192/200 [00:12<00:00, 27.72it/s, Materializing param=layers.21.mlp.down_proj.weight]Loading weights:  96%|█████████▋| 193/200 [00:12<00:00, 37.50it/s, Materializing param=layers.21.mlp.down_proj.weight]Loading weights:  96%|█████████▋| 193/200 [00:12<00:00, 37.50it/s, Materializing param=layers.21.mlp.gate_proj.weight]Loading weights:  96%|█████████▋| 193/200 [00:12<00:00, 37.50it/s, Materializing param=layers.21.mlp.gate_proj.weight]Loading weights:  97%|█████████▋| 194/200 [00:12<00:00, 37.50it/s, Materializing param=layers.21.mlp.up_proj.weight]  Loading weights:  97%|█████████▋| 194/200 [00:12<00:00, 37.50it/s, Materializing param=layers.21.mlp.up_proj.weight]Loading weights:  98%|█████████▊| 195/200 [00:12<00:00, 37.50it/s, Materializing param=layers.21.post_attention_layernorm.weight]Loading weights:  98%|█████████▊| 195/200 [00:12<00:00, 37.50it/s, Materializing param=layers.21.post_attention_layernorm.weight]Loading weights:  98%|█████████▊| 196/200 [00:12<00:00, 37.50it/s, Materializing param=layers.21.self_attn.k_proj.weight]        Loading weights:  98%|█████████▊| 196/200 [00:12<00:00, 37.50it/s, Materializing param=layers.21.self_attn.k_proj.weight]Loading weights:  98%|█████████▊| 197/200 [00:12<00:00, 37.50it/s, Materializing param=layers.21.self_attn.o_proj.weight]Loading weights:  98%|█████████▊| 197/200 [00:12<00:00, 37.50it/s, Materializing param=layers.21.self_attn.o_proj.weight]Loading weights:  99%|█████████▉| 198/200 [00:12<00:00, 37.50it/s, Materializing param=layers.21.self_attn.q_proj.weight]Loading weights:  99%|█████████▉| 198/200 [00:12<00:00, 37.50it/s, Materializing param=layers.21.self_attn.q_proj.weight]Loading weights: 100%|█████████▉| 199/200 [00:12<00:00, 37.50it/s, Materializing param=layers.21.self_attn.v_proj.weight]Loading weights: 100%|█████████▉| 199/200 [00:12<00:00, 37.50it/s, Materializing param=layers.21.self_attn.v_proj.weight]Loading weights: 100%|██████████| 200/200 [00:12<00:00, 37.50it/s, Materializing param=norm.weight]                      Loading weights: 100%|██████████| 200/200 [00:12<00:00, 37.50it/s, Materializing param=norm.weight]Loading weights: 100%|██████████| 200/200 [00:12<00:00, 15.51it/s, Materializing param=norm.weight]
+[1mLlamaModel LOAD REPORT[0m from: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+Key            | Status     |  | 
+---------------+------------+--+-
+lm_head.weight | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+  Total parameters:    1,035,103,495
+  Frozen (LM):         770,244,608
+  Trainable (LM):      264,267,776 (lr=2e-05)
+  Trainable (heads+cog): 591,111 (lr=0.0005)
+  Learnable cognitive:  delta, l1_scale, skip_head, regression params
+  Initial delta:       0.3400
+
+==========================================================================================
+Training MORE FAITHFUL+SH model on GECO (AGGREGATED)
+  Model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+  Training on AGGREGATED data (3995 sentences, ~42936 words)
+  Contribution: L1 = neural_net(context), L2 = delta*L1, skip = learned head
+  FFD = L1 | Gaze = L1 + L2 | TRT = Gaze + regression (conditional)
+  Loss: 0.33*TRT(cond) + 0.33*FFD + 0.4*skip_BCE + delta_reg
+  Time losses masked to fixated words (skip_rate < 0.5) | skip loss on all words
+  Regression parameters: learnable (init from literature)
+  Batch: 8 | Accum: 8 | Effective: 64
+  AMP: True
+  Regularizers: delta_range(0.20-0.50, λ=5.0)
+==========================================================================================
+  Learnable parameters:
+    delta (L2/L1 ratio)       = 0.3400 (init=0.34, literature=0.20-0.50)
+    l1_scale                  = 50.00 (init=50)
+    skip_head                 = learned (from LLaMA repr)
+  From theory (fixed):
+    FFD                       = L1 (Reichle et al. 2003)
+    Gaze                      = L1 + L2 (Reichle et al. 2003)
+  Integration failure (learnable):
+    regression_sharpness      = 0.0300 (init=0.03)
+    regression_threshold      = 100.0ms (init=100.0)
+    regression_cost_scale     = 0.2500 (init=0.25)
+
+[Epoch   1/50] 37.4s | lm_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=337.9 (trt=708 ffd=315 skip=0.055) | 3,995 samples
+  Val:   r_TRT=0.374  r_FFD=0.165  r_Gaze=0.321  r_skip=0.537
+  Val:   MAE_TRT=65.6ms  MAE_FFD=35.7ms  MAE_Gaze=58.4ms
+  Val:   Bias_TRT=+20.2ms  Bias_FFD=-8.8ms  Bias_Gaze=+41.0ms
+  Pred:  mean_TRT=283ms (human=263ms) | L1=200+/-16ms  L2=68+/-6ms  delta=0.3386  l1_scale=50.0  mean_skip=0.545
+  Regression: sharpness=0.0329  threshold=100.0ms  cost_scale=0.2415
+  Sentence 1: "As a boy though I had..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  As               170    57 |   227   291   -64 |   170   242 |   227   260 |  0.60  0.21
+  a                204    69 |   287   179  +108 |   204   179 |   273   179 |  0.55  0.79
+  boy              200    68 |   284   216   +68 |   200   200 |   267   216 |  0.55  0.36
+  though           214    72 |   305   364   -59 |   214   234 |   286   305 |  0.52  0.07
+  I                191    65 |   273   248   +24 |   191   248 |   256   248 |  0.58  0.86
+  had              204    69 |   290   343   -54 |   204   238 |   273   268 |  0.54  0.50
+  often            206    70 |   294   237   +57 |   206   237 |   276   237 |  0.54  0.43
+  stayed           206    70 |   294   279   +15 |   206   244 |   276   279 |  0.53  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  He               187    63 |   250   257    -7 |   187   218 |   250   218 |  0.61  0.21
+  had              213    72 |   302   249   +52 |   213   208 |   285   208 |  0.52  0.43
+  been             198    67 |   282   240   +42 |   198   207 |   265   207 |  0.54  0.36
+  completely       210    71 |   298   245   +53 |   210   203 |   281   218 |  0.53  0.00
+  under            199    67 |   284   306   -22 |   199   212 |   267   250 |  0.55  0.21
+  his              195    66 |   276   216   +60 |   195   216 |   261   216 |  0.56  0.50
+  wifes            213    72 |   302   221   +81 |   213   173 |   285   185 |  0.53  0.29
+  ascendancy       234    79 |   337   546  -209 |   234   247 |   314   455 |  0.46  0.00
+
+  ** NEW BEST (r_TRT=0.374) **
+
+[Epoch   2/50] 30.3s | lm_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=76.4 (trt=183 ffd=48 skip=0.040) | 3,995 samples
+  Val:   r_TRT=0.434  r_FFD=0.205  r_Gaze=0.361  r_skip=0.544
+  Val:   MAE_TRT=59.8ms  MAE_FFD=37.4ms  MAE_Gaze=53.3ms
+  Val:   Bias_TRT=+5.6ms  Bias_FFD=-14.8ms  Bias_Gaze=+32.4ms
+  Pred:  mean_TRT=269ms (human=263ms) | L1=194+/-21ms  L2=65+/-7ms  delta=0.3356  l1_scale=50.0  mean_skip=0.584
+  Regression: sharpness=0.0465  threshold=100.0ms  cost_scale=0.2305
+  Sentence 1: "As a boy though I had..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  As               158    53 |   210   291   -80 |   158   242 |   210   260 |  0.79  0.21
+  a                216    72 |   299   179  +119 |   216   179 |   288   179 |  0.46  0.79
+  boy              197    66 |   274   216   +58 |   197   200 |   263   216 |  0.57  0.36
+  though           218    73 |   305   364   -59 |   218   234 |   291   305 |  0.43  0.07
+  I                179    60 |   248   248    -0 |   179   248 |   239   248 |  0.70  0.86
+  had              203    68 |   281   343   -62 |   203   238 |   271   268 |  0.55  0.50
+  often            201    67 |   280   237   +43 |   201   237 |   269   237 |  0.56  0.43
+  stayed           197    66 |   273   279    -6 |   197   244 |   263   279 |  0.58  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  He               178    60 |   238   257   -19 |   178   218 |   238   218 |  0.73  0.21
+  had              232    78 |   324   249   +74 |   232   208 |   309   208 |  0.35  0.43
+  been             192    64 |   268   240   +27 |   192   207 |   256   207 |  0.60  0.36
+  completely       209    70 |   291   245   +46 |   209   203 |   280   218 |  0.50  0.00
+  under            208    70 |   290   306   -16 |   208   212 |   277   250 |  0.51  0.21
+  his              189    63 |   262   216   +45 |   189   216 |   252   216 |  0.63  0.50
+  wifes            197    66 |   273   221   +52 |   197   173 |   263   185 |  0.58  0.29
+  ascendancy       269    90 |   383   546  -163 |   269   247 |   360   455 |  0.19  0.00
+
+  ** NEW BEST (r_TRT=0.434) **
+
+[Epoch   3/50] 30.7s | lm_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=63.9 (trt=145 ffd=48 skip=0.039) | 3,995 samples
+  Val:   r_TRT=0.412  r_FFD=0.198  r_Gaze=0.347  r_skip=0.527
+  Val:   MAE_TRT=63.1ms  MAE_FFD=36.0ms  MAE_Gaze=60.4ms
+  Val:   Bias_TRT=+17.0ms  Bias_FFD=-5.8ms  Bias_Gaze=+44.3ms
+  Pred:  mean_TRT=280ms (human=263ms) | L1=203+/-22ms  L2=68+/-7ms  delta=0.3348  l1_scale=50.0  mean_skip=0.492
+  Regression: sharpness=0.0548  threshold=100.0ms  cost_scale=0.2302
+  Sentence 1: "As a boy though I had..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  As               173    58 |   231   291   -60 |   173   242 |   231   260 |  0.65  0.21
+  a                238    80 |   331   179  +151 |   238   179 |   317   179 |  0.34  0.79
+  boy              209    70 |   291   216   +75 |   209   200 |   279   216 |  0.46  0.36
+  though           247    83 |   348   364   -16 |   247   234 |   330   305 |  0.30  0.07
+  I                192    64 |   265   248   +17 |   192   248 |   256   248 |  0.58  0.86
+  had              218    73 |   302   343   -42 |   218   238 |   291   268 |  0.43  0.50
+  often            225    75 |   315   237   +78 |   225   237 |   301   237 |  0.40  0.43
+  stayed           210    70 |   292   279   +13 |   210   244 |   281   279 |  0.45  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  He               196    66 |   262   257    +5 |   196   218 |   262   218 |  0.58  0.21
+  had              255    85 |   359   249  +110 |   255   208 |   340   208 |  0.28  0.43
+  been             197    66 |   273   240   +33 |   197   207 |   263   207 |  0.51  0.36
+  completely       207    69 |   286   245   +41 |   207   203 |   277   218 |  0.48  0.00
+  under            203    68 |   281   306   -25 |   203   212 |   272   250 |  0.49  0.21
+  his              188    63 |   258   216   +42 |   188   216 |   251   216 |  0.57  0.50
+  wifes            201    67 |   277   221   +56 |   201   173 |   269   185 |  0.51  0.29
+  ascendancy       261    87 |   369   546  -177 |   261   247 |   348   455 |  0.25  0.00
+
+
+[Epoch   4/50] 30.9s | lm_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=50.8 (trt=109 ffd=44 skip=0.039) | 3,995 samples
+  Val:   r_TRT=0.389  r_FFD=0.185  r_Gaze=0.328  r_skip=0.523
+  Val:   MAE_TRT=63.0ms  MAE_FFD=36.7ms  MAE_Gaze=60.3ms
+  Val:   Bias_TRT=+14.0ms  Bias_FFD=-6.6ms  Bias_Gaze=+43.1ms
+  Pred:  mean_TRT=277ms (human=263ms) | L1=203+/-24ms  L2=68+/-8ms  delta=0.3346  l1_scale=50.0  mean_skip=0.493
+  Regression: sharpness=0.0648  threshold=100.0ms  cost_scale=0.2357
+  Sentence 1: "As a boy though I had..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  As               167    56 |   223   291   -68 |   167   242 |   223   260 |  0.65  0.21
+  a                237    79 |   327   179  +147 |   237   179 |   316   179 |  0.38  0.79
+  boy              205    69 |   282   216   +66 |   205   200 |   274   216 |  0.47  0.36
+  though           253    85 |   355   364    -8 |   253   234 |   338   305 |  0.30  0.07
+  I                198    66 |   272   248   +24 |   198   248 |   264   248 |  0.55  0.86
+  had              222    74 |   306   343   -38 |   222   238 |   296   268 |  0.43  0.50
+  often            222    74 |   307   237   +70 |   222   237 |   296   237 |  0.43  0.43
+  stayed           225    75 |   312   279   +33 |   225   244 |   300   279 |  0.40  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  He               174    58 |   232   257   -25 |   174   218 |   232   218 |  0.67  0.21
+  had              251    84 |   349   249   +99 |   251   208 |   335   208 |  0.32  0.43
+  been             191    64 |   262   240   +21 |   191   207 |   255   207 |  0.53  0.36
+  completely       212    71 |   291   245   +46 |   212   203 |   283   218 |  0.46  0.00
+  under            200    67 |   274   306   -32 |   200   212 |   267   250 |  0.50  0.21
+  his              198    66 |   271   216   +55 |   198   216 |   265   216 |  0.52  0.50
+  wifes            208    70 |   285   221   +64 |   208   173 |   277   185 |  0.48  0.29
+  ascendancy       293    98 |   422   546  -123 |   293   247 |   392   455 |  0.22  0.00
+
+
+[Epoch   5/50] 30.2s | lm_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=43.1 (trt=87 ffd=43 skip=0.040) | 3,995 samples
+  Val:   r_TRT=0.365  r_FFD=0.179  r_Gaze=0.301  r_skip=0.470
+  Val:   MAE_TRT=64.3ms  MAE_FFD=36.2ms  MAE_Gaze=62.5ms
+  Val:   Bias_TRT=+16.6ms  Bias_FFD=-4.3ms  Bias_Gaze=+46.3ms
+  Pred:  mean_TRT=280ms (human=263ms) | L1=205+/-22ms  L2=69+/-7ms  delta=0.3350  l1_scale=50.0  mean_skip=0.497
+  Regression: sharpness=0.0729  threshold=100.0ms  cost_scale=0.2459
+  Sentence 1: "As a boy though I had..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  As               178    60 |   237   291   -54 |   178   242 |   237   260 |  0.62  0.21
+  a                254    85 |   353   179  +174 |   254   179 |   339   179 |  0.35  0.79
+  boy              210    70 |   288   216   +72 |   210   200 |   280   216 |  0.47  0.36
+  though           258    87 |   364   364    +0 |   258   234 |   345   305 |  0.30  0.07
+  I                198    66 |   271   248   +22 |   198   248 |   264   248 |  0.56  0.86
+  had              227    76 |   312   343   -31 |   227   238 |   303   268 |  0.44  0.50
+  often            220    74 |   303   237   +66 |   220   237 |   294   237 |  0.46  0.43
+  stayed           172    58 |   232   279   -47 |   172   244 |   229   279 |  0.60  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  He               181    61 |   242   257   -16 |   181   218 |   242   218 |  0.65  0.21
+  had              277    93 |   392   249  +143 |   277   208 |   370   208 |  0.26  0.43
+  been             194    65 |   266   240   +25 |   194   207 |   259   207 |  0.53  0.36
+  completely       235    79 |   326   245   +80 |   235   203 |   314   218 |  0.40  0.00
+  under            208    70 |   286   306   -20 |   208   212 |   278   250 |  0.48  0.21
+  his              205    69 |   280   216   +64 |   205   216 |   274   216 |  0.51  0.50
+  wifes            216    72 |   296   221   +75 |   216   173 |   288   185 |  0.46  0.29
+  ascendancy       267    89 |   378   546  -167 |   267   247 |   356   455 |  0.27  0.00
+
+
+[Epoch   6/50] 29.1s | lm_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=37.2 (trt=72 ffd=40 skip=0.040) | 3,995 samples
+  Val:   r_TRT=0.369  r_FFD=0.177  r_Gaze=0.309  r_skip=0.487
+  Val:   MAE_TRT=63.0ms  MAE_FFD=38.5ms  MAE_Gaze=59.8ms
+  Val:   Bias_TRT=+10.2ms  Bias_FFD=-8.6ms  Bias_Gaze=+40.8ms
+  Pred:  mean_TRT=273ms (human=263ms) | L1=201+/-28ms  L2=67+/-9ms  delta=0.3359  l1_scale=50.0  mean_skip=0.532
+  Regression: sharpness=0.0793  threshold=100.0ms  cost_scale=0.2579
+  Sentence 1: "As a boy though I had..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  As               160    54 |   214   291   -77 |   160   242 |   214   260 |  0.68  0.21
+  a                265    89 |   370   179  +191 |   265   179 |   354   179 |  0.34  0.79
+  boy              204    69 |   280   216   +64 |   204   200 |   273   216 |  0.51  0.36
+  though           281    94 |   402   364   +38 |   281   234 |   375   305 |  0.26  0.07
+  I                177    60 |   241   248    -8 |   177   248 |   237   248 |  0.65  0.86
+  had              218    73 |   298   343   -45 |   218   238 |   292   268 |  0.50  0.50
+  often            217    73 |   298   237   +61 |   217   237 |   291   237 |  0.50  0.43
+  stayed           165    55 |   222   279   -57 |   165   244 |   220   279 |  0.63  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  He               164    55 |   220   257   -38 |   164   218 |   220   218 |  0.71  0.21
+  had              286    96 |   406   249  +156 |   286   208 |   382   208 |  0.26  0.43
+  been             169    57 |   229   240   -11 |   169   207 |   226   207 |  0.62  0.36
+  completely       213    72 |   290   245   +45 |   213   203 |   284   218 |  0.50  0.00
+  under            200    67 |   273   306   -33 |   200   212 |   268   250 |  0.53  0.21
+  his              206    69 |   281   216   +65 |   206   216 |   276   216 |  0.53  0.50
+  wifes            210    70 |   287   221   +65 |   210   173 |   280   185 |  0.52  0.29
+  ascendancy       297   100 |   433   546  -112 |   297   247 |   397   455 |  0.23  0.00
+
+
+[Epoch   7/50] 29.9s | lm_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=33.8 (trt=63 ffd=39 skip=0.040) | 3,995 samples
+  Val:   r_TRT=0.370  r_FFD=0.181  r_Gaze=0.310  r_skip=0.494
+  Val:   MAE_TRT=63.2ms  MAE_FFD=37.8ms  MAE_Gaze=60.8ms
+  Val:   Bias_TRT=+11.7ms  Bias_FFD=-7.3ms  Bias_Gaze=+42.7ms
+  Pred:  mean_TRT=275ms (human=263ms) | L1=202+/-27ms  L2=68+/-9ms  delta=0.3372  l1_scale=50.0  mean_skip=0.511
+  Regression: sharpness=0.0876  threshold=100.0ms  cost_scale=0.2745
+  Sentence 1: "As a boy though I had..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  As               166    56 |   222   291   -69 |   166   242 |   222   260 |  0.64  0.21
+  a                244    82 |   337   179  +157 |   244   179 |   326   179 |  0.39  0.79
+  boy              204    69 |   279   216   +63 |   204   200 |   273   216 |  0.50  0.36
+  though           253    85 |   354   364    -9 |   253   234 |   338   305 |  0.33  0.07
+  I                194    65 |   264   248   +15 |   194   248 |   260   248 |  0.59  0.86
+  had              216    73 |   294   343   -49 |   216   238 |   288   268 |  0.49  0.50
+  often            224    75 |   307   237   +70 |   224   237 |   299   237 |  0.46  0.43
+  stayed           175    59 |   236   279   -43 |   175   244 |   234   279 |  0.58  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  He               175    59 |   234   257   -23 |   175   218 |   234   218 |  0.68  0.21
+  had              286    96 |   410   249  +160 |   286   208 |   382   208 |  0.24  0.43
+  been             166    56 |   225   240   -16 |   166   207 |   222   207 |  0.60  0.36
+  completely       215    72 |   292   245   +47 |   215   203 |   287   218 |  0.48  0.00
+  under            204    69 |   278   306   -28 |   204   212 |   273   250 |  0.49  0.21
+  his              195    66 |   265   216   +48 |   195   216 |   261   216 |  0.56  0.50
+  wifes            206    69 |   279   221   +58 |   206   173 |   275   185 |  0.53  0.29
+  ascendancy       316   106 |   470   546   -76 |   316   247 |   422   455 |  0.18  0.00
+
+
+[Epoch   8/50] 29.4s | lm_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=32.1 (trt=58 ffd=38 skip=0.040) | 3,995 samples
+  Val:   r_TRT=0.366  r_FFD=0.176  r_Gaze=0.309  r_skip=0.508
+  Val:   MAE_TRT=64.3ms  MAE_FFD=37.8ms  MAE_Gaze=63.1ms
+  Val:   Bias_TRT=+15.6ms  Bias_FFD=-4.8ms  Bias_Gaze=+46.4ms
+  Pred:  mean_TRT=279ms (human=263ms) | L1=204+/-28ms  L2=69+/-9ms  delta=0.3387  l1_scale=50.0  mean_skip=0.533
+  Regression: sharpness=0.0932  threshold=100.0ms  cost_scale=0.2917
+  Sentence 1: "As a boy though I had..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  As               165    56 |   221   291   -70 |   165   242 |   221   260 |  0.67  0.21
+  a                248    84 |   345   179  +165 |   248   179 |   333   179 |  0.41  0.79
+  boy              210    71 |   287   216   +71 |   210   200 |   281   216 |  0.51  0.36
+  though           263    89 |   373   364   +10 |   263   234 |   352   305 |  0.31  0.07
+  I                186    63 |   252   248    +4 |   186   248 |   249   248 |  0.65  0.86
+  had              225    76 |   309   343   -35 |   225   238 |   301   268 |  0.49  0.50
+  often            229    78 |   316   237   +79 |   229   237 |   307   237 |  0.47  0.43
+  stayed           180    61 |   243   279   -36 |   180   244 |   241   279 |  0.61  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  He               175    59 |   235   257   -22 |   175   218 |   235   218 |  0.72  0.21
+  had              308   104 |   453   249  +203 |   308   208 |   412   208 |  0.21  0.43
+  been             169    57 |   228   240   -13 |   169   207 |   226   207 |  0.62  0.36
+  completely       216    73 |   294   245   +49 |   216   203 |   289   218 |  0.51  0.00
+  under            211    71 |   287   306   -18 |   211   212 |   282   250 |  0.50  0.21
+  his              197    67 |   268   216   +51 |   197   216 |   264   216 |  0.59  0.50
+  wifes            203    69 |   276   221   +55 |   203   173 |   272   185 |  0.57  0.29
+  ascendancy       295   100 |   434   546  -112 |   295   247 |   395   455 |  0.22  0.00
+
+
+[Epoch   9/50] 29.6s | lm_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=29.1 (trt=50 ffd=38 skip=0.039) | 3,995 samples
+  Val:   r_TRT=0.367  r_FFD=0.179  r_Gaze=0.305  r_skip=0.481
+  Val:   MAE_TRT=62.4ms  MAE_FFD=37.6ms  MAE_Gaze=58.9ms
+  Val:   Bias_TRT=+8.4ms  Bias_FFD=-9.6ms  Bias_Gaze=+40.2ms
+  Pred:  mean_TRT=272ms (human=263ms) | L1=200+/-25ms  L2=68+/-9ms  delta=0.3395  l1_scale=50.0  mean_skip=0.519
+  Regression: sharpness=0.0963  threshold=100.0ms  cost_scale=0.3013
+  Sentence 1: "As a boy though I had..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  As               168    57 |   225   291   -65 |   168   242 |   225   260 |  0.62  0.21
+  a                246    83 |   341   179  +161 |   246   179 |   329   179 |  0.39  0.79
+  boy              205    70 |   280   216   +64 |   205   200 |   275   216 |  0.50  0.36
+  though           261    88 |   370   364    +6 |   261   234 |   349   305 |  0.30  0.07
+  I                190    65 |   258   248   +10 |   190   248 |   255   248 |  0.62  0.86
+  had              238    81 |   330   343   -14 |   238   238 |   319   268 |  0.41  0.50
+  often            221    75 |   304   237   +67 |   221   237 |   296   237 |  0.48  0.43
+  stayed           180    61 |   243   279   -36 |   180   244 |   241   279 |  0.56  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  He               176    60 |   235   257   -22 |   176   218 |   235   218 |  0.69  0.21
+  had              317   108 |   473   249  +224 |   317   208 |   425   208 |  0.19  0.43
+  been             170    58 |   230   240   -10 |   170   207 |   228   207 |  0.57  0.36
+  completely       216    73 |   294   245   +49 |   216   203 |   289   218 |  0.49  0.00
+  under            203    69 |   276   306   -30 |   203   212 |   272   250 |  0.51  0.21
+  his              192    65 |   260   216   +43 |   192   216 |   257   216 |  0.58  0.50
+  wifes            201    68 |   272   221   +51 |   201   173 |   269   185 |  0.56  0.29
+  ascendancy       289    98 |   423   546  -123 |   289   247 |   386   455 |  0.21  0.00
+
+
+[Epoch  10/50] 29.4s | lm_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=27.9 (trt=46 ffd=38 skip=0.040) | 3,995 samples
+  Val:   r_TRT=0.364  r_FFD=0.172  r_Gaze=0.304  r_skip=0.495
+  Val:   MAE_TRT=63.0ms  MAE_FFD=37.5ms  MAE_Gaze=60.7ms
+  Val:   Bias_TRT=+11.4ms  Bias_FFD=-7.7ms  Bias_Gaze=+43.0ms
+  Pred:  mean_TRT=275ms (human=263ms) | L1=201+/-26ms  L2=69+/-9ms  delta=0.3409  l1_scale=50.0  mean_skip=0.536
+  Regression: sharpness=0.1005  threshold=100.0ms  cost_scale=0.3157
+  Sentence 1: "As a boy though I had..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  As               168    57 |   225   291   -65 |   168   242 |   225   260 |  0.65  0.21
+  a                247    84 |   343   179  +163 |   247   179 |   331   179 |  0.40  0.79
+  boy              209    71 |   286   216   +70 |   209   200 |   280   216 |  0.50  0.36
+  though           257    88 |   364   364    +0 |   257   234 |   344   305 |  0.32  0.07
+  I                185    63 |   250   248    +2 |   185   248 |   248   248 |  0.65  0.86
+  had              218    74 |   299   343   -45 |   218   238 |   293   268 |  0.51  0.50
+  often            219    75 |   301   237   +64 |   219   237 |   294   237 |  0.50  0.43
+  stayed           181    62 |   245   279   -34 |   181   244 |   243   279 |  0.59  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  He               181    62 |   243   257   -14 |   181   218 |   243   218 |  0.71  0.21
+  had              299   102 |   443   249  +194 |   299   208 |   401   208 |  0.21  0.43
+  been             172    59 |   232   240    -8 |   172   207 |   230   207 |  0.61  0.36
+  completely       215    73 |   293   245   +48 |   215   203 |   289   218 |  0.51  0.00
+  under            207    70 |   281   306   -24 |   207   212 |   277   250 |  0.51  0.21
+  his              194    66 |   262   216   +46 |   194   216 |   260   216 |  0.60  0.50
+  wifes            200    68 |   271   221   +50 |   200   173 |   268   185 |  0.58  0.29
+  ascendancy       280    96 |   409   546  -137 |   280   247 |   376   455 |  0.23  0.00
+
+
+[Epoch  11/50] 30.4s | lm_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=26.5 (trt=43 ffd=37 skip=0.040) | 3,995 samples
+  Val:   r_TRT=0.367  r_FFD=0.173  r_Gaze=0.308  r_skip=0.501
+  Val:   MAE_TRT=64.3ms  MAE_FFD=37.5ms  MAE_Gaze=63.4ms
+  Val:   Bias_TRT=+16.3ms  Bias_FFD=-4.8ms  Bias_Gaze=+47.2ms
+  Pred:  mean_TRT=279ms (human=263ms) | L1=204+/-26ms  L2=70+/-9ms  delta=0.3425  l1_scale=50.0  mean_skip=0.555
+  Regression: sharpness=0.1038  threshold=99.9ms  cost_scale=0.3299
+  Sentence 1: "As a boy though I had..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  As               167    57 |   225   291   -66 |   167   242 |   225   260 |  0.67  0.21
+  a                249    85 |   347   179  +168 |   249   179 |   334   179 |  0.43  0.79
+  boy              217    74 |   299   216   +83 |   217   200 |   291   216 |  0.50  0.36
+  though           270    93 |   393   364   +30 |   270   234 |   363   305 |  0.29  0.07
+  I                187    64 |   254   248    +6 |   187   248 |   251   248 |  0.67  0.86
+  had              232    79 |   319   343   -24 |   232   238 |   311   268 |  0.50  0.50
+  often            222    76 |   306   237   +69 |   222   237 |   298   237 |  0.54  0.43
+  stayed           188    64 |   254   279   -25 |   188   244 |   252   279 |  0.60  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  He               178    61 |   239   257   -18 |   178   218 |   239   218 |  0.74  0.21
+  had              300   103 |   449   249  +199 |   300   208 |   403   208 |  0.23  0.43
+  been             166    57 |   225   240   -16 |   166   207 |   223   207 |  0.61  0.36
+  completely       217    74 |   296   245   +51 |   217   203 |   291   218 |  0.55  0.00
+  under            201    69 |   273   306   -33 |   201   212 |   270   250 |  0.57  0.21
+  his              194    66 |   263   216   +46 |   194   216 |   260   216 |  0.63  0.50
+  wifes            203    69 |   275   221   +54 |   203   173 |   272   185 |  0.61  0.29
+  ascendancy       291   100 |   435   546  -111 |   291   247 |   391   455 |  0.23  0.00
+
+
+[Epoch  12/50] 29.4s | lm_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=25.5 (trt=40 ffd=36 skip=0.040) | 3,995 samples
+  Val:   r_TRT=0.367  r_FFD=0.176  r_Gaze=0.308  r_skip=0.506
+  Val:   MAE_TRT=63.4ms  MAE_FFD=36.9ms  MAE_Gaze=61.8ms
+  Val:   Bias_TRT=+13.3ms  Bias_FFD=-6.6ms  Bias_Gaze=+45.0ms
+  Pred:  mean_TRT=277ms (human=263ms) | L1=203+/-24ms  L2=70+/-8ms  delta=0.3434  l1_scale=50.0  mean_skip=0.516
+  Regression: sharpness=0.1073  threshold=99.9ms  cost_scale=0.3399
+  Sentence 1: "As a boy though I had..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  As               176    61 |   237   291   -54 |   176   242 |   237   260 |  0.63  0.21
+  a                240    82 |   332   179  +153 |   240   179 |   322   179 |  0.41  0.79
+  boy              210    72 |   288   216   +72 |   210   200 |   283   216 |  0.47  0.36
+  though           258    89 |   369   364    +6 |   258   234 |   347   305 |  0.28  0.07
+  I                182    62 |   246   248    -2 |   182   248 |   244   248 |  0.65  0.86
+  had              228    78 |   314   343   -29 |   228   238 |   306   268 |  0.45  0.50
+  often            221    76 |   305   237   +68 |   221   237 |   297   237 |  0.48  0.43
+  stayed           189    65 |   257   279   -23 |   189   244 |   254   279 |  0.57  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  He               184    63 |   247   257   -10 |   184   218 |   247   218 |  0.70  0.21
+  had              288    99 |   427   249  +178 |   288   208 |   387   208 |  0.22  0.43
+  been             181    62 |   246   240    +5 |   181   207 |   243   207 |  0.58  0.36
+  completely       231    79 |   318   245   +73 |   231   203 |   310   218 |  0.43  0.00
+  under            202    70 |   276   306   -30 |   202   212 |   272   250 |  0.52  0.21
+  his              192    66 |   261   216   +44 |   192   216 |   258   216 |  0.60  0.50
+  wifes            198    68 |   269   221   +48 |   198   173 |   266   185 |  0.58  0.29
+  ascendancy       277    95 |   407   546  -139 |   277   247 |   373   455 |  0.23  0.00
+
+
+[Epoch  13/50] 29.4s | lm_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=24.6 (trt=38 ffd=36 skip=0.039) | 3,995 samples
+  Val:   r_TRT=0.362  r_FFD=0.174  r_Gaze=0.302  r_skip=0.493
+  Val:   MAE_TRT=63.2ms  MAE_FFD=37.3ms  MAE_Gaze=60.9ms
+  Val:   Bias_TRT=+11.6ms  Bias_FFD=-8.0ms  Bias_Gaze=+43.4ms
+  Pred:  mean_TRT=275ms (human=263ms) | L1=201+/-25ms  L2=69+/-9ms  delta=0.3446  l1_scale=50.0  mean_skip=0.546
+  Regression: sharpness=0.1101  threshold=99.9ms  cost_scale=0.3517
+  Sentence 1: "As a boy though I had..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  As               164    57 |   221   291   -70 |   164   242 |   221   260 |  0.65  0.21
+  a                244    84 |   339   179  +160 |   244   179 |   328   179 |  0.42  0.79
+  boy              205    71 |   280   216   +64 |   205   200 |   276   216 |  0.52  0.36
+  though           255    88 |   363   364    -1 |   255   234 |   343   305 |  0.32  0.07
+  I                180    62 |   244   248    -4 |   180   248 |   242   248 |  0.67  0.86
+  had              218    75 |   299   343   -44 |   218   238 |   294   268 |  0.53  0.50
+  often            223    77 |   307   237   +70 |   223   237 |   299   237 |  0.50  0.43
+  stayed           186    64 |   252   279   -27 |   186   244 |   250   279 |  0.59  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  He               170    58 |   228   257   -29 |   170   218 |   228   218 |  0.74  0.21
+  had              273    94 |   395   249  +146 |   273   208 |   367   208 |  0.27  0.43
+  been             170    59 |   230   240   -11 |   170   207 |   229   207 |  0.61  0.36
+  completely       229    79 |   316   245   +70 |   229   203 |   308   218 |  0.47  0.00
+  under            198    68 |   270   306   -36 |   198   212 |   267   250 |  0.56  0.21
+  his              198    68 |   269   216   +52 |   198   216 |   266   216 |  0.61  0.50
+  wifes            204    70 |   277   221   +56 |   204   173 |   274   185 |  0.59  0.29
+  ascendancy       282    97 |   421   546  -125 |   282   247 |   380   455 |  0.22  0.00
+
+
+[Epoch  14/50] 31.2s | lm_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=25.3 (trt=40 ffd=36 skip=0.039) | 3,995 samples
+  Val:   r_TRT=0.354  r_FFD=0.173  r_Gaze=0.297  r_skip=0.494
+  Val:   MAE_TRT=63.2ms  MAE_FFD=37.1ms  MAE_Gaze=60.6ms
+  Val:   Bias_TRT=+10.9ms  Bias_FFD=-8.5ms  Bias_Gaze=+42.9ms
+  Pred:  mean_TRT=274ms (human=263ms) | L1=201+/-24ms  L2=69+/-8ms  delta=0.3457  l1_scale=50.0  mean_skip=0.513
+  Regression: sharpness=0.1128  threshold=99.9ms  cost_scale=0.3618
+  Sentence 1: "As a boy though I had..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  As               167    58 |   225   291   -66 |   167   242 |   225   260 |  0.62  0.21
+  a                240    83 |   334   179  +154 |   240   179 |   323   179 |  0.39  0.79
+  boy              205    71 |   280   216   +64 |   205   200 |   276   216 |  0.48  0.36
+  though           257    89 |   369   364    +5 |   257   234 |   346   305 |  0.27  0.07
+  I                186    64 |   252   248    +4 |   186   248 |   250   248 |  0.63  0.86
+  had              225    78 |   310   343   -33 |   225   238 |   303   268 |  0.46  0.50
+  often            225    78 |   312   237   +75 |   225   237 |   303   237 |  0.45  0.43
+  stayed           179    62 |   242   279   -37 |   179   244 |   240   279 |  0.56  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  He               175    61 |   236   257   -21 |   175   218 |   236   218 |  0.71  0.21
+  had              293   101 |   441   249  +192 |   293   208 |   395   208 |  0.21  0.43
+  been             164    57 |   221   240   -19 |   164   207 |   220   207 |  0.56  0.36
+  completely       222    77 |   305   245   +59 |   222   203 |   299   218 |  0.46  0.00
+  under            195    68 |   266   306   -40 |   195   212 |   263   250 |  0.54  0.21
+  his              189    65 |   256   216   +40 |   189   216 |   254   216 |  0.59  0.50
+  wifes            195    68 |   265   221   +44 |   195   173 |   263   185 |  0.58  0.29
+  ascendancy       266    92 |   384   546  -161 |   266   247 |   357   455 |  0.23  0.00
+
+
+[Epoch  15/50] 29.8s | lm_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=25.1 (trt=39 ffd=36 skip=0.040) | 3,995 samples
+  Val:   r_TRT=0.365  r_FFD=0.176  r_Gaze=0.304  r_skip=0.500
+  Val:   MAE_TRT=64.3ms  MAE_FFD=37.2ms  MAE_Gaze=63.5ms
+  Val:   Bias_TRT=+15.9ms  Bias_FFD=-5.3ms  Bias_Gaze=+47.2ms
+  Pred:  mean_TRT=279ms (human=263ms) | L1=204+/-26ms  L2=71+/-9ms  delta=0.3459  l1_scale=50.0  mean_skip=0.515
+  Regression: sharpness=0.1146  threshold=99.9ms  cost_scale=0.3668
+  Sentence 1: "As a boy though I had..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  As               172    59 |   231   291   -60 |   172   242 |   231   260 |  0.63  0.21
+  a                253    88 |   358   179  +178 |   253   179 |   341   179 |  0.36  0.79
+  boy              213    74 |   293   216   +77 |   213   200 |   287   216 |  0.46  0.36
+  though           263    91 |   381   364   +18 |   263   234 |   354   305 |  0.27  0.07
+  I                187    65 |   254   248    +6 |   187   248 |   252   248 |  0.64  0.86
+  had              229    79 |   317   343   -26 |   229   238 |   309   268 |  0.46  0.50
+  often            227    79 |   315   237   +78 |   227   237 |   306   237 |  0.46  0.43
+  stayed           184    64 |   249   279   -30 |   184   244 |   248   279 |  0.56  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  He               173    60 |   233   257   -24 |   173   218 |   233   218 |  0.72  0.21
+  had              287    99 |   428   249  +178 |   287   208 |   386   208 |  0.23  0.43
+  been             176    61 |   239   240    -2 |   176   207 |   237   207 |  0.58  0.36
+  completely       227    79 |   312   245   +67 |   227   203 |   305   218 |  0.46  0.00
+  under            201    69 |   273   306   -32 |   201   212 |   270   250 |  0.54  0.21
+  his              194    67 |   264   216   +47 |   194   216 |   262   216 |  0.59  0.50
+  wifes            200    69 |   272   221   +51 |   200   173 |   269   185 |  0.58  0.29
+  ascendancy       276    96 |   409   546  -137 |   276   247 |   372   455 |  0.23  0.00
+

@@ -1,0 +1,10 @@
+usage: train_faithful_sh_geco.py [-h] [--model MODEL] [--freeze FREEZE]
+                                 [--epochs EPOCHS] [--batch_size BATCH_SIZE]
+                                 [--accum ACCUM] [--lm_lr LM_LR]
+                                 [--head_lr HEAD_LR]
+train_faithful_sh_geco.py: error: argument --model: expected one argument
+usage: train_faithful_sh_geco.py [-h] [--model MODEL] [--freeze FREEZE]
+                                 [--epochs EPOCHS] [--batch_size BATCH_SIZE]
+                                 [--accum ACCUM] [--lm_lr LM_LR]
+                                 [--head_lr HEAD_LR]
+train_faithful_sh_geco.py: error: argument --model: expected one argument

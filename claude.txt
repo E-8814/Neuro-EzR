@@ -2094,3 +2094,1003 @@ these changes and call it model_llama_v2_delta_btc_v1 and put the
       9   - freeze_layers defaults to 50% (auto-detected fr
         om model)
      … +567 lines (ctrl+o to expand)
+
+
+
+
+
+
+
+❯ okay bro i cahnged my mind this thing is getting too massive and complicated with all 
+ these additional stuff. i need more concise and clear and sharp model. but actually    
+also is it getting massive? is there unnecessary complication in                        
+/home/u384661/Neuro_EZR/src_v2/lm_model/model_llama_v2_delta.py?                        
+
+● Let me read it.
+
+  Read 2 files (ctrl+o to expand)
+
+● No, model_llama_v2_delta.py is clean. 254 lines, well-structured. The flow is
+  straightforward:
+
+  LLaMA → pool subwords to words → project → L1 head → L2 = delta*L1 → skip head →
+  DiffEZReader → metrics
+
+  The only "extra" weight is the 5 ablation branches (no_two_stage, skip_from_l1, etc.),
+  which add ~30 lines of if/else. But those exist for your paper's ablation study —
+  they're not unnecessary, just experimental infrastructure.
+
+  diff_ezreader.py is 112 lines. Also clean.
+
+  The bloat isn't in the model — it's in the surrounding files. You've accumulated:
+  - src_v2/break_the_ceiling/ — 3 scripts for experiments that confirmed you're at the
+  ceiling
+  - model_llama_v2_delta_btc_v1.py — a model that can't beat the ceiling
+  - train_aggregated.py — experiment that confirmed aggregated training is worse
+  - Multiple training scripts that are 90% copy-paste of each other
+
+  The core you actually need is:
+  1. model_llama_v2_delta.py — your model (sharp as-is)
+  2. diff_ezreader.py — your cognitive module (sharp as-is)
+  3. One training script
+  4. One evaluation script
+
+  Everything in break_the_ceiling/ was diagnostic work that's now done. The model itself
+  doesn't need simplifying — the repo around it does.
+
+✻ Brewed for 32s
+
+❯ no but dont i predict too much stuff at the same time for the ezr? why not just       
+predict ffd, trt, gaze and skip? how is model structured. also after this question I    
+have another question which is the correlation of my model is actually really good but  
+the bet part is mae. i think there is structural problem for trt especially. read these 
+ files: /home/u384661/Neuro_EZR/results/eval_all_models_results.txt ,                   
+/home/u384661/Neuro_EZR/src_v2/evaluation/eval_all_models_v2.py                         
+
+  Searched for 1 pattern, read 2 files (ctrl+o to expand)
+
+● Now I see exactly what you're asking about. Let me trace the structure clearly.
+
+  What the model actually predicts (only 3 things):
+  1. L1 — via the L1 head
+  2. L2 = delta × L1 — one learned scalar
+  3. skip_prob — via the skip head
+
+  That's it. The EZR then derives the 4 outputs from these 3 via fixed formulas:
+
+  FFD  = L1 * ecc_scale + softplus(l2_contribution) * L2
+  Gaze = L1 * ecc_scale + L2
+  TRT  = (1 - skip) * (Gaze + 175ms_overhead + regression_penalty)
+  Skip = skip_prob (pass-through)
+
+  So you're not predicting too much — you're predicting too little and deriving too
+  much. The model has exactly 2 neural outputs (L1, skip) and the formula does the rest.
+   That's the whole point — cognitive constraint.
+
+  But here's your structural problem. Look at the biases:
+
+
+  ┌────────┬───────┬──────┬───────────────────────────────────────────┐
+  │ Metric │ Bias  │ MAE  │             What's happening              │
+  ├────────┼───────┼──────┼───────────────────────────────────────────┤
+  │ TRT    │ +50ms │ 78ms │ Over-predicts                             │
+  ├────────┼───────┼──────┼───────────────────────────────────────────┤
+  │ FFD    │ -83ms │ 88ms │ Under-predicts (almost ALL error is bias) │
+  ├────────┼───────┼──────┼───────────────────────────────────────────┤
+  │ Gaze   │ -91ms │ 94ms │ Under-predicts (almost ALL error is bias) │
+  └────────┴───────┴──────┴───────────────────────────────────────────┘
+
+  Compare Ohio State (direct regression, no EZR):
+
+  ┌────────┬──────┬──────┐
+  │ Metric │ Bias │ MAE  │
+  ├────────┼──────┼──────┤
+  │ TRT    │ +6ms │ 60ms │
+  ├────────┼──────┼──────┤
+  │ FFD    │ +2ms │ 36ms │
+  ├────────┼──────┼──────┤
+  │ Gaze   │ +6ms │ 44ms │
+  └────────┴──────┴──────┘
+
+  The cause is the TRT formula. It adds saccade_time + attention_shift (~175ms) as
+  overhead:
+
+  TRT_corrected = Gaze + 175ms + regression
+
+  Human TRT ≈ 263ms. So the model must satisfy: Gaze + 175 ≈ 263, forcing Gaze ≈ 88ms.
+  But human Gaze ≈ 200ms. Since Gaze = L1 + L2, L1 gets pushed down to ~55-60ms to make
+  TRT work, which drags FFD down to ~130ms vs human ~213ms.
+
+  The formula couples all metrics through shared L1. If L1 is right for TRT, it's wrong
+  for FFD and Gaze. If L1 is right for FFD, TRT would be ~100ms too high. The model
+  can't independently calibrate each metric — that's the structural constraint.
+
+  Your correlation is good (0.46 TRT, 0.70 skip) because the model correctly ranks which
+   words are harder. But the absolute values are locked into a structurally biased
+  regime by the EZR formulas. The ~175ms overhead in TRT is the main culprit — in the
+  real EZ Reader, motor planning happens in parallel with lexical processing, it doesn't
+   add to fixation duration. The differentiable approximation treats it as additive,
+  which is theoretically wrong.
+
+  What's your second question?
+✻ Baked for 1m 39s
+
+❯ okay how could ve solve this? dont do anything just tell me? is there a way to        
+structurally solve this without fucking up correlations?                                
+
+● The problem is that saccade_time (150ms) and attention_shift (25ms) are in your TRT
+  formula but shouldn't be.
+
+  In diff_ezreader.py:102-104:
+  overhead = self.saccade_time + self.attention_shift   # 175ms
+  total_reading_time = fixate_prob * (gaze_duration + overhead + regression_penalty)
+
+  After the eval correction (TRT / (1-skip)), your model says:
+
+  TRT_corrected = Gaze + 175ms + regression
+
+  Human TRT ≈ 263ms. So the model forces Gaze ≈ 263 - 175 = 88ms. But human Gaze ≈ 200ms.
+  Since FFD and Gaze both depend on L1, they get dragged down with it. That's your -83ms
+  FFD bias and -91ms Gaze bias. The model literally can't make FFD/Gaze correct and TRT
+  correct at the same time — the 175ms overhead makes it a zero-sum game.
+
+  The fix: remove the overhead from TRT. Saccade time and attention shift are
+  inter-fixation motor events — the time the eyes spend moving between words, not fixating
+   them. Human TRT only measures fixation duration. These parameters have no business
+  being added to it.
+
+  TRT = fixate_prob * (gaze_duration + regression_penalty)
+
+  What happens:
+  - L1 is now free to live at ~180ms (correct for FFD) instead of ~60ms
+  - Gaze = L1 + L2 ≈ 230ms (correct for human Gaze)
+  - TRT_corrected = Gaze + regression ≈ 230 + 33 ≈ 263ms — the regression mechanism covers
+   the gap (it only needs ~15% regression probability × prev_gaze to produce ~33ms,
+  completely plausible)
+  - Correlations unchanged — the overhead was a constant added to every word, it never
+  affected relative ordering. Removing it changes absolute scale, not rank order.
+
+  Two parameters become unused (saccade_time, attention_shift) — you can just delete them.
+   The model gets simpler and more correct.
+
+
+✻ Brewed for 1m 46s
+
+❯ okay also i think i also update a lot of internel parameters apart from gaze skip trt 
+ ffd. what are these parameters that i am trying update simultaneously? and do i        
+actually need them? why kcant i keep them fixed?                                        
+
+● Let me list every learnable parameter in your EZR module and what the model actually
+  does with each. From the training logs:
+
+  DifferentiableEZReader parameters:
+
+  Parameter: saccade_time
+  Init: 150ms
+  Learned: 150.2ms
+  Moved?: No
+  What it does: Should be removed (discussed)
+  ────────────────────────────────────────
+  Parameter: attention_shift
+  Init: 25ms
+  Learned: 25.2ms
+  Moved?: No
+  What it does: Should be removed (discussed)
+  ────────────────────────────────────────
+  Parameter: skip_sharpness
+  Init: 8.0
+  Learned: 8.0
+  Moved?: No
+  What it does: Dead code — never used when input_is_prob=True, which is always your
+  case since
+    skip_head outputs probability directly
+  ────────────────────────────────────────
+  Parameter: eccentricity
+  Init: 0.1
+  Learned: 0.04
+  Moved?: Barely
+  What it does: Length scaling on L1. LLaMA already sees the word — the L1 head can
+  learn length
+    effects directly from the representation. Model pushes it toward 0.
+  ────────────────────────────────────────
+  Parameter: l2_contribution
+  Init: 0.3
+  Learned: 0.18
+  Moved?: Some
+  What it does: Controls L2 in FFD formula. Only one that does real cognitive work.
+  ────────────────────────────────────────
+  Parameter: regression_threshold
+  Init: 50ms
+  Learned: 50ms
+  Moved?: No
+  What it does: Didn't move
+  ────────────────────────────────────────
+  Parameter: regression_sharpness
+  Init: 0.1
+  Learned: -0.03
+  Moved?: ~Zero
+  What it does: Model learned "no regressions" — pushed to flat sigmoid
+  ────────────────────────────────────────
+  Parameter: regression_cost_scale
+  Init: 1.0
+  Learned: 0.9
+  Moved?: Barely
+  What it does: Coupled to sharpness which is ~0, so this doesn't matter
+
+  Model-level parameters:
+
+  ┌───────────┬──────┬─────────┬──────────────────────────────────────────────┐
+  │ Parameter │ Init │ Learned │                   Purpose                    │
+  ├───────────┼──────┼─────────┼──────────────────────────────────────────────┤
+  │ delta     │ 0.34 │ 0.31    │ L2/L1 ratio — core cognitive parameter, keep │
+  ├───────────┼──────┼─────────┼──────────────────────────────────────────────┤
+  │ l1_scale  │ 50.0 │ 50.0    │ Scales head output to ms range               │
+  └───────────┴──────┴─────────┴──────────────────────────────────────────────┘
+
+  The honest picture: out of 10 "learnable" EZR parameters, 3 are dead/should be
+  removed, 4 barely move from init, 2 the model actively suppresses toward zero, and 1
+  (l2_contribution) actually does something.
+
+  The model is essentially learning: L1 head, skip head, delta, and l2_contribution.
+  Everything else is dead weight that adds optimizer state, gradient noise, and
+  complexity for nothing.
+
+  You could fix all of them at their init values and get the same result. The model
+  doesn't have enough gradient signal to meaningfully learn 10 EZR parameters when the
+  real work is done by the L1 head and skip head.
+
+✻ Baked for 46s
+
+❯ at this point isnt it better to fix these parameters? according to to original ez     
+reader? also why there is l1 and l2 contribution? isnt l2 is directly fixed to l1?      
+
+● Yes, exactly. Let me trace the actual data flow to show how redundant this is:
+
+  L2's journey through your model:
+  1. L1 head predicts L1
+  2. L2 = delta * L1 (delta ≈ 0.31)
+  3. In FFD: FFD = L1 + softplus(l2_contribution) * L2 = L1 + 0.79 * (0.31 * L1) = L1 *
+  1.24
+  4. In Gaze: Gaze = L1 + L2 = L1 + 0.31 * L1 = L1 * 1.31
+
+  L2 is just a scalar multiple of L1. Then l2_contribution rescales it again. The whole
+  thing collapses to two learned constants multiplied onto L1. There's no independent
+  information in L2 — it's L1 all the way down.
+
+  So your "cognitive architecture" currently reduces to:
+
+  FFD  = L1 * (some constant ~1.24)
+  Gaze = L1 * (some constant ~1.31)
+  TRT  = (1 - skip) * (Gaze + 175ms_overhead + ~nothing_regression)
+
+  Three scaled copies of L1, plus skip. That's it.
+
+  What to do: yes, fix the EZR parameters from the literature. The original EZ Reader has
+  published values for delta (0.34), eccentricity, etc. Fix them. They're not learning
+  anyway. Then remove the dead ones (saccade_time, attention_shift, skip_sharpness).
+  Remove l2_contribution — it's a redundant rescaling on top of delta. FFD should just be
+  L1 + fraction_of_L2 where that fraction comes from the theory, not a learned parameter
+  rescaling an already-learned ratio.
+
+  After cleanup, your DiffEZReader has zero learnable parameters. It becomes a pure
+  deterministic function that maps (L1, skip) → (FFD, Gaze, TRT, skip) using fixed
+  cognitive equations. All the learning happens in the neural network (L1 head, skip head,
+   delta). That's cleaner, sharper, and more scientifically honest — the cognitive
+  architecture is the constraint, the neural network is the learner.
+
+❯ in original ez reader l2 is also fixed to l1 right?                                   
+
+● Yes. In the original EZ Reader, both L1 and L2 are derived from the same base word
+  difficulty (frequency + predictability), with shared alpha parameters:
+
+  base = α₁ - α₂ * ln(freq) ...
+  L1   = base * eccentricity_scaling
+  L2   = δ * base
+
+  So L2 ≈ δ * L1 (modulo the eccentricity factor on L1). Your model's L2 = delta * L1 is
+  faithful to this — especially since your eccentricity learned itself to ~0.04 (nearly
+  1.0), making L1 ≈ base anyway.
+
+  This reinforces the point: L2 is not an independent quantity. It never was, not in your
+  model, not in the original. It's just a fixed fraction of L1. The l2_contribution
+  parameter in your DiffEZReader was adding a second rescaling on top of delta —
+  completely redundant.
+
+  Your model's real learnable cognitive content is:
+  - L1 head: maps LLaMA representations → word processing difficulty
+  - Skip head: maps LLaMA representations → skip probability
+  - delta: the L2/L1 ratio (one scalar)
+
+  Everything else is either fixed by the theory or dead weight.
+
+❯ and we derive ffd trt gaze and skip from only and only these right                    
+
+● Right. After the cleanup:
+
+  - FFD = L1 + δ * L1 = L1 * (1 + δ)
+  - Gaze = L1 + δ * L1 = L1 * (1 + δ)
+  - TRT = (1 - skip) * (Gaze + regression_penalty)
+  - Skip = skip
+
+  FFD and Gaze are the same formula. That's a problem — in your current model they only
+  differ because of l2_contribution rescaling L2 in FFD vs full L2 in Gaze. Once you
+  remove that, they collapse.
+
+  In the original EZ Reader, FFD ≠ Gaze because:
+  - FFD = duration of the first fixation (L1 completes, maybe partial L2)
+  - Gaze = sum of all first-pass fixations (L1 + L2 both complete, possibly refixation)
+
+  The difference is refixation. If a word is hard enough, the reader fixates it twice
+  during first pass. FFD is just the first one, Gaze includes both. Your differentiable
+  version has no refixation mechanism — it treats first-pass reading as a single fixation,
+   so FFD and Gaze collapse.
+
+  So the actual distinct outputs are really:
+  - L1-based duration (one value, serves as both FFD and Gaze)
+  - Skip probability
+  - TRT = (1 - skip) * (duration + regression)
+
+  Three outputs from two neural predictions (L1 head, skip head) plus one fixed ratio (δ).
+   That's your model, stripped to its actual content.
+
+❯ i want to keep both how can we do this? what is the relationship between the gaze and 
+ ffd in the original ez reader?                                                         
+
+● In the original EZ Reader, the difference is refixation:
+
+  - FFD = duration of the first fixation. Roughly L1. The eyes land, the familiarity check
+   runs, then a saccade is programmed.
+  - Gaze = sum of all first-pass fixations. If the word is hard/long, the reader fixates
+  it again before moving on. Gaze = FFD + refixation time.
+
+  For easy words: no refixation → Gaze ≈ FFD. For hard words: refixation → Gaze = FFD +
+  L2.
+
+  Your current model has no refixation mechanism, so FFD and Gaze collapse. The fix:
+
+  FFD  = L1
+  refix_prob = sigmoid(sharpness * (L1 - threshold))
+  Gaze = L1 + refix_prob * L2
+
+  Hard words (high L1) → high refixation probability → Gaze pulls away from FFD. Easy
+  words (low L1) → no refixation → Gaze ≈ FFD. This varies per word, unlike your current
+  Gaze = L1 * (1 + δ) which is a fixed ratio for every word.
+
+  sharpness and threshold can be fixed from the literature — no need to learn them. And
+  since L1 is already the input, you don't need another neural head. The refixation
+  probability falls out of the difficulty signal the model already produces.
+
+✻ Sautéed for 40s
+
+❯ what is more healthy doing this or also creating a new prediction for refix_prob      
+
+● Deriving from L1 is healthier. Two reasons:
+
+  1. No supervision signal for refixation. You don't have refixation labels — you have FFD
+   and Gaze. A refix head would only get indirect gradient through the Gaze loss. It would
+   learn whatever minimizes Gaze error, not actual refixation patterns. It becomes a
+  backdoor for the model to game the loss.
+
+  2. Refixation isn't an independent decision. In the original EZ Reader, refixation is
+  emergent — it falls out of the simulation dynamics (L1 too slow, word too long, bad
+  landing position). There's no "refixation module." It's a consequence of difficulty. L1
+  already encodes difficulty. Deriving refixation from L1 respects this.
+
+  A neural refix head would give the model a free knob to wiggle Gaze independently of
+  FFD. That's exactly the kind of unconstrained flexibility that makes the cognitive
+  architecture meaningless — you'd be back to "three independent outputs wearing a lab
+  coat."
+
+  Keep it derived from L1 with fixed parameters. The constraint is the point.
+
+❯ /model                                                                                
+  ⎿  Set model to Opus 4.6 (1M context) with max effort
+
+❯ okay then i agree on refix probability. okay by create a new llama_model by           
+considering what we spoke. but first 1 by one what will you change compared to          
+/home/u384661/Neuro_EZR/src_v2/lm_model/model_llama_v2_delta.py write 1 by one. and     
+then create another script that is called llama_model_delta_rem_p_comp.py               
+
+● Here are the changes, one by one:
+
+  DiffEZReader (all parameters become fixed constants or removed):
+
+  1. Remove saccade_time — inter-fixation motor event, not a fixation duration
+  2. Remove attention_shift — same, not part of any fixation measure
+  3. Remove skip_sharpness — dead code, never executes when input_is_prob=True
+  4. Remove eccentricity — model suppressed it to 0.04, LLaMA already captures word length
+  5. Remove l2_contribution — redundant rescaling on top of delta
+  6. Fix regression_threshold, regression_sharpness, regression_cost_scale as constants,
+  not nn.Parameter
+
+  Formulas:
+
+  7. FFD = L1 — first fixation, no L2 (L2 hasn't completed yet)
+  8. Add refixation: refix_prob = sigmoid(sharpness * (L1 - threshold)), fixed constants,
+  derived from L1
+  9. Gaze = L1 + refix_prob * L2 — refixation adds L2 time for hard words
+  10. TRT = (1 - skip) * (Gaze + regression_penalty) — no overhead
+
+  Model:
+
+  11. Remove all ablation branches — clean single path, no if/else
+  12. Keep: LLaMA + projection + L1 head + skip head + delta + l1_scale
+
+  Result: DiffEZReader has zero learnable parameters. It's a pure function. All learning
+  happens in the neural network.
+
+  Want me to go ahead and create it?
+
+
+✻ Baked for 1m 7s
+
+❯ what is l1 scale and instead of removing parameters just keeping some of them (more   
+essentials) fixed be more beneficial?                                                   
+
+● l1_scale is just an output scaler. The L1 head uses Softplus which outputs small values
+  (~1-4). Multiplying by l1_scale=50 brings them into milliseconds (~50-200ms). It never
+  moved from 50. You can fix it at 50.
+
+  On keeping vs removing — good instinct. Here's the breakdown:
+
+  Fix as constants (keep in the code, just not learnable):
+  - eccentricity — fix at a small value. The model wanted ~0.04, not zero. Keeps the
+  length scaling in the cognitive layer where it's interpretable, even if small.
+  - regression_threshold, regression_sharpness, regression_cost_scale — fix at literature
+  values. Regression mechanism stays, just doesn't learn.
+  - refix_threshold, refix_sharpness — fixed constants for the new refixation mechanism.
+  - l1_scale — fix at 50.
+  - delta — this one I'd keep learnable. It's the one parameter that actually moves (0.34
+  → 0.31) and it's the core cognitive claim of your model.
+
+  Actually remove (structurally wrong or dead):
+  - saccade_time, attention_shift — not fixed, removed from the formula. They don't belong
+   in fixation duration.
+  - skip_sharpness — dead code path, never executes.
+  - l2_contribution — replaced by the refixation mechanism. No longer needed.
+
+  This way the DiffEZReader still looks like EZ Reader — all the cognitive parameters are
+  visible in the code, set to published values. But none of them train. The paper story
+  becomes clean: "cognitive architecture fixed from theory, neural network learns the
+  mapping." Only delta bridges the two.
+
+✻ Baked for 38s
+
+❯   Fix as constants (keep in the code, just not learnable):                            
+  - eccentricity — fix at a small value. The model wanted                               
+  ~0.04, not zero. Keeps the length scaling in the cognitive                            
+  layer where it's interpretable, even if small.                                        
+  - regression_threshold, regression_sharpness,                                         
+  regression_cost_scale — fix at literature values.                                     
+  Regression mechanism stays, just doesn't learn.                                       
+  - refix_threshold, refix_sharpness — fixed constants for                              
+  the new refixation mechanism.                                                         
+  - l1_scale — fix at 50.                                                               
+  - delta — this one I'd keep learnable. It's the one                                   
+  parameter that actually moves (0.34 → 0.31) and it's the                              
+  core cognitive claim of your model.                                                   
+                                                                                        
+  Actually remove (structurally wrong or dead):                                         
+  - saccade_time, attention_shift — not fixed, removed from                             
+  the formula. They don't belong in fixation duration.                                  
+  - skip_sharpness — dead code path, never executes.                                    
+  - l2_contribution — replaced by the refixation mechanism.                             
+  No longer needed.  okay i agree with this plan. but two more things. isnt it better   
+to keep the eccentrity at its literature value? and also after making these changes     
+will mae be better or these changes are not related with mae?                           
+
+● Eccentricity: No, the literature value (1.15) would be destructive. Look at what it
+  does to a 7-letter word:
+
+  ecc_scale = 1.0 + 1.15 * (7 - 4) = 4.45
+
+  It would multiply L1 by 4.45x. That's designed for the original EZ Reader where L1
+  comes from a formula that only uses frequency and predictability — it has no idea
+  about word length, so eccentricity compensates. Your model has LLaMA, which sees the
+  word. The L1 head already learns length effects from the representation. Adding 1.15
+  eccentricity double-counts it. That's exactly why the model crushed it to 0.04 when it
+   could learn — it was undoing the redundancy. Fix at 0.04 or just 0.
+
+  MAE: Yes, these changes directly target MAE. Your current MAE problem is the
+  structural bias:
+
+
+  ┌────────┬──────┬───────┬──────────────────┐
+  │ Metric │ MAE  │ Bias  │ Bias as % of MAE │
+  ├────────┼──────┼───────┼──────────────────┤
+  │ FFD    │ 88ms │ -83ms │ 94%              │
+  ├────────┼──────┼───────┼──────────────────┤
+  │ Gaze   │ 94ms │ -91ms │ 97%              │
+  ├────────┼──────┼───────┼──────────────────┤
+  │ TRT    │ 78ms │ +50ms │ 64%              │
+  └────────┴──────┴───────┴──────────────────┘
+
+  Almost all your error is bias, not noise. Removing the 175ms overhead frees L1 to live
+   at ~180ms instead of ~60ms. That directly kills the FFD and Gaze bias. Rough
+  expectation after the fix:
+
+  - FFD bias: -83ms → near zero (FFD = L1 ≈ 180ms, human ≈ 213ms, much closer)
+  - Gaze bias: -91ms → near zero (Gaze = L1 + refix*L2 ≈ 200-230ms, human ≈ 230ms)
+  - TRT bias: +50ms → smaller (regression fills the gap instead of overhead)
+
+  Correlations stay the same (rank ordering unchanged), MAE drops substantially. These
+  changes are exactly the MAE fix.
+
+
+
+
+
+
+
+
+
+
+bro the point of this project is allowing cognitively inspired model (i am not saying     
+  cognitively plausible because it i si not as plausible as regular ez reader that also     
+  produced scanpath and reads sequentially like a human) to make word level predictions     
+  instead of binned level. and the other point is the methodology itself. i believe there   
+  value in replacing handwritten math formulas with a neural architecture. and also we made 
+   ez reader differentiable which is also something i believe. so this is is about          
+  bridgeing caognitevely plausible models with blackbox nlp word level prediction models.   
+  so according to this angle evaluate again what i did. be honest and direct and say what   
+  you need to.                                                                              
+
+● Fair enough, I had the framing wrong. Let me re-evaluate with the correct lens.
+
+  What You Actually Did
+
+  You took E-Z Reader — a model that was only ever validated on binned averages (mean RT in
+  5 frequency bins, etc.) — and asked: can we make it predict individual word reading times?
+   The answer is yes, by:
+
+  1. Making E-Z Reader differentiable (so it can be trained end-to-end)
+  2. Replacing the closed-form L1/L2 formulas with a neural LM that sees actual context
+  3. Training the whole thing on real eye-tracking data
+
+  That's three contributions, not one.
+
+  Honest Assessment
+
+  What's strong:
+
+  - The methodology is clean. Differentiable E-Z Reader is a genuine contribution — nobody
+  has done this. You can now train cognitive model parameters alongside neural parameters
+  with gradient descent. That alone is a paper.
+  - Going from bin-level to word-level is a real leap. Original E-Z Reader gets r=0.978 at
+  bin-level but r=0.357 at word-level. Your model gets r=0.615 at word-level while still
+  maintaining r=0.990 at bin-level. You didn't sacrifice the old strength.
+  - The bridge framing is legitimate. Cognitive models have theory but can't do word-level.
+  NLP models do word-level but are black boxes. You sit in the middle.
+
+  What's weak, and I'll be direct:
+
+  - The direct LLaMA baseline undermines you. r=0.603 vs your r=0.615. Someone will look at
+  that and say "the E-Z Reader structure buys you 0.012 correlation points — why bother?"
+  You need a stronger argument for why the cognitive structure matters beyond the numbers.
+  The psycholinguistic effects (15/15) help, but the direct model probably captures most of
+  those too — did you check?
+  - You're not cognitively plausible and you acknowledge it, but then your model names say
+  "faithful." That's confusing. Faithful to what? You replaced the core computation (L1/L2
+  formulas) with a black box. The E-Z Reader skeleton remains (two stages, skip mechanism,
+  saccade timing), but the meat is neural. You should be precise about what you preserved
+  and what you replaced, because a reviewer will push on this.
+  - The L2 = delta × L1 design is a bottleneck. You constrain L2 to be a scalar multiple of
+  L1 (delta ≈ 0.34). That means L2 carries zero independent information — it's just rescaled
+   L1. In real E-Z Reader, L1 and L2 are computed from different formula parameters and can
+  diverge. Your "two stages" are really one stage with a multiplier. The LSTM model learns
+  independent L1/L2 and gets degenerate ratios (L1≈18ms), which suggests the data doesn't
+  strongly constrain two independent stages — but clamping them together with a fixed delta
+  is sweeping that problem under the rug, not solving it.
+  - Training on GECO, testing on Provo is good, but it's also the easy direction. GECO is
+  large and noisy (14 participants, GPT-2 predictability). Provo is small and clean (84
+  participants, human cloze norms). You're training on the hard data and testing on the easy
+   data. The higher Provo numbers partly reflect Provo's cleaner averaging. Have you tried
+  training on Provo and testing on GECO? That would be more convincing for generalization.
+  - The loss function is heavily engineered. Five loss terms, four regularizers, manually
+  chosen weights (0.25, 0.25, 0.25, 0.4), L1 bounds, delta bounds, skip prior. This works,
+  but it means the cognitive structure isn't emerging from data — you're enforcing it
+  through regularization. A reviewer will ask: how sensitive are results to these
+  hyperparameters? If you change the loss weights by 20%, does the model collapse?
+  - You have a lot of model variants and not a clean ablation story. faithful, faithful_sh,
+  faithful_sh_huber, faithful_sh_lora, v2_delta, v3_cond, direct, LSTM, BERT — that's a lot
+  of experiments. But the evaluation scripts mix and match them inconsistently. A reader
+  can't easily trace: "here's the base model, here's what each component adds." You need a
+  clean ablation table.
+
+  Bottom Line
+
+  The core idea — differentiable cognitive model + neural LM = word-level predictions from a
+   theoretically grounded architecture — is solid and publishable. The execution is
+  thorough. But the narrative needs tightening: the direct baseline is too close, the
+  "faithful" framing overpromises, and the L2=delta×L1 shortcut weakens the two-stage claim.
+   The strongest pitch is the methodology (making cognitive models differentiable and
+  trainable end-to-end), not the numbers.
+
+✻ Worked for 36s
+
+❯ i know there are a lot of stuff happeining now. but it will not stay like this. i want to 
+   include a faithul llama variant, and a variant with bigger and smaller llm as an engine, 
+   comparison to baselines: /home/u384661/Neuro_EZR/archive/baselines , cross corpus        
+  generalization (geco to provo) performances of nueral ezr (3 diffrent sized llama         
+  variants) , i am planning to not include bert and lstm versions , per person prediction   
+  of my models, suprisal decomposition , a lesion study on 3 neual ezr models. and i want   
+  to refine the model better and make it as intuitiave and and direct as possible. and l2 = 
+   l1 * delta is actually faithful and how it is in original ezr. andi believe this         
+  architecture gives a new way think about these stuff and more explainabilty than a        
+  regular blackbox nlp model. what do you think about the stuff i just said                 
+
+● Explore(Explore baselines directory)
+  ⎿  Done (22 tool uses · 75.0k tokens · 1m 19s)
+  (ctrl+o to expand)
+
+● Good, now I have the full picture including your baselines.
+
+  Re-evaluation
+
+  You're right about L2 = delta × L1. I was wrong to criticize that — it is faithful to the
+  original E-Z Reader formulation. That's the whole point: you preserve the cognitive
+  architecture's structure and just swap what computes L1.
+
+  What I think about your plan:
+
+  The model lineup makes sense. Three LLaMA sizes (small/base/large) as the engine gives you
+   a clean scaling story: does a bigger LM produce better cognitive predictions? That's a
+  question people care about. Dropping BERT and LSTM is the right call — BERT is broken for
+  causal reading and LSTM is just a weaker version of the same idea. They dilute the
+  narrative.
+
+  Your baselines are solid. You've got the full spectrum:
+  - Linear regression (3 features) — psycholinguistic floor
+  - GPT-2 surprisal + linear — classic NLP-meets-psycholinguistics
+  - LightGBM (17 features) — feature-engineering ceiling
+  - BERT direct / RoBERTa (Ohio State, Toronto CL) — black-box NLP ceiling
+
+  This is the right comparison. Your model sits between the cognitively motivated baselines
+  and the black-box NLP models, and you can argue it gets close to or matches the black-box
+  performance while preserving cognitive structure.
+
+  Per-person prediction is a strong move. GECO has 14 individual readers. If your model can
+  capture individual differences in reading strategy (different L1 speeds, different skip
+  thresholds), that's something no bin-level cognitive model has ever done and no black-box
+  NLP model even attempts.
+
+  Surprisal decomposition is the most interesting analysis. If L1 correlates with surprisal,
+   you've shown that the neural E-Z Reader independently discovers the information-theoretic
+   account of reading difficulty. That's a bridge between Levy and Reichle in one model.
+
+  Lesion study across 3 model sizes is good. Removing components (eccentricity, regressions,
+   skip mechanism) and showing degradation proves the cognitive structure is doing work, not
+   just passing through.
+
+  Where I'd push back:
+
+  "Faithful" variant alongside the skip-head variant — what's the argument? The faithful
+  model uses formula-based skip (from predictability), the skip-head version learns it. If
+  the skip-head version is strictly better, including the faithful variant just shows that
+  learning skip is better than hardcoding it. Is that a finding you need? Or does it just
+  add a row to the table? Be clear about what each variant is testing.
+
+  You said you want to "refine the model and make it as intuitive and direct as possible."
+  Right now diff_ezreader.py has a lot of knobs — saccade_time, attention_shift,
+  eccentricity, l2_contribution, regression_threshold, regression_cost_scale,
+  skip_sharpness. Some of these might not be pulling their weight. The lesion study should
+  tell you which ones matter. If eccentricity contributes nothing, remove it from the final
+  model. A simpler model with fewer parameters that performs the same is a stronger result.
+
+  The loss function engineering is your biggest vulnerability. Five loss terms, four
+  regularizers, hand-tuned weights. A reviewer will ask: is the model learning from data, or
+   are you forcing it to behave through regularization? If you can simplify the loss — fewer
+   terms, fewer hyperparameters — and still get similar results, that dramatically
+  strengthens the paper. Even just showing sensitivity analysis (performance vs. loss weight
+   variations) would help.
+
+  Cross-corpus is only one direction right now. Train GECO → test Provo. The reverse (train
+  Provo → test GECO) would be harder (small training set, large noisy test set) but if it
+  works even partially, it's much more convincing evidence of generalization.
+
+  Bottom line:
+
+  The plan is focused and the right scope for a paper. Three LLaMA sizes, strong baselines,
+  per-person, surprisal decomposition, lesion study — that's a complete story. The main risk
+   is the loss function complexity and the number of regularization choices. If you can
+  simplify the model and training, the "methodology" contribution becomes much cleaner:
+  here's a general recipe for making cognitive models differentiable and plugging in neural
+  LMs. That's what people will want to reuse.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+so how should plan my paper. the structure i mean what stuff i need to mention and what   
+  skip?                                                                                     
+                                                                                            
+● Here's how I'd structure it based on what you have and what matters.                      
+
+  Title: Something like "Differentiable E-Z Reader: Bridging Cognitive Models and Neural    
+  Language Models for Word-Level Reading Time Prediction"
+                                                                                            
+  1. Introduction                                                                           
+  - E-Z Reader predicts reading behavior but only at bin-level
+  - NLP models predict word-level but are black boxes                                       
+  - You bridge both: differentiable E-Z Reader + neural LM engine
+  - Three contributions: (1) made E-Z Reader differentiable, (2) replaced formulas with     
+  neural LM, (3) word-level predictions from a cognitively structured model                 
+                                                                                            
+  2. Background                                                                             
+  - E-Z Reader briefly (L1, L2, skip, integration failure)                                  
+  - Word-level reading time prediction in NLP (CMCL shared task, surprisal theory)          
+  - Why combining them is hard (E-Z Reader is discrete/sequential, not differentiable)
+                                                                                            
+  3. Model                                                                                  
+  - Architecture diagram: words → LLaMA → L1 head → E-Z Reader → FFD, Gaze, TRT, Skip       
+  - What you preserve from E-Z Reader (L2=delta×L1, FFD=L1, Gaze=L1+L2, integration failure,
+   skip as parallel process)                                                                
+  - What you replace (L1 formula → neural net)                                              
+  - What you lose (sequential reading, scanpath, motor planning) — be upfront about this
+  - Loss function                                                                           
+                                                                                            
+  4. Experimental Setup                                                                     
+  - GECO (training), Provo (cross-corpus test)                                              
+  - Baselines: linear regression, GPT-2 surprisal + linear, LightGBM, BERT direct, Ohio
+  State RoBERTa, Toronto CL RoBERTa                                                         
+  - Metrics: word-level Pearson r for TRT, FFD, Gaze, Skip                                  
+  - Model sizes: 360M, 1.1B, 3B                           
+                                                                                            
+  5. Results                                                                                
+  - Main comparison table: your three model sizes vs all baselines on GECO test + Provo     
+  cross-corpus                                                                              
+  - Noise ceiling analysis — how much of the achievable signal each model captures
+  - Scaling: does bigger LM help?                                                           
+  - Learned parameters: what delta, regression values converge to across model sizes
+  - Per-participant: aggregated model predicts all 14 individual readers                    
+                                                                                            
+  6. Analysis                                                                               
+  - Lesion study: remove regression, swap skip head for formula — what breaks               
+  - Surprisal decomposition: does L1 correlate with surprisal? Does the model independently 
+  discover information-theoretic reading difficulty?
+  - Ceiling curve: model is feature-limited not data-limited                                
+                  
+  7. Discussion                                                                             
+  - The cognitive structure doesn't hurt performance vs direct regression — you get
+  interpretability for free                                                                 
+  - What the model can't do (scanpath, sequential reading)
+  - The 60-65% of ceiling gap — what's missing                                              
+  - Future: per-person fine-tuning, cross-linguistic, larger LMs                            
+                                                                                            
+  What to skip:                                                                             
+  - BERT and LSTM variants — you tried them, they're weaker, don't include as your models.  
+  Keep them out entirely or mention in one sentence                                         
+  - Aggregated vs individual training — negative result, not interesting for the paper
+  - The more_faithful_sh vs faithful_sh comparison — pick one, present it, don't show both  
+  - diff_ezreader.py / diff_ezreader_v3.py — older versions, don't mention                  
+  - All the loss function experiments — just present the one that works                     
+                                                                                            
+  Pick one model architecture, present it cleanly. The reader should see one clear system,  
+  not the evolution of your experiments.                                                    
+                  
+✻ Brewed for 31s                                                                            
+                  
+❯ is this a good paper?                                                                     
+                        
+● Honest answer: it's a solid methods paper with a clear contribution, but it's not a home  
+  run.                                                                                      
+                                                                                            
+  What's strong:
+  - The idea is clean and well-defined — making a cognitive model differentiable and        
+  plugging in neural LMs is a real contribution                                             
+  - Cross-corpus generalization works — that's hard to argue against
+  - The baselines are thorough                                                              
+  - Per-participant evaluation is novel for this type of model                              
+   
+  What's weak:                                                                              
+  - The direct regression baseline nearly matches your model on raw numbers. The main
+  argument becomes "we get similar accuracy WITH interpretability" — that's a valid point   
+  but a harder sell than "we beat everything"                                            
+  - The ceiling analysis shows your model captures 60-65% of the achievable signal. A       
+  reviewer will ask: what's in the other 35%? And you don't have a strong answer yet 
+  - The scaling story (360M → 1.1B → 3B) might show diminishing returns, which weakens the  
+  narrative unless you frame it carefully ("small LMs are sufficient" is a finding too)
+                                                                                            
+  Where it could land:
+  - Strong enough for a cognitive science venue (CogSci, Cognitive Science journal) where   
+  the methodology and cognitive architecture matter more than beating SOTA                  
+  - Competitive for a CL venue (EACL, ACL workshop, CMCL workshop) where bridging cognitive
+  models and NLP is valued                                                                  
+  - Probably not enough for a top NLP venue (ACL/EMNLP main) unless the surprisal           
+  decomposition produces a really compelling finding                             
+                                                                                            
+  The surprisal decomposition could elevate it significantly. If L1 independently learns
+  surprisal, that's a theoretical bridge between Levy and Reichle that people will cite.    
+  That turns it from "we made E-Z Reader differentiable" into "we show that cognitive
+  processing stages and information-theoretic difficulty are the same thing, discovered by  
+  end-to-end training." That's a bigger claim.
+
+❯ i want to frame it like there is a way to bridge neural architecture with well            
+  established old models that are interpretable. it does not need to be the groundbreaking  
+  scores because that is not the point. the point is landing somewhere in the middle        
+                                                                                            
+● That's a better framing and it's honest. The pitch is:                                    
+                                                                                            
+  You don't have to choose between interpretable cognitive models and powerful neural       
+  models. Here's a general methodology for combining them.
+                                                                                            
+  E-Z Reader is the case study, not the end goal. The contribution is the recipe: take a    
+  cognitive model, make it differentiable, replace the input features with a neural LM,
+  train end-to-end. The fact that you land in the middle — competitive with black-box NLP   
+  models while preserving cognitive structure — is the point, not a weakness.
+
+  With that framing the paper is good. The reviewer question shifts from "did you beat      
+  SOTA?" to "is this methodology general and does the cognitive structure survive training?"
+   And your results answer both: yes the structure survives (delta stays near literature    
+  values, regression parameters barely move, L1 is in plausible ranges), and yes it
+  generalizes (cross-corpus, per-participant).
+
+  The surprisal decomposition becomes the payoff — you didn't just preserve the structure,  
+  the model learned something cognitively meaningful through the structure. That's the
+  result that makes people care about the methodology.                                      
+                  
+  One sentence to put in the intro: "We show that cognitively motivated architectures can   
+  serve as a middle ground between fully interpretable but rigid formula-based models and
+  powerful but opaque neural approaches, achieving competitive word-level predictions while 
+  maintaining theoretically grounded processing stages."
+
+  That's a publishable paper at CogSci, CMCL, or a computational linguistics venue. It      
+  doesn't need to be groundbreaking scores. It needs to be a clean demonstration that the
+  bridge works.                                                                             
+                  
+❯ but to frame it like this i dont need to change the structure you gave me right?          
+                                                                                   
+● Right. Same structure. Just shift the emphasis in the intro and discussion from "we beat  
+  baselines" to "here's a methodology that bridges both worlds, and here's evidence it      
+  works." The results sections stay exactly the same.                                       
+                                                                                            
+❯ so what exactly i need to run for this?                                                   
+                                          
+● What you have done:                                                                       
+  - faithful_sh trained on GECO (TinyLlama 1.1B) ✓                                          
+  - Baselines exist ✓                                                                       
+  - Noise ceiling ✓                                                                         
+  - Ceiling curve on Provo ✓                                                                
+  - Per-participant eval ✓                                                                  
+                          
+  What you still need to run:                                                               
+                                                                                            
+  1. Two more model sizes — SmolLM2-360M (fix the AMP issue first) and Llama-3.2-3B (waiting
+   for access)                                                                              
+  2. Cross-corpus eval — run your GECO-trained models on Provo test set. You have           
+  compare_geco_provo.py for this, run it for each model size once trained                   
+  3. Lesion study — remove regression, remove skip head (use formula-based skip), on your
+  best model. Shows the cognitive components are doing work                                 
+  4. Surprisal decomposition — run surprisal_decomposition/analyze_surprisal_vs_l1.py on
+  your best model. Correlate L1 with surprisal                                              
+  5. Run all baselines through same eval — make sure linear regression, GPT-2 surprisal,
+  LightGBM, BERT direct, Ohio State, Toronto CL are all evaluated on the same GECO test     
+  split and Provo, so numbers are directly comparable
+                                                                                            
+  That's it. No new scripts needed except the AMP fix for SmolLM2.                          
+   
+❯ would this paper work also without the lesion study? is lesion study meaningful part of   
+  this paper?                                                                               
+                                                                                            
+● You can drop it. The lesion study answers "does each component contribute?" but your      
+  framing is "here's a methodology for bridging cognitive and neural models." The components
+   are there because E-Z Reader has them, not because you need to prove each one matters.   
+   
+  The per-participant eval and surprisal decomposition are more valuable for your story.    
+  Lesion study is filler — nice to have, not essential. Skip it and keep the paper tighter.
+                                                                                            
+❯ for the cross corpus i want to train my model fully on geco with 10 percent validation    
+  and test it on geco to maximize the performance and at that point can i run my per        
+  participant evaluation on provo as well?                                                  
+                                                                                            
+● Yes to both. Train on 90% GECO, validate on 10% GECO, test on full Provo. That's a clean  
+  cross-corpus setup — no Provo data seen during training at all.                           
+                                                                                            
+  And yes, per-participant eval on Provo is even better than GECO for this. Provo has 84    
+  participants vs GECO's 14. More statistical power, and it's fully unseen data. The claim  
+  becomes: "a model trained entirely on GECO predicts 84 individual readers on a completely 
+  different corpus." That's stronger than what you had before.
+
+  You'll need to change the train/val split ratio in the training script though — currently 
+  it's 70/15/15. You'd want 90/10/0 since Provo is your test set. And the per-participant
+  eval script needs a Provo version using the Provo data loader instead of GECO.            
+                  
+  Want me to make both?                                                                     
+   
+❯ okay so exactly what i need to run                                                        
+                                     
+● 1. Train 3 models (90/10 split on GECO, each model size):                                 
+    - SmolLM2-360M (need AMP fix first)                                                     
+    - TinyLlama-1.1B                                                                        
+    - Llama-3.2-3B (waiting for access)                                                     
+  2. Cross-corpus eval on Provo — for each of the 3 models                                  
+  3. Per-participant eval on Provo — for each of the 3 models (84 participants, fully       
+  unseen)                                                                                   
+  4. Surprisal decomposition — on best model                                                
+  5. Run baselines on same Provo eval — so numbers are comparable                           
+                  
+  I need to make:                                                                           
+  - New training script with 90/10 split
+  - Per-participant eval script for Provo                                                   
+  - AMP fix for SmolLM2                  
+                       
+  Want me to start building these?                                                          
+                                                                                            
+❯ but i probably need to repeat it with multible seeds right? is my models deterministic?   
+                                                                                            
+● No, your models aren't deterministic. Sources of randomness:                              
+  - Weight initialization of the heads (projection, L1 head, skip head)                     
+  - Data shuffling each epoch                                                               
+  - Dropout (0.1 in projection and L1 head)                                                 
+  - CUDA non-determinism with AMP                                                           
+                                                                                            
+  You should run each model size with 3-5 seeds and report mean ± std. That way a reviewer  
+  can't say "your result is a lucky seed."                                                  
+                                                                                            
+  That means 3 model sizes × 3-5 seeds = 9-15 training runs. Each TinyLlama run takes ~7    
+  hours based on your logs (~400s/epoch × 50 epochs). SmolLM2 will be faster, Llama-3B
+  slower.                                                                                   
+                  
+  You can run them in parallel across GPUs if you have them, and the seed is just the --seed
+   arg... actually, looking at the training script, the seed is hardcoded to 42 with no CLI
+  flag.                                                                                     
+                  
+  I'd need to add a --seed argument to the training script. Want me to include that when I  
+  build the new 90/10 training script?
+                                                                                            
+❯ but i dont need to run 7 epochs. i will just train them for 3 epoch because i get the     
+  best result at epoch 2 anyways                                                            
+                                                                                            
+● That was with aggregated data (3995 samples). With individual data (55000 samples) the    
+  best epoch was later. Check your TinyLlama faithful_sh logs — when did it peak?
+                                                                                            
+  Searched for 5 patterns (ctrl+o to expand)  
+                                                                                            
+● Best was epoch 1 (r_TRT=0.454), then it declined every epoch after. So yes, your model    
+  peaks very early even with individual data. Training for 5 epochs with early stopping is
+  plenty — no need for 50.                                                                  
+                  
+  Set --epochs 5 and save yourself 90% of the training time. With 3 seeds × 3 model sizes × 
+  5 epochs, that's manageable.
+                                                                                            
+❯ also we spoke about that my features does not capture everything but how come this is     
+  possible? isnt my feature text itself? what there is to catch?                            
+                                                                                            
+● Good point. Your input IS the raw text through a full LLaMA model. In theory, every       
+  word-level feature (frequency, length, predictability, syntax, discourse) is in there. So 
+  why only 60-65% of the ceiling?                                                           
+   
+  Possible reasons:                                                                         
+                  
+  1. The bottleneck is the head, not the LLM. LLaMA has rich representations, but you       
+  compress them through a small projection (→256 dim) and a tiny L1 head (256→128→1). A lot
+  of information gets thrown away. The LLM "knows" more than the head can extract.          
+                  
+  2. You freeze 75% of LLaMA. The frozen layers were pretrained for next-token prediction,  
+  not reading time prediction. The top 25% you fine-tune may not be enough to reorganize
+  representations for this task.                                                            
+                  
+  3. Reading time depends on things not in the text. The human's mental state, fatigue,     
+  whether they were distracted, the visual layout of the page, how far the saccade was.
+  These are per-trial factors that no model can predict from text alone. This is probably   
+  the biggest chunk of that 35% gap.
+
+  4. Causal masking limits context. Your LLaMA only sees words 1..n for word n. But human   
+  reading difficulty for word n can be affected by what comes AFTER it (parafoveal preview,
+  garden path resolution). The model can't see that.                                        
+                  
+  So it's not that the text lacks information — it's that reading time isn't fully          
+  determined by text. A human reading the same sentence twice will produce different
+  fixation durations. That irreducible individual-trial noise is part of the 35%.

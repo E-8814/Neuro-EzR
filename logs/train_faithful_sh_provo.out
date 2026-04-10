@@ -1,0 +1,1360 @@
+nohup: ignoring input
+Auto-freeze: 16/22 layers
+Device: cuda
+Loading Provo Corpus...
+  Raw per-participant observations: 12,684
+  Train: 10,080 | Val: 1,092 | Test: 1,512
+  Aggregated sentences (min 10 participants): 151
+  Aggregated: 120 train | 13 val | 18 test sentences
+  Val words: 249 | Test words: 310
+
+Loading model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+  Freezing first 16 layers
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/200 [00:00<?, ?it/s]Loading weights:   0%|          | 1/200 [00:00<00:00, 7145.32it/s, Materializing param=embed_tokens.weight]Loading weights:   0%|          | 1/200 [00:00<00:00, 218.66it/s, Materializing param=embed_tokens.weight] Loading weights:   1%|          | 2/200 [00:00<00:03, 62.93it/s, Materializing param=layers.0.input_layernorm.weight]Loading weights:   1%|          | 2/200 [00:00<00:03, 62.20it/s, Materializing param=layers.0.input_layernorm.weight]Loading weights:   2%|▏         | 3/200 [00:00<00:02, 91.57it/s, Materializing param=layers.0.mlp.down_proj.weight]  Loading weights:   2%|▏         | 3/200 [00:00<00:02, 90.36it/s, Materializing param=layers.0.mlp.down_proj.weight]Loading weights:   2%|▏         | 4/200 [00:00<00:01, 105.92it/s, Materializing param=layers.0.mlp.gate_proj.weight]Loading weights:   2%|▏         | 4/200 [00:00<00:01, 105.52it/s, Materializing param=layers.0.mlp.gate_proj.weight]Loading weights:   2%|▎         | 5/200 [00:00<00:01, 131.32it/s, Materializing param=layers.0.mlp.up_proj.weight]  Loading weights:   2%|▎         | 5/200 [00:00<00:01, 130.11it/s, Materializing param=layers.0.mlp.up_proj.weight]Loading weights:   3%|▎         | 6/200 [00:00<00:01, 155.33it/s, Materializing param=layers.0.post_attention_layernorm.weight]Loading weights:   3%|▎         | 6/200 [00:00<00:01, 154.91it/s, Materializing param=layers.0.post_attention_layernorm.weight]Loading weights:   4%|▎         | 7/200 [00:00<00:01, 179.81it/s, Materializing param=layers.0.self_attn.k_proj.weight]        Loading weights:   4%|▎         | 7/200 [00:00<00:01, 179.47it/s, Materializing param=layers.0.self_attn.k_proj.weight]Loading weights:   4%|▍         | 8/200 [00:00<00:00, 204.18it/s, Materializing param=layers.0.self_attn.o_proj.weight]Loading weights:   4%|▍         | 8/200 [00:00<00:00, 203.52it/s, Materializing param=layers.0.self_attn.o_proj.weight]Loading weights:   4%|▍         | 9/200 [00:00<00:00, 228.14it/s, Materializing param=layers.0.self_attn.q_proj.weight]Loading weights:   4%|▍         | 9/200 [00:00<00:00, 227.72it/s, Materializing param=layers.0.self_attn.q_proj.weight]Loading weights:   5%|▌         | 10/200 [00:00<00:00, 252.04it/s, Materializing param=layers.0.self_attn.v_proj.weight]Loading weights:   5%|▌         | 10/200 [00:00<00:00, 251.57it/s, Materializing param=layers.0.self_attn.v_proj.weight]Loading weights:   6%|▌         | 11/200 [00:00<00:00, 275.84it/s, Materializing param=layers.1.input_layernorm.weight] Loading weights:   6%|▌         | 11/200 [00:00<00:00, 275.52it/s, Materializing param=layers.1.input_layernorm.weight]Loading weights:   6%|▌         | 12/200 [00:00<00:00, 299.88it/s, Materializing param=layers.1.mlp.down_proj.weight]  Loading weights:   6%|▌         | 12/200 [00:00<00:00, 299.55it/s, Materializing param=layers.1.mlp.down_proj.weight]Loading weights:   6%|▋         | 13/200 [00:00<00:00, 323.75it/s, Materializing param=layers.1.mlp.gate_proj.weight]Loading weights:   6%|▋         | 13/200 [00:00<00:00, 323.41it/s, Materializing param=layers.1.mlp.gate_proj.weight]Loading weights:   7%|▋         | 14/200 [00:00<00:00, 342.49it/s, Materializing param=layers.1.mlp.up_proj.weight]  Loading weights:   7%|▋         | 14/200 [00:00<00:00, 341.50it/s, Materializing param=layers.1.mlp.up_proj.weight]Loading weights:   8%|▊         | 15/200 [00:00<00:00, 364.58it/s, Materializing param=layers.1.post_attention_layernorm.weight]Loading weights:   8%|▊         | 15/200 [00:00<00:00, 364.00it/s, Materializing param=layers.1.post_attention_layernorm.weight]Loading weights:   8%|▊         | 16/200 [00:00<00:00, 386.81it/s, Materializing param=layers.1.self_attn.k_proj.weight]        Loading weights:   8%|▊         | 16/200 [00:00<00:00, 385.65it/s, Materializing param=layers.1.self_attn.k_proj.weight]Loading weights:   8%|▊         | 17/200 [00:00<00:00, 374.78it/s, Materializing param=layers.1.self_attn.o_proj.weight]Loading weights:   8%|▊         | 17/200 [00:00<00:00, 373.33it/s, Materializing param=layers.1.self_attn.o_proj.weight]Loading weights:   9%|▉         | 18/200 [00:00<00:00, 394.19it/s, Materializing param=layers.1.self_attn.q_proj.weight]Loading weights:   9%|▉         | 18/200 [00:00<00:00, 393.65it/s, Materializing param=layers.1.self_attn.q_proj.weight]Loading weights:  10%|▉         | 19/200 [00:00<00:00, 326.66it/s, Materializing param=layers.1.self_attn.v_proj.weight]Loading weights:  10%|▉         | 19/200 [00:00<00:00, 325.49it/s, Materializing param=layers.1.self_attn.v_proj.weight]Loading weights:  10%|█         | 20/200 [00:00<00:00, 269.19it/s, Materializing param=layers.2.input_layernorm.weight] Loading weights:  10%|█         | 20/200 [00:00<00:00, 268.32it/s, Materializing param=layers.2.input_layernorm.weight]Loading weights:  10%|█         | 21/200 [00:00<00:00, 279.26it/s, Materializing param=layers.2.mlp.down_proj.weight]  Loading weights:  10%|█         | 21/200 [00:00<00:00, 279.03it/s, Materializing param=layers.2.mlp.down_proj.weight]Loading weights:  11%|█         | 22/200 [00:00<00:00, 291.89it/s, Materializing param=layers.2.mlp.gate_proj.weight]Loading weights:  11%|█         | 22/200 [00:00<00:00, 291.71it/s, Materializing param=layers.2.mlp.gate_proj.weight]Loading weights:  12%|█▏        | 23/200 [00:00<00:00, 304.50it/s, Materializing param=layers.2.mlp.up_proj.weight]  Loading weights:  12%|█▏        | 23/200 [00:00<00:00, 304.31it/s, Materializing param=layers.2.mlp.up_proj.weight]Loading weights:  12%|█▏        | 24/200 [00:00<00:00, 292.72it/s, Materializing param=layers.2.post_attention_layernorm.weight]Loading weights:  12%|█▏        | 24/200 [00:00<00:00, 291.56it/s, Materializing param=layers.2.post_attention_layernorm.weight]Loading weights:  12%|█▎        | 25/200 [00:00<00:00, 303.33it/s, Materializing param=layers.2.self_attn.k_proj.weight]        Loading weights:  12%|█▎        | 25/200 [00:00<00:00, 303.16it/s, Materializing param=layers.2.self_attn.k_proj.weight]Loading weights:  13%|█▎        | 26/200 [00:00<00:00, 257.39it/s, Materializing param=layers.2.self_attn.k_proj.weight]Loading weights:  13%|█▎        | 26/200 [00:00<00:00, 257.39it/s, Materializing param=layers.2.self_attn.o_proj.weight]Loading weights:  13%|█▎        | 26/200 [00:00<00:00, 257.39it/s, Materializing param=layers.2.self_attn.o_proj.weight]Loading weights:  14%|█▎        | 27/200 [00:00<00:00, 257.39it/s, Materializing param=layers.2.self_attn.q_proj.weight]Loading weights:  14%|█▎        | 27/200 [00:00<00:00, 257.39it/s, Materializing param=layers.2.self_attn.q_proj.weight]Loading weights:  14%|█▍        | 28/200 [00:00<00:00, 257.39it/s, Materializing param=layers.2.self_attn.v_proj.weight]Loading weights:  14%|█▍        | 28/200 [00:00<00:00, 257.39it/s, Materializing param=layers.2.self_attn.v_proj.weight]Loading weights:  14%|█▍        | 29/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.input_layernorm.weight] Loading weights:  14%|█▍        | 29/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.input_layernorm.weight]Loading weights:  15%|█▌        | 30/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.mlp.down_proj.weight]  Loading weights:  15%|█▌        | 30/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.mlp.down_proj.weight]Loading weights:  16%|█▌        | 31/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.mlp.gate_proj.weight]Loading weights:  16%|█▌        | 31/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.mlp.gate_proj.weight]Loading weights:  16%|█▌        | 32/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.mlp.up_proj.weight]  Loading weights:  16%|█▌        | 32/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.mlp.up_proj.weight]Loading weights:  16%|█▋        | 33/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.post_attention_layernorm.weight]Loading weights:  16%|█▋        | 33/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.post_attention_layernorm.weight]Loading weights:  17%|█▋        | 34/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.self_attn.k_proj.weight]        Loading weights:  17%|█▋        | 34/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.self_attn.k_proj.weight]Loading weights:  18%|█▊        | 35/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.self_attn.o_proj.weight]Loading weights:  18%|█▊        | 35/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.self_attn.o_proj.weight]Loading weights:  18%|█▊        | 36/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.self_attn.q_proj.weight]Loading weights:  18%|█▊        | 36/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.self_attn.q_proj.weight]Loading weights:  18%|█▊        | 37/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.self_attn.v_proj.weight]Loading weights:  18%|█▊        | 37/200 [00:00<00:00, 257.39it/s, Materializing param=layers.3.self_attn.v_proj.weight]Loading weights:  19%|█▉        | 38/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.input_layernorm.weight] Loading weights:  19%|█▉        | 38/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.input_layernorm.weight]Loading weights:  20%|█▉        | 39/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.mlp.down_proj.weight]  Loading weights:  20%|█▉        | 39/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.mlp.down_proj.weight]Loading weights:  20%|██        | 40/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.mlp.gate_proj.weight]Loading weights:  20%|██        | 40/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.mlp.gate_proj.weight]Loading weights:  20%|██        | 41/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.mlp.up_proj.weight]  Loading weights:  20%|██        | 41/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.mlp.up_proj.weight]Loading weights:  21%|██        | 42/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.post_attention_layernorm.weight]Loading weights:  21%|██        | 42/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.post_attention_layernorm.weight]Loading weights:  22%|██▏       | 43/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.self_attn.k_proj.weight]        Loading weights:  22%|██▏       | 43/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.self_attn.k_proj.weight]Loading weights:  22%|██▏       | 44/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.self_attn.o_proj.weight]Loading weights:  22%|██▏       | 44/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.self_attn.o_proj.weight]Loading weights:  22%|██▎       | 45/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.self_attn.q_proj.weight]Loading weights:  22%|██▎       | 45/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.self_attn.q_proj.weight]Loading weights:  23%|██▎       | 46/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.self_attn.v_proj.weight]Loading weights:  23%|██▎       | 46/200 [00:00<00:00, 257.39it/s, Materializing param=layers.4.self_attn.v_proj.weight]Loading weights:  24%|██▎       | 47/200 [00:00<00:00, 257.39it/s, Materializing param=layers.5.input_layernorm.weight] Loading weights:  24%|██▎       | 47/200 [00:00<00:00, 257.39it/s, Materializing param=layers.5.input_layernorm.weight]Loading weights:  24%|██▍       | 48/200 [00:00<00:00, 257.39it/s, Materializing param=layers.5.mlp.down_proj.weight]  Loading weights:  24%|██▍       | 48/200 [00:00<00:00, 257.39it/s, Materializing param=layers.5.mlp.down_proj.weight]Loading weights:  24%|██▍       | 49/200 [00:00<00:00, 257.39it/s, Materializing param=layers.5.mlp.gate_proj.weight]Loading weights:  24%|██▍       | 49/200 [00:00<00:00, 257.39it/s, Materializing param=layers.5.mlp.gate_proj.weight]Loading weights:  25%|██▌       | 50/200 [00:00<00:00, 257.39it/s, Materializing param=layers.5.mlp.up_proj.weight]  Loading weights:  25%|██▌       | 50/200 [00:00<00:00, 257.39it/s, Materializing param=layers.5.mlp.up_proj.weight]Loading weights:  26%|██▌       | 51/200 [00:00<00:00, 257.39it/s, Materializing param=layers.5.post_attention_layernorm.weight]Loading weights:  26%|██▌       | 51/200 [00:00<00:00, 257.39it/s, Materializing param=layers.5.post_attention_layernorm.weight]Loading weights:  26%|██▌       | 52/200 [00:00<00:00, 251.89it/s, Materializing param=layers.5.post_attention_layernorm.weight]Loading weights:  26%|██▌       | 52/200 [00:00<00:00, 251.89it/s, Materializing param=layers.5.self_attn.k_proj.weight]        Loading weights:  26%|██▌       | 52/200 [00:00<00:00, 251.89it/s, Materializing param=layers.5.self_attn.k_proj.weight]Loading weights:  26%|██▋       | 53/200 [00:00<00:00, 251.89it/s, Materializing param=layers.5.self_attn.o_proj.weight]Loading weights:  26%|██▋       | 53/200 [00:00<00:00, 251.89it/s, Materializing param=layers.5.self_attn.o_proj.weight]Loading weights:  27%|██▋       | 54/200 [00:00<00:00, 251.89it/s, Materializing param=layers.5.self_attn.q_proj.weight]Loading weights:  27%|██▋       | 54/200 [00:00<00:00, 251.89it/s, Materializing param=layers.5.self_attn.q_proj.weight]Loading weights:  28%|██▊       | 55/200 [00:00<00:00, 251.89it/s, Materializing param=layers.5.self_attn.v_proj.weight]Loading weights:  28%|██▊       | 55/200 [00:00<00:00, 251.89it/s, Materializing param=layers.5.self_attn.v_proj.weight]Loading weights:  28%|██▊       | 56/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.input_layernorm.weight] Loading weights:  28%|██▊       | 56/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.input_layernorm.weight]Loading weights:  28%|██▊       | 57/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.mlp.down_proj.weight]  Loading weights:  28%|██▊       | 57/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.mlp.down_proj.weight]Loading weights:  29%|██▉       | 58/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.mlp.gate_proj.weight]Loading weights:  29%|██▉       | 58/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.mlp.gate_proj.weight]Loading weights:  30%|██▉       | 59/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.mlp.up_proj.weight]  Loading weights:  30%|██▉       | 59/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.mlp.up_proj.weight]Loading weights:  30%|███       | 60/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.post_attention_layernorm.weight]Loading weights:  30%|███       | 60/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.post_attention_layernorm.weight]Loading weights:  30%|███       | 61/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.self_attn.k_proj.weight]        Loading weights:  30%|███       | 61/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.self_attn.k_proj.weight]Loading weights:  31%|███       | 62/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.self_attn.o_proj.weight]Loading weights:  31%|███       | 62/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.self_attn.o_proj.weight]Loading weights:  32%|███▏      | 63/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.self_attn.q_proj.weight]Loading weights:  32%|███▏      | 63/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.self_attn.q_proj.weight]Loading weights:  32%|███▏      | 64/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.self_attn.v_proj.weight]Loading weights:  32%|███▏      | 64/200 [00:00<00:00, 251.89it/s, Materializing param=layers.6.self_attn.v_proj.weight]Loading weights:  32%|███▎      | 65/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.input_layernorm.weight] Loading weights:  32%|███▎      | 65/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.input_layernorm.weight]Loading weights:  33%|███▎      | 66/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.mlp.down_proj.weight]  Loading weights:  33%|███▎      | 66/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.mlp.down_proj.weight]Loading weights:  34%|███▎      | 67/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.mlp.gate_proj.weight]Loading weights:  34%|███▎      | 67/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.mlp.gate_proj.weight]Loading weights:  34%|███▍      | 68/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.mlp.up_proj.weight]  Loading weights:  34%|███▍      | 68/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.mlp.up_proj.weight]Loading weights:  34%|███▍      | 69/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.post_attention_layernorm.weight]Loading weights:  34%|███▍      | 69/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.post_attention_layernorm.weight]Loading weights:  35%|███▌      | 70/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.self_attn.k_proj.weight]        Loading weights:  35%|███▌      | 70/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.self_attn.k_proj.weight]Loading weights:  36%|███▌      | 71/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.self_attn.o_proj.weight]Loading weights:  36%|███▌      | 71/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.self_attn.o_proj.weight]Loading weights:  36%|███▌      | 72/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.self_attn.q_proj.weight]Loading weights:  36%|███▌      | 72/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.self_attn.q_proj.weight]Loading weights:  36%|███▋      | 73/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.self_attn.v_proj.weight]Loading weights:  36%|███▋      | 73/200 [00:00<00:00, 251.89it/s, Materializing param=layers.7.self_attn.v_proj.weight]Loading weights:  37%|███▋      | 74/200 [00:00<00:00, 251.89it/s, Materializing param=layers.8.input_layernorm.weight] Loading weights:  37%|███▋      | 74/200 [00:00<00:00, 251.89it/s, Materializing param=layers.8.input_layernorm.weight]Loading weights:  38%|███▊      | 75/200 [00:00<00:00, 251.89it/s, Materializing param=layers.8.mlp.down_proj.weight]  Loading weights:  38%|███▊      | 75/200 [00:00<00:00, 251.89it/s, Materializing param=layers.8.mlp.down_proj.weight]Loading weights:  38%|███▊      | 76/200 [00:00<00:00, 251.89it/s, Materializing param=layers.8.mlp.gate_proj.weight]Loading weights:  38%|███▊      | 76/200 [00:00<00:00, 251.89it/s, Materializing param=layers.8.mlp.gate_proj.weight]Loading weights:  38%|███▊      | 77/200 [00:00<00:00, 251.89it/s, Materializing param=layers.8.mlp.up_proj.weight]  Loading weights:  38%|███▊      | 77/200 [00:00<00:00, 251.89it/s, Materializing param=layers.8.mlp.up_proj.weight]Loading weights:  39%|███▉      | 78/200 [00:00<00:00, 226.34it/s, Materializing param=layers.8.mlp.up_proj.weight]Loading weights:  39%|███▉      | 78/200 [00:00<00:00, 226.34it/s, Materializing param=layers.8.post_attention_layernorm.weight]Loading weights:  39%|███▉      | 78/200 [00:00<00:00, 226.34it/s, Materializing param=layers.8.post_attention_layernorm.weight]Loading weights:  40%|███▉      | 79/200 [00:00<00:00, 226.34it/s, Materializing param=layers.8.self_attn.k_proj.weight]        Loading weights:  40%|███▉      | 79/200 [00:00<00:00, 226.34it/s, Materializing param=layers.8.self_attn.k_proj.weight]Loading weights:  40%|████      | 80/200 [00:00<00:00, 226.34it/s, Materializing param=layers.8.self_attn.o_proj.weight]Loading weights:  40%|████      | 80/200 [00:00<00:00, 226.34it/s, Materializing param=layers.8.self_attn.o_proj.weight]Loading weights:  40%|████      | 81/200 [00:00<00:00, 226.34it/s, Materializing param=layers.8.self_attn.q_proj.weight]Loading weights:  40%|████      | 81/200 [00:00<00:00, 226.34it/s, Materializing param=layers.8.self_attn.q_proj.weight]Loading weights:  41%|████      | 82/200 [00:00<00:00, 226.34it/s, Materializing param=layers.8.self_attn.v_proj.weight]Loading weights:  41%|████      | 82/200 [00:00<00:00, 226.34it/s, Materializing param=layers.8.self_attn.v_proj.weight]Loading weights:  42%|████▏     | 83/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.input_layernorm.weight] Loading weights:  42%|████▏     | 83/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.input_layernorm.weight]Loading weights:  42%|████▏     | 84/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.mlp.down_proj.weight]  Loading weights:  42%|████▏     | 84/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.mlp.down_proj.weight]Loading weights:  42%|████▎     | 85/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.mlp.gate_proj.weight]Loading weights:  42%|████▎     | 85/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.mlp.gate_proj.weight]Loading weights:  43%|████▎     | 86/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.mlp.up_proj.weight]  Loading weights:  43%|████▎     | 86/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.mlp.up_proj.weight]Loading weights:  44%|████▎     | 87/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.post_attention_layernorm.weight]Loading weights:  44%|████▎     | 87/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.post_attention_layernorm.weight]Loading weights:  44%|████▍     | 88/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.self_attn.k_proj.weight]        Loading weights:  44%|████▍     | 88/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.self_attn.k_proj.weight]Loading weights:  44%|████▍     | 89/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.self_attn.o_proj.weight]Loading weights:  44%|████▍     | 89/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.self_attn.o_proj.weight]Loading weights:  45%|████▌     | 90/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.self_attn.q_proj.weight]Loading weights:  45%|████▌     | 90/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.self_attn.q_proj.weight]Loading weights:  46%|████▌     | 91/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.self_attn.v_proj.weight]Loading weights:  46%|████▌     | 91/200 [00:00<00:00, 226.34it/s, Materializing param=layers.9.self_attn.v_proj.weight]Loading weights:  46%|████▌     | 92/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.input_layernorm.weight]Loading weights:  46%|████▌     | 92/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.input_layernorm.weight]Loading weights:  46%|████▋     | 93/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.mlp.down_proj.weight]  Loading weights:  46%|████▋     | 93/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.mlp.down_proj.weight]Loading weights:  47%|████▋     | 94/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.mlp.gate_proj.weight]Loading weights:  47%|████▋     | 94/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.mlp.gate_proj.weight]Loading weights:  48%|████▊     | 95/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.mlp.up_proj.weight]  Loading weights:  48%|████▊     | 95/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.mlp.up_proj.weight]Loading weights:  48%|████▊     | 96/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.post_attention_layernorm.weight]Loading weights:  48%|████▊     | 96/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.post_attention_layernorm.weight]Loading weights:  48%|████▊     | 97/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.self_attn.k_proj.weight]        Loading weights:  48%|████▊     | 97/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.self_attn.k_proj.weight]Loading weights:  49%|████▉     | 98/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.self_attn.o_proj.weight]Loading weights:  49%|████▉     | 98/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.self_attn.o_proj.weight]Loading weights:  50%|████▉     | 99/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.self_attn.q_proj.weight]Loading weights:  50%|████▉     | 99/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.self_attn.q_proj.weight]Loading weights:  50%|█████     | 100/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.self_attn.v_proj.weight]Loading weights:  50%|█████     | 100/200 [00:00<00:00, 226.34it/s, Materializing param=layers.10.self_attn.v_proj.weight]Loading weights:  50%|█████     | 101/200 [00:00<00:00, 226.34it/s, Materializing param=layers.11.input_layernorm.weight] Loading weights:  50%|█████     | 101/200 [00:00<00:00, 226.34it/s, Materializing param=layers.11.input_layernorm.weight]Loading weights:  51%|█████     | 102/200 [00:00<00:00, 226.34it/s, Materializing param=layers.11.mlp.down_proj.weight]  Loading weights:  51%|█████     | 102/200 [00:00<00:00, 226.34it/s, Materializing param=layers.11.mlp.down_proj.weight]Loading weights:  52%|█████▏    | 103/200 [00:00<00:00, 234.86it/s, Materializing param=layers.11.mlp.down_proj.weight]Loading weights:  52%|█████▏    | 103/200 [00:00<00:00, 234.86it/s, Materializing param=layers.11.mlp.gate_proj.weight]Loading weights:  52%|█████▏    | 103/200 [00:00<00:00, 234.86it/s, Materializing param=layers.11.mlp.gate_proj.weight]Loading weights:  52%|█████▏    | 104/200 [00:00<00:00, 234.86it/s, Materializing param=layers.11.mlp.up_proj.weight]  Loading weights:  52%|█████▏    | 104/200 [00:00<00:00, 234.86it/s, Materializing param=layers.11.mlp.up_proj.weight]Loading weights:  52%|█████▎    | 105/200 [00:00<00:00, 234.86it/s, Materializing param=layers.11.post_attention_layernorm.weight]Loading weights:  52%|█████▎    | 105/200 [00:00<00:00, 234.86it/s, Materializing param=layers.11.post_attention_layernorm.weight]Loading weights:  53%|█████▎    | 106/200 [00:00<00:00, 234.86it/s, Materializing param=layers.11.self_attn.k_proj.weight]        Loading weights:  53%|█████▎    | 106/200 [00:00<00:00, 234.86it/s, Materializing param=layers.11.self_attn.k_proj.weight]Loading weights:  54%|█████▎    | 107/200 [00:00<00:00, 234.86it/s, Materializing param=layers.11.self_attn.o_proj.weight]Loading weights:  54%|█████▎    | 107/200 [00:00<00:00, 234.86it/s, Materializing param=layers.11.self_attn.o_proj.weight]Loading weights:  54%|█████▍    | 108/200 [00:00<00:00, 234.86it/s, Materializing param=layers.11.self_attn.q_proj.weight]Loading weights:  54%|█████▍    | 108/200 [00:00<00:00, 234.86it/s, Materializing param=layers.11.self_attn.q_proj.weight]Loading weights:  55%|█████▍    | 109/200 [00:00<00:00, 234.86it/s, Materializing param=layers.11.self_attn.v_proj.weight]Loading weights:  55%|█████▍    | 109/200 [00:00<00:00, 234.86it/s, Materializing param=layers.11.self_attn.v_proj.weight]Loading weights:  55%|█████▌    | 110/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.input_layernorm.weight] Loading weights:  55%|█████▌    | 110/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.input_layernorm.weight]Loading weights:  56%|█████▌    | 111/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.mlp.down_proj.weight]  Loading weights:  56%|█████▌    | 111/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.mlp.down_proj.weight]Loading weights:  56%|█████▌    | 112/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.mlp.gate_proj.weight]Loading weights:  56%|█████▌    | 112/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.mlp.gate_proj.weight]Loading weights:  56%|█████▋    | 113/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.mlp.up_proj.weight]  Loading weights:  56%|█████▋    | 113/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.mlp.up_proj.weight]Loading weights:  57%|█████▋    | 114/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.post_attention_layernorm.weight]Loading weights:  57%|█████▋    | 114/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.post_attention_layernorm.weight]Loading weights:  57%|█████▊    | 115/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.self_attn.k_proj.weight]        Loading weights:  57%|█████▊    | 115/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.self_attn.k_proj.weight]Loading weights:  58%|█████▊    | 116/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.self_attn.o_proj.weight]Loading weights:  58%|█████▊    | 116/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.self_attn.o_proj.weight]Loading weights:  58%|█████▊    | 117/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.self_attn.q_proj.weight]Loading weights:  58%|█████▊    | 117/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.self_attn.q_proj.weight]Loading weights:  59%|█████▉    | 118/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.self_attn.v_proj.weight]Loading weights:  59%|█████▉    | 118/200 [00:00<00:00, 234.86it/s, Materializing param=layers.12.self_attn.v_proj.weight]Loading weights:  60%|█████▉    | 119/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.input_layernorm.weight] Loading weights:  60%|█████▉    | 119/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.input_layernorm.weight]Loading weights:  60%|██████    | 120/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.mlp.down_proj.weight]  Loading weights:  60%|██████    | 120/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.mlp.down_proj.weight]Loading weights:  60%|██████    | 121/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.mlp.gate_proj.weight]Loading weights:  60%|██████    | 121/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.mlp.gate_proj.weight]Loading weights:  61%|██████    | 122/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.mlp.up_proj.weight]  Loading weights:  61%|██████    | 122/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.mlp.up_proj.weight]Loading weights:  62%|██████▏   | 123/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.post_attention_layernorm.weight]Loading weights:  62%|██████▏   | 123/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.post_attention_layernorm.weight]Loading weights:  62%|██████▏   | 124/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.self_attn.k_proj.weight]        Loading weights:  62%|██████▏   | 124/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.self_attn.k_proj.weight]Loading weights:  62%|██████▎   | 125/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.self_attn.o_proj.weight]Loading weights:  62%|██████▎   | 125/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.self_attn.o_proj.weight]Loading weights:  63%|██████▎   | 126/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.self_attn.q_proj.weight]Loading weights:  63%|██████▎   | 126/200 [00:00<00:00, 234.86it/s, Materializing param=layers.13.self_attn.q_proj.weight]Loading weights:  64%|██████▎   | 127/200 [00:00<00:00, 234.19it/s, Materializing param=layers.13.self_attn.q_proj.weight]Loading weights:  64%|██████▎   | 127/200 [00:00<00:00, 234.19it/s, Materializing param=layers.13.self_attn.v_proj.weight]Loading weights:  64%|██████▎   | 127/200 [00:00<00:00, 234.19it/s, Materializing param=layers.13.self_attn.v_proj.weight]Loading weights:  64%|██████▍   | 128/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.input_layernorm.weight] Loading weights:  64%|██████▍   | 128/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.input_layernorm.weight]Loading weights:  64%|██████▍   | 129/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.mlp.down_proj.weight]  Loading weights:  64%|██████▍   | 129/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.mlp.down_proj.weight]Loading weights:  65%|██████▌   | 130/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.mlp.gate_proj.weight]Loading weights:  65%|██████▌   | 130/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.mlp.gate_proj.weight]Loading weights:  66%|██████▌   | 131/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.mlp.up_proj.weight]  Loading weights:  66%|██████▌   | 131/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.mlp.up_proj.weight]Loading weights:  66%|██████▌   | 132/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.post_attention_layernorm.weight]Loading weights:  66%|██████▌   | 132/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.post_attention_layernorm.weight]Loading weights:  66%|██████▋   | 133/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.self_attn.k_proj.weight]        Loading weights:  66%|██████▋   | 133/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.self_attn.k_proj.weight]Loading weights:  67%|██████▋   | 134/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.self_attn.o_proj.weight]Loading weights:  67%|██████▋   | 134/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.self_attn.o_proj.weight]Loading weights:  68%|██████▊   | 135/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.self_attn.q_proj.weight]Loading weights:  68%|██████▊   | 135/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.self_attn.q_proj.weight]Loading weights:  68%|██████▊   | 136/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.self_attn.v_proj.weight]Loading weights:  68%|██████▊   | 136/200 [00:00<00:00, 234.19it/s, Materializing param=layers.14.self_attn.v_proj.weight]Loading weights:  68%|██████▊   | 137/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.input_layernorm.weight] Loading weights:  68%|██████▊   | 137/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.input_layernorm.weight]Loading weights:  69%|██████▉   | 138/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.mlp.down_proj.weight]  Loading weights:  69%|██████▉   | 138/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.mlp.down_proj.weight]Loading weights:  70%|██████▉   | 139/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.mlp.gate_proj.weight]Loading weights:  70%|██████▉   | 139/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.mlp.gate_proj.weight]Loading weights:  70%|███████   | 140/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.mlp.up_proj.weight]  Loading weights:  70%|███████   | 140/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.mlp.up_proj.weight]Loading weights:  70%|███████   | 141/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.post_attention_layernorm.weight]Loading weights:  70%|███████   | 141/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.post_attention_layernorm.weight]Loading weights:  71%|███████   | 142/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.self_attn.k_proj.weight]        Loading weights:  71%|███████   | 142/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.self_attn.k_proj.weight]Loading weights:  72%|███████▏  | 143/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.self_attn.o_proj.weight]Loading weights:  72%|███████▏  | 143/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.self_attn.o_proj.weight]Loading weights:  72%|███████▏  | 144/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.self_attn.q_proj.weight]Loading weights:  72%|███████▏  | 144/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.self_attn.q_proj.weight]Loading weights:  72%|███████▎  | 145/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.self_attn.v_proj.weight]Loading weights:  72%|███████▎  | 145/200 [00:00<00:00, 234.19it/s, Materializing param=layers.15.self_attn.v_proj.weight]Loading weights:  73%|███████▎  | 146/200 [00:00<00:00, 234.19it/s, Materializing param=layers.16.input_layernorm.weight] Loading weights:  73%|███████▎  | 146/200 [00:00<00:00, 234.19it/s, Materializing param=layers.16.input_layernorm.weight]Loading weights:  74%|███████▎  | 147/200 [00:00<00:00, 234.19it/s, Materializing param=layers.16.mlp.down_proj.weight]  Loading weights:  74%|███████▎  | 147/200 [00:00<00:00, 234.19it/s, Materializing param=layers.16.mlp.down_proj.weight]Loading weights:  74%|███████▍  | 148/200 [00:00<00:00, 234.19it/s, Materializing param=layers.16.mlp.gate_proj.weight]Loading weights:  74%|███████▍  | 148/200 [00:00<00:00, 234.19it/s, Materializing param=layers.16.mlp.gate_proj.weight]Loading weights:  74%|███████▍  | 149/200 [00:00<00:00, 234.19it/s, Materializing param=layers.16.mlp.up_proj.weight]  Loading weights:  74%|███████▍  | 149/200 [00:00<00:00, 234.19it/s, Materializing param=layers.16.mlp.up_proj.weight]Loading weights:  75%|███████▌  | 150/200 [00:00<00:00, 234.19it/s, Materializing param=layers.16.post_attention_layernorm.weight]Loading weights:  75%|███████▌  | 150/200 [00:00<00:00, 234.19it/s, Materializing param=layers.16.post_attention_layernorm.weight]Loading weights:  76%|███████▌  | 151/200 [00:00<00:00, 234.19it/s, Materializing param=layers.16.self_attn.k_proj.weight]        Loading weights:  76%|███████▌  | 151/200 [00:00<00:00, 234.19it/s, Materializing param=layers.16.self_attn.k_proj.weight]Loading weights:  76%|███████▌  | 152/200 [00:00<00:00, 227.44it/s, Materializing param=layers.16.self_attn.k_proj.weight]Loading weights:  76%|███████▌  | 152/200 [00:00<00:00, 227.44it/s, Materializing param=layers.16.self_attn.o_proj.weight]Loading weights:  76%|███████▌  | 152/200 [00:00<00:00, 227.44it/s, Materializing param=layers.16.self_attn.o_proj.weight]Loading weights:  76%|███████▋  | 153/200 [00:00<00:00, 227.44it/s, Materializing param=layers.16.self_attn.q_proj.weight]Loading weights:  76%|███████▋  | 153/200 [00:00<00:00, 227.44it/s, Materializing param=layers.16.self_attn.q_proj.weight]Loading weights:  77%|███████▋  | 154/200 [00:00<00:00, 227.44it/s, Materializing param=layers.16.self_attn.v_proj.weight]Loading weights:  77%|███████▋  | 154/200 [00:00<00:00, 227.44it/s, Materializing param=layers.16.self_attn.v_proj.weight]Loading weights:  78%|███████▊  | 155/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.input_layernorm.weight] Loading weights:  78%|███████▊  | 155/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.input_layernorm.weight]Loading weights:  78%|███████▊  | 156/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.mlp.down_proj.weight]  Loading weights:  78%|███████▊  | 156/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.mlp.down_proj.weight]Loading weights:  78%|███████▊  | 157/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.mlp.gate_proj.weight]Loading weights:  78%|███████▊  | 157/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.mlp.gate_proj.weight]Loading weights:  79%|███████▉  | 158/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.mlp.up_proj.weight]  Loading weights:  79%|███████▉  | 158/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.mlp.up_proj.weight]Loading weights:  80%|███████▉  | 159/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.post_attention_layernorm.weight]Loading weights:  80%|███████▉  | 159/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.post_attention_layernorm.weight]Loading weights:  80%|████████  | 160/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.self_attn.k_proj.weight]        Loading weights:  80%|████████  | 160/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.self_attn.k_proj.weight]Loading weights:  80%|████████  | 161/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.self_attn.o_proj.weight]Loading weights:  80%|████████  | 161/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.self_attn.o_proj.weight]Loading weights:  81%|████████  | 162/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.self_attn.q_proj.weight]Loading weights:  81%|████████  | 162/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.self_attn.q_proj.weight]Loading weights:  82%|████████▏ | 163/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.self_attn.v_proj.weight]Loading weights:  82%|████████▏ | 163/200 [00:00<00:00, 227.44it/s, Materializing param=layers.17.self_attn.v_proj.weight]Loading weights:  82%|████████▏ | 164/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.input_layernorm.weight] Loading weights:  82%|████████▏ | 164/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.input_layernorm.weight]Loading weights:  82%|████████▎ | 165/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.mlp.down_proj.weight]  Loading weights:  82%|████████▎ | 165/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.mlp.down_proj.weight]Loading weights:  83%|████████▎ | 166/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.mlp.gate_proj.weight]Loading weights:  83%|████████▎ | 166/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.mlp.gate_proj.weight]Loading weights:  84%|████████▎ | 167/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.mlp.up_proj.weight]  Loading weights:  84%|████████▎ | 167/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.mlp.up_proj.weight]Loading weights:  84%|████████▍ | 168/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.post_attention_layernorm.weight]Loading weights:  84%|████████▍ | 168/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.post_attention_layernorm.weight]Loading weights:  84%|████████▍ | 169/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.self_attn.k_proj.weight]        Loading weights:  84%|████████▍ | 169/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.self_attn.k_proj.weight]Loading weights:  85%|████████▌ | 170/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.self_attn.o_proj.weight]Loading weights:  85%|████████▌ | 170/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.self_attn.o_proj.weight]Loading weights:  86%|████████▌ | 171/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.self_attn.q_proj.weight]Loading weights:  86%|████████▌ | 171/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.self_attn.q_proj.weight]Loading weights:  86%|████████▌ | 172/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.self_attn.v_proj.weight]Loading weights:  86%|████████▌ | 172/200 [00:00<00:00, 227.44it/s, Materializing param=layers.18.self_attn.v_proj.weight]Loading weights:  86%|████████▋ | 173/200 [00:00<00:00, 227.44it/s, Materializing param=layers.19.input_layernorm.weight] Loading weights:  86%|████████▋ | 173/200 [00:00<00:00, 227.44it/s, Materializing param=layers.19.input_layernorm.weight]Loading weights:  87%|████████▋ | 174/200 [00:00<00:00, 227.44it/s, Materializing param=layers.19.mlp.down_proj.weight]  Loading weights:  87%|████████▋ | 174/200 [00:00<00:00, 227.44it/s, Materializing param=layers.19.mlp.down_proj.weight]Loading weights:  88%|████████▊ | 175/200 [00:00<00:00, 227.44it/s, Materializing param=layers.19.mlp.gate_proj.weight]Loading weights:  88%|████████▊ | 175/200 [00:00<00:00, 227.44it/s, Materializing param=layers.19.mlp.gate_proj.weight]Loading weights:  88%|████████▊ | 176/200 [00:00<00:00, 227.44it/s, Materializing param=layers.19.mlp.up_proj.weight]  Loading weights:  88%|████████▊ | 176/200 [00:00<00:00, 227.44it/s, Materializing param=layers.19.mlp.up_proj.weight]Loading weights:  88%|████████▊ | 177/200 [00:00<00:00, 233.77it/s, Materializing param=layers.19.mlp.up_proj.weight]Loading weights:  88%|████████▊ | 177/200 [00:00<00:00, 233.77it/s, Materializing param=layers.19.post_attention_layernorm.weight]Loading weights:  88%|████████▊ | 177/200 [00:00<00:00, 233.77it/s, Materializing param=layers.19.post_attention_layernorm.weight]Loading weights:  89%|████████▉ | 178/200 [00:00<00:00, 233.77it/s, Materializing param=layers.19.self_attn.k_proj.weight]        Loading weights:  89%|████████▉ | 178/200 [00:00<00:00, 233.77it/s, Materializing param=layers.19.self_attn.k_proj.weight]Loading weights:  90%|████████▉ | 179/200 [00:00<00:00, 233.77it/s, Materializing param=layers.19.self_attn.o_proj.weight]Loading weights:  90%|████████▉ | 179/200 [00:00<00:00, 233.77it/s, Materializing param=layers.19.self_attn.o_proj.weight]Loading weights:  90%|█████████ | 180/200 [00:00<00:00, 233.77it/s, Materializing param=layers.19.self_attn.q_proj.weight]Loading weights:  90%|█████████ | 180/200 [00:00<00:00, 233.77it/s, Materializing param=layers.19.self_attn.q_proj.weight]Loading weights:  90%|█████████ | 181/200 [00:00<00:00, 233.77it/s, Materializing param=layers.19.self_attn.v_proj.weight]Loading weights:  90%|█████████ | 181/200 [00:00<00:00, 233.77it/s, Materializing param=layers.19.self_attn.v_proj.weight]Loading weights:  91%|█████████ | 182/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.input_layernorm.weight] Loading weights:  91%|█████████ | 182/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.input_layernorm.weight]Loading weights:  92%|█████████▏| 183/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.mlp.down_proj.weight]  Loading weights:  92%|█████████▏| 183/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.mlp.down_proj.weight]Loading weights:  92%|█████████▏| 184/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.mlp.gate_proj.weight]Loading weights:  92%|█████████▏| 184/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.mlp.gate_proj.weight]Loading weights:  92%|█████████▎| 185/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.mlp.up_proj.weight]  Loading weights:  92%|█████████▎| 185/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.mlp.up_proj.weight]Loading weights:  93%|█████████▎| 186/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.post_attention_layernorm.weight]Loading weights:  93%|█████████▎| 186/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.post_attention_layernorm.weight]Loading weights:  94%|█████████▎| 187/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.self_attn.k_proj.weight]        Loading weights:  94%|█████████▎| 187/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.self_attn.k_proj.weight]Loading weights:  94%|█████████▍| 188/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.self_attn.o_proj.weight]Loading weights:  94%|█████████▍| 188/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.self_attn.o_proj.weight]Loading weights:  94%|█████████▍| 189/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.self_attn.q_proj.weight]Loading weights:  94%|█████████▍| 189/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.self_attn.q_proj.weight]Loading weights:  95%|█████████▌| 190/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.self_attn.v_proj.weight]Loading weights:  95%|█████████▌| 190/200 [00:00<00:00, 233.77it/s, Materializing param=layers.20.self_attn.v_proj.weight]Loading weights:  96%|█████████▌| 191/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.input_layernorm.weight] Loading weights:  96%|█████████▌| 191/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.input_layernorm.weight]Loading weights:  96%|█████████▌| 192/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.mlp.down_proj.weight]  Loading weights:  96%|█████████▌| 192/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.mlp.down_proj.weight]Loading weights:  96%|█████████▋| 193/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.mlp.gate_proj.weight]Loading weights:  96%|█████████▋| 193/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.mlp.gate_proj.weight]Loading weights:  97%|█████████▋| 194/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.mlp.up_proj.weight]  Loading weights:  97%|█████████▋| 194/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.mlp.up_proj.weight]Loading weights:  98%|█████████▊| 195/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.post_attention_layernorm.weight]Loading weights:  98%|█████████▊| 195/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.post_attention_layernorm.weight]Loading weights:  98%|█████████▊| 196/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.self_attn.k_proj.weight]        Loading weights:  98%|█████████▊| 196/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.self_attn.k_proj.weight]Loading weights:  98%|█████████▊| 197/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.self_attn.o_proj.weight]Loading weights:  98%|█████████▊| 197/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.self_attn.o_proj.weight]Loading weights:  99%|█████████▉| 198/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.self_attn.q_proj.weight]Loading weights:  99%|█████████▉| 198/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.self_attn.q_proj.weight]Loading weights: 100%|█████████▉| 199/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.self_attn.v_proj.weight]Loading weights: 100%|█████████▉| 199/200 [00:00<00:00, 233.77it/s, Materializing param=layers.21.self_attn.v_proj.weight]Loading weights: 100%|██████████| 200/200 [00:00<00:00, 233.77it/s, Materializing param=norm.weight]                      Loading weights: 100%|██████████| 200/200 [00:00<00:00, 233.77it/s, Materializing param=norm.weight]Loading weights: 100%|██████████| 200/200 [00:00<00:00, 243.35it/s, Materializing param=norm.weight]
+[1mLlamaModel LOAD REPORT[0m from: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+Key            | Status     |  | 
+---------------+------------+--+-
+lm_head.weight | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+  Total parameters:    1,035,103,492
+  Frozen (LM):         770,244,608
+  Trainable (LM):      264,267,776 (lr=2e-05)
+  Trainable (heads+cog): 591,108 (lr=0.0005)
+  Learnable cognitive:  delta, l1_scale, skip_head
+  Initial delta:       0.3400
+
+==========================================================================================
+Training FAITHFUL+SH model on Provo
+  Model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+  FFD = L1 | Gaze = L1 + L2 | TRT = Gaze + regression (conditional)
+  Loss: 0.25*TRT + 0.25*FFD + 0.25*Gaze + 0.4*skip_BCE
+  Time losses masked to fixated words | skip loss on all words
+  Batch: 8 | Accum: 4 | Effective: 32
+  AMP: True
+  Regularizers: l1_range(60.0-400.0ms) + delta_range(0.20-0.50, λ=5.0)
+  Skip prior: mean_skip → 0.35 (λ=10.0)
+==========================================================================================
+  Learnable parameters:
+    delta (L2/L1 ratio)       = 0.3400 (init=0.34, literature=0.20-0.50)
+    l1_scale                  = 50.00 (init=50)
+    skip_head                 = learned (from LLaMA repr)
+  From theory (fixed):
+    FFD                       = L1 (Reichle et al. 2003)
+    Gaze                      = L1 + L2 (Reichle et al. 2003)
+  Integration failure approx (fixed):
+    regression_sharpness      = 0.03
+    regression_threshold      = 100.0ms
+    regression_cost_scale     = 0.25
+
+[Epoch   1/50] 185.2s | lm_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=876.5 (trt=1974 ffd=451 gaze=1080 skip=0.055) | 10,080 samples
+  Val:   r_TRT=0.577  r_FFD=0.359  r_Gaze=0.601  r_skip=0.701
+  Val:   MAE_TRT=51.7ms  MAE_FFD=26.9ms  MAE_Gaze=37.3ms
+  Val:   Bias_TRT=-14.0ms  Bias_FFD=-11.5ms  Bias_Gaze=+18.2ms
+  Pred:  mean_TRT=283ms (human=297ms) | L1=198+/-30ms  L2=68+/-10ms  delta=0.3428  l1_scale=50.0  mean_skip=0.555
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           193    66 |   260   410  -150 |   193   222 |   260   288 |  0.57  0.14
+  know             183    63 |   261   235   +26 |   183   193 |   245   197 |  0.59  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              170    58 |   228   268   -40 |   170   228 |   228   231 |  0.61  0.63
+  looked           199    68 |   283   297   -14 |   199   204 |   267   253 |  0.55  0.19
+  around           182    62 |   260   298   -38 |   182   196 |   244   242 |  0.59  0.32
+  her              172    59 |   245   300   -55 |   172   206 |   231   222 |  0.61  0.60
+  anxiously        234    80 |   334   346   -12 |   234   200 |   314   256 |  0.48  0.19
+  for              162    56 |   235   265   -31 |   162   211 |   218   215 |  0.63  0.63
+  some             177    61 |   251   259    -8 |   177   198 |   238   224 |  0.60  0.37
+  familiar         215    74 |   307   274   +33 |   215   212 |   289   234 |  0.52  0.23
+
+  ** NEW BEST (r_TRT=0.577) **
+
+[Epoch   2/50] 182.3s | lm_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=756.8 (trt=1715 ffd=382 gaze=930 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.586  r_FFD=0.339  r_Gaze=0.588  r_skip=0.729
+  Val:   MAE_TRT=58.5ms  MAE_FFD=22.1ms  MAE_Gaze=56.3ms
+  Val:   Bias_TRT=+19.1ms  Bias_FFD=+8.9ms  Bias_Gaze=+46.3ms
+  Pred:  mean_TRT=316ms (human=297ms) | L1=218+/-22ms  L2=75+/-8ms  delta=0.3462  l1_scale=50.0  mean_skip=0.499
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           221    76 |   297   410  -113 |   221   222 |   297   288 |  0.49  0.14
+  know             202    70 |   293   235   +58 |   202   193 |   272   197 |  0.54  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              201    69 |   270   268    +2 |   201   228 |   270   231 |  0.54  0.63
+  looked           210    73 |   303   297    +6 |   210   204 |   283   253 |  0.52  0.19
+  around           195    68 |   282   298   -16 |   195   196 |   263   242 |  0.56  0.32
+  her              198    68 |   284   300   -16 |   198   206 |   266   222 |  0.55  0.60
+  anxiously        237    82 |   343   346    -3 |   237   200 |   319   256 |  0.45  0.19
+  for              188    65 |   274   265    +9 |   188   211 |   253   215 |  0.58  0.63
+  some             205    71 |   294   259   +35 |   205   198 |   276   224 |  0.53  0.37
+  familiar         232    80 |   337   274   +63 |   232   212 |   312   234 |  0.46  0.23
+
+  ** NEW BEST (r_TRT=0.586) **
+
+[Epoch   3/50] 183.8s | lm_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=755.0 (trt=1700 ffd=386 gaze=933 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.566  r_FFD=0.346  r_Gaze=0.579  r_skip=0.711
+  Val:   MAE_TRT=52.0ms  MAE_FFD=28.4ms  MAE_Gaze=37.9ms
+  Val:   Bias_TRT=-14.6ms  Bias_FFD=-13.0ms  Bias_Gaze=+17.4ms
+  Pred:  mean_TRT=282ms (human=297ms) | L1=196+/-32ms  L2=68+/-11ms  delta=0.3492  l1_scale=50.0  mean_skip=0.513
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           178    62 |   240   410  -169 |   178   222 |   240   288 |  0.55  0.14
+  know             178    62 |   255   235   +20 |   178   193 |   240   197 |  0.56  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              159    56 |   215   268   -53 |   159   228 |   215   231 |  0.61  0.63
+  looked           201    70 |   286   297   -11 |   201   204 |   271   253 |  0.49  0.19
+  around           169    59 |   244   298   -54 |   169   196 |   229   242 |  0.58  0.32
+  her              167    58 |   238   300   -62 |   167   206 |   225   222 |  0.59  0.60
+  anxiously        242    85 |   349   346    +3 |   242   200 |   327   256 |  0.40  0.19
+  for              149    52 |   217   265   -49 |   149   211 |   201   215 |  0.63  0.63
+  some             182    63 |   258   259    -1 |   182   198 |   245   224 |  0.55  0.37
+  familiar         212    74 |   306   274   +32 |   212   212 |   286   234 |  0.47  0.23
+
+
+[Epoch   4/50] 183.3s | lm_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=745.3 (trt=1681 ffd=383 gaze=917 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.587  r_FFD=0.373  r_Gaze=0.604  r_skip=0.731
+  Val:   MAE_TRT=52.6ms  MAE_FFD=22.6ms  MAE_Gaze=42.5ms
+  Val:   Bias_TRT=-3.3ms  Bias_FFD=-6.4ms  Bias_Gaze=+27.0ms
+  Pred:  mean_TRT=293ms (human=297ms) | L1=203+/-24ms  L2=71+/-8ms  delta=0.3522  l1_scale=50.0  mean_skip=0.527
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           194    68 |   263   410  -147 |   194   222 |   263   288 |  0.55  0.14
+  know             190    67 |   274   235   +39 |   190   193 |   257   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              178    63 |   240   268   -28 |   178   228 |   240   231 |  0.61  0.63
+  looked           209    74 |   302   297    +5 |   209   204 |   283   253 |  0.50  0.19
+  around           188    66 |   273   298   -26 |   188   196 |   254   242 |  0.57  0.32
+  her              179    63 |   258   300   -42 |   179   206 |   242   222 |  0.60  0.60
+  anxiously        236    83 |   342   346    -4 |   236   200 |   319   256 |  0.43  0.19
+  for              171    60 |   250   265   -16 |   171   211 |   231   215 |  0.62  0.63
+  some             196    69 |   281   259   +22 |   196   198 |   265   224 |  0.54  0.37
+  familiar         219    77 |   318   274   +44 |   219   212 |   296   234 |  0.47  0.23
+
+  ** NEW BEST (r_TRT=0.587) **
+
+[Epoch   5/50] 185.1s | lm_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=740.6 (trt=1667 ffd=381 gaze=913 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.591  r_FFD=0.352  r_Gaze=0.599  r_skip=0.760
+  Val:   MAE_TRT=52.6ms  MAE_FFD=27.8ms  MAE_Gaze=35.3ms
+  Val:   Bias_TRT=-23.3ms  Bias_FFD=-19.4ms  Bias_Gaze=+9.8ms
+  Pred:  mean_TRT=273ms (human=297ms) | L1=190+/-25ms  L2=67+/-9ms  delta=0.3544  l1_scale=50.0  mean_skip=0.519
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           180    64 |   244   410  -166 |   180   222 |   244   288 |  0.54  0.14
+  know             179    63 |   257   235   +22 |   179   193 |   242   197 |  0.55  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              162    57 |   219   268   -49 |   162   228 |   219   231 |  0.61  0.63
+  looked           196    69 |   281   297   -16 |   196   204 |   265   253 |  0.49  0.19
+  around           175    62 |   252   298   -46 |   175   196 |   236   242 |  0.56  0.32
+  her              167    59 |   239   300   -61 |   167   206 |   226   222 |  0.60  0.60
+  anxiously        224    79 |   323   346   -23 |   224   200 |   303   256 |  0.42  0.19
+  for              154    55 |   224   265   -41 |   154   211 |   209   215 |  0.63  0.63
+  some             183    65 |   261   259    +2 |   183   198 |   247   224 |  0.54  0.37
+  familiar         207    73 |   300   274   +26 |   207   212 |   281   234 |  0.45  0.23
+
+  ** NEW BEST (r_TRT=0.591) **
+
+[Epoch   6/50] 183.3s | lm_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=736.1 (trt=1657 ffd=380 gaze=907 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.612  r_FFD=0.375  r_Gaze=0.618  r_skip=0.737
+  Val:   MAE_TRT=51.9ms  MAE_FFD=22.3ms  MAE_Gaze=43.5ms
+  Val:   Bias_TRT=-0.9ms  Bias_FFD=-5.6ms  Bias_Gaze=+28.9ms
+  Pred:  mean_TRT=296ms (human=297ms) | L1=204+/-24ms  L2=73+/-8ms  delta=0.3564  l1_scale=50.0  mean_skip=0.482
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           202    72 |   275   410  -135 |   202   222 |   275   288 |  0.47  0.14
+  know             181    65 |   263   235   +28 |   181   193 |   246   197 |  0.56  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              183    65 |   248   268   -20 |   183   228 |   248   231 |  0.55  0.63
+  looked           201    71 |   290   297    -7 |   201   204 |   272   253 |  0.48  0.19
+  around           182    65 |   265   298   -33 |   182   196 |   247   242 |  0.55  0.32
+  her              170    61 |   246   300   -54 |   170   206 |   231   222 |  0.60  0.60
+  anxiously        241    86 |   350   346    +4 |   241   200 |   327   256 |  0.38  0.19
+  for              166    59 |   244   265   -22 |   166   211 |   225   215 |  0.62  0.63
+  some             194    69 |   279   259   +20 |   194   198 |   263   224 |  0.51  0.37
+  familiar         225    80 |   329   274   +55 |   225   212 |   305   234 |  0.41  0.23
+
+  ** NEW BEST (r_TRT=0.612) **
+
+[Epoch   7/50] 183.3s | lm_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=737.8 (trt=1661 ffd=383 gaze=907 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.568  r_FFD=0.362  r_Gaze=0.594  r_skip=0.749
+  Val:   MAE_TRT=53.4ms  MAE_FFD=22.2ms  MAE_Gaze=43.6ms
+  Val:   Bias_TRT=-1.6ms  Bias_FFD=-6.5ms  Bias_Gaze=+28.1ms
+  Pred:  mean_TRT=295ms (human=297ms) | L1=203+/-23ms  L2=73+/-8ms  delta=0.3585  l1_scale=50.0  mean_skip=0.488
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           194    70 |   264   410  -146 |   194   222 |   264   288 |  0.51  0.14
+  know             185    66 |   269   235   +33 |   185   193 |   251   197 |  0.54  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              176    63 |   240   268   -29 |   176   228 |   240   231 |  0.58  0.63
+  looked           201    72 |   291   297    -6 |   201   204 |   273   253 |  0.48  0.19
+  around           193    69 |   281   298   -17 |   193   196 |   262   242 |  0.51  0.32
+  her              177    63 |   256   300   -44 |   177   206 |   240   222 |  0.57  0.60
+  anxiously        230    82 |   335   346   -11 |   230   200 |   313   256 |  0.41  0.19
+  for              167    60 |   245   265   -20 |   167   211 |   227   215 |  0.60  0.63
+  some             195    70 |   281   259   +22 |   195   198 |   265   224 |  0.50  0.37
+  familiar         222    80 |   325   274   +51 |   222   212 |   301   234 |  0.42  0.23
+
+
+[Epoch   8/50] 183.8s | lm_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=730.5 (trt=1644 ffd=379 gaze=899 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.588  r_FFD=0.360  r_Gaze=0.604  r_skip=0.755
+  Val:   MAE_TRT=51.3ms  MAE_FFD=27.0ms  MAE_Gaze=36.2ms
+  Val:   Bias_TRT=-16.7ms  Bias_FFD=-16.1ms  Bias_Gaze=+15.2ms
+  Pred:  mean_TRT=280ms (human=297ms) | L1=193+/-27ms  L2=69+/-10ms  delta=0.3593  l1_scale=50.0  mean_skip=0.507
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           182    66 |   248   410  -162 |   182   222 |   248   288 |  0.53  0.14
+  know             169    61 |   245   235    +9 |   169   193 |   230   197 |  0.59  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              162    58 |   220   268   -48 |   162   228 |   220   231 |  0.61  0.63
+  looked           196    70 |   282   297   -15 |   196   204 |   266   253 |  0.49  0.19
+  around           174    62 |   253   298   -46 |   174   196 |   236   242 |  0.57  0.32
+  her              160    57 |   230   300   -70 |   160   206 |   217   222 |  0.62  0.60
+  anxiously        230    83 |   334   346   -12 |   230   200 |   313   256 |  0.40  0.19
+  for              152    55 |   222   265   -43 |   152   211 |   206   215 |  0.64  0.63
+  some             182    65 |   261   259    +2 |   182   198 |   247   224 |  0.54  0.37
+  familiar         215    77 |   313   274   +39 |   215   212 |   292   234 |  0.43  0.23
+
+
+[Epoch   9/50] 183.4s | lm_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=731.9 (trt=1645 ffd=380 gaze=901 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.594  r_FFD=0.375  r_Gaze=0.607  r_skip=0.735
+  Val:   MAE_TRT=50.4ms  MAE_FFD=25.4ms  MAE_Gaze=39.2ms
+  Val:   Bias_TRT=-8.5ms  Bias_FFD=-11.2ms  Bias_Gaze=+22.2ms
+  Pred:  mean_TRT=288ms (human=297ms) | L1=198+/-27ms  L2=71+/-10ms  delta=0.3607  l1_scale=50.0  mean_skip=0.508
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           187    68 |   255   410  -155 |   187   222 |   255   288 |  0.53  0.14
+  know             176    63 |   255   235   +20 |   176   193 |   239   197 |  0.58  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              175    63 |   238   268   -30 |   175   228 |   238   231 |  0.58  0.63
+  looked           197    71 |   286   297   -11 |   197   204 |   268   253 |  0.50  0.19
+  around           177    64 |   258   298   -40 |   177   196 |   241   242 |  0.57  0.32
+  her              165    60 |   239   300   -61 |   165   206 |   225   222 |  0.61  0.60
+  anxiously        237    86 |   345   346    -1 |   237   200 |   323   256 |  0.40  0.19
+  for              156    56 |   230   265   -35 |   156   211 |   213   215 |  0.64  0.63
+  some             188    68 |   271   259   +12 |   188   198 |   256   224 |  0.53  0.37
+  familiar         218    79 |   319   274   +45 |   218   212 |   297   234 |  0.43  0.23
+
+
+[Epoch  10/50] 182.6s | lm_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=731.1 (trt=1640 ffd=381 gaze=902 skip=0.053) | 10,080 samples
+  Val:   r_TRT=0.597  r_FFD=0.366  r_Gaze=0.615  r_skip=0.746
+  Val:   MAE_TRT=51.5ms  MAE_FFD=24.6ms  MAE_Gaze=39.3ms
+  Val:   Bias_TRT=-8.6ms  Bias_FFD=-11.4ms  Bias_Gaze=+22.0ms
+  Pred:  mean_TRT=288ms (human=297ms) | L1=198+/-25ms  L2=71+/-9ms  delta=0.3614  l1_scale=50.0  mean_skip=0.493
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           192    69 |   262   410  -148 |   192   222 |   262   288 |  0.50  0.14
+  know             185    67 |   270   235   +35 |   185   193 |   252   197 |  0.52  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              169    61 |   230   268   -38 |   169   228 |   230   231 |  0.59  0.63
+  looked           193    70 |   279   297   -18 |   193   204 |   262   253 |  0.50  0.19
+  around           178    64 |   259   298   -39 |   178   196 |   242   242 |  0.55  0.32
+  her              164    59 |   237   300   -63 |   164   206 |   223   222 |  0.60  0.60
+  anxiously        228    82 |   331   346   -15 |   228   200 |   310   256 |  0.41  0.19
+  for              161    58 |   236   265   -29 |   161   211 |   219   215 |  0.61  0.63
+  some             189    68 |   273   259   +14 |   189   198 |   257   224 |  0.51  0.37
+  familiar         217    78 |   317   274   +43 |   217   212 |   295   234 |  0.42  0.23
+
+
+[Epoch  11/50] 183.2s | lm_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=733.9 (trt=1650 ffd=383 gaze=902 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.601  r_FFD=0.380  r_Gaze=0.615  r_skip=0.753
+  Val:   MAE_TRT=53.2ms  MAE_FFD=28.4ms  MAE_Gaze=34.2ms
+  Val:   Bias_TRT=-25.2ms  Bias_FFD=-21.9ms  Bias_Gaze=+7.8ms
+  Pred:  mean_TRT=272ms (human=297ms) | L1=187+/-22ms  L2=68+/-8ms  delta=0.3617  l1_scale=50.0  mean_skip=0.504
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           182    66 |   247   410  -163 |   182   222 |   247   288 |  0.52  0.14
+  know             175    63 |   254   235   +19 |   175   193 |   238   197 |  0.54  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              168    61 |   228   268   -40 |   168   228 |   228   231 |  0.58  0.63
+  looked           184    66 |   265   297   -32 |   184   204 |   250   253 |  0.51  0.19
+  around           171    62 |   248   298   -50 |   171   196 |   233   242 |  0.55  0.32
+  her              162    59 |   234   300   -66 |   162   206 |   221   222 |  0.59  0.60
+  anxiously        216    78 |   313   346   -33 |   216   200 |   294   256 |  0.41  0.19
+  for              155    56 |   227   265   -38 |   155   211 |   212   215 |  0.62  0.63
+  some             180    65 |   258   259    -1 |   180   198 |   245   224 |  0.52  0.37
+  familiar         202    73 |   294   274   +20 |   202   212 |   276   234 |  0.44  0.23
+
+
+[Epoch  12/50] 182.7s | lm_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=726.1 (trt=1630 ffd=378 gaze=896 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.598  r_FFD=0.382  r_Gaze=0.617  r_skip=0.754
+  Val:   MAE_TRT=51.8ms  MAE_FFD=27.4ms  MAE_Gaze=35.3ms
+  Val:   Bias_TRT=-19.3ms  Bias_FFD=-18.3ms  Bias_Gaze=+12.8ms
+  Pred:  mean_TRT=277ms (human=297ms) | L1=191+/-25ms  L2=69+/-9ms  delta=0.3626  l1_scale=50.0  mean_skip=0.521
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           186    67 |   253   410  -156 |   186   222 |   253   288 |  0.53  0.14
+  know             174    63 |   253   235   +18 |   174   193 |   238   197 |  0.58  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              164    59 |   223   268   -45 |   164   228 |   223   231 |  0.63  0.63
+  looked           188    68 |   272   297   -25 |   188   204 |   256   253 |  0.52  0.19
+  around           174    63 |   253   298   -45 |   174   196 |   237   242 |  0.58  0.32
+  her              164    59 |   236   300   -64 |   164   206 |   223   222 |  0.62  0.60
+  anxiously        225    82 |   327   346   -19 |   225   200 |   306   256 |  0.41  0.19
+  for              155    56 |   228   265   -38 |   155   211 |   211   215 |  0.65  0.63
+  some             182    66 |   262   259    +3 |   182   198 |   248   224 |  0.55  0.37
+  familiar         210    76 |   307   274   +33 |   210   212 |   287   234 |  0.44  0.23
+
+
+[Epoch  13/50] 184.6s | lm_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=728.9 (trt=1640 ffd=378 gaze=897 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.603  r_FFD=0.379  r_Gaze=0.614  r_skip=0.738
+  Val:   MAE_TRT=51.8ms  MAE_FFD=25.9ms  MAE_Gaze=36.6ms
+  Val:   Bias_TRT=-16.3ms  Bias_FFD=-16.6ms  Bias_Gaze=+15.3ms
+  Pred:  mean_TRT=280ms (human=297ms) | L1=193+/-23ms  L2=70+/-8ms  delta=0.3638  l1_scale=50.0  mean_skip=0.523
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           187    68 |   255   410  -155 |   187   222 |   255   288 |  0.54  0.14
+  know             177    64 |   257   235   +22 |   177   193 |   241   197 |  0.58  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              169    62 |   231   268   -37 |   169   228 |   231   231 |  0.61  0.63
+  looked           193    70 |   280   297   -17 |   193   204 |   264   253 |  0.51  0.19
+  around           175    64 |   256   298   -43 |   175   196 |   239   242 |  0.58  0.32
+  her              168    61 |   243   300   -57 |   168   206 |   229   222 |  0.61  0.60
+  anxiously        226    82 |   329   346   -17 |   226   200 |   308   256 |  0.42  0.19
+  for              159    58 |   234   265   -31 |   159   211 |   217   215 |  0.64  0.63
+  some             186    68 |   269   259   +10 |   186   198 |   254   224 |  0.54  0.37
+  familiar         212    77 |   310   274   +36 |   212   212 |   289   234 |  0.45  0.23
+
+
+[Epoch  14/50] 182.0s | lm_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=734.7 (trt=1651 ffd=380 gaze=907 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.581  r_FFD=0.368  r_Gaze=0.603  r_skip=0.740
+  Val:   MAE_TRT=52.9ms  MAE_FFD=24.5ms  MAE_Gaze=38.3ms
+  Val:   Bias_TRT=-13.5ms  Bias_FFD=-15.0ms  Bias_Gaze=+17.7ms
+  Pred:  mean_TRT=283ms (human=297ms) | L1=194+/-22ms  L2=71+/-8ms  delta=0.3644  l1_scale=50.0  mean_skip=0.512
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           188    69 |   257   410  -153 |   188   222 |   257   288 |  0.52  0.14
+  know             182    66 |   266   235   +31 |   182   193 |   249   197 |  0.55  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              166    60 |   226   268   -42 |   166   228 |   226   231 |  0.62  0.63
+  looked           196    71 |   284   297   -13 |   196   204 |   267   253 |  0.50  0.19
+  around           178    65 |   260   298   -39 |   178   196 |   242   242 |  0.57  0.32
+  her              169    62 |   245   300   -55 |   169   206 |   230   222 |  0.60  0.60
+  anxiously        222    81 |   323   346   -23 |   222   200 |   302   256 |  0.42  0.19
+  for              161    59 |   236   265   -29 |   161   211 |   219   215 |  0.63  0.63
+  some             188    68 |   271   259   +12 |   188   198 |   256   224 |  0.53  0.37
+  familiar         211    77 |   309   274   +35 |   211   212 |   288   234 |  0.44  0.23
+
+
+[Epoch  15/50] 181.5s | lm_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=723.8 (trt=1628 ffd=375 gaze=891 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.593  r_FFD=0.365  r_Gaze=0.607  r_skip=0.743
+  Val:   MAE_TRT=51.0ms  MAE_FFD=25.0ms  MAE_Gaze=39.5ms
+  Val:   Bias_TRT=-7.5ms  Bias_FFD=-11.3ms  Bias_Gaze=+22.8ms
+  Pred:  mean_TRT=289ms (human=297ms) | L1=198+/-26ms  L2=72+/-10ms  delta=0.3649  l1_scale=50.0  mean_skip=0.515
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           187    68 |   255   410  -155 |   187   222 |   255   288 |  0.54  0.14
+  know             181    66 |   263   235   +28 |   181   193 |   246   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              172    63 |   235   268   -33 |   172   228 |   235   231 |  0.61  0.63
+  looked           198    72 |   288   297    -9 |   198   204 |   270   253 |  0.50  0.19
+  around           181    66 |   266   298   -33 |   181   196 |   248   242 |  0.56  0.32
+  her              173    63 |   252   300   -48 |   173   206 |   237   222 |  0.60  0.60
+  anxiously        234    85 |   343   346    -3 |   234   200 |   320   256 |  0.41  0.19
+  for              164    60 |   242   265   -23 |   164   211 |   224   215 |  0.63  0.63
+  some             187    68 |   271   259   +12 |   187   198 |   256   224 |  0.54  0.37
+  familiar         217    79 |   318   274   +44 |   217   212 |   296   234 |  0.43  0.23
+
+
+[Epoch  16/50] 182.3s | lm_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=725.6 (trt=1633 ffd=377 gaze=891 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.586  r_FFD=0.368  r_Gaze=0.602  r_skip=0.743
+  Val:   MAE_TRT=51.8ms  MAE_FFD=25.9ms  MAE_Gaze=37.7ms
+  Val:   Bias_TRT=-13.6ms  Bias_FFD=-15.2ms  Bias_Gaze=+17.6ms
+  Pred:  mean_TRT=283ms (human=297ms) | L1=194+/-25ms  L2=71+/-9ms  delta=0.3653  l1_scale=50.0  mean_skip=0.512
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           184    67 |   251   410  -159 |   184   222 |   251   288 |  0.54  0.14
+  know             181    66 |   264   235   +29 |   181   193 |   247   197 |  0.55  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              165    60 |   226   268   -42 |   165   228 |   226   231 |  0.62  0.63
+  looked           195    71 |   283   297   -14 |   195   204 |   266   253 |  0.50  0.19
+  around           178    65 |   260   298   -39 |   178   196 |   242   242 |  0.56  0.32
+  her              167    61 |   242   300   -57 |   167   206 |   228   222 |  0.60  0.60
+  anxiously        228    83 |   333   346   -13 |   228   200 |   311   256 |  0.41  0.19
+  for              158    58 |   233   265   -33 |   158   211 |   216   215 |  0.64  0.63
+  some             186    68 |   269   259   +10 |   186   198 |   254   224 |  0.53  0.37
+  familiar         213    78 |   313   274   +39 |   213   212 |   291   234 |  0.43  0.23
+
+
+[Epoch  17/50] 183.2s | lm_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=718.3 (trt=1610 ffd=378 gaze=884 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.594  r_FFD=0.374  r_Gaze=0.607  r_skip=0.746
+  Val:   MAE_TRT=50.4ms  MAE_FFD=27.7ms  MAE_Gaze=37.2ms
+  Val:   Bias_TRT=-13.3ms  Bias_FFD=-15.0ms  Bias_Gaze=+17.8ms
+  Pred:  mean_TRT=284ms (human=297ms) | L1=194+/-29ms  L2=71+/-11ms  delta=0.3655  l1_scale=50.0  mean_skip=0.506
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           185    68 |   253   410  -156 |   185   222 |   253   288 |  0.52  0.14
+  know             179    65 |   260   235   +25 |   179   193 |   244   197 |  0.55  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              165    60 |   225   268   -43 |   165   228 |   225   231 |  0.61  0.63
+  looked           193    71 |   280   297   -17 |   193   204 |   264   253 |  0.49  0.19
+  around           177    65 |   259   298   -39 |   177   196 |   242   242 |  0.55  0.32
+  her              167    61 |   242   300   -58 |   167   206 |   228   222 |  0.60  0.60
+  anxiously        235    86 |   344   346    -2 |   235   200 |   322   256 |  0.39  0.19
+  for              156    57 |   230   265   -36 |   156   211 |   212   215 |  0.64  0.63
+  some             184    67 |   266   259    +7 |   184   198 |   252   224 |  0.53  0.37
+  familiar         216    79 |   317   274   +43 |   216   212 |   296   234 |  0.42  0.23
+
+
+[Epoch  18/50] 182.9s | lm_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=727.1 (trt=1632 ffd=379 gaze=896 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.588  r_FFD=0.371  r_Gaze=0.602  r_skip=0.739
+  Val:   MAE_TRT=52.0ms  MAE_FFD=25.2ms  MAE_Gaze=38.5ms
+  Val:   Bias_TRT=-12.0ms  Bias_FFD=-14.3ms  Bias_Gaze=+18.9ms
+  Pred:  mean_TRT=285ms (human=297ms) | L1=195+/-24ms  L2=71+/-9ms  delta=0.3659  l1_scale=50.0  mean_skip=0.503
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           186    68 |   254   410  -156 |   186   222 |   254   288 |  0.52  0.14
+  know             179    66 |   261   235   +26 |   179   193 |   245   197 |  0.55  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              167    61 |   229   268   -40 |   167   228 |   229   231 |  0.60  0.63
+  looked           195    71 |   283   297   -14 |   195   204 |   266   253 |  0.49  0.19
+  around           179    65 |   261   298   -37 |   179   196 |   244   242 |  0.55  0.32
+  her              170    62 |   246   300   -53 |   170   206 |   232   222 |  0.59  0.60
+  anxiously        230    84 |   336   346   -10 |   230   200 |   314   256 |  0.40  0.19
+  for              161    59 |   237   265   -28 |   161   211 |   220   215 |  0.63  0.63
+  some             188    69 |   272   259   +13 |   188   198 |   256   224 |  0.52  0.37
+  familiar         213    78 |   313   274   +39 |   213   212 |   291   234 |  0.43  0.23
+
+
+[Epoch  19/50] 182.1s | lm_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=722.1 (trt=1619 ffd=377 gaze=891 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.581  r_FFD=0.367  r_Gaze=0.596  r_skip=0.740
+  Val:   MAE_TRT=52.3ms  MAE_FFD=23.4ms  MAE_Gaze=42.0ms
+  Val:   Bias_TRT=-4.3ms  Bias_FFD=-9.6ms  Bias_Gaze=+25.4ms
+  Pred:  mean_TRT=292ms (human=297ms) | L1=200+/-25ms  L2=73+/-9ms  delta=0.3660  l1_scale=50.0  mean_skip=0.514
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           190    70 |   260   410  -150 |   190   222 |   260   288 |  0.54  0.14
+  know             186    68 |   272   235   +36 |   186   193 |   254   197 |  0.56  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              173    63 |   236   268   -32 |   173   228 |   236   231 |  0.62  0.63
+  looked           200    73 |   292   297    -5 |   200   204 |   274   253 |  0.50  0.19
+  around           182    67 |   267   298   -31 |   182   196 |   249   242 |  0.57  0.32
+  her              170    62 |   247   300   -53 |   170   206 |   232   222 |  0.62  0.60
+  anxiously        234    86 |   342   346    -4 |   234   200 |   319   256 |  0.41  0.19
+  for              159    58 |   235   265   -30 |   159   211 |   218   215 |  0.66  0.63
+  some             194    71 |   281   259   +22 |   194   198 |   265   224 |  0.53  0.37
+  familiar         221    81 |   326   274   +52 |   221   212 |   302   234 |  0.43  0.23
+
+
+[Epoch  20/50] 178.5s | lm_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=724.0 (trt=1627 ffd=379 gaze=889 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.591  r_FFD=0.376  r_Gaze=0.606  r_skip=0.745
+  Val:   MAE_TRT=51.5ms  MAE_FFD=26.9ms  MAE_Gaze=36.8ms
+  Val:   Bias_TRT=-15.2ms  Bias_FFD=-16.4ms  Bias_Gaze=+16.1ms
+  Pred:  mean_TRT=282ms (human=297ms) | L1=193+/-26ms  L2=71+/-10ms  delta=0.3664  l1_scale=50.0  mean_skip=0.510
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           183    67 |   249   410  -160 |   183   222 |   249   288 |  0.53  0.14
+  know             176    65 |   257   235   +21 |   176   193 |   241   197 |  0.56  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              166    61 |   227   268   -41 |   166   228 |   227   231 |  0.61  0.63
+  looked           192    70 |   279   297   -18 |   192   204 |   262   253 |  0.50  0.19
+  around           177    65 |   259   298   -39 |   177   196 |   242   242 |  0.55  0.32
+  her              166    61 |   241   300   -59 |   166   206 |   226   222 |  0.60  0.60
+  anxiously        231    85 |   338   346    -8 |   231   200 |   316   256 |  0.40  0.19
+  for              156    57 |   230   265   -35 |   156   211 |   213   215 |  0.64  0.63
+  some             184    67 |   266   259    +7 |   184   198 |   251   224 |  0.53  0.37
+  familiar         214    78 |   313   274   +39 |   214   212 |   292   234 |  0.43  0.23
+
+
+[Epoch  21/50] 172.9s | lm_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=727.0 (trt=1630 ffd=380 gaze=897 skip=0.053) | 10,080 samples
+  Val:   r_TRT=0.583  r_FFD=0.365  r_Gaze=0.601  r_skip=0.740
+  Val:   MAE_TRT=52.2ms  MAE_FFD=24.1ms  MAE_Gaze=41.2ms
+  Val:   Bias_TRT=-5.4ms  Bias_FFD=-10.3ms  Bias_Gaze=+24.5ms
+  Pred:  mean_TRT=291ms (human=297ms) | L1=199+/-25ms  L2=73+/-9ms  delta=0.3667  l1_scale=50.0  mean_skip=0.504
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           188    69 |   257   410  -152 |   188   222 |   257   288 |  0.53  0.14
+  know             184    67 |   269   235   +34 |   184   193 |   251   197 |  0.55  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              172    63 |   236   268   -32 |   172   228 |   236   231 |  0.60  0.63
+  looked           197    72 |   287   297   -10 |   197   204 |   269   253 |  0.50  0.19
+  around           184    68 |   271   298   -28 |   184   196 |   252   242 |  0.54  0.32
+  her              173    63 |   252   300   -48 |   173   206 |   236   222 |  0.59  0.60
+  anxiously        235    86 |   345   346    -1 |   235   200 |   321   256 |  0.41  0.19
+  for              163    60 |   242   265   -23 |   163   211 |   223   215 |  0.63  0.63
+  some             191    70 |   277   259   +18 |   191   198 |   261   224 |  0.52  0.37
+  familiar         220    81 |   324   274   +50 |   220   212 |   301   234 |  0.43  0.23
+
+
+[Epoch  22/50] 175.9s | lm_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=721.4 (trt=1616 ffd=379 gaze=890 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.593  r_FFD=0.370  r_Gaze=0.606  r_skip=0.749
+  Val:   MAE_TRT=52.2ms  MAE_FFD=28.6ms  MAE_Gaze=35.2ms
+  Val:   Bias_TRT=-21.5ms  Bias_FFD=-20.4ms  Bias_Gaze=+10.8ms
+  Pred:  mean_TRT=275ms (human=297ms) | L1=189+/-25ms  L2=69+/-9ms  delta=0.3668  l1_scale=50.0  mean_skip=0.526
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           181    67 |   248   410  -162 |   181   222 |   248   288 |  0.54  0.14
+  know             176    64 |   256   235   +21 |   176   193 |   240   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              161    59 |   220   268   -48 |   161   228 |   220   231 |  0.63  0.63
+  looked           187    68 |   271   297   -26 |   187   204 |   255   253 |  0.52  0.19
+  around           173    63 |   252   298   -46 |   173   196 |   236   242 |  0.58  0.32
+  her              161    59 |   233   300   -67 |   161   206 |   219   222 |  0.63  0.60
+  anxiously        223    82 |   325   346   -21 |   223   200 |   304   256 |  0.42  0.19
+  for              152    56 |   223   265   -42 |   152   211 |   208   215 |  0.66  0.63
+  some             183    67 |   264   259    +5 |   183   198 |   250   224 |  0.54  0.37
+  familiar         211    77 |   309   274   +35 |   211   212 |   288   234 |  0.43  0.23
+
+
+[Epoch  23/50] 165.7s | lm_lr=2.50e-06 head_lr=6.25e-05
+  Train: loss=731.0 (trt=1645 ffd=382 gaze=897 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.597  r_FFD=0.371  r_Gaze=0.606  r_skip=0.744
+  Val:   MAE_TRT=51.1ms  MAE_FFD=26.6ms  MAE_Gaze=37.4ms
+  Val:   Bias_TRT=-13.5ms  Bias_FFD=-15.4ms  Bias_Gaze=+17.6ms
+  Pred:  mean_TRT=283ms (human=297ms) | L1=194+/-26ms  L2=71+/-10ms  delta=0.3669  l1_scale=50.0  mean_skip=0.509
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           184    68 |   252   410  -158 |   184   222 |   252   288 |  0.53  0.14
+  know             176    65 |   257   235   +21 |   176   193 |   241   197 |  0.56  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              168    62 |   229   268   -39 |   168   228 |   229   231 |  0.60  0.63
+  looked           191    70 |   277   297   -20 |   191   204 |   260   253 |  0.51  0.19
+  around           177    65 |   259   298   -40 |   177   196 |   242   242 |  0.56  0.32
+  her              166    61 |   241   300   -59 |   166   206 |   227   222 |  0.60  0.60
+  anxiously        232    85 |   339   346    -7 |   232   200 |   317   256 |  0.40  0.19
+  for              157    58 |   232   265   -33 |   157   211 |   215   215 |  0.64  0.63
+  some             187    69 |   271   259   +12 |   187   198 |   256   224 |  0.52  0.37
+  familiar         217    80 |   320   274   +46 |   217   212 |   297   234 |  0.42  0.23
+
+
+[Epoch  24/50] 139.1s | lm_lr=2.50e-06 head_lr=6.25e-05
+  Train: loss=721.4 (trt=1617 ffd=378 gaze=890 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.595  r_FFD=0.370  r_Gaze=0.604  r_skip=0.746
+  Val:   MAE_TRT=51.4ms  MAE_FFD=24.6ms  MAE_Gaze=39.8ms
+  Val:   Bias_TRT=-8.4ms  Bias_FFD=-12.3ms  Bias_Gaze=+22.0ms
+  Pred:  mean_TRT=288ms (human=297ms) | L1=197+/-25ms  L2=72+/-9ms  delta=0.3672  l1_scale=50.0  mean_skip=0.514
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           189    69 |   258   410  -151 |   189   222 |   258   288 |  0.53  0.14
+  know             180    66 |   264   235   +28 |   180   193 |   246   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              171    63 |   234   268   -34 |   171   228 |   234   231 |  0.61  0.63
+  looked           195    72 |   284   297   -13 |   195   204 |   267   253 |  0.51  0.19
+  around           181    66 |   265   298   -33 |   181   196 |   247   242 |  0.56  0.32
+  her              170    63 |   248   300   -52 |   170   206 |   233   222 |  0.61  0.60
+  anxiously        232    85 |   340   346    -6 |   232   200 |   318   256 |  0.41  0.19
+  for              161    59 |   238   265   -27 |   161   211 |   220   215 |  0.64  0.63
+  some             191    70 |   277   259   +18 |   191   198 |   261   224 |  0.53  0.37
+  familiar         220    81 |   324   274   +50 |   220   212 |   301   234 |  0.42  0.23
+
+
+[Epoch  25/50] 125.9s | lm_lr=2.50e-06 head_lr=6.25e-05
+  Train: loss=724.2 (trt=1626 ffd=379 gaze=891 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.598  r_FFD=0.372  r_Gaze=0.606  r_skip=0.743
+  Val:   MAE_TRT=52.3ms  MAE_FFD=28.2ms  MAE_Gaze=35.3ms
+  Val:   Bias_TRT=-21.1ms  Bias_FFD=-20.2ms  Bias_Gaze=+11.1ms
+  Pred:  mean_TRT=276ms (human=297ms) | L1=189+/-24ms  L2=69+/-9ms  delta=0.3673  l1_scale=50.0  mean_skip=0.523
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           179    66 |   245   410  -165 |   179   222 |   245   288 |  0.55  0.14
+  know             172    63 |   251   235   +16 |   172   193 |   236   197 |  0.58  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              164    60 |   224   268   -44 |   164   228 |   224   231 |  0.62  0.63
+  looked           188    69 |   272   297   -25 |   188   204 |   257   253 |  0.52  0.19
+  around           174    64 |   255   298   -44 |   174   196 |   238   242 |  0.57  0.32
+  her              164    60 |   238   300   -62 |   164   206 |   224   222 |  0.61  0.60
+  anxiously        223    82 |   326   346   -20 |   223   200 |   305   256 |  0.41  0.19
+  for              156    57 |   230   265   -35 |   156   211 |   214   215 |  0.65  0.63
+  some             183    67 |   264   259    +5 |   183   198 |   250   224 |  0.54  0.37
+  familiar         210    77 |   309   274   +35 |   210   212 |   288   234 |  0.43  0.23
+
+
+[Epoch  26/50] 116.0s | lm_lr=2.50e-06 head_lr=6.25e-05
+  Train: loss=725.3 (trt=1634 ffd=378 gaze=889 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.596  r_FFD=0.369  r_Gaze=0.602  r_skip=0.743
+  Val:   MAE_TRT=51.3ms  MAE_FFD=25.9ms  MAE_Gaze=38.0ms
+  Val:   Bias_TRT=-12.8ms  Bias_FFD=-15.1ms  Bias_Gaze=+18.2ms
+  Pred:  mean_TRT=284ms (human=297ms) | L1=194+/-25ms  L2=71+/-9ms  delta=0.3674  l1_scale=50.0  mean_skip=0.520
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           185    68 |   253   410  -157 |   185   222 |   253   288 |  0.54  0.14
+  know             175    64 |   255   235   +20 |   175   193 |   239   197 |  0.58  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              167    61 |   228   268   -40 |   167   228 |   228   231 |  0.62  0.63
+  looked           193    71 |   281   297   -16 |   193   204 |   265   253 |  0.51  0.19
+  around           179    66 |   262   298   -36 |   179   196 |   245   242 |  0.56  0.32
+  her              166    61 |   242   300   -58 |   166   206 |   227   222 |  0.62  0.60
+  anxiously        228    84 |   334   346   -12 |   228   200 |   312   256 |  0.41  0.19
+  for              159    58 |   235   265   -30 |   159   211 |   218   215 |  0.65  0.63
+  some             188    69 |   273   259   +14 |   188   198 |   257   224 |  0.53  0.37
+  familiar         217    80 |   319   274   +45 |   217   212 |   297   234 |  0.43  0.23
+
+
+[Epoch  27/50] 101.9s | lm_lr=2.50e-06 head_lr=6.25e-05
+  Train: loss=728.7 (trt=1641 ffd=380 gaze=893 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.592  r_FFD=0.372  r_Gaze=0.604  r_skip=0.743
+  Val:   MAE_TRT=51.6ms  MAE_FFD=25.2ms  MAE_Gaze=38.9ms
+  Val:   Bias_TRT=-10.4ms  Bias_FFD=-13.6ms  Bias_Gaze=+20.2ms
+  Pred:  mean_TRT=286ms (human=297ms) | L1=196+/-25ms  L2=72+/-9ms  delta=0.3675  l1_scale=50.0  mean_skip=0.508
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           186    69 |   255   410  -155 |   186   222 |   255   288 |  0.53  0.14
+  know             178    65 |   260   235   +25 |   178   193 |   243   197 |  0.56  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              170    62 |   232   268   -36 |   170   228 |   232   231 |  0.60  0.63
+  looked           194    71 |   282   297   -15 |   194   204 |   265   253 |  0.50  0.19
+  around           180    66 |   264   298   -34 |   180   196 |   247   242 |  0.55  0.32
+  her              168    62 |   245   300   -55 |   168   206 |   230   222 |  0.60  0.60
+  anxiously        229    84 |   336   346   -10 |   229   200 |   314   256 |  0.41  0.19
+  for              161    59 |   237   265   -28 |   161   211 |   219   215 |  0.64  0.63
+  some             189    70 |   274   259   +15 |   189   198 |   259   224 |  0.52  0.37
+  familiar         218    80 |   321   274   +47 |   218   212 |   298   234 |  0.42  0.23
+
+
+[Epoch  28/50] 95.6s | lm_lr=2.50e-06 head_lr=6.25e-05
+  Train: loss=725.5 (trt=1624 ffd=381 gaze=896 skip=0.053) | 10,080 samples
+  Val:   r_TRT=0.599  r_FFD=0.376  r_Gaze=0.608  r_skip=0.747
+  Val:   MAE_TRT=51.8ms  MAE_FFD=29.2ms  MAE_Gaze=35.0ms
+  Val:   Bias_TRT=-22.0ms  Bias_FFD=-20.8ms  Bias_Gaze=+10.3ms
+  Pred:  mean_TRT=275ms (human=297ms) | L1=188+/-26ms  L2=69+/-10ms  delta=0.3676  l1_scale=50.0  mean_skip=0.520
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           178    66 |   244   410  -166 |   178   222 |   244   288 |  0.55  0.14
+  know             169    62 |   246   235   +10 |   169   193 |   231   197 |  0.58  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              161    59 |   221   268   -47 |   161   228 |   221   231 |  0.62  0.63
+  looked           187    69 |   271   297   -26 |   187   204 |   256   253 |  0.51  0.19
+  around           173    63 |   252   298   -46 |   173   196 |   236   242 |  0.56  0.32
+  her              160    59 |   232   300   -68 |   160   206 |   219   222 |  0.62  0.60
+  anxiously        224    82 |   327   346   -19 |   224   200 |   307   256 |  0.41  0.19
+  for              150    55 |   221   265   -44 |   150   211 |   205   215 |  0.65  0.63
+  some             182    67 |   263   259    +4 |   182   198 |   249   224 |  0.53  0.37
+  familiar         213    78 |   312   274   +38 |   213   212 |   291   234 |  0.43  0.23
+
+
+[Epoch  29/50] 90.1s | lm_lr=1.25e-06 head_lr=3.13e-05
+  Train: loss=729.6 (trt=1640 ffd=381 gaze=897 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.595  r_FFD=0.371  r_Gaze=0.604  r_skip=0.744
+  Val:   MAE_TRT=51.7ms  MAE_FFD=25.7ms  MAE_Gaze=37.9ms
+  Val:   Bias_TRT=-13.2ms  Bias_FFD=-15.4ms  Bias_Gaze=+17.8ms
+  Pred:  mean_TRT=284ms (human=297ms) | L1=194+/-24ms  L2=71+/-9ms  delta=0.3677  l1_scale=50.0  mean_skip=0.504
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           184    68 |   251   410  -158 |   184   222 |   251   288 |  0.53  0.14
+  know             176    65 |   257   235   +22 |   176   193 |   241   197 |  0.56  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              168    62 |   230   268   -38 |   168   228 |   230   231 |  0.60  0.63
+  looked           193    71 |   281   297   -16 |   193   204 |   264   253 |  0.49  0.19
+  around           181    67 |   265   298   -33 |   181   196 |   247   242 |  0.54  0.32
+  her              169    62 |   246   300   -54 |   169   206 |   231   222 |  0.59  0.60
+  anxiously        227    84 |   333   346   -13 |   227   200 |   311   256 |  0.41  0.19
+  for              159    58 |   234   265   -31 |   159   211 |   217   215 |  0.64  0.63
+  some             188    69 |   272   259   +13 |   188   198 |   256   224 |  0.52  0.37
+  familiar         215    79 |   316   274   +42 |   215   212 |   294   234 |  0.42  0.23
+
+
+[Epoch  30/50] 157.6s | lm_lr=1.25e-06 head_lr=3.13e-05
+  Train: loss=717.9 (trt=1613 ffd=376 gaze=882 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.595  r_FFD=0.372  r_Gaze=0.603  r_skip=0.744
+  Val:   MAE_TRT=51.4ms  MAE_FFD=25.9ms  MAE_Gaze=37.9ms
+  Val:   Bias_TRT=-13.1ms  Bias_FFD=-15.3ms  Bias_Gaze=+17.9ms
+  Pred:  mean_TRT=284ms (human=297ms) | L1=194+/-25ms  L2=71+/-9ms  delta=0.3678  l1_scale=50.0  mean_skip=0.515
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           183    67 |   251   410  -159 |   183   222 |   251   288 |  0.54  0.14
+  know             175    64 |   256   235   +21 |   175   193 |   240   197 |  0.58  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              167    61 |   229   268   -39 |   167   228 |   229   231 |  0.61  0.63
+  looked           194    71 |   282   297   -15 |   194   204 |   265   253 |  0.50  0.19
+  around           180    66 |   263   298   -35 |   180   196 |   246   242 |  0.56  0.32
+  her              168    62 |   244   300   -56 |   168   206 |   229   222 |  0.61  0.60
+  anxiously        228    84 |   334   346   -12 |   228   200 |   312   256 |  0.41  0.19
+  for              158    58 |   233   265   -32 |   158   211 |   216   215 |  0.65  0.63
+  some             188    69 |   272   259   +13 |   188   198 |   257   224 |  0.53  0.37
+  familiar         216    79 |   318   274   +44 |   216   212 |   295   234 |  0.43  0.23
+
+
+[Epoch  31/50] 194.9s | lm_lr=1.25e-06 head_lr=3.13e-05
+  Train: loss=727.3 (trt=1630 ffd=383 gaze=895 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.596  r_FFD=0.373  r_Gaze=0.604  r_skip=0.742
+  Val:   MAE_TRT=50.9ms  MAE_FFD=26.6ms  MAE_Gaze=37.6ms
+  Val:   Bias_TRT=-13.2ms  Bias_FFD=-15.4ms  Bias_Gaze=+17.8ms
+  Pred:  mean_TRT=284ms (human=297ms) | L1=194+/-26ms  L2=71+/-10ms  delta=0.3679  l1_scale=50.0  mean_skip=0.514
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           182    67 |   249   410  -160 |   182   222 |   249   288 |  0.54  0.14
+  know             174    64 |   254   235   +19 |   174   193 |   238   197 |  0.58  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              166    61 |   227   268   -41 |   166   228 |   227   231 |  0.61  0.63
+  looked           193    71 |   281   297   -16 |   193   204 |   265   253 |  0.50  0.19
+  around           178    66 |   261   298   -37 |   178   196 |   244   242 |  0.56  0.32
+  her              166    61 |   241   300   -59 |   166   206 |   227   222 |  0.61  0.60
+  anxiously        231    85 |   337   346    -8 |   231   200 |   315   256 |  0.41  0.19
+  for              157    58 |   231   265   -34 |   157   211 |   214   215 |  0.65  0.63
+  some             187    69 |   271   259   +12 |   187   198 |   256   224 |  0.53  0.37
+  familiar         217    80 |   319   274   +45 |   217   212 |   297   234 |  0.42  0.23
+
+
+[Epoch  32/50] 193.7s | lm_lr=1.25e-06 head_lr=3.13e-05
+  Train: loss=721.9 (trt=1621 ffd=379 gaze=887 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.594  r_FFD=0.372  r_Gaze=0.603  r_skip=0.745
+  Val:   MAE_TRT=51.1ms  MAE_FFD=25.6ms  MAE_Gaze=38.9ms
+  Val:   Bias_TRT=-10.5ms  Bias_FFD=-13.7ms  Bias_Gaze=+20.1ms
+  Pred:  mean_TRT=286ms (human=297ms) | L1=195+/-26ms  L2=72+/-9ms  delta=0.3680  l1_scale=50.0  mean_skip=0.515
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           185    68 |   253   410  -156 |   185   222 |   253   288 |  0.54  0.14
+  know             177    65 |   259   235   +23 |   177   193 |   242   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              168    62 |   230   268   -38 |   168   228 |   230   231 |  0.62  0.63
+  looked           195    72 |   284   297   -13 |   195   204 |   267   253 |  0.50  0.19
+  around           180    66 |   265   298   -33 |   180   196 |   247   242 |  0.56  0.32
+  her              168    62 |   245   300   -55 |   168   206 |   230   222 |  0.61  0.60
+  anxiously        232    85 |   340   346    -6 |   232   200 |   317   256 |  0.41  0.19
+  for              158    58 |   234   265   -31 |   158   211 |   217   215 |  0.65  0.63
+  some             189    69 |   274   259   +15 |   189   198 |   258   224 |  0.53  0.37
+  familiar         218    80 |   321   274   +47 |   218   212 |   298   234 |  0.43  0.23
+
+
+[Epoch  33/50] 194.1s | lm_lr=1.25e-06 head_lr=3.13e-05
+  Train: loss=720.3 (trt=1617 ffd=377 gaze=886 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.596  r_FFD=0.372  r_Gaze=0.603  r_skip=0.744
+  Val:   MAE_TRT=51.3ms  MAE_FFD=27.4ms  MAE_Gaze=36.6ms
+  Val:   Bias_TRT=-16.4ms  Bias_FFD=-17.4ms  Bias_Gaze=+15.0ms
+  Pred:  mean_TRT=280ms (human=297ms) | L1=192+/-26ms  L2=71+/-10ms  delta=0.3680  l1_scale=50.0  mean_skip=0.520
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           181    67 |   248   410  -162 |   181   222 |   248   288 |  0.55  0.14
+  know             172    63 |   251   235   +16 |   172   193 |   236   197 |  0.58  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              165    61 |   225   268   -43 |   165   228 |   225   231 |  0.62  0.63
+  looked           192    71 |   279   297   -18 |   192   204 |   263   253 |  0.51  0.19
+  around           177    65 |   259   298   -40 |   177   196 |   242   242 |  0.56  0.32
+  her              164    61 |   239   300   -61 |   164   206 |   225   222 |  0.61  0.60
+  anxiously        229    84 |   334   346   -11 |   229   200 |   313   256 |  0.41  0.19
+  for              154    57 |   228   265   -37 |   154   211 |   211   215 |  0.65  0.63
+  some             185    68 |   268   259    +8 |   185   198 |   253   224 |  0.53  0.37
+  familiar         215    79 |   316   274   +42 |   215   212 |   294   234 |  0.43  0.23
+
+
+[Epoch  34/50] 194.8s | lm_lr=1.25e-06 head_lr=3.13e-05
+  Train: loss=723.3 (trt=1625 ffd=377 gaze=891 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.594  r_FFD=0.372  r_Gaze=0.603  r_skip=0.744
+  Val:   MAE_TRT=51.2ms  MAE_FFD=26.7ms  MAE_Gaze=37.3ms
+  Val:   Bias_TRT=-14.4ms  Bias_FFD=-16.2ms  Bias_Gaze=+16.7ms
+  Pred:  mean_TRT=282ms (human=297ms) | L1=193+/-26ms  L2=71+/-9ms  delta=0.3681  l1_scale=50.0  mean_skip=0.522
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           182    67 |   250   410  -160 |   182   222 |   250   288 |  0.55  0.14
+  know             174    64 |   254   235   +18 |   174   193 |   238   197 |  0.59  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              166    61 |   227   268   -41 |   166   228 |   227   231 |  0.62  0.63
+  looked           194    71 |   282   297   -15 |   194   204 |   265   253 |  0.51  0.19
+  around           178    66 |   261   298   -37 |   178   196 |   243   242 |  0.56  0.32
+  her              166    61 |   242   300   -58 |   166   206 |   227   222 |  0.62  0.60
+  anxiously        229    84 |   335   346   -10 |   229   200 |   314   256 |  0.41  0.19
+  for              157    58 |   231   265   -34 |   157   211 |   214   215 |  0.65  0.63
+  some             186    69 |   270   259   +11 |   186   198 |   255   224 |  0.54  0.37
+  familiar         216    79 |   317   274   +43 |   216   212 |   295   234 |  0.43  0.23
+
+
+[Epoch  35/50] 194.8s | lm_lr=6.25e-07 head_lr=1.56e-05
+  Train: loss=725.5 (trt=1629 ffd=381 gaze=891 skip=0.053) | 10,080 samples
+  Val:   r_TRT=0.593  r_FFD=0.370  r_Gaze=0.602  r_skip=0.744
+  Val:   MAE_TRT=51.2ms  MAE_FFD=26.2ms  MAE_Gaze=38.0ms
+  Val:   Bias_TRT=-12.5ms  Bias_FFD=-15.0ms  Bias_Gaze=+18.4ms
+  Pred:  mean_TRT=284ms (human=297ms) | L1=194+/-26ms  L2=71+/-10ms  delta=0.3682  l1_scale=50.0  mean_skip=0.509
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           185    68 |   253   410  -157 |   185   222 |   253   288 |  0.53  0.14
+  know             176    65 |   256   235   +21 |   176   193 |   240   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              167    62 |   229   268   -39 |   167   228 |   229   231 |  0.61  0.63
+  looked           194    72 |   283   297   -14 |   194   204 |   266   253 |  0.49  0.19
+  around           178    66 |   262   298   -37 |   178   196 |   244   242 |  0.55  0.32
+  her              167    61 |   243   300   -57 |   167   206 |   228   222 |  0.60  0.60
+  anxiously        230    85 |   337   346    -9 |   230   200 |   315   256 |  0.41  0.19
+  for              157    58 |   232   265   -33 |   157   211 |   215   215 |  0.64  0.63
+  some             187    69 |   272   259   +13 |   187   198 |   256   224 |  0.52  0.37
+  familiar         217    80 |   319   274   +45 |   217   212 |   297   234 |  0.42  0.23
+
+
+[Epoch  36/50] 194.4s | lm_lr=6.25e-07 head_lr=1.56e-05
+  Train: loss=728.1 (trt=1635 ffd=382 gaze=895 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.594  r_FFD=0.370  r_Gaze=0.602  r_skip=0.745
+  Val:   MAE_TRT=51.6ms  MAE_FFD=26.9ms  MAE_Gaze=36.8ms
+  Val:   Bias_TRT=-16.1ms  Bias_FFD=-17.3ms  Bias_Gaze=+15.3ms
+  Pred:  mean_TRT=281ms (human=297ms) | L1=192+/-25ms  L2=71+/-9ms  delta=0.3682  l1_scale=50.0  mean_skip=0.513
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           183    67 |   250   410  -160 |   183   222 |   250   288 |  0.53  0.14
+  know             174    64 |   254   235   +19 |   174   193 |   238   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              166    61 |   226   268   -42 |   166   228 |   226   231 |  0.61  0.63
+  looked           192    71 |   279   297   -18 |   192   204 |   263   253 |  0.50  0.19
+  around           177    65 |   259   298   -39 |   177   196 |   242   242 |  0.55  0.32
+  her              165    61 |   240   300   -60 |   165   206 |   226   222 |  0.61  0.60
+  anxiously        227    84 |   332   346   -14 |   227   200 |   310   256 |  0.41  0.19
+  for              156    57 |   230   265   -35 |   156   211 |   213   215 |  0.65  0.63
+  some             185    68 |   268   259    +9 |   185   198 |   254   224 |  0.53  0.37
+  familiar         214    79 |   315   274   +41 |   214   212 |   293   234 |  0.42  0.23
+
+
+[Epoch  37/50] 195.0s | lm_lr=6.25e-07 head_lr=1.56e-05
+  Train: loss=724.4 (trt=1628 ffd=379 gaze=890 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.593  r_FFD=0.370  r_Gaze=0.602  r_skip=0.744
+  Val:   MAE_TRT=51.3ms  MAE_FFD=25.4ms  MAE_Gaze=39.0ms
+  Val:   Bias_TRT=-10.1ms  Bias_FFD=-13.5ms  Bias_Gaze=+20.5ms
+  Pred:  mean_TRT=287ms (human=297ms) | L1=196+/-25ms  L2=72+/-9ms  delta=0.3682  l1_scale=50.0  mean_skip=0.508
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           186    69 |   255   410  -155 |   186   222 |   255   288 |  0.53  0.14
+  know             177    65 |   259   235   +24 |   177   193 |   243   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              169    62 |   231   268   -37 |   169   228 |   231   231 |  0.60  0.63
+  looked           196    72 |   285   297   -12 |   196   204 |   268   253 |  0.49  0.19
+  around           180    66 |   264   298   -34 |   180   196 |   246   242 |  0.55  0.32
+  her              168    62 |   245   300   -55 |   168   206 |   230   222 |  0.60  0.60
+  anxiously        231    85 |   338   346    -8 |   231   200 |   316   256 |  0.41  0.19
+  for              159    59 |   235   265   -30 |   159   211 |   217   215 |  0.64  0.63
+  some             189    70 |   274   259   +15 |   189   198 |   259   224 |  0.52  0.37
+  familiar         218    80 |   321   274   +47 |   218   212 |   298   234 |  0.42  0.23
+
+
+[Epoch  38/50] 195.8s | lm_lr=6.25e-07 head_lr=1.56e-05
+  Train: loss=724.1 (trt=1626 ffd=380 gaze=889 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.592  r_FFD=0.369  r_Gaze=0.602  r_skip=0.744
+  Val:   MAE_TRT=51.8ms  MAE_FFD=26.3ms  MAE_Gaze=37.2ms
+  Val:   Bias_TRT=-15.2ms  Bias_FFD=-16.7ms  Bias_Gaze=+16.1ms
+  Pred:  mean_TRT=282ms (human=297ms) | L1=192+/-24ms  L2=71+/-9ms  delta=0.3682  l1_scale=50.0  mean_skip=0.514
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           184    68 |   251   410  -159 |   184   222 |   251   288 |  0.54  0.14
+  know             175    64 |   255   235   +20 |   175   193 |   239   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              166    61 |   227   268   -41 |   166   228 |   227   231 |  0.61  0.63
+  looked           193    71 |   280   297   -17 |   193   204 |   264   253 |  0.50  0.19
+  around           177    65 |   259   298   -39 |   177   196 |   242   242 |  0.56  0.32
+  her              166    61 |   242   300   -58 |   166   206 |   227   222 |  0.61  0.60
+  anxiously        226    83 |   331   346   -15 |   226   200 |   309   256 |  0.41  0.19
+  for              157    58 |   232   265   -33 |   157   211 |   215   215 |  0.65  0.63
+  some             186    69 |   270   259   +11 |   186   198 |   255   224 |  0.53  0.37
+  familiar         214    79 |   314   274   +40 |   214   212 |   292   234 |  0.43  0.23
+
+
+[Epoch  39/50] 196.9s | lm_lr=6.25e-07 head_lr=1.56e-05
+  Train: loss=725.0 (trt=1626 ffd=380 gaze=894 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.594  r_FFD=0.370  r_Gaze=0.603  r_skip=0.743
+  Val:   MAE_TRT=51.0ms  MAE_FFD=26.3ms  MAE_Gaze=38.0ms
+  Val:   Bias_TRT=-12.3ms  Bias_FFD=-14.9ms  Bias_Gaze=+18.6ms
+  Pred:  mean_TRT=285ms (human=297ms) | L1=194+/-26ms  L2=72+/-10ms  delta=0.3683  l1_scale=50.0  mean_skip=0.513
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           184    68 |   252   410  -157 |   184   222 |   252   288 |  0.53  0.14
+  know             175    64 |   255   235   +20 |   175   193 |   239   197 |  0.58  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              167    61 |   228   268   -40 |   167   228 |   228   231 |  0.61  0.63
+  looked           194    71 |   282   297   -15 |   194   204 |   265   253 |  0.50  0.19
+  around           178    66 |   261   298   -37 |   178   196 |   243   242 |  0.56  0.32
+  her              166    61 |   242   300   -58 |   166   206 |   228   222 |  0.61  0.60
+  anxiously        231    85 |   338   346    -8 |   231   200 |   316   256 |  0.41  0.19
+  for              157    58 |   232   265   -33 |   157   211 |   215   215 |  0.65  0.63
+  some             187    69 |   272   259   +13 |   187   198 |   256   224 |  0.53  0.37
+  familiar         217    80 |   320   274   +46 |   217   212 |   297   234 |  0.42  0.23
+
+
+[Epoch  40/50] 194.2s | lm_lr=6.25e-07 head_lr=1.56e-05
+  Train: loss=723.3 (trt=1622 ffd=380 gaze=891 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.594  r_FFD=0.371  r_Gaze=0.603  r_skip=0.743
+  Val:   MAE_TRT=51.5ms  MAE_FFD=26.4ms  MAE_Gaze=37.4ms
+  Val:   Bias_TRT=-14.3ms  Bias_FFD=-16.2ms  Bias_Gaze=+16.8ms
+  Pred:  mean_TRT=282ms (human=297ms) | L1=193+/-25ms  L2=71+/-9ms  delta=0.3683  l1_scale=50.0  mean_skip=0.516
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           184    68 |   252   410  -158 |   184   222 |   252   288 |  0.54  0.14
+  know             175    64 |   255   235   +20 |   175   193 |   239   197 |  0.58  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              166    61 |   228   268   -40 |   166   228 |   228   231 |  0.61  0.63
+  looked           192    71 |   280   297   -17 |   192   204 |   263   253 |  0.51  0.19
+  around           177    65 |   259   298   -39 |   177   196 |   242   242 |  0.56  0.32
+  her              166    61 |   241   300   -59 |   166   206 |   227   222 |  0.61  0.60
+  anxiously        228    84 |   334   346   -12 |   228   200 |   312   256 |  0.41  0.19
+  for              157    58 |   232   265   -33 |   157   211 |   215   215 |  0.65  0.63
+  some             186    69 |   270   259   +11 |   186   198 |   255   224 |  0.53  0.37
+  familiar         215    79 |   316   274   +42 |   215   212 |   294   234 |  0.43  0.23
+
+
+[Epoch  41/50] 191.5s | lm_lr=3.13e-07 head_lr=7.81e-06
+  Train: loss=719.5 (trt=1617 ffd=375 gaze=885 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.593  r_FFD=0.370  r_Gaze=0.603  r_skip=0.744
+  Val:   MAE_TRT=51.1ms  MAE_FFD=25.9ms  MAE_Gaze=38.5ms
+  Val:   Bias_TRT=-11.1ms  Bias_FFD=-14.2ms  Bias_Gaze=+19.6ms
+  Pred:  mean_TRT=286ms (human=297ms) | L1=195+/-26ms  L2=72+/-10ms  delta=0.3684  l1_scale=50.0  mean_skip=0.509
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           186    68 |   254   410  -155 |   186   222 |   254   288 |  0.53  0.14
+  know             176    65 |   257   235   +21 |   176   193 |   240   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              167    62 |   229   268   -39 |   167   228 |   229   231 |  0.61  0.63
+  looked           194    71 |   282   297   -15 |   194   204 |   265   253 |  0.50  0.19
+  around           179    66 |   262   298   -36 |   179   196 |   244   242 |  0.55  0.32
+  her              167    62 |   243   300   -56 |   167   206 |   229   222 |  0.60  0.60
+  anxiously        231    85 |   339   346    -7 |   231   200 |   316   256 |  0.41  0.19
+  for              158    58 |   234   265   -31 |   158   211 |   216   215 |  0.64  0.63
+  some             188    69 |   272   259   +13 |   188   198 |   257   224 |  0.52  0.37
+  familiar         218    80 |   320   274   +46 |   218   212 |   298   234 |  0.42  0.23
+
+
+[Epoch  42/50] 188.8s | lm_lr=3.13e-07 head_lr=7.81e-06
+  Train: loss=722.3 (trt=1623 ffd=376 gaze=890 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.594  r_FFD=0.371  r_Gaze=0.604  r_skip=0.744
+  Val:   MAE_TRT=51.5ms  MAE_FFD=26.8ms  MAE_Gaze=37.0ms
+  Val:   Bias_TRT=-15.3ms  Bias_FFD=-16.8ms  Bias_Gaze=+16.0ms
+  Pred:  mean_TRT=282ms (human=297ms) | L1=192+/-25ms  L2=71+/-9ms  delta=0.3684  l1_scale=50.0  mean_skip=0.512
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           183    68 |   251   410  -159 |   183   222 |   251   288 |  0.53  0.14
+  know             173    64 |   253   235   +18 |   173   193 |   237   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              166    61 |   227   268   -42 |   166   228 |   227   231 |  0.61  0.63
+  looked           191    71 |   279   297   -19 |   191   204 |   262   253 |  0.50  0.19
+  around           176    65 |   258   298   -40 |   176   196 |   241   242 |  0.56  0.32
+  her              165    61 |   240   300   -60 |   165   206 |   226   222 |  0.61  0.60
+  anxiously        228    84 |   333   346   -13 |   228   200 |   312   256 |  0.41  0.19
+  for              156    58 |   231   265   -34 |   156   211 |   214   215 |  0.65  0.63
+  some             185    68 |   269   259   +10 |   185   198 |   254   224 |  0.53  0.37
+  familiar         214    79 |   315   274   +41 |   214   212 |   293   234 |  0.42  0.23
+
+
+[Epoch  43/50] 188.3s | lm_lr=3.13e-07 head_lr=7.81e-06
+  Train: loss=715.7 (trt=1604 ffd=377 gaze=881 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.594  r_FFD=0.371  r_Gaze=0.604  r_skip=0.744
+  Val:   MAE_TRT=51.5ms  MAE_FFD=26.4ms  MAE_Gaze=37.4ms
+  Val:   Bias_TRT=-14.3ms  Bias_FFD=-16.2ms  Bias_Gaze=+16.8ms
+  Pred:  mean_TRT=282ms (human=297ms) | L1=193+/-25ms  L2=71+/-9ms  delta=0.3684  l1_scale=50.0  mean_skip=0.512
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           184    68 |   252   410  -158 |   184   222 |   252   288 |  0.53  0.14
+  know             174    64 |   254   235   +19 |   174   193 |   238   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              166    61 |   228   268   -40 |   166   228 |   228   231 |  0.61  0.63
+  looked           192    71 |   279   297   -18 |   192   204 |   262   253 |  0.50  0.19
+  around           177    65 |   259   298   -39 |   177   196 |   242   242 |  0.56  0.32
+  her              166    61 |   241   300   -59 |   166   206 |   227   222 |  0.61  0.60
+  anxiously        228    84 |   334   346   -12 |   228   200 |   312   256 |  0.41  0.19
+  for              157    58 |   232   265   -33 |   157   211 |   215   215 |  0.65  0.63
+  some             186    69 |   270   259   +11 |   186   198 |   255   224 |  0.53  0.37
+  familiar         215    79 |   316   274   +42 |   215   212 |   294   234 |  0.43  0.23
+
+
+[Epoch  44/50] 185.7s | lm_lr=3.13e-07 head_lr=7.81e-06
+  Train: loss=723.3 (trt=1627 ffd=378 gaze=888 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.594  r_FFD=0.372  r_Gaze=0.604  r_skip=0.744
+  Val:   MAE_TRT=51.6ms  MAE_FFD=26.9ms  MAE_Gaze=36.8ms
+  Val:   Bias_TRT=-15.9ms  Bias_FFD=-17.2ms  Bias_Gaze=+15.5ms
+  Pred:  mean_TRT=281ms (human=297ms) | L1=192+/-25ms  L2=71+/-9ms  delta=0.3684  l1_scale=50.0  mean_skip=0.514
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           183    68 |   251   410  -159 |   183   222 |   251   288 |  0.53  0.14
+  know             173    64 |   253   235   +17 |   173   193 |   237   197 |  0.58  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              165    61 |   226   268   -42 |   165   228 |   226   231 |  0.61  0.63
+  looked           191    70 |   278   297   -19 |   191   204 |   261   253 |  0.51  0.19
+  around           176    65 |   258   298   -41 |   176   196 |   241   242 |  0.56  0.32
+  her              165    61 |   240   300   -60 |   165   206 |   226   222 |  0.61  0.60
+  anxiously        227    84 |   332   346   -14 |   227   200 |   311   256 |  0.41  0.19
+  for              156    58 |   231   265   -34 |   156   211 |   214   215 |  0.65  0.63
+  some             185    68 |   268   259    +9 |   185   198 |   253   224 |  0.53  0.37
+  familiar         214    79 |   314   274   +40 |   214   212 |   292   234 |  0.43  0.23
+
+
+[Epoch  45/50] 186.9s | lm_lr=3.13e-07 head_lr=7.81e-06
+  Train: loss=721.8 (trt=1621 ffd=378 gaze=887 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.594  r_FFD=0.371  r_Gaze=0.604  r_skip=0.744
+  Val:   MAE_TRT=51.5ms  MAE_FFD=26.8ms  MAE_Gaze=37.0ms
+  Val:   Bias_TRT=-15.3ms  Bias_FFD=-16.8ms  Bias_Gaze=+16.0ms
+  Pred:  mean_TRT=281ms (human=297ms) | L1=192+/-25ms  L2=71+/-9ms  delta=0.3684  l1_scale=50.0  mean_skip=0.514
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           184    68 |   251   410  -158 |   184   222 |   251   288 |  0.53  0.14
+  know             173    64 |   253   235   +18 |   173   193 |   237   197 |  0.58  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              165    61 |   226   268   -42 |   165   228 |   226   231 |  0.61  0.63
+  looked           191    70 |   278   297   -19 |   191   204 |   262   253 |  0.51  0.19
+  around           176    65 |   258   298   -41 |   176   196 |   241   242 |  0.56  0.32
+  her              165    61 |   240   300   -60 |   165   206 |   226   222 |  0.61  0.60
+  anxiously        228    84 |   333   346   -13 |   228   200 |   312   256 |  0.41  0.19
+  for              156    58 |   231   265   -34 |   156   211 |   214   215 |  0.65  0.63
+  some             185    68 |   269   259   +10 |   185   198 |   254   224 |  0.53  0.37
+  familiar         214    79 |   315   274   +41 |   214   212 |   293   234 |  0.43  0.23
+
+
+[Epoch  46/50] 186.0s | lm_lr=3.13e-07 head_lr=7.81e-06
+  Train: loss=726.4 (trt=1631 ffd=381 gaze=894 skip=0.053) | 10,080 samples
+  Val:   r_TRT=0.593  r_FFD=0.370  r_Gaze=0.603  r_skip=0.744
+  Val:   MAE_TRT=51.5ms  MAE_FFD=26.1ms  MAE_Gaze=37.7ms
+  Val:   Bias_TRT=-13.4ms  Bias_FFD=-15.6ms  Bias_Gaze=+17.6ms
+  Pred:  mean_TRT=283ms (human=297ms) | L1=194+/-25ms  L2=71+/-9ms  delta=0.3684  l1_scale=50.0  mean_skip=0.513
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           185    68 |   253   410  -157 |   185   222 |   253   288 |  0.53  0.14
+  know             175    64 |   255   235   +20 |   175   193 |   239   197 |  0.58  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              167    61 |   228   268   -40 |   167   228 |   228   231 |  0.61  0.63
+  looked           192    71 |   280   297   -17 |   192   204 |   263   253 |  0.51  0.19
+  around           177    65 |   260   298   -38 |   177   196 |   243   242 |  0.56  0.32
+  her              166    61 |   242   300   -58 |   166   206 |   227   222 |  0.61  0.60
+  anxiously        229    84 |   335   346   -11 |   229   200 |   313   256 |  0.41  0.19
+  for              158    58 |   233   265   -32 |   158   211 |   216   215 |  0.65  0.63
+  some             187    69 |   271   259   +12 |   187   198 |   255   224 |  0.53  0.37
+  familiar         215    79 |   317   274   +43 |   215   212 |   294   234 |  0.43  0.23
+
+
+[Epoch  47/50] 185.8s | lm_lr=1.56e-07 head_lr=3.91e-06
+  Train: loss=725.7 (trt=1631 ffd=378 gaze=892 skip=0.053) | 10,080 samples
+  Val:   r_TRT=0.592  r_FFD=0.371  r_Gaze=0.603  r_skip=0.744
+  Val:   MAE_TRT=51.5ms  MAE_FFD=26.2ms  MAE_Gaze=37.7ms
+  Val:   Bias_TRT=-13.4ms  Bias_FFD=-15.6ms  Bias_Gaze=+17.6ms
+  Pred:  mean_TRT=283ms (human=297ms) | L1=193+/-25ms  L2=71+/-9ms  delta=0.3685  l1_scale=50.0  mean_skip=0.511
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           185    68 |   253   410  -157 |   185   222 |   253   288 |  0.53  0.14
+  know             175    64 |   255   235   +20 |   175   193 |   239   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              167    61 |   228   268   -40 |   167   228 |   228   231 |  0.61  0.63
+  looked           192    71 |   280   297   -17 |   192   204 |   263   253 |  0.50  0.19
+  around           177    65 |   260   298   -39 |   177   196 |   242   242 |  0.56  0.32
+  her              166    61 |   241   300   -58 |   166   206 |   227   222 |  0.61  0.60
+  anxiously        229    84 |   335   346   -11 |   229   200 |   313   256 |  0.41  0.19
+  for              157    58 |   233   265   -33 |   157   211 |   215   215 |  0.65  0.63
+  some             187    69 |   271   259   +11 |   187   198 |   255   224 |  0.53  0.37
+  familiar         215    79 |   317   274   +43 |   215   212 |   294   234 |  0.42  0.23
+
+
+[Epoch  48/50] 185.3s | lm_lr=1.56e-07 head_lr=3.91e-06
+  Train: loss=722.1 (trt=1617 ffd=378 gaze=892 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.592  r_FFD=0.370  r_Gaze=0.603  r_skip=0.743
+  Val:   MAE_TRT=51.5ms  MAE_FFD=26.5ms  MAE_Gaze=37.3ms
+  Val:   Bias_TRT=-14.4ms  Bias_FFD=-16.3ms  Bias_Gaze=+16.7ms
+  Pred:  mean_TRT=282ms (human=297ms) | L1=193+/-25ms  L2=71+/-9ms  delta=0.3685  l1_scale=50.0  mean_skip=0.512
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           184    68 |   252   410  -158 |   184   222 |   252   288 |  0.53  0.14
+  know             174    64 |   254   235   +19 |   174   193 |   238   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              166    61 |   227   268   -41 |   166   228 |   227   231 |  0.61  0.63
+  looked           191    71 |   279   297   -19 |   191   204 |   262   253 |  0.50  0.19
+  around           176    65 |   258   298   -40 |   176   196 |   242   242 |  0.56  0.32
+  her              165    61 |   240   300   -59 |   165   206 |   226   222 |  0.61  0.60
+  anxiously        228    84 |   333   346   -12 |   228   200 |   312   256 |  0.41  0.19
+  for              157    58 |   232   265   -33 |   157   211 |   215   215 |  0.65  0.63
+  some             186    69 |   270   259   +10 |   186   198 |   255   224 |  0.53  0.37
+  familiar         215    79 |   316   274   +42 |   215   212 |   294   234 |  0.43  0.23
+
+
+[Epoch  49/50] 185.7s | lm_lr=1.56e-07 head_lr=3.91e-06
+  Train: loss=722.4 (trt=1624 ffd=379 gaze=886 skip=0.052) | 10,080 samples
+  Val:   r_TRT=0.592  r_FFD=0.370  r_Gaze=0.603  r_skip=0.743
+  Val:   MAE_TRT=51.5ms  MAE_FFD=26.3ms  MAE_Gaze=37.6ms
+  Val:   Bias_TRT=-13.7ms  Bias_FFD=-15.8ms  Bias_Gaze=+17.3ms
+  Pred:  mean_TRT=283ms (human=297ms) | L1=193+/-25ms  L2=71+/-9ms  delta=0.3685  l1_scale=50.0  mean_skip=0.512
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           185    68 |   253   410  -157 |   185   222 |   253   288 |  0.53  0.14
+  know             174    64 |   255   235   +19 |   174   193 |   239   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              166    61 |   227   268   -41 |   166   228 |   227   231 |  0.61  0.63
+  looked           192    71 |   279   297   -18 |   192   204 |   262   253 |  0.50  0.19
+  around           177    65 |   259   298   -39 |   177   196 |   242   242 |  0.56  0.32
+  her              166    61 |   241   300   -59 |   166   206 |   227   222 |  0.61  0.60
+  anxiously        228    84 |   334   346   -11 |   228   200 |   313   256 |  0.41  0.19
+  for              157    58 |   232   265   -33 |   157   211 |   215   215 |  0.65  0.63
+  some             186    69 |   270   259   +11 |   186   198 |   255   224 |  0.53  0.37
+  familiar         215    79 |   316   274   +42 |   215   212 |   294   234 |  0.43  0.23
+
+
+[Epoch  50/50] 182.9s | lm_lr=1.56e-07 head_lr=3.91e-06
+  Train: loss=731.4 (trt=1644 ffd=382 gaze=899 skip=0.053) | 10,080 samples
+  Val:   r_TRT=0.592  r_FFD=0.370  r_Gaze=0.603  r_skip=0.743
+  Val:   MAE_TRT=51.5ms  MAE_FFD=26.1ms  MAE_Gaze=37.7ms
+  Val:   Bias_TRT=-13.3ms  Bias_FFD=-15.6ms  Bias_Gaze=+17.7ms
+  Pred:  mean_TRT=283ms (human=297ms) | L1=194+/-25ms  L2=71+/-9ms  delta=0.3685  l1_scale=50.0  mean_skip=0.510
+  Sentence 1: "didn't know"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  didn't           185    68 |   253   410  -157 |   185   222 |   253   288 |  0.53  0.14
+  know             175    64 |   255   235   +20 |   175   193 |   239   197 |  0.57  0.46
+
+  Sentence 2: "she looked around her anxiously for..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  she              167    61 |   228   268   -40 |   167   228 |   228   231 |  0.61  0.63
+  looked           192    71 |   279   297   -18 |   192   204 |   263   253 |  0.50  0.19
+  around           177    65 |   260   298   -39 |   177   196 |   242   242 |  0.56  0.32
+  her              166    61 |   242   300   -58 |   166   206 |   227   222 |  0.61  0.60
+  anxiously        228    84 |   334   346   -11 |   228   200 |   313   256 |  0.41  0.19
+  for              158    58 |   233   265   -32 |   158   211 |   216   215 |  0.64  0.63
+  some             187    69 |   271   259   +12 |   187   198 |   255   224 |  0.52  0.37
+  familiar         215    79 |   317   274   +43 |   215   212 |   294   234 |  0.42  0.23
+
+
+==========================================================================================
+Training complete!
+Best validation r_TRT = 0.612
+==========================================================================================
+  Learnable parameters:
+    delta (L2/L1 ratio)       = 0.3685 (init=0.34, literature=0.20-0.50)
+    l1_scale                  = 50.04 (init=50)
+    skip_head                 = learned (from LLaMA repr)
+  From theory (fixed):
+    FFD                       = L1 (Reichle et al. 2003)
+    Gaze                      = L1 + L2 (Reichle et al. 2003)
+  Integration failure approx (fixed):
+    regression_sharpness      = 0.03
+    regression_threshold      = 100.0ms
+    regression_cost_scale     = 0.25
+
+Test set results:
+  r_TRT=0.576  r_FFD=0.378  r_Gaze=0.590  r_skip=0.777
+  MAE_TRT=46.3ms  MAE_FFD=25.0ms  MAE_Gaze=36.8ms
+  Bias_TRT=-8.8ms  Bias_FFD=-17.0ms  Bias_Gaze=+19.2ms
+
+Sample test predictions:
+  Sentence 1: "carrington NA"
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  carrington       243    89 |   332   343   -10 |   243   228 |   332   311 |  0.39  0.14
+  NA               207    76 |   310   262   +49 |   207   196 |   283   217 |  0.45  0.49
+
+  Sentence 2: "days later the british astronomer richard..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  days             194    72 |   266   299   -33 |   194   192 |   266   243 |  0.49  0.26
+  later            176    65 |   258   239   +19 |   176   177 |   241   199 |  0.56  0.38
+  the              155    57 |   226   201   +25 |   155   175 |   213   175 |  0.66  0.58
+  british          191    70 |   276   247   +29 |   191   200 |   261   221 |  0.51  0.23
+  astronomer       226    83 |   334   383   -48 |   226   247 |   310   335 |  0.41  0.07
+  richard          208    77 |   310   296   +14 |   208   233 |   285   266 |  0.45  0.13
+  was              195    72 |   288   232   +55 |   195   205 |   266   222 |  0.49  0.71
+  observing        227    84 |   336   410   -73 |   227   226 |   311   327 |  0.41  0.12
+  the              161    59 |   238   224   +14 |   161   200 |   220   200 |  0.64  0.79
+  interesting      229    84 |   334   538  -204 |   229   230 |   313   396 |  0.41  0.11
+
+  Sentence 3: "he jotted a note in his..."
+  word              L1    L2 |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
+  -----------------------------------------------------------------------------------------------
+  he               175    64 |   239   288   -49 |   175   201 |   239   257 |  0.58  0.67
+  jotted           215    79 |   315   338   -23 |   215   232 |   294   286 |  0.42  0.26
+  a                159    58 |   233   267   -34 |   159   212 |   217   230 |  0.64  0.74
+  note             189    70 |   275   295   -20 |   189   249 |   259   256 |  0.51  0.32
+  in               172    63 |   251   248    +3 |   172   195 |   235   207 |  0.59  0.75
+  his              182    67 |   265   251   +14 |   182   207 |   249   213 |  0.54  0.71
+  painstaking      231    85 |   341   442  -101 |   231   219 |   317   334 |  0.40  0.11
+  record           196    72 |   293   272   +21 |   196   221 |   269   227 |  0.48  0.30
+
