@@ -3094,3 +3094,895 @@ so how should plan my paper. the structure i mean what stuff i need to mention a
   So it's not that the text lacks information — it's that reading time isn't fully          
   determined by text. A human reading the same sentence twice will produce different
   fixation durations. That irreducible individual-trial noise is part of the 35%.
+
+
+
+
+
+
+
+ What's genuinely broken
+   from a faithfulness
+  standpoint
+
+  1. There are no α
+  coefficients at all
+
+  The whole mechanistic
+  content of Reichle et
+  al.'s E-Z Reader lives
+  in three numbers: α1
+  (base time), α2
+  (frequency weight), α3
+  (predictability
+  weight). These are what
+   make it a theory. When
+   you report "we trained
+   E-Z Reader" in the
+  paper, the community
+  expects you to be able
+  to say what values α1,
+  α2, α3 took. In your
+  code those parameters
+  don't exist — they're
+  absorbed into LLaMA
+  weights, which are not
+  reportable.
+
+  This is the most
+  damaging difference for
+   the paper's framing. A
+   reviewer will ask: "if
+   you replaced the L1
+  formula with a neural
+  net, in what sense is
+  this still E-Z Reader?"
+
+  2. Eccentricity is the
+  mechanism for length
+  effects, and it's gone
+
+  In Reichle et al., word
+   length affects reading
+   time only through the
+  eccentricity exponent
+  ε^(Σ|f−l|/N). Not
+  through a separate
+  length term, not
+  through frequency, only
+   through the exponent.
+  Remove eccentricity and
+   you remove E-Z
+  Reader's explanation
+  for why long words take
+   longer. Your code has
+  no eccentricity, no
+  word-length term, no
+  distance concept, and
+  word_lengths is passed
+  in but never used
+  inside FaithfulEZReader
+  .forward(). The entire
+  length-effect mechanism
+   is absent.
+
+  3. Motor stages are not
+   cosmetic — they ARE
+  the fixation duration
+
+  In the canonical model,
+   a fixation duration on
+   an easy word is
+  roughly:
+
+  FFD ≈ t(L1)' + M1 + M2
+  ≈ 65 + 125 + 25 = 215
+  ms
+
+  which matches observed
+  human FFDs. Your code
+  computes FFD = L1 with
+  l1_scale = 50
+  initialization, meaning
+   the model starts out
+  predicting ~50 ms FFDs
+  and has to train L1
+  upward to absorb the
+  missing ~175 ms of
+  motor time. The "L1"
+  the model ends up
+  learning is not L1 in
+  the Reichle sense —
+  it's L1+M1+M2 smeared
+  together, which means
+  you cannot interpret it
+   as a familiarity check
+   time.
+
+  4. Refixation is what
+  creates the FFD/Gaze
+  dissociation, and you
+  don't have it
+
+  Because you have FFD =
+  L1 and Gaze = L1 + L2 =
+   (1+δ)·L1, FFD and Gaze
+   are perfectly linearly
+   correlated by
+  construction. Reichle
+  et al.'s model produces
+   FFD ≠ Gaze precisely
+  because refixations
+  extend Gaze on
+  long/hard words but
+  leave FFD fixed.
+  Without a refixation
+  mechanism, your model
+  is structurally blind
+  to this dissociation.
+
+  5. Integration failure
+  is wrong in a way that
+  matters
+
+  In Reichle 2009, pF is
+  a fixed constant ~0.01
+  — the same for every
+  word in every sentence.
+   In your code,
+  regression_prob =
+  sigmoid(0.03·(L2−100))
+  — so it's a function of
+   L2. That's a
+  hypothesis, not an
+  approximation: you're
+  claiming harder words
+  fail integration more,
+  which Reichle
+  explicitly does not
+  claim. In the 2009
+  paper, integration
+  failure is a syntactic/
+  discourse-level
+  property of the
+  sentence, not a
+  lexical-difficulty
+  property of the word.
+
+  6. Skip is in the wrong
+   place in the cascade
+
+  In Reichle, skipping is
+   a gate inside L1 — if
+  cloze is high, L1
+  becomes 0, and the word
+   is not fixated because
+   no motor program is
+  triggered off a
+  0-length L1. In your
+  code, L1 is always
+  computed normally, and
+  skip is a separate head
+   whose output just
+  scales TRT externally
+  via (1 − skip) · TRT.
+  The skip.detach() means
+   even the gradient
+  doesn't flow between
+  the two. Functionally
+  this is two independent
+   models glued at the
+  output.
+
+  ---
+  How to close each gap
+  without losing the
+  neural content
+
+  Here's a concrete plan
+  to make the model as
+  close to Reichle et al.
+   as is possible given
+  that you want an LLM to
+   provide the lexical
+  signal:
+
+  Fix 1: Keep the
+  formula, neuralize only
+   the predictability 
+  input
+
+  Instead of L1 =
+  NN(context), use the
+  E-Z Reader formula with
+   LLM-derived surprisal:
+
+  base_L1 = α1 −
+  α2·log(freq) − α3·(1 −
+  surprisal_from_LLM_norm
+  alized)
+
+  Now α1, α2, α3 are
+  learnable nn.Parameters
+   initialized at
+  literature values (104,
+   3.5, 39). The LLM
+  provides the
+  predictability signal
+  that in the original
+  model came from cloze
+  norms. Frequency comes
+  from SUBTLEX (you
+  already have this
+  file). Word length is
+  explicit (for
+  eccentricity).
+  Everything else is
+  formula.
+
+  Why this is more
+  faithful: α1, α2, α3
+  are now reportable
+  parameters. You can say
+   "our learned α1 was
+  112, close to Reichle's
+   104, but α3 grew from
+  39 to 67, suggesting
+  LLM surprisal carries
+  more predictability
+  signal than cloze
+  norms." That's a real
+  contribution.
+
+  Fix 2: Add eccentricity
+   as an exponent
+
+  L1_ecc = base_L1 ·
+  ε^((wordlen − 1) / 2)
+
+  Since you lack
+  launch-site data (batch
+   parallel), approximate
+   the Σ|f−l|/N sum with
+  (wordlen−1)/2, which is
+   what you get if you
+  assume fixation at the
+  word start. ε is a
+  learnable parameter
+  initialized at 1.15.
+  Honest footnote: "we
+  approximate
+  eccentricity with word
+  length because we lack
+  per-word saccade
+  landing sites."
+
+  Fix 3: Add explicit
+  motor stages
+
+  M1 =
+  nn.Parameter(125.0)
+  M2 = nn.Parameter(25.0)
+  V  = nn.Parameter(50.0)
+  A  = nn.Parameter(50.0)
+
+  Wrap each in softplus
+  to keep them positive.
+  Then:
+
+  FFD  = L1_ecc + M1 + M2
+                    #
+  single fixation on easy
+   word
+  Gaze = L1_ecc + M1 + M2
+   + refix·L2       #
+  refixation adds L2 time
+  TRT  = Gaze +
+  pF·regression_cost
+      # regressions add
+  cost
+
+  Now FFD is in the right
+   numerical range (~200
+  ms) without the network
+   having to learn to
+  inflate L1.
+
+  Fix 4: Add refixation
+  gate based on word
+  length
+
+  P_refix = sigmoid(λ ·
+  (wordlen − OVP_char))
+  Gaze = FFD + P_refix ·
+  L2
+
+  λ is learnable
+  (initialized at 0.05 or
+   0.16 depending on
+  which E-Z Reader
+  version). This gives
+  FFD ≠ Gaze dissociation
+   — long words trigger
+  refixations, short
+  words don't.
+
+  Fix 5: Make pF a
+  constant
+
+  self.pF = nn.Parameter(
+  torch.tensor(0.01))   #
+   wrap in sigmoid to
+  keep in [0, 1]
+  regression_cost =
+  self.pF.sigmoid() *
+  prev_gaze
+
+  Or hard-code pF = 0.01
+  as in Reichle 2009 if
+  you want to match that
+  paper exactly. Drop the
+
+  sigmoid(0.03·(L2−100)).
+   Acknowledge in the
+  paper: "Reichle 2009's
+  pF is a global
+  constant; we also tried
+   a data-dependent
+  variant (Appendix X)
+  and found it did not
+  improve fit," turning
+  the old formulation
+  into an ablation.
+
+  Fix 6: Fix the skip
+  mechanism
+
+  Two options, in
+  increasing
+  faithfulness:
+
+  - (a) Keep the learned
+  skip head, but multiply
+   L1 (not just TRT) by
+  (1 − skip_prob), so
+  skipping actually zeros
+   out the lexical
+  contribution as Reichle
+   does. Remove detach().
+  - (b) Derive skip
+  directly from the
+  cloze/LLM surprisal:
+  P_skip = sigmoid(k ·
+  (cloze − 0.5)) with k
+  learnable. This matches
+   Reichle's if cloze >
+  random: L1 = 0 as a
+  soft relaxation of the
+  same gate.
+
+  Option (b) is maximally
+   faithful and removes
+  one entire learned
+  head.
+
+  ---
+  What other people have
+  done
+
+  No one has built a
+  truly differentiable
+  E-Z Reader before
+
+  I searched for prior
+  "differentiable E-Z
+  Reader" work and found
+  nothing. Everyone who
+  uses E-Z Reader treats
+  it as a black-box
+  simulator and tunes
+  parameters with
+  Nelder-Mead or grid
+  search, the way scripts
+  /tune_orig_ezreader.py
+  does. Your contribution
+   is genuinely novel on
+  this axis — that's the
+  story to lead with.
+
+  The
+  neural-reading-model
+  tradition goes a
+  different direction
+
+  Hahn & Keller's NEAT
+  (EMNLP 2016): An
+  LSTM-based reading
+  model with an attention
+   mechanism. They frame
+  it as "neural reading"
+  but don't preserve E-Z
+  Reader's component
+  structure. No L1/L2
+  decomposition, no
+  refixation, no motor
+  stages. They optimize
+  reading-time prediction
+   end-to-end with a
+  different inductive
+  bias (attention over
+  words). Their story:
+  "attention is a
+  general-purpose reading
+   mechanism, you don't
+  need E-Z Reader's
+  specific stages." Cited
+   by ~200 papers.
+
+  Hahn & Keller 2023
+  (eLife): Extended NEAT
+  to task-optimized
+  attention. Same story —
+   neural attention, no
+  E-Z Reader components.
+
+  CMCL shared tasks
+  (2021, 2022) are pure
+  regression
+
+  TorontoCL (Li & Rudzicz
+   2021): RoBERTa with
+  multi-stage
+  fine-tuning. Predicts 5
+   eye-tracking measures
+  (nFix, FFD, GPT, TRT,
+  fixProp) via a
+  regression head. No
+  cognitive structure.
+  MAE ~3.9, placed 3rd.
+
+  Team Ohio State (2021):
+   Fine-tuned RoBERTa +
+  word length + sentence
+  position as linear
+  features. No cognitive
+  structure.
+
+  HkAmsters (2022):
+  LightGBM with
+  hand-crafted linguistic
+   features (freq,
+  length, POS,
+  surprisal). Treats it
+  as a gradient-boosting
+  problem.
+
+  NU HLT (2022):
+  Cross-lingual
+  prediction,
+  multilingual BERT.
+
+  The CMCL community has
+  settled on "fine-tune a
+   pretrained encoder +
+  regression head" as the
+   default. None of them
+  claim cognitive
+  structure. Your paper
+  should position against
+   this by saying:
+  "direct regression
+  achieves X, our
+  cognitively-structured
+  model achieves X − ε
+  for some small ε, and
+  gains Y
+  interpretability
+  benefits (reportable α,
+   L1/L2 decomposition,
+  ablatable components)."
+
+  Competing cognitive
+  models (OB1-Reader,
+  SWIFT, Glenmore)
+
+  OB1-Reader (Snell et
+  al. 2018): Parallel
+  processing model,
+  open-bigram input.
+  Different theoretical
+  commitments from E-Z
+  Reader — posits that up
+   to 5 words are
+  processed in parallel.
+  Not differentiable. Not
+   a drop-in replacement.
+
+  SWIFT (Engbert et al.
+  2002): Another
+  parallel-processing
+  competitor. Saccade
+  generation via
+  activation dynamics.
+  Not differentiable.
+
+  Glenmore, EMMA (ACT-R):
+   Other cognitive
+  reading models. All
+  discrete-event
+  simulators.
+
+  None of these are
+  neural. Your proposed
+  architecture doesn't
+  have a direct
+  predecessor in the
+  literature — it's
+  closer to the
+  intersection of NEAT
+  (neural reading) and
+  Reichle (cognitive
+  structure), which
+  nobody has tried to
+  combine.
+
+  Surprisal theory (Levy,
+   Smith, Oh, Wilcox)
+
+  Levy 2008, Smith & Levy
+   2013: Surprisal is a
+  sufficient predictor of
+   reading time. Reading
+  time ∝ −log P(w |
+  context). Testable
+  against LLM surprisal
+  directly.
+
+  Oh & Schuler (2023):
+  Found that larger LMs
+  are worse predictors of
+   reading time — there's
+   a "sweet spot" around
+  GPT-2 small. This is
+  relevant to your
+  scaling experiment
+  (360M/1.1B/3B) because
+  Oh & Schuler would
+  predict your 3B model
+  fits worse than 1.1B on
+   reading times. If you
+  observe that pattern,
+  it's a strong result.
+
+  Wilcox et al. 2020:
+  Compared RNNs,
+  transformers, n-grams
+  on reading time
+  prediction.
+  Transformers win, but
+  not by much.
+
+  These papers all treat
+  the problem as
+  regression from
+  surprisal onto reading
+  time. None of them
+  structure the
+  regression through a
+  cognitive cascade. Your
+   work fits in a gap:
+  cognitive structure +
+  LLM surprisal, which
+  neither surprisal
+  theorists nor cognitive
+   modelers have
+  attempted.
+
+  ---
+  Summary: what to do
+
+  If your goal is "as
+  faithful to Reichle as
+  possible":
+
+  1. Resurrect α1, α2, α3
+   as explicit learnable
+  parameters — use LLM
+  surprisal as the pred
+  input, SUBTLEX for
+  freq, explicit length
+  for eccentricity. This
+  is the single most
+  important change; it
+  makes the contribution
+  reportable.
+  2. Add explicit M1, M2,
+   V, A motor stages —
+  not decorative, they
+  ARE the fixation
+  duration.
+  3. Add an eccentricity
+  exponent using
+  wordlen/2 as a distance
+   proxy.
+  4. Add a refixation
+  gate using wordlen —
+  otherwise FFD and Gaze
+  cannot dissociate.
+  5. Make pF a constant
+  (learnable scalar) —
+  drop the sigmoid-on-L2
+  mechanism, or move it
+  to an ablation.
+  6. Fix skip to either
+  zero L1 or derive from
+  the cloze input
+  directly.
+
+  I can write this as
+  model_llama_faithful_re
+  ichle.py (new file) — a
+   ground-up
+  reimplementation that
+  preserves your LLaMA
+  backbone but wires it
+  into the actual Reichle
+   cascade with explicit
+  α, ε, M1, M2, λ, pF
+  parameters. Say the
+  word and I'll do it.
+
+  Sources
+
+  - ScienceDirect: E-Z 
+  Reader model overview
+  - Reichle, Warren & 
+  McConnell 2009 — Using 
+  E-Z Reader to model 
+  higher-level language 
+  processing (PMC)
+  - Reichle, Rayner, 
+  Pollatsek 2003 — BBS 
+  comparisons paper
+  - CMCL 2021 Shared Task
+   on Eye-Tracking 
+  Prediction (ACL)
+  - TorontoCL at CMCL 
+  2021: RoBERTa 
+  fine-tuning baseline
+  - Team Ohio State at 
+  CMCL 2021: RoBERTa 
+  baseline
+  - Hahn & Keller 2016 — 
+  Modeling Human Reading 
+  with Neural Attention 
+  (NEAT)
+  - Hahn & Keller 2023 — 
+  Task-optimized reading 
+  attention (eLife)
+  - Snell et al. 2018 — 
+  OB1-Reader
+
+✻ Baked for 4m 47s
+
+❯ how trt ffd gaze and   
+  skip calculated in     
+  original ez reader     
+
+● Let me pull the exact
+  specification from
+  Reichle's papers rather
+   than recite from
+  memory.
+
+● Web Search(""E-Z
+            Reader"
+            simulation
+            "first
+            fixation
+            duration"
+            "gaze
+            duration" how
+             computed
+            fixation
+            onset
+            offset")
+  ⎿  Did 1 search in 6s
+
+● Web Search("Reichle E-Z
+             Reader "skip
+             probability"
+             "refixation
+            probability"
+            formula
+            parameters
+            lambda OVP
+            optimal
+            viewing
+            position")
+  ⎿  Did 1 search in 7s
+
+● The key thing to understand first: there is no equation for FFD, Gaze, TRT, or Skip in E-Z Reader. They are
+  emergent from a discrete-event simulation. The model outputs a sequence of (word, fixation_onset, fixation_offset)
+  tuples, and the reading time measures are read off that trace.
+
+  Here's how that works.
+
+  ---
+  E-Z Reader is a simulator, not a formula
+
+  The model runs a timeline of stages. The stages themselves have durations given by formulas (L1, L2, M1, M2, V, A,
+  I — see my previous answer). But FFD/Gaze/TRT/Skip come from watching where the simulated eye is over time.
+
+  The state machine looks roughly like this:
+
+  Eye lands on word N at time t0
+      ↓ V = 50 ms       visual encoding delay
+      ↓ L1 on N         familiarity check begins
+          When L1 completes → start M1 (labile saccade program to N+1)
+      ↓ L2 on N         lexical access begins (in parallel with M1)
+          When L2 completes → attention shifts to N+1 (A = 50 ms)
+          On word N, integration stage t(I) = 25 ms begins
+          With prob pF: integration fails → cancel saccades, regress
+      ↓ M1 → M2 → S     saccade executes
+  Eye leaves N, lands on N+1 at time t1
+
+  The fixation on N starts at t0 and ends at t1. That's it. Everything else is bookkeeping on multiple fixations.
+
+  ---
+  FFD (First Fixation Duration)
+
+  Definition: The duration of the first time the eye fixates on word N during first-pass reading.
+
+  How it emerges: When the eye lands on N (at t0), the clock starts. When a saccade executes moving the eye off N
+  (whether to N+1 or to a refixation within N or to a regression), the clock stops. The difference is one fixation
+  duration. FFD is the duration of the first such fixation on N.
+
+  Timing: A typical first fixation ends when M1+M2 completes for the saccade off the word. Since M1 starts when L1
+  completes (or when integration failure occurs, whichever comes first), FFD is approximately:
+
+  FFD ≈ t(L1)' + M1 + M2
+      = [eccentric L1] + 125 + 25 ms
+
+  for a single-fixation word with no regression. But this isn't an equation used by the model — it's an observed
+  consequence of the simulation when you trace it. If L2 finishes before M1 starts (fast word), M1 can be cancelled
+  and FFD can be shorter. If integration fails, FFD is extended by the integration stage.
+
+  Conditional on fixation: FFD is only defined when the word is actually fixated. Skipped words have no FFD.
+
+  ---
+  Gaze Duration
+
+  Definition: The sum of all first-pass fixations on word N, before the eye leaves N for a later word. If N is
+  fixated once, Gaze = FFD. If N is refixated, Gaze = FFD + (subsequent fixation durations on N during the first
+  pass).
+
+  How it emerges: After a fixation on N ends, the simulation checks whether to refixate. Refixation is triggered by
+  saccadic landing error:
+
+  P(refixate) = λ · | landing_position − word_center |
+  λ = 0.05 (E-Z Reader 10) or 0.16 (E-Z Reader 7)
+
+  If the programmed saccade landed far from the optimal viewing position (word center), a corrective refixation is
+  probabilistically triggered before the eye moves on. The simulation generates another fixation on N, which runs its
+   own M1/M2 cycle, and then the eye either refixates again or moves on.
+
+  So:
+
+  Gaze(N) = FFD(N) + Σ (duration of each refixation on N)
+
+  where the sum is over zero, one, or more refixations. Gaze = FFD when there are no refixations; Gaze > FFD when
+  there are.
+
+  Crucially: refixation does NOT depend on L1 or L2 in the original model. It depends on where the saccade landed. A
+  long word → more likely to land off-center → more refixations → Gaze >> FFD. A short word → tends to land on center
+   → no refixations → Gaze = FFD.
+
+  This is why length effects on Gaze are much stronger than on FFD in human data — and why E-Z Reader reproduces that
+   pattern.
+
+  ---
+  TRT (Total Reading Time / Total Fixation Time)
+
+  Definition: The sum of all fixations on word N, including re-reading fixations that happen after the eye has
+  already moved past N. So TRT = Gaze + (any refixations on N triggered by regressions from later words).
+
+  How it emerges: Regressions are triggered by the integration stage. After L2 on word M completes, there is an
+  integration stage t(I) = 25 ms, and with probability pF (~0.01) the integration fails. On failure:
+
+  1. All pending saccades are cancelled
+  2. A regression is programmed back to the "problem word"
+  3. With probability pN the regression targets M itself; otherwise some other word
+  4. The simulation now fixates the problem word again, runs L1/L2/integration again
+  5. When that succeeds, reading continues forward
+
+  If word N was the target of such a regression (from some later word M), N gets another fixation. That fixation's
+  duration adds to TRT(N) but not to Gaze(N), because Gaze only counts first-pass fixations.
+
+  TRT(N) = Gaze(N) + Σ (duration of re-reading fixations on N)
+
+  TRT = Gaze for words that are never regressed to. TRT > Gaze for words that get re-read.
+
+  ---
+  Skip
+
+  Definition: The probability that word N receives no fixation at all during first-pass reading.
+
+  How it emerges: Skipping is implemented as a gate inside L1:
+
+  if random_draw < cloze(N):   t(L1 on N) = 0
+  else:                         t(L1 on N) = α1 − α2·ln(freq) − α3·pred
+
+  This happens during parafoveal preview — i.e., when the eye is still on word N−1 and attention is allocated to N.
+  If the draw succeeds (cloze > draw), L1 on N takes zero time, which means:
+
+  - L1 on N completes "instantly" during preview
+  - M1 for the saccade off N−1 has already been programmed to target N
+  - But since L1 on N is already done, attention can shift past N
+  - The next M1 programs a saccade to N+1 instead, cancelling the saccade to N
+  - The eye jumps from N−1 to N+1, and N is never fixated
+
+  So P(skip N) ≈ cloze(N) at the base rate, modulated by timing constraints (whether L1 on N finishes before the
+  saccade to N commits to non-labile M2).
+
+  In practice the observed skip rate is lower than cloze because the L1=0 gate has to fire and the saccade
+  cancellation has to succeed before M2 locks in. The simulation handles all of this mechanically.
+
+  Important: In E-Z Reader, skip probability has no dedicated formula. It's P(skip) = P(L1 = 0 AND saccade-to-N is
+  still cancellable when L1 finishes). The whole thing emerges from the race between L1 completion and the M1→M2
+  pipeline.
+
+  ---
+  Why this matters for your implementation
+
+  model_llama_faithful_sh.py tries to turn all four of these emergent quantities into direct functions of L1, L2, and
+   a skip head. But in the original:
+
+  ┌─────────┬──────────────────────────────────────────────────────┬─────────────────────────────────────────────┐
+  │ Measure │                 Original E-Z Reader                  │                  Your code                  │
+  ├─────────┼──────────────────────────────────────────────────────┼─────────────────────────────────────────────┤
+  │ FFD     │ Emerges from L1_onset → M1 → M2 timing               │ Hardcoded: FFD = L1                         │
+  ├─────────┼──────────────────────────────────────────────────────┼─────────────────────────────────────────────┤
+  │ Gaze    │ Emerges from FFD + refixation loop driven by landing │ Hardcoded: Gaze = L1 + L2                   │
+  │         │  error                                               │                                             │
+  ├─────────┼──────────────────────────────────────────────────────┼─────────────────────────────────────────────┤
+  │ TRT     │ Emerges from Gaze + regression re-reading triggered  │ Hardcoded: TRT = Gaze + sigmoid(L2) ·       │
+  │         │ by pF                                                │ prev_gaze                                   │
+  ├─────────┼──────────────────────────────────────────────────────┼─────────────────────────────────────────────┤
+  │ Skip    │ Emerges from L1 = 0 race against saccade commitment  │ Separate head: sigmoid(LLaMA features)      │
+  └─────────┴──────────────────────────────────────────────────────┴─────────────────────────────────────────────┘
+
+  The fundamental mismatch is this: in Reichle, Gaze > FFD because of refixations driven by saccadic landing error,
+  and TRT > Gaze because of regressions driven by integration failure. Both mechanisms are stochastic events driven
+  by factors independent of L1/L2 themselves — landing error depends on saccade noise, integration failure depends on
+   sentence-level properties.
+
+  Your code has neither mechanism. You made FFD, Gaze, and TRT all direct linear/near-linear functions of L1 (via L2
+  = δ·L1 and a tiny regression term). That's why FFD and Gaze in your model are perfectly correlated: you have no
+  refixation stage to break them apart.
+
+  The minimal thing to add, if you want faithfulness on this axis specifically:
+
+  1. Refixation gate using word length as a proxy for saccadic landing error (longer word → more likely to land
+  off-center → more refixation):
+  P_refix = sigmoid( λ · (wordlen − c) )
+  Gaze = FFD + P_refix · (second_fixation_duration)
+  1. where second_fixation_duration can be its own learned quantity or can reuse L2.
+  2. Regression gate with a constant pF, not a sigmoid on L2:
+  P_regress = sigmoid(pF_logit)   # learnable scalar, init at logit(0.01)
+  TRT = Gaze + P_regress · (rereading_cost)
+  3. Skip as a race condition, not a separate head. The cleanest differentiable version:
+  # skip happens when L1 would be zeroed before the saccade commits
+  P_skip = cloze_from_LLM · sigmoid( k · (M1_remaining − L1) )
+  3. which is a soft relaxation of "L1 finishes before M1 enters non-labile phase".
+
+  With these three additions, your four outputs have actually-distinct origins — refixation drives Gaze−FFD,
+  regression drives TRT−Gaze, the L1/M1 race drives Skip — mirroring how Reichle's simulator produces them.
+
+  Sources
+
+  - ScienceDirect — E-Z Reader overview (model components and parameters)
+  - Reichle, Warren & McConnell 2009 — E-Z Reader 10, integration failure and regressions (PMC)
+  - Reichle, Rayner, Pollatsek 2003 — BBS target article
+  - Schotter et al. 2014 — fixation-location measurement error in E-Z Reader (PMC)
+  - Reichle et al. 2006 — mislocated fixations and inverted OVP effect
