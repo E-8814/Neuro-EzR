@@ -1,0 +1,17 @@
+Auto-freeze: 16/22 layers
+Device: cuda
+Loading SUBTLEX from /home/u384661/Neuro_EZR/src_v2/lm_train/../../data/SUBTLEXus.txt...
+  74,286 entries
+Loading GECO Corpus...
+  Loading GECO material...
+    5285 sentences, 54362 words
+    Loaded predictability for 5285 sentences
+  Loading GECO reading data...
+    72669 participant × sentence combinations
+  Raw per-participant observations: 68,681
+  Train: 54,930 | Val: 6,871 | Test: 6,880
+  Aggregated sentences (min 5 participants): 4994
+  Aggregated: 3995 train | 499 val | 500 test
+
+Loading model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+  Freezing first 16 layers

@@ -1,0 +1,532 @@
+Auto-freeze: 16/22 layers
+Device: cuda
+Loading SUBTLEX from /home/u384661/Neuro_EZR/src_v2/lm_train/../../data/SUBTLEXus.txt...
+  74,286 entries
+Loading GECO Corpus...
+  Loading GECO material...
+    5285 sentences, 54362 words
+    Loaded predictability for 5285 sentences
+  Loading GECO reading data...
+    72669 participant × sentence combinations
+  Raw per-participant observations: 68,681
+  Train: 54,930 | Val: 6,871 | Test: 6,880
+  Aggregated sentences (min 5 participants): 4994
+  Aggregated: 3995 train | 499 val | 500 test
+  Empirical skip rate (train): 0.5279
+  Skip prior bounds: [0.4979, 0.5579] (LAMBDA_PRIOR=30.0)
+
+Loading model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+  Freezing first 16 layers
+  Total parameters:      1,035,103,503
+  Frozen (LM):           770,244,608
+  Trainable LM:          264,267,776   (lr=2e-05)
+  Trainable heads:       591,106   (lr=0.0005)
+  Trainable cognitive:   13    (lr=0.0003)  (+4 Mψ params, no pF/reg_weight)
+
+====================================================================================================
+Training HYBRID v4c_v2_saccade_noise on GECO  (v4c_v2 hygiene + Mψ stage)
+  Model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+  base_L1 = alpha1 + alpha2 * (log(freq)-10)/5  + ctx_head(LLaMA_hidden)
+  Mψ: sys_err = (7 - intended_sac_len)*(omega1 - log launch_dur)/omega2
+      sigma   = eta1 + eta2 * intended_sac_len
+      E[L1_ecc] = base_L1 * eps^(sys_err + (w-1)/2) * exp(0.5 sigma^2 (ln eps)^2)
+  L2 = delta * base_L1 | FFD = E[L1_ecc] + M1 + M2
+  Gaze = FFD + P_refix(length) * (L2 + M1 + M2)
+  TRT = Gaze + I            (M2 = I tied; pF*reg_weight*prev_gaze DROPPED)
+  Skip = sigmoid((M1 - L1_next_parafoveal)/skip_temperature + residual)
+  First-word skip forced to 1e-06
+  Loss: trt/SIGMA2 + ffd/SIGMA2 + gaze/SIGMA2 + bce + residual_reg + skip_prior
+  Skip prior: LAMBDA=30.0 on bounds [0.498, 0.558] (data-anchored)
+  Skip residual L2 reg: lambda=0.001
+  LR: cosine warmup=2 ep, 42950 total steps
+  Early stop: 15 val-steps on combined=(r_TRT+r_FFD+r_Gaze+r_skip)/4
+  Validation: 5 times per epoch
+  Batch: 8 | Accum: 8 | Effective: 64
+  AMP: True
+====================================================================================================
+  Cognitive cascade parameters:
+    l1_base_offset  (alpha1_norm) =   60.00 ms
+    l1_freq_coef    (alpha2_norm) =  -17.00    (on normed log_freq)
+    -- Reichle-unit equivalents --
+    alpha1_reichle              =   94.00 ms  (Reichle 2003: 104)
+    alpha2_reichle              =  3.4000     (Reichle 2003: 3.4)
+    delta (L2/L1)               =  0.3400     (Reichle: 0.34, allowed [0.1, 0.5])
+    epsilon (ecc exp)           =  1.1500     (Reichle: 1.15)
+    M1 (labile)                 =  125.00 ms  (Reichle: 125)
+    M2 = I (tied)               =   25.00 ms  (Reichle: M2=25, I=25)
+    -- Mψ (saccade execution noise) --
+    omega1                      =  6.0000    (Reichle: 6)
+    omega2                      =  3.0010    (Reichle: 3)
+    eta1                        =  0.5000    (Reichle: 0.5)
+    eta2                        =  0.1500    (Reichle: 0.15)
+    --
+    lambda_refix                =  0.4000
+    refix_pivot                 =    8.00 chars
+    skip_temperature            =   31.00 ms
+    L1 soft floor               = 5.0 ms
+    First-word skip floor       = 1e-06
+    (pF, reg_weight DROPPED — lesion showed Δr ≈ -0.001)
+
+  [val 1] epoch 1 batch 1373/6867 | lm=2.0e-06 head=5.0e-05 cog=3.0e-05
+    combined=0.2741 | r_TRT=0.402 r_FFD=0.166 r_Gaze=0.348 r_skip=0.180
+    MAE_TRT=67.5ms FFD=42.3ms Gaze=59.7ms | Bias_TRT=+26.7 Bias_FFD=+20.2 | mean_skip=0.548
+    Mψ: sys_err=+0.37+/-0.33 sigma=1.15+/-0.43
+    Cog: a1R=94.0 a2R=3.399 eps=1.150 M1=125.0 M2=I=25.0 d=0.339 w1=6.00 w2=3.00 e1=0.499 e2=0.150
+    ** NEW BEST (combined=0.2741) **
+
+  [val 2] epoch 1 batch 2746/6867 | lm=4.0e-06 head=1.0e-04 cog=6.0e-05
+    combined=0.2882 | r_TRT=0.402 r_FFD=0.166 r_Gaze=0.347 r_skip=0.237
+    MAE_TRT=63.6ms FFD=38.4ms Gaze=54.1ms | Bias_TRT=+16.1 Bias_FFD=+10.7 | mean_skip=0.577
+    Mψ: sys_err=+0.39+/-0.34 sigma=1.14+/-0.43
+    Cog: a1R=94.0 a2R=3.398 eps=1.149 M1=125.0 M2=I=25.0 d=0.338 w1=5.99 w2=3.01 e1=0.496 e2=0.149
+    ** NEW BEST (combined=0.2882) **
+
+  [val 3] epoch 1 batch 4119/6867 | lm=6.0e-06 head=1.5e-04 cog=9.0e-05
+    combined=0.3216 | r_TRT=0.404 r_FFD=0.132 r_Gaze=0.345 r_skip=0.406
+    MAE_TRT=59.7ms FFD=35.1ms Gaze=46.5ms | Bias_TRT=+2.7 Bias_FFD=-1.0 | mean_skip=0.603
+    Mψ: sys_err=+0.38+/-0.35 sigma=1.13+/-0.43
+    Cog: a1R=93.9 a2R=3.396 eps=1.148 M1=125.0 M2=I=25.0 d=0.337 w1=5.98 w2=3.02 e1=0.494 e2=0.148
+    ** NEW BEST (combined=0.3216) **
+
+  [val 4] epoch 1 batch 5492/6867 | lm=8.0e-06 head=2.0e-04 cog=1.2e-04
+    combined=0.2943 | r_TRT=0.411 r_FFD=0.118 r_Gaze=0.346 r_skip=0.303
+    MAE_TRT=58.8ms FFD=35.6ms Gaze=44.5ms | Bias_TRT=-3.2 Bias_FFD=-5.9 | mean_skip=0.619
+    Mψ: sys_err=+0.39+/-0.36 sigma=1.13+/-0.43
+    Cog: a1R=93.9 a2R=3.395 eps=1.147 M1=125.0 M2=I=25.0 d=0.336 w1=5.98 w2=3.02 e1=0.493 e2=0.148
+
+  [val 5] epoch 1 batch 6865/6867 | lm=1.0e-05 head=2.5e-04 cog=1.5e-04
+    combined=0.3143 | r_TRT=0.425 r_FFD=0.162 r_Gaze=0.360 r_skip=0.311
+    MAE_TRT=59.3ms FFD=34.6ms Gaze=46.5ms | Bias_TRT=+4.6 Bias_FFD=+2.8 | mean_skip=0.612
+    Mψ: sys_err=+0.37+/-0.34 sigma=1.13+/-0.43
+    Cog: a1R=93.9 a2R=3.395 eps=1.147 M1=124.9 M2=I=24.9 d=0.335 w1=5.98 w2=3.02 e1=0.492 e2=0.148
+
+  [val 6] epoch 1 batch 6867/6867 | lm=1.0e-05 head=2.5e-04 cog=1.5e-04
+    combined=0.3113 | r_TRT=0.424 r_FFD=0.148 r_Gaze=0.359 r_skip=0.314
+    MAE_TRT=59.0ms FFD=34.7ms Gaze=45.7ms | Bias_TRT=+2.4 Bias_FFD=+0.7 | mean_skip=0.624
+    Mψ: sys_err=+0.37+/-0.35 sigma=1.13+/-0.43
+    Cog: a1R=93.9 a2R=3.395 eps=1.147 M1=124.9 M2=I=24.9 d=0.335 w1=5.98 w2=3.02 e1=0.492 e2=0.148
+
+[Epoch   1/50] 508.4s | loss=4.7288 (trt_mse=6302 ffd_mse=4327 gaze_mse=4814 skip_bce=0.136 skip_prior=0.008 res_reg=0.0004) | 54,930 samples
+  Sentence 1: "As a boy though I had..."
+  word             bL1    L1    L2  sErr  sig |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  race resid  skip hSkip
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  As                54    58    18 +0.00 0.00 |   243   291   -48 |   208   242 |   218   260 | +2.06 +0.18  0.00  0.21
+  a                 46    53    16 +0.96 0.86 |   235   179   +56 |   203   179 |   210   179 | +1.38 +0.28  0.84  0.79
+  boy               58    77    20 +0.93 0.94 |   267   216   +51 |   226   200 |   243   216 | +0.30 -0.25  0.51  0.36
+  though            58    87    20 +0.30 1.30 |   310   364   -53 |   237   234 |   285   305 | +1.56 -0.35  0.77  0.07
+  I                 44    48    15 +0.44 1.16 |   229   248   -19 |   198   248 |   204   248 | +1.58 +0.26  0.86  0.86
+  had               54    71    18 +0.94 0.94 |   262   343   -81 |   221   238 |   237   268 | +1.95 -0.25  0.84  0.50
+  often             35    49    12 +0.41 1.23 |   257   237   +20 |   199   237 |   232   237 | +0.44 -1.22  0.32  0.43
+  stayed            49    71    16 +0.12 1.45 |   294   279   +15 |   221   244 |   269   279 | +0.83 -0.89  0.49  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word             bL1    L1    L2  sErr  sig |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  race resid  skip hSkip
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  He                50    53    17 +0.00 0.00 |   239   257   -19 |   203   218 |   214   218 | +1.33 +0.35  0.00  0.21
+  had               55    71    19 +0.77 1.01 |   262   249   +13 |   221   208 |   237   208 | +1.04 +0.12  0.76  0.43
+  been              54    71    18 +0.51 1.16 |   270   240   +29 |   221   207 |   245   207 | +2.48 -0.13  0.91  0.36
+  completely        17    32     6 -0.20 1.67 |   316   245   +71 |   182   203 |   291   218 | -0.25 -1.72  0.12  0.00
+  under             44    57    15 -0.39 1.75 |   265   306   -40 |   207   212 |   240   250 | +1.14 -0.61  0.63  0.21
+  his               48    60    16 +0.42 1.23 |   250   216   +34 |   209   216 |   225   216 | +0.94 -0.29  0.66  0.50
+  wifes             52    73    17 +0.43 1.23 |   282   221   +61 |   223   173 |   257   185 | -0.66 -1.55  0.10  0.29
+  ascendancy        49    89    16 -0.30 1.75 |   381   546  -165 |   239   247 |   356   455 | -0.02 -1.50  0.18  0.00
+
+
+  [val 7] epoch 2 batch 1373/6867 | lm=1.2e-05 head=3.0e-04 cog=1.8e-04
+    combined=0.3041 | r_TRT=0.421 r_FFD=0.175 r_Gaze=0.359 r_skip=0.262
+    MAE_TRT=59.3ms FFD=34.7ms Gaze=46.7ms | Bias_TRT=+3.6 Bias_FFD=+3.2 | mean_skip=0.607
+    Mψ: sys_err=+0.37+/-0.34 sigma=1.13+/-0.43
+    Cog: a1R=93.9 a2R=3.395 eps=1.146 M1=124.9 M2=I=24.9 d=0.334 w1=5.98 w2=3.03 e1=0.492 e2=0.147
+
+  [val 8] epoch 2 batch 2746/6867 | lm=1.4e-05 head=3.5e-04 cog=2.1e-04
+    combined=0.3119 | r_TRT=0.423 r_FFD=0.136 r_Gaze=0.359 r_skip=0.329
+    MAE_TRT=58.5ms FFD=35.1ms Gaze=44.6ms | Bias_TRT=-1.9 Bias_FFD=-0.6 | mean_skip=0.618
+    Mψ: sys_err=+0.37+/-0.35 sigma=1.13+/-0.42
+    Cog: a1R=93.9 a2R=3.395 eps=1.145 M1=124.9 M2=I=24.9 d=0.333 w1=5.97 w2=3.03 e1=0.491 e2=0.147
+
+  [val 9] epoch 2 batch 4119/6867 | lm=1.6e-05 head=4.0e-04 cog=2.4e-04
+    combined=0.3109 | r_TRT=0.423 r_FFD=0.156 r_Gaze=0.360 r_skip=0.305
+    MAE_TRT=58.3ms FFD=34.6ms Gaze=44.1ms | Bias_TRT=-3.9 Bias_FFD=-1.2 | mean_skip=0.628
+    Mψ: sys_err=+0.37+/-0.35 sigma=1.12+/-0.42
+    Cog: a1R=93.9 a2R=3.394 eps=1.144 M1=124.8 M2=I=24.8 d=0.332 w1=5.97 w2=3.04 e1=0.489 e2=0.147
+
+  [val 10] epoch 2 batch 5492/6867 | lm=1.8e-05 head=4.5e-04 cog=2.7e-04
+    combined=0.2938 | r_TRT=0.400 r_FFD=0.063 r_Gaze=0.339 r_skip=0.373
+    MAE_TRT=59.2ms FFD=36.7ms Gaze=43.3ms | Bias_TRT=-12.4 Bias_FFD=-8.1 | mean_skip=0.617
+    Mψ: sys_err=+0.38+/-0.35 sigma=1.12+/-0.42
+    Cog: a1R=93.9 a2R=3.394 eps=1.143 M1=124.8 M2=I=24.8 d=0.330 w1=5.96 w2=3.05 e1=0.488 e2=0.147
+
+  [val 11] epoch 2 batch 6865/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3148 | r_TRT=0.417 r_FFD=0.161 r_Gaze=0.357 r_skip=0.324
+    MAE_TRT=58.4ms FFD=34.5ms Gaze=44.3ms | Bias_TRT=-5.0 Bias_FFD=-0.0 | mean_skip=0.613
+    Mψ: sys_err=+0.36+/-0.33 sigma=1.12+/-0.42
+    Cog: a1R=93.9 a2R=3.394 eps=1.142 M1=124.8 M2=I=24.8 d=0.329 w1=5.96 w2=3.05 e1=0.486 e2=0.146
+
+  [val 12] epoch 2 batch 6867/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3113 | r_TRT=0.416 r_FFD=0.146 r_Gaze=0.356 r_skip=0.327
+    MAE_TRT=58.4ms FFD=34.7ms Gaze=43.8ms | Bias_TRT=-7.4 Bias_FFD=-2.3 | mean_skip=0.617
+    Mψ: sys_err=+0.36+/-0.34 sigma=1.12+/-0.42
+    Cog: a1R=93.9 a2R=3.394 eps=1.142 M1=124.8 M2=I=24.8 d=0.329 w1=5.96 w2=3.05 e1=0.486 e2=0.146
+
+[Epoch   2/50] 492.8s | loss=2.7453 (trt_mse=3977 ffd_mse=2413 gaze_mse=2702 skip_bce=0.130 skip_prior=0.007 res_reg=0.0011) | 54,930 samples
+  Sentence 1: "As a boy though I had..."
+  word             bL1    L1    L2  sErr  sig |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  race resid  skip hSkip
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  As                54    58    18 +0.00 0.00 |   237   291   -53 |   208   242 |   213   260 | +2.01 +0.28  0.00  0.21
+  a                 48    54    16 +0.92 0.85 |   232   179   +52 |   204   179 |   207   179 | +1.75 +0.36  0.89  0.79
+  boy               51    65    17 +0.88 0.93 |   249   216   +33 |   215   200 |   224   216 | +0.95 -0.84  0.53  0.36
+  though            49    72    16 +0.31 1.29 |   285   364   -79 |   222   234 |   260   305 | +1.56 -0.83  0.67  0.07
+  I                 45    48    15 +0.47 1.14 |   226   248   -23 |   198   248 |   201   248 | +1.55 +0.50  0.89  0.86
+  had               55    71    18 +0.90 0.93 |   254   343   -89 |   221   238 |   230   268 | +1.76 -0.25  0.82  0.50
+  often             39    54    13 +0.39 1.22 |   252   237   +15 |   203   237 |   227   237 | +0.28 -1.13  0.30  0.43
+  stayed            52    75    17 +0.11 1.44 |   288   279    +9 |   225   244 |   263   279 | +0.92 -0.95  0.49  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word             bL1    L1    L2  sErr  sig |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  race resid  skip hSkip
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  He                50    54    16 +0.00 0.00 |   233   257   -24 |   203   218 |   208   218 | +1.38 +0.87  0.00  0.21
+  had               55    70    18 +0.74 1.00 |   253   249    +4 |   220   208 |   228   208 | +1.04 +0.28  0.79  0.43
+  been              54    72    18 +0.49 1.14 |   261   240   +20 |   221   207 |   236   207 | +2.15 -0.01  0.89  0.36
+  completely        21    39     7 -0.19 1.66 |   328   245   +83 |   188   203 |   304   218 | +0.41 -1.62  0.23  0.00
+  under             39    49    13 -0.35 1.73 |   247   306   -58 |   199   212 |   223   250 | +1.13 -0.76  0.59  0.21
+  his               49    61    16 +0.43 1.22 |   244   216   +27 |   210   216 |   219   216 | +1.22 -0.42  0.69  0.50
+  wifes             48    67    16 +0.41 1.22 |   265   221   +44 |   216   173 |   240   185 | -0.02 -1.70  0.15  0.29
+  ascendancy        43    78    14 -0.30 1.73 |   372   546  -173 |   227   247 |   348   455 | +0.10 -1.80  0.16  0.00
+
+
+  [val 13] epoch 3 batch 1373/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3090 | r_TRT=0.412 r_FFD=0.166 r_Gaze=0.357 r_skip=0.300
+    MAE_TRT=58.6ms FFD=34.8ms Gaze=44.7ms | Bias_TRT=-3.5 Bias_FFD=+2.5 | mean_skip=0.577
+    Mψ: sys_err=+0.35+/-0.33 sigma=1.12+/-0.42
+    Cog: a1R=93.9 a2R=3.394 eps=1.140 M1=124.7 M2=I=24.7 d=0.327 w1=5.95 w2=3.07 e1=0.484 e2=0.146
+
+  [val 14] epoch 3 batch 2746/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3119 | r_TRT=0.415 r_FFD=0.193 r_Gaze=0.358 r_skip=0.281
+    MAE_TRT=58.9ms FFD=35.1ms Gaze=45.9ms | Bias_TRT=+0.5 Bias_FFD=+7.3 | mean_skip=0.615
+    Mψ: sys_err=+0.33+/-0.31 sigma=1.11+/-0.42
+    Cog: a1R=93.9 a2R=3.394 eps=1.138 M1=124.7 M2=I=24.6 d=0.325 w1=5.94 w2=3.08 e1=0.482 e2=0.146
+
+  [val 15] epoch 3 batch 4119/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3176 | r_TRT=0.423 r_FFD=0.174 r_Gaze=0.361 r_skip=0.312
+    MAE_TRT=58.2ms FFD=34.8ms Gaze=44.6ms | Bias_TRT=-3.5 Bias_FFD=+4.2 | mean_skip=0.620
+    Mψ: sys_err=+0.33+/-0.31 sigma=1.11+/-0.42
+    Cog: a1R=93.9 a2R=3.394 eps=1.137 M1=124.6 M2=I=24.6 d=0.323 w1=5.94 w2=3.09 e1=0.479 e2=0.145
+
+  [val 16] epoch 3 batch 5492/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3132 | r_TRT=0.418 r_FFD=0.139 r_Gaze=0.355 r_skip=0.341
+    MAE_TRT=58.4ms FFD=35.2ms Gaze=43.4ms | Bias_TRT=-9.5 Bias_FFD=-0.8 | mean_skip=0.621
+    Mψ: sys_err=+0.33+/-0.31 sigma=1.10+/-0.42
+    Cog: a1R=93.9 a2R=3.394 eps=1.135 M1=124.6 M2=I=24.6 d=0.321 w1=5.93 w2=3.10 e1=0.477 e2=0.145
+
+  [val 17] epoch 3 batch 6865/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3210 | r_TRT=0.421 r_FFD=0.164 r_Gaze=0.361 r_skip=0.338
+    MAE_TRT=58.2ms FFD=34.8ms Gaze=43.5ms | Bias_TRT=-8.1 Bias_FFD=+1.1 | mean_skip=0.610
+    Mψ: sys_err=+0.32+/-0.31 sigma=1.10+/-0.41
+    Cog: a1R=93.9 a2R=3.394 eps=1.133 M1=124.5 M2=I=24.5 d=0.319 w1=5.92 w2=3.12 e1=0.474 e2=0.145
+
+  [val 18] epoch 3 batch 6867/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3225 | r_TRT=0.420 r_FFD=0.170 r_Gaze=0.361 r_skip=0.338
+    MAE_TRT=58.2ms FFD=34.6ms Gaze=43.6ms | Bias_TRT=-7.9 Bias_FFD=+1.3 | mean_skip=0.607
+    Mψ: sys_err=+0.32+/-0.31 sigma=1.10+/-0.41
+    Cog: a1R=93.9 a2R=3.394 eps=1.133 M1=124.5 M2=I=24.5 d=0.319 w1=5.92 w2=3.12 e1=0.474 e2=0.145
+    ** NEW BEST (combined=0.3225) **
+
+[Epoch   3/50] 494.8s | loss=2.7066 (trt_mse=3897 ffd_mse=2391 gaze_mse=2636 skip_bce=0.130 skip_prior=0.006 res_reg=0.0011) | 54,930 samples
+  Sentence 1: "As a boy though I had..."
+  word             bL1    L1    L2  sErr  sig |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  race resid  skip hSkip
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  As                54    58    17 +0.00 0.00 |   234   291   -57 |   207   242 |   210   260 | +1.51 +0.25  0.00  0.21
+  a                 60    68    19 +0.85 0.84 |   243   179   +63 |   217   179 |   218   179 | +1.43 +0.76  0.90  0.79
+  boy               59    73    19 +0.74 0.91 |   252   216   +36 |   222   200 |   228   216 | +1.29 -0.83  0.61  0.36
+  though            45    65    14 +0.26 1.27 |   268   364   -95 |   214   234 |   244   305 | +1.39 -1.25  0.53  0.07
+  I                 49    53    16 +0.45 1.13 |   228   248   -21 |   202   248 |   203   248 | +1.35 +0.70  0.89  0.86
+  had               60    76    19 +0.81 0.91 |   255   343   -88 |   225   238 |   230   268 | +1.34 -0.29  0.74  0.50
+  often             47    64    15 +0.34 1.20 |   255   237   +18 |   213   237 |   230   237 | -0.03 -1.15  0.23  0.43
+  stayed            59    83    19 +0.09 1.41 |   288   279    +9 |   232   244 |   263   279 | +0.82 -1.13  0.42  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word             bL1    L1    L2  sErr  sig |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  race resid  skip hSkip
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  He                53    57    17 +0.00 0.00 |   233   257   -24 |   206   218 |   208   218 | +1.09 +0.93  0.00  0.21
+  had               62    77    20 +0.66 0.98 |   256   249    +7 |   226   208 |   232   208 | +1.35 +0.28  0.84  0.43
+  been              50    64    16 +0.42 1.13 |   248   240    +7 |   213   207 |   223   207 | +1.47 -0.09  0.80  0.36
+  completely        31    54    10 -0.18 1.63 |   347   245  +102 |   203   203 |   323   218 | +0.16 -0.89  0.32  0.00
+  under             44    56    14 -0.29 1.70 |   247   306   -59 |   205   212 |   222   250 | +0.86 -0.43  0.61  0.21
+  his               56    67    18 +0.38 1.20 |   246   216   +29 |   216   216 |   221   216 | +1.30 +0.06  0.80  0.50
+  wifes             48    65    15 +0.36 1.20 |   256   221   +35 |   214   173 |   232   185 | -0.60 -1.36  0.12  0.29
+  ascendancy        53    91    17 -0.27 1.70 |   389   546  -156 |   240   247 |   365   455 | +0.98 -1.72  0.32  0.00
+
+
+  [val 19] epoch 4 batch 1373/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3117 | r_TRT=0.413 r_FFD=0.165 r_Gaze=0.354 r_skip=0.316
+    MAE_TRT=58.4ms FFD=35.1ms Gaze=44.3ms | Bias_TRT=-6.8 Bias_FFD=+2.9 | mean_skip=0.626
+    Mψ: sys_err=+0.31+/-0.30 sigma=1.10+/-0.41
+    Cog: a1R=93.9 a2R=3.394 eps=1.132 M1=124.5 M2=I=24.5 d=0.318 w1=5.91 w2=3.13 e1=0.472 e2=0.145
+
+  [val 20] epoch 4 batch 2746/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3139 | r_TRT=0.420 r_FFD=0.183 r_Gaze=0.360 r_skip=0.293
+    MAE_TRT=58.1ms FFD=34.6ms Gaze=43.7ms | Bias_TRT=-9.6 Bias_FFD=+0.7 | mean_skip=0.643
+    Mψ: sys_err=+0.31+/-0.29 sigma=1.09+/-0.41
+    Cog: a1R=93.9 a2R=3.393 eps=1.130 M1=124.4 M2=I=24.4 d=0.316 w1=5.90 w2=3.15 e1=0.469 e2=0.144
+
+  [val 21] epoch 4 batch 4119/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3166 | r_TRT=0.409 r_FFD=0.181 r_Gaze=0.354 r_skip=0.323
+    MAE_TRT=58.5ms FFD=34.5ms Gaze=43.9ms | Bias_TRT=-9.5 Bias_FFD=+1.2 | mean_skip=0.601
+    Mψ: sys_err=+0.30+/-0.28 sigma=1.09+/-0.41
+    Cog: a1R=93.9 a2R=3.393 eps=1.128 M1=124.4 M2=I=24.4 d=0.314 w1=5.89 w2=3.16 e1=0.467 e2=0.144
+
+  [val 22] epoch 4 batch 5492/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3173 | r_TRT=0.415 r_FFD=0.179 r_Gaze=0.359 r_skip=0.316
+    MAE_TRT=58.5ms FFD=35.4ms Gaze=44.7ms | Bias_TRT=-3.9 Bias_FFD=+7.2 | mean_skip=0.610
+    Mψ: sys_err=+0.28+/-0.26 sigma=1.09+/-0.41
+    Cog: a1R=93.9 a2R=3.393 eps=1.126 M1=124.3 M2=I=24.3 d=0.311 w1=5.87 w2=3.18 e1=0.464 e2=0.144
+
+  [val 23] epoch 4 batch 6865/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3240 | r_TRT=0.420 r_FFD=0.190 r_Gaze=0.362 r_skip=0.324
+    MAE_TRT=58.2ms FFD=34.5ms Gaze=43.5ms | Bias_TRT=-11.3 Bias_FFD=+0.4 | mean_skip=0.622
+    Mψ: sys_err=+0.29+/-0.27 sigma=1.08+/-0.41
+    Cog: a1R=93.9 a2R=3.393 eps=1.125 M1=124.3 M2=I=24.3 d=0.309 w1=5.86 w2=3.19 e1=0.461 e2=0.143
+    ** NEW BEST (combined=0.3240) **
+
+  [val 24] epoch 4 batch 6867/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3226 | r_TRT=0.419 r_FFD=0.186 r_Gaze=0.361 r_skip=0.324
+    MAE_TRT=58.3ms FFD=34.5ms Gaze=43.5ms | Bias_TRT=-12.4 Bias_FFD=-0.7 | mean_skip=0.623
+    Mψ: sys_err=+0.29+/-0.27 sigma=1.08+/-0.41
+    Cog: a1R=93.9 a2R=3.393 eps=1.125 M1=124.3 M2=I=24.3 d=0.309 w1=5.86 w2=3.19 e1=0.461 e2=0.143
+
+[Epoch   4/50] 494.0s | loss=2.6845 (trt_mse=3846 ffd_mse=2378 gaze_mse=2601 skip_bce=0.129 skip_prior=0.006 res_reg=0.0011) | 54,930 samples
+  Sentence 1: "As a boy though I had..."
+  word             bL1    L1    L2  sErr  sig |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  race resid  skip hSkip
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  As                53    56    16 +0.00 0.00 |   231   291   -60 |   205   242 |   206   260 | +1.29 +0.38  0.00  0.21
+  a                 66    73    21 +0.76 0.82 |   247   179   +67 |   222   179 |   223   179 | +1.20 +1.22  0.92  0.79
+  boy               65    79    20 +0.61 0.89 |   255   216   +39 |   227   200 |   231   216 | +0.52 -0.46  0.51  0.36
+  though            60    84    19 +0.22 1.25 |   282   364   -81 |   232   234 |   258   305 | +1.13 -0.80  0.58  0.07
+  I                 56    58    17 +0.33 1.11 |   232   248   -16 |   207   248 |   208   248 | +1.43 +1.00  0.92  0.86
+  had               60    73    18 +0.68 0.89 |   249   343   -94 |   222   238 |   225   268 | +1.81 -0.34  0.81  0.50
+  often             40    53    12 +0.31 1.18 |   239   237    +2 |   202   237 |   215   237 | +0.02 -1.26  0.22  0.43
+  stayed            61    84    19 +0.09 1.39 |   283   279    +4 |   233   244 |   259   279 | +0.77 -0.95  0.46  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word             bL1    L1    L2  sErr  sig |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  race resid  skip hSkip
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  He                51    54    16 +0.00 0.00 |   229   257   -28 |   203   218 |   204   218 | +0.69 +0.90  0.00  0.21
+  had               72    88    22 +0.60 0.96 |   264   249   +15 |   236   208 |   240   208 | +1.01 +0.54  0.82  0.43
+  been              58    73    18 +0.33 1.11 |   253   240   +12 |   221   207 |   228   207 | +2.10 +0.24  0.91  0.36
+  completely        25    42     8 -0.15 1.61 |   333   245   +88 |   190   203 |   309   218 | +0.23 -1.19  0.28  0.00
+  under             46    57    14 -0.29 1.68 |   243   306   -62 |   206   212 |   219   250 | +1.52 -0.45  0.75  0.21
+  his               45    54    14 +0.33 1.18 |   230   216   +13 |   202   216 |   206   216 | +1.41 -0.68  0.67  0.50
+  wifes             47    63    15 +0.35 1.18 |   249   221   +28 |   212   173 |   225   185 | +0.06 -1.55  0.18  0.29
+  ascendancy        48    80    15 -0.25 1.68 |   377   546  -169 |   229   247 |   353   455 | +1.07 -1.96  0.29  0.00
+
+
+  [val 25] epoch 5 batch 1373/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3180 | r_TRT=0.409 r_FFD=0.171 r_Gaze=0.355 r_skip=0.337
+    MAE_TRT=58.7ms FFD=35.8ms Gaze=44.5ms | Bias_TRT=-5.5 Bias_FFD=+6.5 | mean_skip=0.590
+    Mψ: sys_err=+0.26+/-0.25 sigma=1.08+/-0.41
+    Cog: a1R=93.9 a2R=3.393 eps=1.123 M1=124.3 M2=I=24.2 d=0.307 w1=5.85 w2=3.21 e1=0.458 e2=0.143
+
+  [val 26] epoch 5 batch 2746/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3113 | r_TRT=0.409 r_FFD=0.167 r_Gaze=0.355 r_skip=0.314
+    MAE_TRT=58.6ms FFD=34.9ms Gaze=43.6ms | Bias_TRT=-10.4 Bias_FFD=+2.1 | mean_skip=0.620
+    Mψ: sys_err=+0.27+/-0.25 sigma=1.08+/-0.41
+    Cog: a1R=93.9 a2R=3.393 eps=1.121 M1=124.2 M2=I=24.2 d=0.305 w1=5.84 w2=3.22 e1=0.455 e2=0.143
+
+  [val 27] epoch 5 batch 4119/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3162 | r_TRT=0.412 r_FFD=0.170 r_Gaze=0.359 r_skip=0.323
+    MAE_TRT=58.4ms FFD=35.0ms Gaze=43.6ms | Bias_TRT=-11.0 Bias_FFD=+1.9 | mean_skip=0.624
+    Mψ: sys_err=+0.25+/-0.24 sigma=1.07+/-0.41
+    Cog: a1R=93.9 a2R=3.393 eps=1.120 M1=124.2 M2=I=24.2 d=0.303 w1=5.82 w2=3.24 e1=0.452 e2=0.143
+
+  [val 28] epoch 5 batch 5492/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3149 | r_TRT=0.412 r_FFD=0.178 r_Gaze=0.357 r_skip=0.312
+    MAE_TRT=58.5ms FFD=34.8ms Gaze=43.7ms | Bias_TRT=-11.1 Bias_FFD=+2.1 | mean_skip=0.623
+    Mψ: sys_err=+0.25+/-0.23 sigma=1.07+/-0.41
+    Cog: a1R=93.9 a2R=3.392 eps=1.118 M1=124.1 M2=I=24.1 d=0.302 w1=5.80 w2=3.26 e1=0.449 e2=0.143
+
+  [val 29] epoch 5 batch 6865/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3235 | r_TRT=0.416 r_FFD=0.191 r_Gaze=0.361 r_skip=0.326
+    MAE_TRT=58.3ms FFD=35.1ms Gaze=44.1ms | Bias_TRT=-7.1 Bias_FFD=+6.3 | mean_skip=0.599
+    Mψ: sys_err=+0.23+/-0.22 sigma=1.07+/-0.40
+    Cog: a1R=93.9 a2R=3.392 eps=1.117 M1=124.1 M2=I=24.1 d=0.300 w1=5.79 w2=3.28 e1=0.446 e2=0.143
+
+  [val 30] epoch 5 batch 6867/6867 | lm=2.0e-05 head=5.0e-04 cog=3.0e-04
+    combined=0.3232 | r_TRT=0.416 r_FFD=0.187 r_Gaze=0.361 r_skip=0.329
+    MAE_TRT=58.3ms FFD=35.1ms Gaze=44.0ms | Bias_TRT=-7.6 Bias_FFD=+5.9 | mean_skip=0.601
+    Mψ: sys_err=+0.23+/-0.22 sigma=1.07+/-0.40
+    Cog: a1R=93.9 a2R=3.392 eps=1.117 M1=124.1 M2=I=24.1 d=0.300 w1=5.79 w2=3.28 e1=0.446 e2=0.143
+
+[Epoch   5/50] 492.6s | loss=2.6596 (trt_mse=3808 ffd_mse=2357 gaze_mse=2573 skip_bce=0.130 skip_prior=0.005 res_reg=0.0011) | 54,930 samples
+  Sentence 1: "As a boy though I had..."
+  word             bL1    L1    L2  sErr  sig |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  race resid  skip hSkip
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  As                63    66    19 +0.00 0.00 |   240   291   -51 |   215   242 |   216   260 | +0.98 +0.72  0.00  0.21
+  a                 75    80    23 +0.57 0.80 |   253   179   +74 |   229   179 |   229   179 | +1.03 +1.32  0.91  0.79
+  boy               70    82    21 +0.46 0.87 |   257   216   +41 |   231   200 |   233   216 | +0.59 -0.35  0.56  0.36
+  though            61    82    18 +0.17 1.23 |   277   364   -87 |   231   234 |   253   305 | +1.03 -0.85  0.55  0.07
+  I                 59    61    18 +0.27 1.09 |   234   248   -14 |   210   248 |   210   248 | +0.98 +1.19  0.90  0.86
+  had               71    85    21 +0.55 0.87 |   260   343   -84 |   233   238 |   235   268 | +1.18 -0.07  0.75  0.50
+  often             53    69    16 +0.22 1.16 |   252   237   +15 |   217   237 |   228   237 | -0.11 -1.00  0.25  0.43
+  stayed            66    88    20 +0.06 1.37 |   283   279    +3 |   237   244 |   259   279 | +0.83 -1.01  0.46  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word             bL1    L1    L2  sErr  sig |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  race resid  skip hSkip
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  He                58    61    17 +0.00 0.00 |   235   257   -22 |   210   218 |   211   218 | +0.45 +0.94  0.00  0.21
+  had               79    94    24 +0.47 0.95 |   268   249   +19 |   242   208 |   244   208 | +0.92 +0.30  0.77  0.43
+  been              61    75    18 +0.25 1.09 |   253   240   +12 |   223   207 |   228   207 | +1.01 +0.18  0.77  0.36
+  completely        41    67    12 -0.12 1.59 |   361   245  +115 |   215   203 |   337   218 | -0.73 -0.29  0.26  0.00
+  under             61    75    18 -0.19 1.66 |   259   306   -47 |   224   212 |   235   250 | +0.84 +0.01  0.70  0.21
+  his               60    69    18 +0.23 1.16 |   244   216   +27 |   217   216 |   219   216 | +1.33 -0.27  0.74  0.50
+  wifes             50    65    15 +0.26 1.16 |   248   221   +27 |   213   173 |   224   185 | -0.00 -1.36  0.20  0.29
+  ascendancy        51    84    15 -0.20 1.66 |   380   546  -165 |   232   247 |   356   455 | +0.37 -1.87  0.18  0.00
+
+
+  [val 31] epoch 6 batch 1373/6867 | lm=2.0e-05 head=4.9e-04 cog=3.0e-04
+    combined=0.3112 | r_TRT=0.411 r_FFD=0.183 r_Gaze=0.357 r_skip=0.294
+    MAE_TRT=58.4ms FFD=35.2ms Gaze=44.2ms | Bias_TRT=-9.6 Bias_FFD=+4.1 | mean_skip=0.648
+    Mψ: sys_err=+0.22+/-0.21 sigma=1.06+/-0.40
+    Cog: a1R=93.9 a2R=3.392 eps=1.115 M1=124.0 M2=I=24.0 d=0.298 w1=5.77 w2=3.30 e1=0.443 e2=0.143
+
+  [val 32] epoch 6 batch 2746/6867 | lm=2.0e-05 head=4.9e-04 cog=3.0e-04
+    combined=0.3087 | r_TRT=0.404 r_FFD=0.164 r_Gaze=0.351 r_skip=0.316
+    MAE_TRT=58.8ms FFD=36.1ms Gaze=44.7ms | Bias_TRT=-6.3 Bias_FFD=+7.7 | mean_skip=0.630
+    Mψ: sys_err=+0.20+/-0.20 sigma=1.06+/-0.40
+    Cog: a1R=93.9 a2R=3.392 eps=1.114 M1=124.0 M2=I=24.0 d=0.297 w1=5.75 w2=3.32 e1=0.440 e2=0.143
+
+  [val 33] epoch 6 batch 4119/6867 | lm=2.0e-05 head=4.9e-04 cog=3.0e-04
+    combined=0.3120 | r_TRT=0.407 r_FFD=0.164 r_Gaze=0.354 r_skip=0.323
+    MAE_TRT=58.7ms FFD=35.1ms Gaze=43.5ms | Bias_TRT=-11.7 Bias_FFD=+2.8 | mean_skip=0.649
+    Mψ: sys_err=+0.20+/-0.19 sigma=1.06+/-0.40
+    Cog: a1R=93.9 a2R=3.392 eps=1.112 M1=123.9 M2=I=23.9 d=0.295 w1=5.74 w2=3.34 e1=0.436 e2=0.143
+
+  [val 34] epoch 6 batch 5492/6867 | lm=2.0e-05 head=4.9e-04 cog=3.0e-04
+    combined=0.3149 | r_TRT=0.410 r_FFD=0.173 r_Gaze=0.357 r_skip=0.319
+    MAE_TRT=58.5ms FFD=35.5ms Gaze=43.9ms | Bias_TRT=-9.1 Bias_FFD=+5.5 | mean_skip=0.614
+    Mψ: sys_err=+0.19+/-0.18 sigma=1.05+/-0.40
+    Cog: a1R=93.9 a2R=3.392 eps=1.111 M1=123.9 M2=I=23.9 d=0.294 w1=5.72 w2=3.35 e1=0.433 e2=0.143
+
+  [val 35] epoch 6 batch 6865/6867 | lm=2.0e-05 head=4.9e-04 cog=2.9e-04
+    combined=0.3201 | r_TRT=0.411 r_FFD=0.179 r_Gaze=0.354 r_skip=0.336
+    MAE_TRT=58.5ms FFD=34.8ms Gaze=43.6ms | Bias_TRT=-12.7 Bias_FFD=+2.3 | mean_skip=0.629
+    Mψ: sys_err=+0.18+/-0.18 sigma=1.05+/-0.40
+    Cog: a1R=93.9 a2R=3.392 eps=1.110 M1=123.9 M2=I=23.8 d=0.291 w1=5.70 w2=3.37 e1=0.429 e2=0.143
+
+  [val 36] epoch 6 batch 6867/6867 | lm=2.0e-05 head=4.9e-04 cog=2.9e-04
+    combined=0.3188 | r_TRT=0.411 r_FFD=0.173 r_Gaze=0.354 r_skip=0.338
+    MAE_TRT=58.6ms FFD=34.9ms Gaze=43.6ms | Bias_TRT=-13.3 Bias_FFD=+1.7 | mean_skip=0.633
+    Mψ: sys_err=+0.18+/-0.18 sigma=1.05+/-0.40
+    Cog: a1R=93.9 a2R=3.392 eps=1.110 M1=123.9 M2=I=23.8 d=0.291 w1=5.70 w2=3.37 e1=0.429 e2=0.143
+
+[Epoch   6/50] 491.6s | loss=2.6404 (trt_mse=3771 ffd_mse=2341 gaze_mse=2551 skip_bce=0.129 skip_prior=0.006 res_reg=0.0011) | 54,930 samples
+  Sentence 1: "As a boy though I had..."
+  word             bL1    L1    L2  sErr  sig |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  race resid  skip hSkip
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  As                57    60    17 +0.00 0.00 |   233   291   -58 |   208   242 |   209   260 | +1.13 +0.83  0.00  0.21
+  a                 72    76    21 +0.48 0.79 |   248   179   +68 |   224   179 |   224   179 | +1.10 +1.87  0.95  0.79
+  boy               69    80    20 +0.36 0.86 |   254   216   +38 |   228   200 |   230   216 | +0.95 -0.20  0.68  0.36
+  though            56    74    16 +0.13 1.21 |   265   364   -99 |   222   234 |   241   305 | +1.33 -0.64  0.67  0.07
+  I                 54    56    16 +0.22 1.07 |   228   248   -21 |   204   248 |   204   248 | +1.33 +1.58  0.95  0.86
+  had               63    74    18 +0.46 0.86 |   248   343   -96 |   222   238 |   224   268 | +1.68 +0.69  0.91  0.50
+  often             45    57    13 +0.19 1.14 |   237   237    +0 |   204   237 |   213   237 | -0.18 -0.99  0.24  0.43
+  stayed            69    91    20 +0.06 1.36 |   282   279    +3 |   239   244 |   258   279 | +1.01 -0.51  0.62  0.36
+
+  Sentence 2: "He had been completely under his..."
+  word             bL1    L1    L2  sErr  sig |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  race resid  skip hSkip
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  He                50    53    15 +0.00 0.00 |   225   257   -32 |   201   218 |   201   218 | +1.07 +0.40  0.00  0.21
+  had               66    77    19 +0.41 0.93 |   251   249    +1 |   225   208 |   227   208 | +0.83 +0.65  0.81  0.43
+  been              65    78    19 +0.22 1.07 |   254   240   +13 |   226   207 |   230   207 | +1.56 +0.69  0.90  0.36
+  completely        35    55    10 -0.09 1.57 |   347   245  +101 |   203   203 |   323   218 | -0.58 -0.70  0.22  0.00
+  under             62    76    18 -0.17 1.64 |   256   306   -50 |   223   212 |   232   250 | +0.98 +0.04  0.74  0.21
+  his               58    66    17 +0.17 1.14 |   240   216   +23 |   214   216 |   216   216 | +1.23 -0.59  0.66  0.50
+  wifes             53    68    16 +0.20 1.14 |   248   221   +27 |   215   173 |   224   185 | +0.34 -1.33  0.27  0.29
+  ascendancy        49    79    14 -0.15 1.64 |   373   546  -173 |   226   247 |   349   455 | +0.63 -2.27  0.16  0.00
+
+
+  [val 37] epoch 7 batch 1373/6867 | lm=2.0e-05 head=4.9e-04 cog=2.9e-04
+    combined=0.2966 | r_TRT=0.388 r_FFD=0.144 r_Gaze=0.335 r_skip=0.320
+    MAE_TRT=59.5ms FFD=36.1ms Gaze=44.6ms | Bias_TRT=-14.2 Bias_FFD=+1.0 | mean_skip=0.636
+    Mψ: sys_err=+0.17+/-0.17 sigma=1.05+/-0.40
+    Cog: a1R=93.9 a2R=3.392 eps=1.109 M1=123.8 M2=I=23.8 d=0.290 w1=5.68 w2=3.39 e1=0.426 e2=0.143
+
+  [val 38] epoch 7 batch 2746/6867 | lm=2.0e-05 head=4.9e-04 cog=2.9e-04
+    combined=0.3208 | r_TRT=0.403 r_FFD=0.181 r_Gaze=0.350 r_skip=0.349
+    MAE_TRT=58.8ms FFD=35.3ms Gaze=44.1ms | Bias_TRT=-12.9 Bias_FFD=+2.5 | mean_skip=0.601
+    Mψ: sys_err=+0.16+/-0.16 sigma=1.05+/-0.40
+    Cog: a1R=93.9 a2R=3.392 eps=1.108 M1=123.8 M2=I=23.7 d=0.288 w1=5.66 w2=3.41 e1=0.423 e2=0.143
+
+  Early stopping at val-step 38 (epoch 7, batch 2746): no improvement for 15 val-steps (best combined=0.3240).
+
+====================================================================================================
+Training complete! Best val combined = 0.3240
+====================================================================================================
+  Cognitive cascade parameters:
+    l1_base_offset  (alpha1_norm) =   59.97 ms
+    l1_freq_coef    (alpha2_norm) =  -16.96    (on normed log_freq)
+    -- Reichle-unit equivalents --
+    alpha1_reichle              =   93.89 ms  (Reichle 2003: 104)
+    alpha2_reichle              =  3.3915     (Reichle 2003: 3.4)
+    delta (L2/L1)               =  0.2881     (Reichle: 0.34, allowed [0.1, 0.5])
+    epsilon (ecc exp)           =  1.1076     (Reichle: 1.15)
+    M1 (labile)                 =  123.77 ms  (Reichle: 125)
+    M2 = I (tied)               =   23.75 ms  (Reichle: M2=25, I=25)
+    -- Mψ (saccade execution noise) --
+    omega1                      =  5.6580    (Reichle: 6)
+    omega2                      =  3.4105    (Reichle: 3)
+    eta1                        =  0.4225    (Reichle: 0.5)
+    eta2                        =  0.1430    (Reichle: 0.15)
+    --
+    lambda_refix                =  0.8083
+    refix_pivot                 =    8.59 chars
+    skip_temperature            =   31.12 ms
+    L1 soft floor               = 5.0 ms
+    First-word skip floor       = 1e-06
+    (pF, reg_weight DROPPED — lesion showed Δr ≈ -0.001)
+
+Loaded best checkpoint from epoch 4, val-step 23 for test eval.
+Best checkpoint val metrics: r_TRT=0.420, r_FFD=0.190, r_Gaze=0.362, r_skip=0.324
+
+Test set results (from best checkpoint):
+  r_TRT=0.431  r_FFD=0.183  r_Gaze=0.375  r_skip=0.323
+  combined = 0.3281
+  MAE_TRT=59.1ms  MAE_FFD=35.6ms  MAE_Gaze=44.0ms
+  Bias_TRT=-12.3ms  Bias_FFD=-0.7ms  Bias_Gaze=-0.2ms
+  mean_skip = 0.619 (data mean train = 0.528)
+  Mψ: sys_err = +0.27+/-0.27  sigma = 1.10+/-0.41
+
+Sample test predictions:
+  Sentence 1: "I will therefore briefly set down..."
+  word             bL1    L1    L2  sErr  sig |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  race resid  skip hSkip
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  I                 45    45    14 +0.00 0.00 |   219   184   +35 |   194   184 |   194   184 | +1.01 +0.99  0.00  0.86
+  will              65    85    20 +0.65 0.96 |   265   233   +32 |   233   117 |   240   158 | -0.71 +1.11  0.60  0.64
+  therefore         64   104    20 -0.07 1.54 |   379   301   +78 |   252   225 |   354   259 | +0.69 -0.01  0.66  0.14
+  briefly           38    54    12 -0.21 1.75 |   270   421  -151 |   202   231 |   246   314 | +0.58 -1.28  0.33  0.50
+  set               56    65    17 +0.17 1.32 |   241   276   -35 |   213   199 |   217   213 | +1.12 -0.51  0.65  0.50
+  down              56    71    17 +0.40 1.11 |   251   249    +1 |   219   194 |   226   221 | +1.84 -0.74  0.75  0.36
+  the               42    50    13 +0.38 1.11 |   226   161   +65 |   198   161 |   202   161 | +1.94 -0.05  0.87  0.64
+  circumstances     24    47     7 -0.37 1.75 |   370   261  +108 |   195   208 |   345   261 | +0.22 -2.15  0.13  0.00
+  which             38    47    12 -0.55 1.90 |   233   303   -71 |   195   284 |   209   284 | +1.02 -0.33  0.67  0.43
+  led               55    65    17 +0.36 1.18 |   241   208   +33 |   213   208 |   217   208 | +2.35 -1.03  0.79  0.64
+
+  Sentence 2: "I had been invalided home from..."
+  word             bL1    L1    L2  sErr  sig |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  race resid  skip hSkip
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  I                 45    45    14 +0.00 0.00 |   219   267   -48 |   194   207 |   194   207 | +0.99 +0.99  0.00  0.43
+  had               70    86    22 +0.75 0.89 |   263   274   -12 |   235   224 |   238   224 | +0.92 +0.72  0.84  0.29
+  been              60    75    18 +0.34 1.11 |   255   301   -46 |   223   219 |   231   219 | +0.12 +0.22  0.59  0.21
+  invalided         53    85    16 -0.07 1.54 |   358  1063  -705 |   234   217 |   334   388 | +0.10 -1.47  0.20  0.00
+  home              53    64    16 -0.06 1.54 |   244   571  -327 |   213   271 |   220   332 | +0.87 -0.63  0.56  0.29
+  from              57    72    18 +0.32 1.18 |   252   435  -184 |   220   224 |   227   234 | +1.44 +0.41  0.86  0.14
+  the               50    59    15 +0.38 1.11 |   235   196   +39 |   208   129 |   211   129 | +2.08 -0.10  0.88  0.79
+  Front             35    47    11 +0.34 1.18 |   233   307   -75 |   195   256 |   208   267 | +1.67 -1.67  0.50  0.00
+  and               43    51    13 +0.38 1.18 |   227   272   -44 |   199   164 |   203   213 | +1.25 +0.61  0.86  0.36
+  after             50    67    16 +0.36 1.18 |   254   223   +31 |   216   223 |   229   223 | -0.14 -0.16  0.43  0.36
+
+  Sentence 3: "Oh yes"
+  word             bL1    L1    L2  sErr  sig |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  race resid  skip hSkip
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  Oh                54    57    17 +0.00 0.00 |   232   235    -4 |   206   235 |   207   235 | +1.42 +0.68  0.00  0.64
+  yes               56    68    17 +0.59 0.96 |   245   232   +12 |   217   204 |   221   232 | -39.17 -0.82  0.00  0.14
+
