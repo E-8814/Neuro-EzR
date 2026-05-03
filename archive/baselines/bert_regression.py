@@ -489,7 +489,10 @@ def train(
         t0 = time.time()
         model.train()
 
-        epoch_data = train_raw.copy()
+        # Train on AGGREGATED sentences (matches val/test eval). Previously this
+        # used train_raw + collate_sentences (per-participant), which mismatched
+        # the aggregated val/test data and biased fitting toward noisier targets.
+        epoch_data = train_agg.copy()
         random.shuffle(epoch_data)
 
         epoch_loss = 0.0
@@ -504,7 +507,7 @@ def train(
 
         for step in range(n_batches):
             batch = epoch_data[step * batch_size : (step + 1) * batch_size]
-            word_lists, pred_vals, wlens, h_trt, h_ffd, h_gaze, h_skip = collate_sentences(batch, device)
+            word_lists, pred_vals, wlens, h_trt, h_ffd, h_gaze, h_skip = collate_aggregated(batch, device)
 
             with torch.amp.autocast("cuda", enabled=use_amp):
                 pred = model(word_lists, pred_vals, wlens)
@@ -636,6 +639,9 @@ if __name__ == "__main__":
     parser.add_argument("--accum", type=int, default=4)
     parser.add_argument("--bert_lr", type=float, default=2e-5)
     parser.add_argument("--head_lr", type=float, default=5e-4)
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--output_dir", type=str, default=None,
+                        help="Override save_dir (default: checkpoints_bert_direct_<model>)")
     args = parser.parse_args()
 
     if args.freeze is not None:
@@ -647,7 +653,9 @@ if __name__ == "__main__":
 
     model_short = args.bert.replace("/", "_")
     data_dir = os.path.join(os.path.dirname(__file__), "..", "..", "data")
-    save_dir = os.path.join(os.path.dirname(__file__), f"checkpoints_bert_direct_{model_short}")
+    save_dir = args.output_dir or os.path.join(
+        os.path.dirname(__file__), f"checkpoints_bert_direct_{model_short}"
+    )
 
     train(
         data_dir=data_dir,
@@ -657,6 +665,7 @@ if __name__ == "__main__":
         batch_size=args.batch_size,
         accumulation_steps=args.accum,
         save_dir=save_dir,
+        seed=args.seed,
         bert_model_name=args.bert,
         freeze_bert_layers=freeze_layers,
     )

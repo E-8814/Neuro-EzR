@@ -1,0 +1,18 @@
+>> Pipeline root: /home/u384661/Neuro_EZR/src_v2/paper_experiments
+>> Repo root:     /home/u384661/Neuro_EZR
+>> Running phase: B
+
+=================================================================
+PHASE B: training (can be parallelized across GPUs)
+=================================================================
+>> [preflight] removing empty baseline checkpoint dirs
+/home/u384661/Neuro_EZR/archive/baselines/checkpoints_gpt2_surprisal/seed1
+/home/u384661/Neuro_EZR/archive/baselines/checkpoints_lightgbm/seed1
+>> [exp01a] training NLP baselines (single run each — see _v2 for why)
+  linear_regression: sentinel exists, skipping.
+  lightgbm: training (single run, no --seed)...
+  lightgbm: done -> archive/baselines/checkpoints_lightgbm/seed1/.done
+  gpt2_surprisal: training (single run, no --seed)...
+  gpt2_surprisal: done -> archive/baselines/checkpoints_gpt2_surprisal/seed1/.done
+  bert_regression: training (single run, no --seed)...
+Terminated

@@ -1,0 +1,49 @@
+================================================================================
+BASELINE 1: Linear Regression (log_freq + predictability + word_length)
+================================================================================
+
+Loading SUBTLEXus...
+  74,286 entries
+
+Loading GECO...
+  Loading GECO material...
+    5285 sentences, 54362 words
+    Loaded predictability for 5285 sentences
+  Loading GECO reading data...
+    72669 participant × sentence combinations
+  Train: 3995 sentences | Val: 499 | Test: 500
+
+Extracting features...
+  Train: 42936 words | Val: 5298 | Test: 5501
+
+Training...
+  Training completed in 0.6s
+
+  Learned weights (FFD): log_freq=-2.00, pred=-8.47, wlen=0.99, bias=227.27
+  Learned weights (TRT): log_freq=-4.78, pred=-30.70, wlen=9.42, bias=278.19
+
+================================================================================
+RESULTS
+================================================================================
+
+  GECO Val (5298 words)
+    r_FFD  = 0.177   MAE_FFD = 34.1ms
+    r_Gaze = 0.359
+    r_TRT  = 0.419   MAE_TRT = 58.9ms
+    r_Skip = 0.713
+
+  GECO Test (5501 words)
+    r_FFD  = 0.175   MAE_FFD = 35.1ms
+    r_Gaze = 0.363
+    r_TRT  = 0.427   MAE_TRT = 59.5ms
+    r_Skip = 0.721
+
+Loading Provo for cross-corpus evaluation...
+
+  Provo (cross-corpus) (2654 words)
+    r_FFD  = 0.324   MAE_FFD = 17.3ms
+    r_Gaze = 0.614
+    r_TRT  = 0.623   MAE_TRT = 44.3ms
+    r_Skip = 0.852
+
+Done!

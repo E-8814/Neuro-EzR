@@ -122,10 +122,12 @@ class GPT2SurprisalComputer:
             n_subs = len(sub_ids)
             for j in range(n_subs):
                 pos = subword_offset + j
-                if pos < len(input_ids) - 1:
-                    # Surprisal of next token given context up to pos
-                    next_id = input_ids[pos + 1] if pos + 1 < len(input_ids) else input_ids[pos]
-                    # Use conditional probability: P(token_{pos} | tokens_{<pos})
+                # Compute surprisal for every valid token position. Previously
+                # this used `pos < len(input_ids) - 1`, which silently skipped
+                # the last token in each sequence (one missing surprisal per
+                # sentence). Surprisal of token@pos uses log_probs[pos-1] (or
+                # the unconditional row for pos=0).
+                if pos < len(input_ids):
                     if pos > 0:
                         surp = -log_probs[pos - 1, input_ids[pos]].item() / math.log(2)
                     else:

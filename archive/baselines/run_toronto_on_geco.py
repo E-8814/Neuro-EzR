@@ -101,7 +101,6 @@ def _patched_train(self, train_df, valid_df=None, num_epochs=5, lr=5e-5,
     """Patched train with mid-training checkpoint saving and early stopping."""
     train_data = toronto_dataloader.EyeTrackingCSV(train_df, model_name=self.model_name)
 
-    _random.seed(12345)
     train_loader = torch.utils.data.DataLoader(train_data, batch_size=batch_size, shuffle=True)
     opt = torch.optim.AdamW(self.model.parameters(), lr=lr)
     mse = torch.nn.MSELoss()
@@ -299,9 +298,19 @@ def main():
     parser.add_argument("--lr", type=float, default=5e-5)
     parser.add_argument("--batch_size", type=int, default=16)
     parser.add_argument("--model_name", type=str, default="roberta-base")
+    parser.add_argument("--seed", type=int, default=12345)
+    parser.add_argument("--output_dir", type=str, default=None,
+                        help="Override save_dir (default: checkpoints_toronto_<model>)")
     args = parser.parse_args()
 
-    save_dir = os.path.join(SCRIPT_DIR, f"checkpoints_toronto_{args.model_name.replace('/', '_')}")
+    import numpy as _np
+    torch.manual_seed(args.seed)
+    _np.random.seed(args.seed)
+    _random.seed(args.seed)
+
+    save_dir = args.output_dir or os.path.join(
+        SCRIPT_DIR, f"checkpoints_toronto_{args.model_name.replace('/', '_')}"
+    )
     os.makedirs(save_dir, exist_ok=True)
     sys.stdout = Logger(os.path.join(save_dir, "training_log.txt"))
 
@@ -347,7 +356,11 @@ def main():
     # Load Provo for cross-corpus evaluation
     print("\n  Loading Provo for cross-corpus evaluation...")
     provo_raw = load_provo(os.path.join(data_dir, "Provo_Corpus-Eyetracking_Data.csv"))
-    provo_agg = aggregate_by_sentence(provo_raw, min_participants=5)
+    # min_participants=10 matches the convention used by all other Provo
+    # evaluations (lightgbm, linear_regression, eval_ohio_state, etc).
+    # Previously this was 5, which evaluated on a different (larger but
+    # noisier) word set than other baselines.
+    provo_agg = aggregate_by_sentence(provo_raw, min_participants=10)
     provo_df = aggregated_to_dataframe(provo_agg, start_sentence_id=0)
     print(f"    Provo: {len(provo_df)} word rows ({provo_df.sentence_id.nunique()} sentences)")
 

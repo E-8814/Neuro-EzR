@@ -1,0 +1,40 @@
+nohup: ignoring input
+=== exp01b: paper model (dualctx) × 5 seeds ===
+  [exp01b_paper_model seed=1] checkpoint exists, skipping.
+  [exp01b_paper_model seed=2] training... (log: logs/partB_parallel/exp01b_paper_model_seed2.out)
+  [exp01b_paper_model seed=2] done.
+  [exp01b_paper_model seed=3] training... (log: logs/partB_parallel/exp01b_paper_model_seed3.out)
+  [exp01b_paper_model seed=3] done.
+  [exp01b_paper_model seed=42] checkpoint exists, skipping.
+  [exp01b_paper_model seed=100] training... (log: logs/partB_parallel/exp01b_paper_model_seed100.out)
+  [exp01b_paper_model seed=100] done.
+
+=== exp02: randinit recovery × 5 seeds (jitter=±0.5) ===
+  [exp02_randinit seed=1] training... (log: logs/partB_parallel/exp02_randinit_seed1.out)
+  [exp02_randinit seed=1] done.
+  [exp02_randinit seed=2] training... (log: logs/partB_parallel/exp02_randinit_seed2.out)
+  [exp02_randinit seed=2] done.
+  [exp02_randinit seed=3] training... (log: logs/partB_parallel/exp02_randinit_seed3.out)
+  [exp02_randinit seed=3] done.
+  [exp02_randinit seed=42] training... (log: logs/partB_parallel/exp02_randinit_seed42.out)
+  [exp02_randinit seed=42] done.
+  [exp02_randinit seed=100] training... (log: logs/partB_parallel/exp02_randinit_seed100.out)
+  [exp02_randinit seed=100] done.
+
+=== exp07a: TinyLlama surprisal precompute (one-shot) ===
+  precomputing... (log: logs/partB_parallel/exp07_precompute_surprisal.out)
+  precompute done.
+
+=== exp07b: surp ablation × 5 seeds ===
+  [exp07_surp seed=1] training... (log: logs/partB_parallel/exp07_surp_seed1.out)
+  [exp07_surp seed=1] done.
+  [exp07_surp seed=2] training... (log: logs/partB_parallel/exp07_surp_seed2.out)
+  [exp07_surp seed=2] done.
+  [exp07_surp seed=3] training... (log: logs/partB_parallel/exp07_surp_seed3.out)
+  [exp07_surp seed=3] done.
+  [exp07_surp seed=42] training... (log: logs/partB_parallel/exp07_surp_seed42.out)
+  [exp07_surp seed=42] done.
+  [exp07_surp seed=100] training... (log: logs/partB_parallel/exp07_surp_seed100.out)
+  [exp07_surp seed=100] done.
+
+=== launch_partB_parallel.sh complete ===

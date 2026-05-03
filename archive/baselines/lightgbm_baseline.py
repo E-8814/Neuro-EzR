@@ -180,12 +180,13 @@ def extract_rich_features(sentences, subtlex, surprisal_computer):
             surp_x_len = surp * wl
 
             # Surface features
-            is_cap = 1.0 if tokens[i][0].isupper() else 0.0
-            has_punct = 1.0 if any(c in tokens[i] for c in '.,;:!?') else 0.0
+            tok = tokens[i] or ""
+            is_cap = 1.0 if tok and tok[0].isupper() else 0.0
+            has_punct = 1.0 if any(c in tok for c in '.,;:!?') else 0.0
 
             # Character composition
-            vowels = sum(1 for c in tokens[i].lower() if c in 'aeiou')
-            consonants = sum(1 for c in tokens[i].lower() if c.isalpha() and c not in 'aeiou')
+            vowels = sum(1 for c in tok.lower() if c in 'aeiou')
+            consonants = sum(1 for c in tok.lower() if c.isalpha() and c not in 'aeiou')
 
             feat = [
                 lf, pred, wl, surp,

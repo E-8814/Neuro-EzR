@@ -12,6 +12,8 @@ __pycache__/
 *.pth
 checkpoints/
 archive/baselines/checkpoints_ohio_state_roberta_base/
+archive/baselines/checkpoints_*/
+archive/data
 
 # Logs
 *.log

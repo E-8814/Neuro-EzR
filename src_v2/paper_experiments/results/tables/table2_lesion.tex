@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+lesion & r\_ffd & r\_gaze & r\_skip & r\_trt \\
+\midrule
+const\_l1 & 0.010 & 0.277 & 0.419 & 0.320 \\
+const\_l2 & 0.189 & 0.378 & 0.419 & 0.433 \\
+const\_skip & 0.189 & 0.379 & 0.044 & 0.433 \\
+full & 0.189 & 0.379 & 0.419 & 0.433 \\
+no\_first\_word\_mask & 0.189 & 0.379 & 0.630 & 0.433 \\
+no\_l2\_to\_ffd & 0.189 & 0.380 & 0.419 & 0.434 \\
+shuffle\_l1 & -0.005 & 0.223 & 0.419 & 0.261 \\
+shuffle\_l2 & 0.189 & 0.378 & 0.419 & 0.432 \\
+swap\_l1l2 & 0.099 & 0.340 & 0.419 & 0.390 \\
+zero\_ctx\_FFD & 0.155 & 0.343 & 0.419 & 0.398 \\
+zero\_ctx\_head & 0.155 & 0.343 & 0.236 & 0.398 \\
+zero\_ctx\_skip & 0.189 & 0.379 & 0.236 & 0.433 \\
+zero\_ecc & 0.099 & 0.366 & 0.419 & 0.416 \\
+zero\_skip\_residual & 0.189 & 0.379 & 0.559 & 0.433 \\
+\bottomrule
+\end{tabular}
+\caption{Lesion study (GECO test).}

@@ -1,0 +1,22 @@
+{
+  "model": "linear_regression",
+  "seed": 1,
+  "datasets": {
+    "geco_test": {
+      "r_ffd": 0.175,
+      "r_gaze": 0.363,
+      "r_trt": 0.427,
+      "r_skip": 0.721,
+      "mae_ffd": 35.1,
+      "mae_trt": 59.5
+    },
+    "provo": {
+      "r_ffd": 0.324,
+      "r_gaze": 0.614,
+      "r_trt": 0.623,
+      "r_skip": 0.852,
+      "mae_ffd": 17.3,
+      "mae_trt": 44.3
+    }
+  }
+}

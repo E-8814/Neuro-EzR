@@ -1,0 +1,7 @@
+nohup: ignoring input
+Diagnostic: jitter=0 (cog params start at Reichle 2003 exactly)
+  pretrained: checkpoints/hybrid_v4c_v2_dualctx/geco_TinyLlama_TinyLlama-1.1B-Chat-v1.0_seed1/best_model.pt
+  output:     checkpoints/hybrid_v4c_v2_randinit_frozen_diagnostic/geco_TinyLlama_TinyLlama-1.1B-Chat-v1.0_seed1
+  log:        logs/randinit_frozen_diagnostic/seed1.out
+
+diagnostic done — see logs/randinit_frozen_diagnostic/seed1.out

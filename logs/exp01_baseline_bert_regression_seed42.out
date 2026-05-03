@@ -1,0 +1,700 @@
+Device: cuda
+Loading GECO Corpus...
+  Loading GECO material...
+    5285 sentences, 54362 words
+    Loaded predictability for 5285 sentences
+  Loading GECO reading data...
+    72669 participant × sentence combinations
+  Train: 54,930 | Val: 6,871 | Test: 6,880
+  Aggregated: 3995 train | 499 val | 500 test
+
+Building BERT Direct Regression model: bert-base-uncased
+  Freezing first 6 BERT layers
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:   1%|          | 1/199 [00:00<00:00, 19508.39it/s, Materializing param=embeddings.LayerNorm.bias]Loading weights:   1%|          | 1/199 [00:00<00:00, 8648.05it/s, Materializing param=embeddings.LayerNorm.bias] Loading weights:   1%|          | 2/199 [00:00<00:00, 8355.19it/s, Materializing param=embeddings.LayerNorm.weight]Loading weights:   1%|          | 2/199 [00:00<00:00, 6875.91it/s, Materializing param=embeddings.LayerNorm.weight]Loading weights:   2%|▏         | 3/199 [00:00<00:00, 7485.37it/s, Materializing param=embeddings.position_embeddings.weight]Loading weights:   2%|▏         | 3/199 [00:00<00:00, 6574.14it/s, Materializing param=embeddings.position_embeddings.weight]Loading weights:   2%|▏         | 4/199 [00:00<00:00, 6859.04it/s, Materializing param=embeddings.token_type_embeddings.weight]Loading weights:   2%|▏         | 4/199 [00:00<00:00, 6150.01it/s, Materializing param=embeddings.token_type_embeddings.weight]Loading weights:   3%|▎         | 5/199 [00:00<00:00, 6559.75it/s, Materializing param=embeddings.word_embeddings.weight]      Loading weights:   3%|▎         | 5/199 [00:00<00:00, 6179.00it/s, Materializing param=embeddings.word_embeddings.weight]Loading weights:   3%|▎         | 6/199 [00:00<00:00, 6593.09it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.bias]Loading weights:   3%|▎         | 6/199 [00:00<00:00, 6267.95it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.bias]Loading weights:   4%|▎         | 7/199 [00:00<00:00, 6559.46it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.weight]Loading weights:   4%|▎         | 7/199 [00:00<00:00, 6320.80it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.weight]Loading weights:   4%|▍         | 8/199 [00:00<00:00, 4134.87it/s, Materializing param=encoder.layer.0.attention.output.dense.bias]      Loading weights:   4%|▍         | 8/199 [00:00<00:00, 4036.38it/s, Materializing param=encoder.layer.0.attention.output.dense.bias]Loading weights:   5%|▍         | 9/199 [00:00<00:00, 4305.28it/s, Materializing param=encoder.layer.0.attention.output.dense.weight]Loading weights:   5%|▍         | 9/199 [00:00<00:00, 4215.38it/s, Materializing param=encoder.layer.0.attention.output.dense.weight]Loading weights:   5%|▌         | 10/199 [00:00<00:00, 4046.99it/s, Materializing param=encoder.layer.0.attention.self.key.bias]     Loading weights:   5%|▌         | 10/199 [00:00<00:00, 3980.17it/s, Materializing param=encoder.layer.0.attention.self.key.bias]Loading weights:   6%|▌         | 11/199 [00:00<00:00, 4240.56it/s, Materializing param=encoder.layer.0.attention.self.key.weight]Loading weights:   6%|▌         | 11/199 [00:00<00:00, 4178.73it/s, Materializing param=encoder.layer.0.attention.self.key.weight]Loading weights:   6%|▌         | 12/199 [00:00<00:00, 3303.69it/s, Materializing param=encoder.layer.0.attention.self.query.bias]Loading weights:   6%|▌         | 12/199 [00:00<00:00, 3263.63it/s, Materializing param=encoder.layer.0.attention.self.query.bias]Loading weights:   7%|▋         | 13/199 [00:00<00:00, 3449.92it/s, Materializing param=encoder.layer.0.attention.self.query.weight]Loading weights:   7%|▋         | 13/199 [00:00<00:00, 3414.06it/s, Materializing param=encoder.layer.0.attention.self.query.weight]Loading weights:   7%|▋         | 14/199 [00:00<00:00, 3591.89it/s, Materializing param=encoder.layer.0.attention.self.value.bias]  Loading weights:   7%|▋         | 14/199 [00:00<00:00, 3556.65it/s, Materializing param=encoder.layer.0.attention.self.value.bias]Loading weights:   8%|▊         | 15/199 [00:00<00:00, 3310.25it/s, Materializing param=encoder.layer.0.attention.self.value.weight]Loading weights:   8%|▊         | 15/199 [00:00<00:00, 3280.22it/s, Materializing param=encoder.layer.0.attention.self.value.weight]Loading weights:   8%|▊         | 16/199 [00:00<00:00, 3439.01it/s, Materializing param=encoder.layer.0.intermediate.dense.bias]    Loading weights:   8%|▊         | 16/199 [00:00<00:00, 3411.04it/s, Materializing param=encoder.layer.0.intermediate.dense.bias]Loading weights:   9%|▊         | 17/199 [00:00<00:00, 3297.71it/s, Materializing param=encoder.layer.0.intermediate.dense.weight]Loading weights:   9%|▊         | 17/199 [00:00<00:00, 3271.69it/s, Materializing param=encoder.layer.0.intermediate.dense.weight]Loading weights:   9%|▉         | 18/199 [00:00<00:00, 3413.40it/s, Materializing param=encoder.layer.0.output.LayerNorm.bias]    Loading weights:   9%|▉         | 18/199 [00:00<00:00, 3388.88it/s, Materializing param=encoder.layer.0.output.LayerNorm.bias]Loading weights:  10%|▉         | 19/199 [00:00<00:00, 3519.18it/s, Materializing param=encoder.layer.0.output.LayerNorm.weight]Loading weights:  10%|▉         | 19/199 [00:00<00:00, 3494.03it/s, Materializing param=encoder.layer.0.output.LayerNorm.weight]Loading weights:  10%|█         | 20/199 [00:00<00:00, 3618.43it/s, Materializing param=encoder.layer.0.output.dense.bias]      Loading weights:  10%|█         | 20/199 [00:00<00:00, 3593.01it/s, Materializing param=encoder.layer.0.output.dense.bias]Loading weights:  11%|█         | 21/199 [00:00<00:00, 3713.34it/s, Materializing param=encoder.layer.0.output.dense.weight]Loading weights:  11%|█         | 21/199 [00:00<00:00, 3687.69it/s, Materializing param=encoder.layer.0.output.dense.weight]Loading weights:  11%|█         | 22/199 [00:00<00:00, 3667.81it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.bias]Loading weights:  11%|█         | 22/199 [00:00<00:00, 3643.33it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.bias]Loading weights:  12%|█▏        | 23/199 [00:00<00:00, 3479.12it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.weight]Loading weights:  12%|█▏        | 23/199 [00:00<00:00, 3457.79it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.weight]Loading weights:  12%|█▏        | 24/199 [00:00<00:00, 3558.01it/s, Materializing param=encoder.layer.1.attention.output.dense.bias]      Loading weights:  12%|█▏        | 24/199 [00:00<00:00, 3536.76it/s, Materializing param=encoder.layer.1.attention.output.dense.bias]Loading weights:  13%|█▎        | 25/199 [00:00<00:00, 3635.21it/s, Materializing param=encoder.layer.1.attention.output.dense.weight]Loading weights:  13%|█▎        | 25/199 [00:00<00:00, 3614.16it/s, Materializing param=encoder.layer.1.attention.output.dense.weight]Loading weights:  13%|█▎        | 26/199 [00:00<00:00, 3543.98it/s, Materializing param=encoder.layer.1.attention.self.key.bias]      Loading weights:  13%|█▎        | 26/199 [00:00<00:00, 3524.28it/s, Materializing param=encoder.layer.1.attention.self.key.bias]Loading weights:  14%|█▎        | 27/199 [00:00<00:00, 3273.96it/s, Materializing param=encoder.layer.1.attention.self.key.weight]Loading weights:  14%|█▎        | 27/199 [00:00<00:00, 3255.60it/s, Materializing param=encoder.layer.1.attention.self.key.weight]Loading weights:  14%|█▍        | 28/199 [00:00<00:00, 3339.70it/s, Materializing param=encoder.layer.1.attention.self.query.bias]Loading weights:  14%|█▍        | 28/199 [00:00<00:00, 3322.41it/s, Materializing param=encoder.layer.1.attention.self.query.bias]Loading weights:  15%|█▍        | 29/199 [00:00<00:00, 3402.09it/s, Materializing param=encoder.layer.1.attention.self.query.weight]Loading weights:  15%|█▍        | 29/199 [00:00<00:00, 3386.27it/s, Materializing param=encoder.layer.1.attention.self.query.weight]Loading weights:  15%|█▌        | 30/199 [00:00<00:00, 3466.18it/s, Materializing param=encoder.layer.1.attention.self.value.bias]  Loading weights:  15%|█▌        | 30/199 [00:00<00:00, 3449.17it/s, Materializing param=encoder.layer.1.attention.self.value.bias]Loading weights:  16%|█▌        | 31/199 [00:00<00:00, 3527.78it/s, Materializing param=encoder.layer.1.attention.self.value.weight]Loading weights:  16%|█▌        | 31/199 [00:00<00:00, 3512.44it/s, Materializing param=encoder.layer.1.attention.self.value.weight]Loading weights:  16%|█▌        | 32/199 [00:00<00:00, 3387.71it/s, Materializing param=encoder.layer.1.intermediate.dense.bias]    Loading weights:  16%|█▌        | 32/199 [00:00<00:00, 3372.98it/s, Materializing param=encoder.layer.1.intermediate.dense.bias]Loading weights:  17%|█▋        | 33/199 [00:00<00:00, 3448.66it/s, Materializing param=encoder.layer.1.intermediate.dense.weight]Loading weights:  17%|█▋        | 33/199 [00:00<00:00, 3434.71it/s, Materializing param=encoder.layer.1.intermediate.dense.weight]Loading weights:  17%|█▋        | 34/199 [00:00<00:00, 3506.77it/s, Materializing param=encoder.layer.1.output.LayerNorm.bias]    Loading weights:  17%|█▋        | 34/199 [00:00<00:00, 3492.60it/s, Materializing param=encoder.layer.1.output.LayerNorm.bias]Loading weights:  18%|█▊        | 35/199 [00:00<00:00, 3419.85it/s, Materializing param=encoder.layer.1.output.LayerNorm.weight]Loading weights:  18%|█▊        | 35/199 [00:00<00:00, 3406.60it/s, Materializing param=encoder.layer.1.output.LayerNorm.weight]Loading weights:  18%|█▊        | 36/199 [00:00<00:00, 3401.63it/s, Materializing param=encoder.layer.1.output.dense.bias]      Loading weights:  18%|█▊        | 36/199 [00:00<00:00, 3389.41it/s, Materializing param=encoder.layer.1.output.dense.bias]Loading weights:  19%|█▊        | 37/199 [00:00<00:00, 3352.76it/s, Materializing param=encoder.layer.1.output.dense.weight]Loading weights:  19%|█▊        | 37/199 [00:00<00:00, 3340.92it/s, Materializing param=encoder.layer.1.output.dense.weight]Loading weights:  19%|█▉        | 38/199 [00:00<00:00, 3404.39it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.bias]Loading weights:  19%|█▉        | 38/199 [00:00<00:00, 3392.29it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.bias]Loading weights:  20%|█▉        | 39/199 [00:00<00:00, 3453.63it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.weight]Loading weights:  20%|█▉        | 39/199 [00:00<00:00, 3441.79it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.weight]Loading weights:  20%|██        | 40/199 [00:00<00:00, 3314.02it/s, Materializing param=encoder.layer.2.attention.output.dense.bias]      Loading weights:  20%|██        | 40/199 [00:00<00:00, 3302.54it/s, Materializing param=encoder.layer.2.attention.output.dense.bias]Loading weights:  21%|██        | 41/199 [00:00<00:00, 3359.90it/s, Materializing param=encoder.layer.2.attention.output.dense.weight]Loading weights:  21%|██        | 41/199 [00:00<00:00, 3349.10it/s, Materializing param=encoder.layer.2.attention.output.dense.weight]Loading weights:  21%|██        | 42/199 [00:00<00:00, 3405.78it/s, Materializing param=encoder.layer.2.attention.self.key.bias]      Loading weights:  21%|██        | 42/199 [00:00<00:00, 3395.02it/s, Materializing param=encoder.layer.2.attention.self.key.bias]Loading weights:  22%|██▏       | 43/199 [00:00<00:00, 3450.85it/s, Materializing param=encoder.layer.2.attention.self.key.weight]Loading weights:  22%|██▏       | 43/199 [00:00<00:00, 3438.41it/s, Materializing param=encoder.layer.2.attention.self.key.weight]Loading weights:  22%|██▏       | 44/199 [00:00<00:00, 3297.41it/s, Materializing param=encoder.layer.2.attention.self.query.bias]Loading weights:  22%|██▏       | 44/199 [00:00<00:00, 3286.72it/s, Materializing param=encoder.layer.2.attention.self.query.bias]Loading weights:  23%|██▎       | 45/199 [00:00<00:00, 3337.05it/s, Materializing param=encoder.layer.2.attention.self.query.weight]Loading weights:  23%|██▎       | 45/199 [00:00<00:00, 3325.59it/s, Materializing param=encoder.layer.2.attention.self.query.weight]Loading weights:  23%|██▎       | 46/199 [00:00<00:00, 3376.64it/s, Materializing param=encoder.layer.2.attention.self.value.bias]  Loading weights:  23%|██▎       | 46/199 [00:00<00:00, 3367.16it/s, Materializing param=encoder.layer.2.attention.self.value.bias]Loading weights:  24%|██▎       | 47/199 [00:00<00:00, 3417.99it/s, Materializing param=encoder.layer.2.attention.self.value.weight]Loading weights:  24%|██▎       | 47/199 [00:00<00:00, 3408.41it/s, Materializing param=encoder.layer.2.attention.self.value.weight]Loading weights:  24%|██▍       | 48/199 [00:00<00:00, 3249.19it/s, Materializing param=encoder.layer.2.intermediate.dense.bias]    Loading weights:  24%|██▍       | 48/199 [00:00<00:00, 3239.52it/s, Materializing param=encoder.layer.2.intermediate.dense.bias]Loading weights:  25%|██▍       | 49/199 [00:00<00:00, 3286.76it/s, Materializing param=encoder.layer.2.intermediate.dense.weight]Loading weights:  25%|██▍       | 49/199 [00:00<00:00, 3278.21it/s, Materializing param=encoder.layer.2.intermediate.dense.weight]Loading weights:  25%|██▌       | 50/199 [00:00<00:00, 3325.12it/s, Materializing param=encoder.layer.2.output.LayerNorm.bias]    Loading weights:  25%|██▌       | 50/199 [00:00<00:00, 3316.60it/s, Materializing param=encoder.layer.2.output.LayerNorm.bias]Loading weights:  26%|██▌       | 51/199 [00:00<00:00, 3214.90it/s, Materializing param=encoder.layer.2.output.LayerNorm.weight]Loading weights:  26%|██▌       | 51/199 [00:00<00:00, 3206.75it/s, Materializing param=encoder.layer.2.output.LayerNorm.weight]Loading weights:  26%|██▌       | 52/199 [00:00<00:00, 3251.45it/s, Materializing param=encoder.layer.2.output.dense.bias]      Loading weights:  26%|██▌       | 52/199 [00:00<00:00, 3243.85it/s, Materializing param=encoder.layer.2.output.dense.bias]Loading weights:  27%|██▋       | 53/199 [00:00<00:00, 3288.68it/s, Materializing param=encoder.layer.2.output.dense.weight]Loading weights:  27%|██▋       | 53/199 [00:00<00:00, 3280.91it/s, Materializing param=encoder.layer.2.output.dense.weight]Loading weights:  27%|██▋       | 54/199 [00:00<00:00, 3215.62it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.bias]Loading weights:  27%|██▋       | 54/199 [00:00<00:00, 3207.70it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.bias]Loading weights:  28%|██▊       | 55/199 [00:00<00:00, 3251.35it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.weight]Loading weights:  28%|██▊       | 55/199 [00:00<00:00, 3243.90it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.weight]Loading weights:  28%|██▊       | 56/199 [00:00<00:00, 3285.78it/s, Materializing param=encoder.layer.3.attention.output.dense.bias]      Loading weights:  28%|██▊       | 56/199 [00:00<00:00, 3278.31it/s, Materializing param=encoder.layer.3.attention.output.dense.bias]Loading weights:  29%|██▊       | 57/199 [00:00<00:00, 3319.52it/s, Materializing param=encoder.layer.3.attention.output.dense.weight]Loading weights:  29%|██▊       | 57/199 [00:00<00:00, 3311.98it/s, Materializing param=encoder.layer.3.attention.output.dense.weight]Loading weights:  29%|██▉       | 58/199 [00:00<00:00, 3352.71it/s, Materializing param=encoder.layer.3.attention.self.key.bias]      Loading weights:  29%|██▉       | 58/199 [00:00<00:00, 3345.20it/s, Materializing param=encoder.layer.3.attention.self.key.bias]Loading weights:  30%|██▉       | 59/199 [00:00<00:00, 3385.33it/s, Materializing param=encoder.layer.3.attention.self.key.weight]Loading weights:  30%|██▉       | 59/199 [00:00<00:00, 3377.79it/s, Materializing param=encoder.layer.3.attention.self.key.weight]Loading weights:  30%|███       | 60/199 [00:00<00:00, 3376.20it/s, Materializing param=encoder.layer.3.attention.self.query.bias]Loading weights:  30%|███       | 60/199 [00:00<00:00, 3368.51it/s, Materializing param=encoder.layer.3.attention.self.query.bias]Loading weights:  31%|███       | 61/199 [00:00<00:00, 3298.77it/s, Materializing param=encoder.layer.3.attention.self.query.weight]Loading weights:  31%|███       | 61/199 [00:00<00:00, 3291.68it/s, Materializing param=encoder.layer.3.attention.self.query.weight]Loading weights:  31%|███       | 62/199 [00:00<00:00, 3329.54it/s, Materializing param=encoder.layer.3.attention.self.value.bias]  Loading weights:  31%|███       | 62/199 [00:00<00:00, 3322.65it/s, Materializing param=encoder.layer.3.attention.self.value.bias]Loading weights:  32%|███▏      | 63/199 [00:00<00:00, 3360.18it/s, Materializing param=encoder.layer.3.attention.self.value.weight]Loading weights:  32%|███▏      | 63/199 [00:00<00:00, 3353.27it/s, Materializing param=encoder.layer.3.attention.self.value.weight]Loading weights:  32%|███▏      | 64/199 [00:00<00:00, 3390.49it/s, Materializing param=encoder.layer.3.intermediate.dense.bias]    Loading weights:  32%|███▏      | 64/199 [00:00<00:00, 3383.14it/s, Materializing param=encoder.layer.3.intermediate.dense.bias]Loading weights:  33%|███▎      | 65/199 [00:00<00:00, 3198.27it/s, Materializing param=encoder.layer.3.intermediate.dense.weight]Loading weights:  33%|███▎      | 65/199 [00:00<00:00, 3192.09it/s, Materializing param=encoder.layer.3.intermediate.dense.weight]Loading weights:  33%|███▎      | 66/199 [00:00<00:00, 3226.91it/s, Materializing param=encoder.layer.3.output.LayerNorm.bias]    Loading weights:  33%|███▎      | 66/199 [00:00<00:00, 3220.68it/s, Materializing param=encoder.layer.3.output.LayerNorm.bias]Loading weights:  34%|███▎      | 67/199 [00:00<00:00, 3253.92it/s, Materializing param=encoder.layer.3.output.LayerNorm.weight]Loading weights:  34%|███▎      | 67/199 [00:00<00:00, 3247.79it/s, Materializing param=encoder.layer.3.output.LayerNorm.weight]Loading weights:  34%|███▍      | 68/199 [00:00<00:00, 3282.46it/s, Materializing param=encoder.layer.3.output.dense.bias]      Loading weights:  34%|███▍      | 68/199 [00:00<00:00, 3276.39it/s, Materializing param=encoder.layer.3.output.dense.bias]Loading weights:  35%|███▍      | 69/199 [00:00<00:00, 3310.65it/s, Materializing param=encoder.layer.3.output.dense.weight]Loading weights:  35%|███▍      | 69/199 [00:00<00:00, 3304.49it/s, Materializing param=encoder.layer.3.output.dense.weight]Loading weights:  35%|███▌      | 70/199 [00:00<00:00, 3265.65it/s, Materializing param=encoder.layer.4.attention.output.LayerNorm.bias]Loading weights:  35%|███▌      | 70/199 [00:00<00:00, 3259.30it/s, Materializing param=encoder.layer.4.attention.output.LayerNorm.bias]Loading weights:  36%|███▌      | 71/199 [00:00<00:00, 3291.69it/s, Materializing param=encoder.layer.4.attention.output.LayerNorm.weight]Loading weights:  36%|███▌      | 71/199 [00:00<00:00, 3285.77it/s, Materializing param=encoder.layer.4.attention.output.LayerNorm.weight]Loading weights:  36%|███▌      | 72/199 [00:00<00:00, 3318.24it/s, Materializing param=encoder.layer.4.attention.output.dense.bias]      Loading weights:  36%|███▌      | 72/199 [00:00<00:00, 3312.24it/s, Materializing param=encoder.layer.4.attention.output.dense.bias]Loading weights:  37%|███▋      | 73/199 [00:00<00:00, 3344.45it/s, Materializing param=encoder.layer.4.attention.output.dense.weight]Loading weights:  37%|███▋      | 73/199 [00:00<00:00, 3338.50it/s, Materializing param=encoder.layer.4.attention.output.dense.weight]Loading weights:  37%|███▋      | 74/199 [00:00<00:00, 3370.53it/s, Materializing param=encoder.layer.4.attention.self.key.bias]      Loading weights:  37%|███▋      | 74/199 [00:00<00:00, 3364.54it/s, Materializing param=encoder.layer.4.attention.self.key.bias]Loading weights:  38%|███▊      | 75/199 [00:00<00:00, 3317.02it/s, Materializing param=encoder.layer.4.attention.self.key.weight]Loading weights:  38%|███▊      | 75/199 [00:00<00:00, 3311.08it/s, Materializing param=encoder.layer.4.attention.self.key.weight]Loading weights:  38%|███▊      | 76/199 [00:00<00:00, 3343.37it/s, Materializing param=encoder.layer.4.attention.self.query.bias]Loading weights:  38%|███▊      | 76/199 [00:00<00:00, 3337.81it/s, Materializing param=encoder.layer.4.attention.self.query.bias]Loading weights:  39%|███▊      | 77/199 [00:00<00:00, 3368.67it/s, Materializing param=encoder.layer.4.attention.self.query.weight]Loading weights:  39%|███▊      | 77/199 [00:00<00:00, 3362.99it/s, Materializing param=encoder.layer.4.attention.self.query.weight]Loading weights:  39%|███▉      | 78/199 [00:00<00:00, 3268.58it/s, Materializing param=encoder.layer.4.attention.self.value.bias]  Loading weights:  39%|███▉      | 78/199 [00:00<00:00, 3263.01it/s, Materializing param=encoder.layer.4.attention.self.value.bias]Loading weights:  40%|███▉      | 79/199 [00:00<00:00, 3292.36it/s, Materializing param=encoder.layer.4.attention.self.value.weight]Loading weights:  40%|███▉      | 79/199 [00:00<00:00, 3287.04it/s, Materializing param=encoder.layer.4.attention.self.value.weight]Loading weights:  40%|████      | 80/199 [00:00<00:00, 3316.51it/s, Materializing param=encoder.layer.4.intermediate.dense.bias]    Loading weights:  40%|████      | 80/199 [00:00<00:00, 3311.17it/s, Materializing param=encoder.layer.4.intermediate.dense.bias]Loading weights:  41%|████      | 81/199 [00:00<00:00, 3340.33it/s, Materializing param=encoder.layer.4.intermediate.dense.weight]Loading weights:  41%|████      | 81/199 [00:00<00:00, 3335.15it/s, Materializing param=encoder.layer.4.intermediate.dense.weight]Loading weights:  41%|████      | 82/199 [00:00<00:00, 3256.66it/s, Materializing param=encoder.layer.4.output.LayerNorm.bias]    Loading weights:  41%|████      | 82/199 [00:00<00:00, 3250.75it/s, Materializing param=encoder.layer.4.output.LayerNorm.bias]Loading weights:  42%|████▏     | 83/199 [00:00<00:00, 3279.27it/s, Materializing param=encoder.layer.4.output.LayerNorm.weight]Loading weights:  42%|████▏     | 83/199 [00:00<00:00, 3274.24it/s, Materializing param=encoder.layer.4.output.LayerNorm.weight]Loading weights:  42%|████▏     | 84/199 [00:00<00:00, 3207.09it/s, Materializing param=encoder.layer.4.output.dense.bias]      Loading weights:  42%|████▏     | 84/199 [00:00<00:00, 3202.25it/s, Materializing param=encoder.layer.4.output.dense.bias]Loading weights:  43%|████▎     | 85/199 [00:00<00:00, 3229.40it/s, Materializing param=encoder.layer.4.output.dense.weight]Loading weights:  43%|████▎     | 85/199 [00:00<00:00, 3224.75it/s, Materializing param=encoder.layer.4.output.dense.weight]Loading weights:  43%|████▎     | 86/199 [00:00<00:00, 3251.87it/s, Materializing param=encoder.layer.5.attention.output.LayerNorm.bias]Loading weights:  43%|████▎     | 86/199 [00:00<00:00, 3247.07it/s, Materializing param=encoder.layer.5.attention.output.LayerNorm.bias]Loading weights:  44%|████▎     | 87/199 [00:00<00:00, 3273.71it/s, Materializing param=encoder.layer.5.attention.output.LayerNorm.weight]Loading weights:  44%|████▎     | 87/199 [00:00<00:00, 3268.85it/s, Materializing param=encoder.layer.5.attention.output.LayerNorm.weight]Loading weights:  44%|████▍     | 88/199 [00:00<00:00, 3295.32it/s, Materializing param=encoder.layer.5.attention.output.dense.bias]      Loading weights:  44%|████▍     | 88/199 [00:00<00:00, 3290.44it/s, Materializing param=encoder.layer.5.attention.output.dense.bias]Loading weights:  45%|████▍     | 89/199 [00:00<00:00, 3249.11it/s, Materializing param=encoder.layer.5.attention.output.dense.weight]Loading weights:  45%|████▍     | 89/199 [00:00<00:00, 3236.57it/s, Materializing param=encoder.layer.5.attention.output.dense.weight]Loading weights:  45%|████▌     | 90/199 [00:00<00:00, 3263.09it/s, Materializing param=encoder.layer.5.attention.self.key.bias]      Loading weights:  45%|████▌     | 90/199 [00:00<00:00, 3258.53it/s, Materializing param=encoder.layer.5.attention.self.key.bias]Loading weights:  46%|████▌     | 91/199 [00:00<00:00, 3284.05it/s, Materializing param=encoder.layer.5.attention.self.key.weight]Loading weights:  46%|████▌     | 91/199 [00:00<00:00, 3279.50it/s, Materializing param=encoder.layer.5.attention.self.key.weight]Loading weights:  46%|████▌     | 92/199 [00:00<00:00, 3305.09it/s, Materializing param=encoder.layer.5.attention.self.query.bias]Loading weights:  46%|████▌     | 92/199 [00:00<00:00, 3300.51it/s, Materializing param=encoder.layer.5.attention.self.query.bias]Loading weights:  47%|████▋     | 93/199 [00:00<00:00, 3325.66it/s, Materializing param=encoder.layer.5.attention.self.query.weight]Loading weights:  47%|████▋     | 93/199 [00:00<00:00, 3321.02it/s, Materializing param=encoder.layer.5.attention.self.query.weight]Loading weights:  47%|████▋     | 94/199 [00:00<00:00, 3345.99it/s, Materializing param=encoder.layer.5.attention.self.value.bias]  Loading weights:  47%|████▋     | 94/199 [00:00<00:00, 3341.42it/s, Materializing param=encoder.layer.5.attention.self.value.bias]Loading weights:  48%|████▊     | 95/199 [00:00<00:00, 3271.37it/s, Materializing param=encoder.layer.5.attention.self.value.weight]Loading weights:  48%|████▊     | 95/199 [00:00<00:00, 3266.30it/s, Materializing param=encoder.layer.5.attention.self.value.weight]Loading weights:  48%|████▊     | 96/199 [00:00<00:00, 3290.64it/s, Materializing param=encoder.layer.5.intermediate.dense.bias]    Loading weights:  48%|████▊     | 96/199 [00:00<00:00, 3286.21it/s, Materializing param=encoder.layer.5.intermediate.dense.bias]Loading weights:  49%|████▊     | 97/199 [00:00<00:00, 3310.39it/s, Materializing param=encoder.layer.5.intermediate.dense.weight]Loading weights:  49%|████▊     | 97/199 [00:00<00:00, 3305.90it/s, Materializing param=encoder.layer.5.intermediate.dense.weight]Loading weights:  49%|████▉     | 98/199 [00:00<00:00, 3330.00it/s, Materializing param=encoder.layer.5.output.LayerNorm.bias]    Loading weights:  49%|████▉     | 98/199 [00:00<00:00, 3325.63it/s, Materializing param=encoder.layer.5.output.LayerNorm.bias]Loading weights:  50%|████▉     | 99/199 [00:00<00:00, 3306.34it/s, Materializing param=encoder.layer.5.output.LayerNorm.weight]Loading weights:  50%|████▉     | 99/199 [00:00<00:00, 3301.95it/s, Materializing param=encoder.layer.5.output.LayerNorm.weight]Loading weights:  50%|█████     | 100/199 [00:00<00:00, 3326.70it/s, Materializing param=encoder.layer.5.output.dense.bias]     Loading weights:  50%|█████     | 100/199 [00:00<00:00, 3322.48it/s, Materializing param=encoder.layer.5.output.dense.bias]Loading weights:  51%|█████     | 101/199 [00:00<00:00, 3268.23it/s, Materializing param=encoder.layer.5.output.dense.weight]Loading weights:  51%|█████     | 101/199 [00:00<00:00, 3263.60it/s, Materializing param=encoder.layer.5.output.dense.weight]Loading weights:  51%|█████▏    | 102/199 [00:00<00:00, 3287.07it/s, Materializing param=encoder.layer.6.attention.output.LayerNorm.bias]Loading weights:  51%|█████▏    | 102/199 [00:00<00:00, 3282.48it/s, Materializing param=encoder.layer.6.attention.output.LayerNorm.bias]Loading weights:  52%|█████▏    | 103/199 [00:00<00:00, 3304.14it/s, Materializing param=encoder.layer.6.attention.output.LayerNorm.weight]Loading weights:  52%|█████▏    | 103/199 [00:00<00:00, 3299.93it/s, Materializing param=encoder.layer.6.attention.output.LayerNorm.weight]Loading weights:  52%|█████▏    | 104/199 [00:00<00:00, 3321.89it/s, Materializing param=encoder.layer.6.attention.output.dense.bias]      Loading weights:  52%|█████▏    | 104/199 [00:00<00:00, 3317.60it/s, Materializing param=encoder.layer.6.attention.output.dense.bias]Loading weights:  53%|█████▎    | 105/199 [00:00<00:00, 3291.13it/s, Materializing param=encoder.layer.6.attention.output.dense.weight]Loading weights:  53%|█████▎    | 105/199 [00:00<00:00, 3287.00it/s, Materializing param=encoder.layer.6.attention.output.dense.weight]Loading weights:  53%|█████▎    | 106/199 [00:00<00:00, 3308.87it/s, Materializing param=encoder.layer.6.attention.self.key.bias]      Loading weights:  53%|█████▎    | 106/199 [00:00<00:00, 3304.91it/s, Materializing param=encoder.layer.6.attention.self.key.bias]Loading weights:  54%|█████▍    | 107/199 [00:00<00:00, 3326.79it/s, Materializing param=encoder.layer.6.attention.self.key.weight]Loading weights:  54%|█████▍    | 107/199 [00:00<00:00, 3322.80it/s, Materializing param=encoder.layer.6.attention.self.key.weight]Loading weights:  54%|█████▍    | 108/199 [00:00<00:00, 3269.23it/s, Materializing param=encoder.layer.6.attention.self.query.bias]Loading weights:  54%|█████▍    | 108/199 [00:00<00:00, 3264.85it/s, Materializing param=encoder.layer.6.attention.self.query.bias]Loading weights:  55%|█████▍    | 109/199 [00:00<00:00, 3286.50it/s, Materializing param=encoder.layer.6.attention.self.query.weight]Loading weights:  55%|█████▍    | 109/199 [00:00<00:00, 3282.23it/s, Materializing param=encoder.layer.6.attention.self.query.weight]Loading weights:  55%|█████▌    | 110/199 [00:00<00:00, 3303.00it/s, Materializing param=encoder.layer.6.attention.self.value.bias]  Loading weights:  55%|█████▌    | 110/199 [00:00<00:00, 3299.15it/s, Materializing param=encoder.layer.6.attention.self.value.bias]Loading weights:  56%|█████▌    | 111/199 [00:00<00:00, 3320.17it/s, Materializing param=encoder.layer.6.attention.self.value.weight]Loading weights:  56%|█████▌    | 111/199 [00:00<00:00, 3316.39it/s, Materializing param=encoder.layer.6.attention.self.value.weight]Loading weights:  56%|█████▋    | 112/199 [00:00<00:00, 3337.37it/s, Materializing param=encoder.layer.6.intermediate.dense.bias]    Loading weights:  56%|█████▋    | 112/199 [00:00<00:00, 3333.56it/s, Materializing param=encoder.layer.6.intermediate.dense.bias]Loading weights:  57%|█████▋    | 113/199 [00:00<00:00, 3294.15it/s, Materializing param=encoder.layer.6.intermediate.dense.weight]Loading weights:  57%|█████▋    | 113/199 [00:00<00:00, 3290.36it/s, Materializing param=encoder.layer.6.intermediate.dense.weight]Loading weights:  57%|█████▋    | 114/199 [00:00<00:00, 3312.10it/s, Materializing param=encoder.layer.6.output.LayerNorm.bias]    Loading weights:  57%|█████▋    | 114/199 [00:00<00:00, 3308.43it/s, Materializing param=encoder.layer.6.output.LayerNorm.bias]Loading weights:  58%|█████▊    | 115/199 [00:00<00:00, 3328.86it/s, Materializing param=encoder.layer.6.output.LayerNorm.weight]Loading weights:  58%|█████▊    | 115/199 [00:00<00:00, 3325.12it/s, Materializing param=encoder.layer.6.output.LayerNorm.weight]Loading weights:  58%|█████▊    | 116/199 [00:00<00:00, 3345.45it/s, Materializing param=encoder.layer.6.output.dense.bias]      Loading weights:  58%|█████▊    | 116/199 [00:00<00:00, 3341.71it/s, Materializing param=encoder.layer.6.output.dense.bias]Loading weights:  59%|█████▉    | 117/199 [00:00<00:00, 3282.24it/s, Materializing param=encoder.layer.6.output.dense.weight]Loading weights:  59%|█████▉    | 117/199 [00:00<00:00, 3278.29it/s, Materializing param=encoder.layer.6.output.dense.weight]Loading weights:  59%|█████▉    | 118/199 [00:00<00:00, 3298.27it/s, Materializing param=encoder.layer.7.attention.output.LayerNorm.bias]Loading weights:  59%|█████▉    | 118/199 [00:00<00:00, 3294.73it/s, Materializing param=encoder.layer.7.attention.output.LayerNorm.bias]Loading weights:  60%|█████▉    | 119/199 [00:00<00:00, 3314.14it/s, Materializing param=encoder.layer.7.attention.output.LayerNorm.weight]Loading weights:  60%|█████▉    | 119/199 [00:00<00:00, 3310.38it/s, Materializing param=encoder.layer.7.attention.output.LayerNorm.weight]Loading weights:  60%|██████    | 120/199 [00:00<00:00, 3329.69it/s, Materializing param=encoder.layer.7.attention.output.dense.bias]      Loading weights:  60%|██████    | 120/199 [00:00<00:00, 3326.11it/s, Materializing param=encoder.layer.7.attention.output.dense.bias]Loading weights:  61%|██████    | 121/199 [00:00<00:00, 3345.49it/s, Materializing param=encoder.layer.7.attention.output.dense.weight]Loading weights:  61%|██████    | 121/199 [00:00<00:00, 3341.90it/s, Materializing param=encoder.layer.7.attention.output.dense.weight]Loading weights:  61%|██████▏   | 122/199 [00:00<00:00, 3286.73it/s, Materializing param=encoder.layer.7.attention.self.key.bias]      Loading weights:  61%|██████▏   | 122/199 [00:00<00:00, 3282.83it/s, Materializing param=encoder.layer.7.attention.self.key.bias]Loading weights:  62%|██████▏   | 123/199 [00:00<00:00, 3300.85it/s, Materializing param=encoder.layer.7.attention.self.key.weight]Loading weights:  62%|██████▏   | 123/199 [00:00<00:00, 3297.41it/s, Materializing param=encoder.layer.7.attention.self.key.weight]Loading weights:  62%|██████▏   | 124/199 [00:00<00:00, 3316.21it/s, Materializing param=encoder.layer.7.attention.self.query.bias]Loading weights:  62%|██████▏   | 124/199 [00:00<00:00, 3312.72it/s, Materializing param=encoder.layer.7.attention.self.query.bias]Loading weights:  63%|██████▎   | 125/199 [00:00<00:00, 3331.50it/s, Materializing param=encoder.layer.7.attention.self.query.weight]Loading weights:  63%|██████▎   | 125/199 [00:00<00:00, 3328.03it/s, Materializing param=encoder.layer.7.attention.self.query.weight]Loading weights:  63%|██████▎   | 126/199 [00:00<00:00, 3312.68it/s, Materializing param=encoder.layer.7.attention.self.value.bias]  Loading weights:  63%|██████▎   | 126/199 [00:00<00:00, 3309.14it/s, Materializing param=encoder.layer.7.attention.self.value.bias]Loading weights:  64%|██████▍   | 127/199 [00:00<00:00, 3309.25it/s, Materializing param=encoder.layer.7.attention.self.value.weight]Loading weights:  64%|██████▍   | 127/199 [00:00<00:00, 3305.70it/s, Materializing param=encoder.layer.7.attention.self.value.weight]Loading weights:  64%|██████▍   | 128/199 [00:00<00:00, 3323.62it/s, Materializing param=encoder.layer.7.intermediate.dense.bias]    Loading weights:  64%|██████▍   | 128/199 [00:00<00:00, 3320.23it/s, Materializing param=encoder.layer.7.intermediate.dense.bias]Loading weights:  65%|██████▍   | 129/199 [00:00<00:00, 3266.39it/s, Materializing param=encoder.layer.7.intermediate.dense.weight]Loading weights:  65%|██████▍   | 129/199 [00:00<00:00, 3262.71it/s, Materializing param=encoder.layer.7.intermediate.dense.weight]Loading weights:  65%|██████▌   | 130/199 [00:00<00:00, 3280.35it/s, Materializing param=encoder.layer.7.output.LayerNorm.bias]    Loading weights:  65%|██████▌   | 130/199 [00:00<00:00, 3277.13it/s, Materializing param=encoder.layer.7.output.LayerNorm.bias]Loading weights:  66%|██████▌   | 131/199 [00:00<00:00, 3295.00it/s, Materializing param=encoder.layer.7.output.LayerNorm.weight]Loading weights:  66%|██████▌   | 131/199 [00:00<00:00, 3291.76it/s, Materializing param=encoder.layer.7.output.LayerNorm.weight]Loading weights:  66%|██████▋   | 132/199 [00:00<00:00, 3309.25it/s, Materializing param=encoder.layer.7.output.dense.bias]      Loading weights:  66%|██████▋   | 132/199 [00:00<00:00, 3306.05it/s, Materializing param=encoder.layer.7.output.dense.bias]Loading weights:  67%|██████▋   | 133/199 [00:00<00:00, 3323.85it/s, Materializing param=encoder.layer.7.output.dense.weight]Loading weights:  67%|██████▋   | 133/199 [00:00<00:00, 3320.67it/s, Materializing param=encoder.layer.7.output.dense.weight]Loading weights:  67%|██████▋   | 134/199 [00:00<00:00, 3279.04it/s, Materializing param=encoder.layer.8.attention.output.LayerNorm.bias]Loading weights:  67%|██████▋   | 134/199 [00:00<00:00, 3275.44it/s, Materializing param=encoder.layer.8.attention.output.LayerNorm.bias]Loading weights:  68%|██████▊   | 135/199 [00:00<00:00, 3291.95it/s, Materializing param=encoder.layer.8.attention.output.LayerNorm.weight]Loading weights:  68%|██████▊   | 135/199 [00:00<00:00, 3288.60it/s, Materializing param=encoder.layer.8.attention.output.LayerNorm.weight]Loading weights:  68%|██████▊   | 136/199 [00:00<00:00, 3305.51it/s, Materializing param=encoder.layer.8.attention.output.dense.bias]      Loading weights:  68%|██████▊   | 136/199 [00:00<00:00, 3302.45it/s, Materializing param=encoder.layer.8.attention.output.dense.bias]Loading weights:  69%|██████▉   | 137/199 [00:00<00:00, 3319.62it/s, Materializing param=encoder.layer.8.attention.output.dense.weight]Loading weights:  69%|██████▉   | 137/199 [00:00<00:00, 3316.44it/s, Materializing param=encoder.layer.8.attention.output.dense.weight]Loading weights:  69%|██████▉   | 138/199 [00:00<00:00, 3299.97it/s, Materializing param=encoder.layer.8.attention.self.key.bias]      Loading weights:  69%|██████▉   | 138/199 [00:00<00:00, 3296.83it/s, Materializing param=encoder.layer.8.attention.self.key.bias]Loading weights:  70%|██████▉   | 139/199 [00:00<00:00, 3289.85it/s, Materializing param=encoder.layer.8.attention.self.key.weight]Loading weights:  70%|██████▉   | 139/199 [00:00<00:00, 3286.72it/s, Materializing param=encoder.layer.8.attention.self.key.weight]Loading weights:  70%|███████   | 140/199 [00:00<00:00, 3303.34it/s, Materializing param=encoder.layer.8.attention.self.query.bias]Loading weights:  70%|███████   | 140/199 [00:00<00:00, 3300.32it/s, Materializing param=encoder.layer.8.attention.self.query.bias]Loading weights:  71%|███████   | 141/199 [00:00<00:00, 3316.86it/s, Materializing param=encoder.layer.8.attention.self.query.weight]Loading weights:  71%|███████   | 141/199 [00:00<00:00, 3313.83it/s, Materializing param=encoder.layer.8.attention.self.query.weight]Loading weights:  71%|███████▏  | 142/199 [00:00<00:00, 3279.81it/s, Materializing param=encoder.layer.8.attention.self.value.bias]  Loading weights:  71%|███████▏  | 142/199 [00:00<00:00, 3276.76it/s, Materializing param=encoder.layer.8.attention.self.value.bias]Loading weights:  72%|███████▏  | 143/199 [00:00<00:00, 3293.03it/s, Materializing param=encoder.layer.8.attention.self.value.weight]Loading weights:  72%|███████▏  | 143/199 [00:00<00:00, 3290.08it/s, Materializing param=encoder.layer.8.attention.self.value.weight]Loading weights:  72%|███████▏  | 144/199 [00:00<00:00, 3290.40it/s, Materializing param=encoder.layer.8.intermediate.dense.bias]    Loading weights:  72%|███████▏  | 144/199 [00:00<00:00, 3287.45it/s, Materializing param=encoder.layer.8.intermediate.dense.bias]Loading weights:  73%|███████▎  | 145/199 [00:00<00:00, 3303.57it/s, Materializing param=encoder.layer.8.intermediate.dense.weight]Loading weights:  73%|███████▎  | 145/199 [00:00<00:00, 3300.63it/s, Materializing param=encoder.layer.8.intermediate.dense.weight]Loading weights:  73%|███████▎  | 146/199 [00:00<00:00, 3316.45it/s, Materializing param=encoder.layer.8.output.LayerNorm.bias]    Loading weights:  73%|███████▎  | 146/199 [00:00<00:00, 3313.52it/s, Materializing param=encoder.layer.8.output.LayerNorm.bias]Loading weights:  74%|███████▍  | 147/199 [00:00<00:00, 3293.48it/s, Materializing param=encoder.layer.8.output.LayerNorm.weight]Loading weights:  74%|███████▍  | 147/199 [00:00<00:00, 3290.42it/s, Materializing param=encoder.layer.8.output.LayerNorm.weight]Loading weights:  74%|███████▍  | 148/199 [00:00<00:00, 3224.02it/s, Materializing param=encoder.layer.8.output.dense.bias]      Loading weights:  74%|███████▍  | 148/199 [00:00<00:00, 3220.86it/s, Materializing param=encoder.layer.8.output.dense.bias]Loading weights:  75%|███████▍  | 149/199 [00:00<00:00, 3235.84it/s, Materializing param=encoder.layer.8.output.dense.weight]Loading weights:  75%|███████▍  | 149/199 [00:00<00:00, 3232.85it/s, Materializing param=encoder.layer.8.output.dense.weight]Loading weights:  75%|███████▌  | 150/199 [00:00<00:00, 3247.82it/s, Materializing param=encoder.layer.9.attention.output.LayerNorm.bias]Loading weights:  75%|███████▌  | 150/199 [00:00<00:00, 3244.72it/s, Materializing param=encoder.layer.9.attention.output.LayerNorm.bias]Loading weights:  76%|███████▌  | 151/199 [00:00<00:00, 3259.25it/s, Materializing param=encoder.layer.9.attention.output.LayerNorm.weight]Loading weights:  76%|███████▌  | 151/199 [00:00<00:00, 3256.06it/s, Materializing param=encoder.layer.9.attention.output.LayerNorm.weight]Loading weights:  76%|███████▋  | 152/199 [00:00<00:00, 3270.58it/s, Materializing param=encoder.layer.9.attention.output.dense.bias]      Loading weights:  76%|███████▋  | 152/199 [00:00<00:00, 3267.51it/s, Materializing param=encoder.layer.9.attention.output.dense.bias]Loading weights:  77%|███████▋  | 153/199 [00:00<00:00, 3282.03it/s, Materializing param=encoder.layer.9.attention.output.dense.weight]Loading weights:  77%|███████▋  | 153/199 [00:00<00:00, 3278.89it/s, Materializing param=encoder.layer.9.attention.output.dense.weight]Loading weights:  77%|███████▋  | 154/199 [00:00<00:00, 3293.37it/s, Materializing param=encoder.layer.9.attention.self.key.bias]      Loading weights:  77%|███████▋  | 154/199 [00:00<00:00, 3290.32it/s, Materializing param=encoder.layer.9.attention.self.key.bias]Loading weights:  78%|███████▊  | 155/199 [00:00<00:00, 3304.75it/s, Materializing param=encoder.layer.9.attention.self.key.weight]Loading weights:  78%|███████▊  | 155/199 [00:00<00:00, 3301.73it/s, Materializing param=encoder.layer.9.attention.self.key.weight]Loading weights:  78%|███████▊  | 156/199 [00:00<00:00, 3286.43it/s, Materializing param=encoder.layer.9.attention.self.query.bias]Loading weights:  78%|███████▊  | 156/199 [00:00<00:00, 3283.62it/s, Materializing param=encoder.layer.9.attention.self.query.bias]Loading weights:  79%|███████▉  | 157/199 [00:00<00:00, 3286.65it/s, Materializing param=encoder.layer.9.attention.self.query.weight]Loading weights:  79%|███████▉  | 157/199 [00:00<00:00, 3283.92it/s, Materializing param=encoder.layer.9.attention.self.query.weight]Loading weights:  79%|███████▉  | 158/199 [00:00<00:00, 3264.85it/s, Materializing param=encoder.layer.9.attention.self.value.bias]  Loading weights:  79%|███████▉  | 158/199 [00:00<00:00, 3262.12it/s, Materializing param=encoder.layer.9.attention.self.value.bias]Loading weights:  80%|███████▉  | 159/199 [00:00<00:00, 3276.35it/s, Materializing param=encoder.layer.9.attention.self.value.weight]Loading weights:  80%|███████▉  | 159/199 [00:00<00:00, 3273.44it/s, Materializing param=encoder.layer.9.attention.self.value.weight]Loading weights:  80%|████████  | 160/199 [00:00<00:00, 3287.85it/s, Materializing param=encoder.layer.9.intermediate.dense.bias]    Loading weights:  80%|████████  | 160/199 [00:00<00:00, 3285.22it/s, Materializing param=encoder.layer.9.intermediate.dense.bias]Loading weights:  81%|████████  | 161/199 [00:00<00:00, 3299.78it/s, Materializing param=encoder.layer.9.intermediate.dense.weight]Loading weights:  81%|████████  | 161/199 [00:00<00:00, 3297.14it/s, Materializing param=encoder.layer.9.intermediate.dense.weight]Loading weights:  81%|████████▏ | 162/199 [00:00<00:00, 3254.67it/s, Materializing param=encoder.layer.9.output.LayerNorm.bias]    Loading weights:  81%|████████▏ | 162/199 [00:00<00:00, 3251.82it/s, Materializing param=encoder.layer.9.output.LayerNorm.bias]Loading weights:  82%|████████▏ | 163/199 [00:00<00:00, 3265.80it/s, Materializing param=encoder.layer.9.output.LayerNorm.weight]Loading weights:  82%|████████▏ | 163/199 [00:00<00:00, 3263.32it/s, Materializing param=encoder.layer.9.output.LayerNorm.weight]Loading weights:  82%|████████▏ | 164/199 [00:00<00:00, 3277.58it/s, Materializing param=encoder.layer.9.output.dense.bias]      Loading weights:  82%|████████▏ | 164/199 [00:00<00:00, 3275.08it/s, Materializing param=encoder.layer.9.output.dense.bias]Loading weights:  83%|████████▎ | 165/199 [00:00<00:00, 3289.31it/s, Materializing param=encoder.layer.9.output.dense.weight]Loading weights:  83%|████████▎ | 165/199 [00:00<00:00, 3286.79it/s, Materializing param=encoder.layer.9.output.dense.weight]Loading weights:  83%|████████▎ | 166/199 [00:00<00:00, 3241.57it/s, Materializing param=encoder.layer.10.attention.output.LayerNorm.bias]Loading weights:  83%|████████▎ | 166/199 [00:00<00:00, 3239.00it/s, Materializing param=encoder.layer.10.attention.output.LayerNorm.bias]Loading weights:  84%|████████▍ | 167/199 [00:00<00:00, 3253.32it/s, Materializing param=encoder.layer.10.attention.output.LayerNorm.weight]Loading weights:  84%|████████▍ | 167/199 [00:00<00:00, 3250.87it/s, Materializing param=encoder.layer.10.attention.output.LayerNorm.weight]Loading weights:  84%|████████▍ | 168/199 [00:00<00:00, 3264.61it/s, Materializing param=encoder.layer.10.attention.output.dense.bias]      Loading weights:  84%|████████▍ | 168/199 [00:00<00:00, 3262.10it/s, Materializing param=encoder.layer.10.attention.output.dense.bias]Loading weights:  85%|████████▍ | 169/199 [00:00<00:00, 3275.82it/s, Materializing param=encoder.layer.10.attention.output.dense.weight]Loading weights:  85%|████████▍ | 169/199 [00:00<00:00, 3273.30it/s, Materializing param=encoder.layer.10.attention.output.dense.weight]Loading weights:  85%|████████▌ | 170/199 [00:00<00:00, 3252.78it/s, Materializing param=encoder.layer.10.attention.self.key.bias]      Loading weights:  85%|████████▌ | 170/199 [00:00<00:00, 3250.30it/s, Materializing param=encoder.layer.10.attention.self.key.bias]Loading weights:  86%|████████▌ | 171/199 [00:00<00:00, 3264.45it/s, Materializing param=encoder.layer.10.attention.self.key.weight]Loading weights:  86%|████████▌ | 171/199 [00:00<00:00, 3262.06it/s, Materializing param=encoder.layer.10.attention.self.key.weight]Loading weights:  86%|████████▋ | 172/199 [00:00<00:00, 3252.01it/s, Materializing param=encoder.layer.10.attention.self.query.bias]Loading weights:  86%|████████▋ | 172/199 [00:00<00:00, 3249.49it/s, Materializing param=encoder.layer.10.attention.self.query.bias]Loading weights:  87%|████████▋ | 173/199 [00:00<00:00, 3263.33it/s, Materializing param=encoder.layer.10.attention.self.query.weight]Loading weights:  87%|████████▋ | 173/199 [00:00<00:00, 3260.97it/s, Materializing param=encoder.layer.10.attention.self.query.weight]Loading weights:  87%|████████▋ | 174/199 [00:00<00:00, 3274.24it/s, Materializing param=encoder.layer.10.attention.self.value.bias]  Loading weights:  87%|████████▋ | 174/199 [00:00<00:00, 3271.85it/s, Materializing param=encoder.layer.10.attention.self.value.bias]Loading weights:  88%|████████▊ | 175/199 [00:00<00:00, 3285.16it/s, Materializing param=encoder.layer.10.attention.self.value.weight]Loading weights:  88%|████████▊ | 175/199 [00:00<00:00, 3282.75it/s, Materializing param=encoder.layer.10.attention.self.value.weight]Loading weights:  88%|████████▊ | 176/199 [00:00<00:00, 3274.04it/s, Materializing param=encoder.layer.10.intermediate.dense.bias]    Loading weights:  88%|████████▊ | 176/199 [00:00<00:00, 3271.56it/s, Materializing param=encoder.layer.10.intermediate.dense.bias]Loading weights:  89%|████████▉ | 177/199 [00:00<00:00, 3284.56it/s, Materializing param=encoder.layer.10.intermediate.dense.weight]Loading weights:  89%|████████▉ | 177/199 [00:00<00:00, 3282.17it/s, Materializing param=encoder.layer.10.intermediate.dense.weight]Loading weights:  89%|████████▉ | 178/199 [00:00<00:00, 3295.27it/s, Materializing param=encoder.layer.10.output.LayerNorm.bias]    Loading weights:  89%|████████▉ | 178/199 [00:00<00:00, 3292.87it/s, Materializing param=encoder.layer.10.output.LayerNorm.bias]Loading weights:  90%|████████▉ | 179/199 [00:00<00:00, 3279.76it/s, Materializing param=encoder.layer.10.output.LayerNorm.weight]Loading weights:  90%|████████▉ | 179/199 [00:00<00:00, 3277.34it/s, Materializing param=encoder.layer.10.output.LayerNorm.weight]Loading weights:  90%|█████████ | 180/199 [00:00<00:00, 3290.31it/s, Materializing param=encoder.layer.10.output.dense.bias]      Loading weights:  90%|█████████ | 180/199 [00:00<00:00, 3287.97it/s, Materializing param=encoder.layer.10.output.dense.bias]Loading weights:  91%|█████████ | 181/199 [00:00<00:00, 3283.53it/s, Materializing param=encoder.layer.10.output.dense.weight]Loading weights:  91%|█████████ | 181/199 [00:00<00:00, 3281.19it/s, Materializing param=encoder.layer.10.output.dense.weight]Loading weights:  91%|█████████▏| 182/199 [00:00<00:00, 3294.11it/s, Materializing param=encoder.layer.11.attention.output.LayerNorm.bias]Loading weights:  91%|█████████▏| 182/199 [00:00<00:00, 3291.76it/s, Materializing param=encoder.layer.11.attention.output.LayerNorm.bias]Loading weights:  92%|█████████▏| 183/199 [00:00<00:00, 3268.83it/s, Materializing param=encoder.layer.11.attention.output.LayerNorm.weight]Loading weights:  92%|█████████▏| 183/199 [00:00<00:00, 3266.47it/s, Materializing param=encoder.layer.11.attention.output.LayerNorm.weight]Loading weights:  92%|█████████▏| 184/199 [00:00<00:00, 3278.96it/s, Materializing param=encoder.layer.11.attention.output.dense.bias]      Loading weights:  92%|█████████▏| 184/199 [00:00<00:00, 3276.69it/s, Materializing param=encoder.layer.11.attention.output.dense.bias]Loading weights:  93%|█████████▎| 185/199 [00:00<00:00, 3289.23it/s, Materializing param=encoder.layer.11.attention.output.dense.weight]Loading weights:  93%|█████████▎| 185/199 [00:00<00:00, 3286.92it/s, Materializing param=encoder.layer.11.attention.output.dense.weight]Loading weights:  93%|█████████▎| 186/199 [00:00<00:00, 3259.82it/s, Materializing param=encoder.layer.11.attention.self.key.bias]      Loading weights:  93%|█████████▎| 186/199 [00:00<00:00, 3249.37it/s, Materializing param=encoder.layer.11.attention.self.key.bias]Loading weights:  94%|█████████▍| 187/199 [00:00<00:00, 3262.08it/s, Materializing param=encoder.layer.11.attention.self.key.weight]Loading weights:  94%|█████████▍| 187/199 [00:00<00:00, 3259.88it/s, Materializing param=encoder.layer.11.attention.self.key.weight]Loading weights:  94%|█████████▍| 188/199 [00:00<00:00, 3272.14it/s, Materializing param=encoder.layer.11.attention.self.query.bias]Loading weights:  94%|█████████▍| 188/199 [00:00<00:00, 3269.91it/s, Materializing param=encoder.layer.11.attention.self.query.bias]Loading weights:  95%|█████████▍| 189/199 [00:00<00:00, 3282.17it/s, Materializing param=encoder.layer.11.attention.self.query.weight]Loading weights:  95%|█████████▍| 189/199 [00:00<00:00, 3279.97it/s, Materializing param=encoder.layer.11.attention.self.query.weight]Loading weights:  95%|█████████▌| 190/199 [00:00<00:00, 3270.47it/s, Materializing param=encoder.layer.11.attention.self.value.bias]  Loading weights:  95%|█████████▌| 190/199 [00:00<00:00, 3268.24it/s, Materializing param=encoder.layer.11.attention.self.value.bias]Loading weights:  96%|█████████▌| 191/199 [00:00<00:00, 3260.33it/s, Materializing param=encoder.layer.11.attention.self.value.weight]Loading weights:  96%|█████████▌| 191/199 [00:00<00:00, 3258.14it/s, Materializing param=encoder.layer.11.attention.self.value.weight]Loading weights:  96%|█████████▋| 192/199 [00:00<00:00, 3270.17it/s, Materializing param=encoder.layer.11.intermediate.dense.bias]    Loading weights:  96%|█████████▋| 192/199 [00:00<00:00, 3268.02it/s, Materializing param=encoder.layer.11.intermediate.dense.bias]Loading weights:  97%|█████████▋| 193/199 [00:00<00:00, 3280.16it/s, Materializing param=encoder.layer.11.intermediate.dense.weight]Loading weights:  97%|█████████▋| 193/199 [00:00<00:00, 3278.01it/s, Materializing param=encoder.layer.11.intermediate.dense.weight]Loading weights:  97%|█████████▋| 194/199 [00:00<00:00, 3290.14it/s, Materializing param=encoder.layer.11.output.LayerNorm.bias]    Loading weights:  97%|█████████▋| 194/199 [00:00<00:00, 3287.94it/s, Materializing param=encoder.layer.11.output.LayerNorm.bias]Loading weights:  98%|█████████▊| 195/199 [00:00<00:00, 3280.30it/s, Materializing param=encoder.layer.11.output.LayerNorm.weight]Loading weights:  98%|█████████▊| 195/199 [00:00<00:00, 3278.03it/s, Materializing param=encoder.layer.11.output.LayerNorm.weight]Loading weights:  98%|█████████▊| 196/199 [00:00<00:00, 3290.53it/s, Materializing param=encoder.layer.11.output.dense.bias]      Loading weights:  98%|█████████▊| 196/199 [00:00<00:00, 3288.40it/s, Materializing param=encoder.layer.11.output.dense.bias]Loading weights:  99%|█████████▉| 197/199 [00:00<00:00, 3286.75it/s, Materializing param=encoder.layer.11.output.dense.weight]Loading weights:  99%|█████████▉| 197/199 [00:00<00:00, 3284.67it/s, Materializing param=encoder.layer.11.output.dense.weight]Loading weights:  99%|█████████▉| 198/199 [00:00<00:00, 3297.54it/s, Materializing param=pooler.dense.bias]                   Loading weights:  99%|█████████▉| 198/199 [00:00<00:00, 3295.58it/s, Materializing param=pooler.dense.bias]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3308.65it/s, Materializing param=pooler.dense.weight]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3306.70it/s, Materializing param=pooler.dense.weight]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3302.13it/s, Materializing param=pooler.dense.weight]
+[1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+  Total parameters:    109,811,719
+  Frozen (BERT):       66,364,416
+  Trainable (BERT):    43,117,824 (lr=2e-05)
+  Trainable (heads):   329,479 (lr=0.0005)
+
+==========================================================================================
+Training: BERT + Direct Regression Heads (NO E-Z Reader)
+  Batch size: 16 | Grad accum: 4
+  Effective batch size: 64
+  AMP: True
+  Loss: 0.25*TRT + 0.25*FFD + 0.25*Gaze + 0.25*Skip
+==========================================================================================
+
+[Epoch   1/50] 14.4s | bert_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=236.1 (trt=434 ffd=227 gaze=284 skip=0.025)
+  Val:   loss=1256.6 | r_TRT=0.388  r_FFD=0.214  r_Gaze=0.332  r_skip=0.601
+  Val:   MAE_TRT=63.4ms  MAE_FFD=34.2ms
+  Pred:  mean_TRT=278ms (human=263ms)
+  Sentence 1: "The intense interest aroused in the..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  The               241    313    -72 |    204    215 |   0.63   0.14
+  intense           306    550   -244 |    222    197 |   0.45   0.36
+  interest          303    425   -121 |    221    240 |   0.44   0.21
+  aroused           311    347    -37 |    221    190 |   0.44   0.14
+  in                239    226    +13 |    201    226 |   0.62   0.93
+  the               250    244     +6 |    206    182 |   0.60   0.29
+
+  Sentence 2: "Nevertheless in view of the worldwide..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  Nevertheless      294    446   -151 |    216    247 |   0.50   0.07
+  in                252    398   -146 |    206    242 |   0.61   0.79
+  view              313    362    -49 |    218    252 |   0.46   0.36
+  of                236    236     -0 |    200    236 |   0.64   0.64
+  the               257    245    +12 |    208    200 |   0.59   0.71
+  worldwide         318    489   -171 |    219    230 |   0.41   0.07
+
+  ** NEW BEST (r_TRT=0.388) **
+
+[Epoch   2/50] 14.0s | bert_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=82.3 (trt=171 ffd=64 gaze=94 skip=0.016)
+  Val:   loss=1188.3 | r_TRT=0.437  r_FFD=0.238  r_Gaze=0.369  r_skip=0.639
+  Val:   MAE_TRT=58.3ms  MAE_FFD=34.3ms
+  Pred:  mean_TRT=258ms (human=263ms)
+  Sentence 1: "The intense interest aroused in the..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  The               235    313    -78 |    194    215 |   0.66   0.14
+  intense           342    550   -208 |    220    197 |   0.25   0.36
+  interest          321    425   -104 |    217    240 |   0.29   0.21
+  aroused           334    347    -14 |    217    190 |   0.26   0.14
+  in                234    226     +8 |    195    226 |   0.68   0.93
+  the               246    244     +2 |    198    182 |   0.62   0.29
+
+  Sentence 2: "Nevertheless in view of the worldwide..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  Nevertheless      277    446   -168 |    206    247 |   0.47   0.07
+  in                232    398   -166 |    194    242 |   0.68   0.79
+  view              292    362    -70 |    207    252 |   0.42   0.36
+  of                214    236    -22 |    186    236 |   0.74   0.64
+  the               245    245     +0 |    199    200 |   0.63   0.71
+  worldwide         314    489   -175 |    208    230 |   0.32   0.07
+
+  ** NEW BEST (r_TRT=0.437) **
+
+[Epoch   3/50] 13.8s | bert_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=78.2 (trt=161 ffd=62 gaze=89 skip=0.016)
+  Val:   loss=1184.2 | r_TRT=0.448  r_FFD=0.240  r_Gaze=0.378  r_skip=0.640
+  Val:   MAE_TRT=57.8ms  MAE_FFD=33.8ms
+  Pred:  mean_TRT=251ms (human=263ms)
+  Sentence 1: "The intense interest aroused in the..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  The               224    313    -89 |    193    215 |   0.68   0.14
+  intense           336    550   -214 |    231    197 |   0.26   0.36
+  interest          316    425   -109 |    228    240 |   0.29   0.21
+  aroused           331    347    -16 |    230    190 |   0.27   0.14
+  in                233    226     +7 |    201    226 |   0.66   0.93
+  the               245    244     +1 |    205    182 |   0.60   0.29
+
+  Sentence 2: "Nevertheless in view of the worldwide..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  Nevertheless      289    446   -156 |    220    247 |   0.40   0.07
+  in                231    398   -166 |    201    242 |   0.66   0.79
+  view              307    362    -54 |    221    252 |   0.34   0.36
+  of                210    236    -26 |    189    236 |   0.74   0.64
+  the               234    245    -11 |    200    200 |   0.64   0.71
+  worldwide         317    489   -172 |    219    230 |   0.31   0.07
+
+  ** NEW BEST (r_TRT=0.448) **
+
+[Epoch   4/50] 13.8s | bert_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=74.6 (trt=152 ffd=61 gaze=86 skip=0.016)
+  Val:   loss=1172.0 | r_TRT=0.449  r_FFD=0.242  r_Gaze=0.380  r_skip=0.632
+  Val:   MAE_TRT=58.8ms  MAE_FFD=33.8ms
+  Pred:  mean_TRT=268ms (human=263ms)
+  Sentence 1: "The intense interest aroused in the..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  The               264    313    -49 |    205    215 |   0.57   0.14
+  intense           375    550   -175 |    233    197 |   0.22   0.36
+  interest          353    425    -71 |    229    240 |   0.24   0.21
+  aroused           343    347     -4 |    227    190 |   0.27   0.14
+  in                250    226    +24 |    204    226 |   0.63   0.93
+  the               269    244    +25 |    211    182 |   0.54   0.29
+
+  Sentence 2: "Nevertheless in view of the worldwide..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  Nevertheless      321    446   -125 |    223    247 |   0.33   0.07
+  in                249    398   -149 |    205    242 |   0.62   0.79
+  view              319    362    -42 |    217    252 |   0.32   0.36
+  of                227    236     -9 |    194    236 |   0.70   0.64
+  the               265    245    +21 |    210    200 |   0.54   0.71
+  worldwide         354    489   -135 |    221    230 |   0.26   0.07
+
+  ** NEW BEST (r_TRT=0.449) **
+
+[Epoch   5/50] 12.9s | bert_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=72.3 (trt=147 ffd=59 gaze=83 skip=0.016)
+  Val:   loss=1176.4 | r_TRT=0.447  r_FFD=0.235  r_Gaze=0.379  r_skip=0.635
+  Val:   MAE_TRT=57.8ms  MAE_FFD=33.9ms
+  Pred:  mean_TRT=259ms (human=263ms)
+
+[Epoch   6/50] 13.9s | bert_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=68.7 (trt=138 ffd=57 gaze=79 skip=0.016)
+  Val:   loss=1187.3 | r_TRT=0.441  r_FFD=0.233  r_Gaze=0.370  r_skip=0.631
+  Val:   MAE_TRT=59.0ms  MAE_FFD=34.3ms
+  Pred:  mean_TRT=266ms (human=263ms)
+  Sentence 1: "The intense interest aroused in the..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  The               320    313     +7 |    228    215 |   0.46   0.14
+  intense           426    550   -124 |    244    197 |   0.22   0.36
+  interest          409    425    -16 |    243    240 |   0.22   0.21
+  aroused           389    347    +42 |    239    190 |   0.28   0.14
+  in                288    226    +62 |    219    226 |   0.56   0.93
+  the               303    244    +59 |    226    182 |   0.47   0.29
+
+  Sentence 2: "Nevertheless in view of the worldwide..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  Nevertheless      342    446   -104 |    231    247 |   0.32   0.07
+  in                265    398   -133 |    217    242 |   0.60   0.79
+  view              337    362    -25 |    223    252 |   0.31   0.36
+  of                239    236     +3 |    201    236 |   0.66   0.64
+  the               285    245    +40 |    220    200 |   0.50   0.71
+  worldwide         398    489    -91 |    230    230 |   0.25   0.07
+
+
+[Epoch   7/50] 14.0s | bert_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=63.4 (trt=127 ffd=53 gaze=73 skip=0.016)
+  Val:   loss=1212.5 | r_TRT=0.431  r_FFD=0.218  r_Gaze=0.359  r_skip=0.635
+  Val:   MAE_TRT=59.3ms  MAE_FFD=34.9ms
+  Pred:  mean_TRT=260ms (human=263ms)
+
+[Epoch   8/50] 13.8s | bert_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=61.0 (trt=121 ffd=52 gaze=71 skip=0.016)
+  Val:   loss=1281.6 | r_TRT=0.420  r_FFD=0.212  r_Gaze=0.348  r_skip=0.638
+  Val:   MAE_TRT=60.7ms  MAE_FFD=36.4ms
+  Pred:  mean_TRT=246ms (human=263ms)
+
+[Epoch   9/50] 13.5s | bert_lr=2.00e-05 head_lr=5.00e-04
+  Train: loss=57.5 (trt=114 ffd=49 gaze=67 skip=0.016)
+  Val:   loss=1289.1 | r_TRT=0.413  r_FFD=0.206  r_Gaze=0.345  r_skip=0.638
+  Val:   MAE_TRT=61.1ms  MAE_FFD=36.7ms
+  Pred:  mean_TRT=255ms (human=263ms)
+
+[Epoch  10/50] 14.0s | bert_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=55.3 (trt=109 ffd=48 gaze=65 skip=0.016)
+  Val:   loss=1249.7 | r_TRT=0.409  r_FFD=0.199  r_Gaze=0.338  r_skip=0.639
+  Val:   MAE_TRT=60.0ms  MAE_FFD=35.3ms
+  Pred:  mean_TRT=255ms (human=263ms)
+
+[Epoch  11/50] 13.9s | bert_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=51.0 (trt=99 ffd=45 gaze=60 skip=0.016)
+  Val:   loss=1269.8 | r_TRT=0.395  r_FFD=0.181  r_Gaze=0.325  r_skip=0.640
+  Val:   MAE_TRT=60.6ms  MAE_FFD=35.7ms
+  Pred:  mean_TRT=255ms (human=263ms)
+  Sentence 1: "The intense interest aroused in the..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  The               302    313    -11 |    229    215 |   0.65   0.14
+  intense           443    550   -107 |    252    197 |   0.25   0.36
+  interest          410    425    -15 |    248    240 |   0.24   0.21
+  aroused           344    347     -4 |    228    190 |   0.41   0.14
+  in                269    226    +43 |    213    226 |   0.61   0.93
+  the               280    244    +36 |    219    182 |   0.53   0.29
+
+  Sentence 2: "Nevertheless in view of the worldwide..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  Nevertheless      370    446    -76 |    238    247 |   0.30   0.07
+  in                282    398   -115 |    229    242 |   0.61   0.79
+  view              335    362    -27 |    221    252 |   0.28   0.36
+  of                224    236    -12 |    196    236 |   0.66   0.64
+  the               272    245    +28 |    219    200 |   0.57   0.71
+  worldwide         450    489    -39 |    238    230 |   0.23   0.07
+
+
+[Epoch  12/50] 14.1s | bert_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=48.1 (trt=93 ffd=42 gaze=57 skip=0.016)
+  Val:   loss=1283.2 | r_TRT=0.395  r_FFD=0.184  r_Gaze=0.323  r_skip=0.639
+  Val:   MAE_TRT=61.3ms  MAE_FFD=36.0ms
+  Pred:  mean_TRT=261ms (human=263ms)
+
+[Epoch  13/50] 13.9s | bert_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=46.1 (trt=89 ffd=41 gaze=55 skip=0.016)
+  Val:   loss=1294.4 | r_TRT=0.393  r_FFD=0.187  r_Gaze=0.324  r_skip=0.641
+  Val:   MAE_TRT=61.7ms  MAE_FFD=36.5ms
+  Pred:  mean_TRT=262ms (human=263ms)
+
+[Epoch  14/50] 13.9s | bert_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=45.2 (trt=87 ffd=40 gaze=53 skip=0.016)
+  Val:   loss=1330.3 | r_TRT=0.391  r_FFD=0.184  r_Gaze=0.318  r_skip=0.640
+  Val:   MAE_TRT=62.1ms  MAE_FFD=36.9ms
+  Pred:  mean_TRT=253ms (human=263ms)
+
+[Epoch  15/50] 13.9s | bert_lr=1.00e-05 head_lr=2.50e-04
+  Train: loss=43.5 (trt=84 ffd=39 gaze=51 skip=0.016)
+  Val:   loss=1333.1 | r_TRT=0.384  r_FFD=0.173  r_Gaze=0.309  r_skip=0.641
+  Val:   MAE_TRT=62.2ms  MAE_FFD=36.6ms
+  Pred:  mean_TRT=247ms (human=263ms)
+
+[Epoch  16/50] 14.1s | bert_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=42.7 (trt=81 ffd=39 gaze=51 skip=0.016)
+  Val:   loss=1319.2 | r_TRT=0.388  r_FFD=0.178  r_Gaze=0.314  r_skip=0.641
+  Val:   MAE_TRT=61.6ms  MAE_FFD=36.3ms
+  Pred:  mean_TRT=248ms (human=263ms)
+  Sentence 1: "The intense interest aroused in the..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  The               287    313    -26 |    218    215 |   0.67   0.14
+  intense           485    550    -65 |    264    197 |   0.26   0.36
+  interest          400    425    -25 |    247    240 |   0.24   0.21
+  aroused           319    347    -29 |    220    190 |   0.40   0.14
+  in                254    226    +28 |    206    226 |   0.62   0.93
+  the               265    244    +20 |    211    182 |   0.56   0.29
+
+  Sentence 2: "Nevertheless in view of the worldwide..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  Nevertheless      409    446    -37 |    250    247 |   0.28   0.07
+  in                288    398   -110 |    239    242 |   0.63   0.79
+  view              315    362    -47 |    218    252 |   0.28   0.36
+  of                220    236    -16 |    197    236 |   0.64   0.64
+  the               261    245    +17 |    215    200 |   0.60   0.71
+  worldwide         474    489    -15 |    243    230 |   0.23   0.07
+
+
+[Epoch  17/50] 14.0s | bert_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=40.7 (trt=77 ffd=37 gaze=48 skip=0.016)
+  Val:   loss=1316.6 | r_TRT=0.387  r_FFD=0.180  r_Gaze=0.314  r_skip=0.642
+  Val:   MAE_TRT=62.0ms  MAE_FFD=36.5ms
+  Pred:  mean_TRT=257ms (human=263ms)
+
+[Epoch  18/50] 13.8s | bert_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=39.5 (trt=75 ffd=36 gaze=47 skip=0.016)
+  Val:   loss=1322.4 | r_TRT=0.387  r_FFD=0.175  r_Gaze=0.311  r_skip=0.642
+  Val:   MAE_TRT=62.0ms  MAE_FFD=36.6ms
+  Pred:  mean_TRT=255ms (human=263ms)
+
+[Epoch  19/50] 13.3s | bert_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=38.7 (trt=73 ffd=36 gaze=46 skip=0.016)
+  Val:   loss=1309.7 | r_TRT=0.385  r_FFD=0.176  r_Gaze=0.312  r_skip=0.642
+  Val:   MAE_TRT=61.8ms  MAE_FFD=36.5ms
+  Pred:  mean_TRT=257ms (human=263ms)
+
+[Epoch  20/50] 14.1s | bert_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=39.8 (trt=75 ffd=37 gaze=47 skip=0.016)
+  Val:   loss=1312.1 | r_TRT=0.384  r_FFD=0.170  r_Gaze=0.308  r_skip=0.642
+  Val:   MAE_TRT=61.9ms  MAE_FFD=36.5ms
+  Pred:  mean_TRT=257ms (human=263ms)
+
+[Epoch  21/50] 13.9s | bert_lr=5.00e-06 head_lr=1.25e-04
+  Train: loss=37.8 (trt=72 ffd=35 gaze=45 skip=0.016)
+  Val:   loss=1318.4 | r_TRT=0.383  r_FFD=0.173  r_Gaze=0.308  r_skip=0.643
+  Val:   MAE_TRT=61.9ms  MAE_FFD=36.6ms
+  Pred:  mean_TRT=258ms (human=263ms)
+  Sentence 1: "The intense interest aroused in the..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  The               288    313    -25 |    217    215 |   0.67   0.14
+  intense           512    550    -38 |    269    197 |   0.25   0.36
+  interest          433    425     +8 |    256    240 |   0.22   0.21
+  aroused           336    347    -12 |    224    190 |   0.39   0.14
+  in                267    226    +41 |    213    226 |   0.63   0.93
+  the               269    244    +25 |    215    182 |   0.56   0.29
+
+  Sentence 2: "Nevertheless in view of the worldwide..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  Nevertheless      431    446    -15 |    261    247 |   0.27   0.07
+  in                312    398    -85 |    253    242 |   0.64   0.79
+  view              344    362    -17 |    225    252 |   0.25   0.36
+  of                224    236    -12 |    198    236 |   0.64   0.64
+  the               265    245    +20 |    217    200 |   0.61   0.71
+  worldwide         524    489    +35 |    255    230 |   0.23   0.07
+
+
+[Epoch  22/50] 13.9s | bert_lr=2.50e-06 head_lr=6.25e-05
+  Train: loss=37.8 (trt=71 ffd=35 gaze=45 skip=0.016)
+  Val:   loss=1323.4 | r_TRT=0.384  r_FFD=0.175  r_Gaze=0.309  r_skip=0.643
+  Val:   MAE_TRT=62.1ms  MAE_FFD=36.6ms
+  Pred:  mean_TRT=255ms (human=263ms)
+
+[Epoch  23/50] 13.8s | bert_lr=2.50e-06 head_lr=6.25e-05
+  Train: loss=36.9 (trt=69 ffd=34 gaze=44 skip=0.016)
+  Val:   loss=1326.5 | r_TRT=0.382  r_FFD=0.175  r_Gaze=0.308  r_skip=0.644
+  Val:   MAE_TRT=62.1ms  MAE_FFD=36.7ms
+  Pred:  mean_TRT=255ms (human=263ms)
+
+[Epoch  24/50] 13.8s | bert_lr=2.50e-06 head_lr=6.25e-05
+  Train: loss=37.0 (trt=69 ffd=34 gaze=44 skip=0.016)
+  Val:   loss=1329.5 | r_TRT=0.386  r_FFD=0.180  r_Gaze=0.312  r_skip=0.645
+  Val:   MAE_TRT=62.1ms  MAE_FFD=36.9ms
+  Pred:  mean_TRT=253ms (human=263ms)
+
+[Epoch  25/50] 13.8s | bert_lr=2.50e-06 head_lr=6.25e-05
+  Train: loss=36.5 (trt=69 ffd=34 gaze=43 skip=0.016)
+  Val:   loss=1336.1 | r_TRT=0.385  r_FFD=0.178  r_Gaze=0.311  r_skip=0.645
+  Val:   MAE_TRT=62.4ms  MAE_FFD=36.9ms
+  Pred:  mean_TRT=254ms (human=263ms)
+
+[Epoch  26/50] 14.1s | bert_lr=2.50e-06 head_lr=6.25e-05
+  Train: loss=36.2 (trt=68 ffd=33 gaze=43 skip=0.016)
+  Val:   loss=1320.9 | r_TRT=0.385  r_FFD=0.173  r_Gaze=0.308  r_skip=0.645
+  Val:   MAE_TRT=61.9ms  MAE_FFD=36.6ms
+  Pred:  mean_TRT=255ms (human=263ms)
+  Sentence 1: "The intense interest aroused in the..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  The               278    313    -35 |    211    215 |   0.67   0.14
+  intense           521    550    -29 |    268    197 |   0.26   0.36
+  interest          423    425     -2 |    252    240 |   0.22   0.21
+  aroused           337    347    -11 |    223    190 |   0.40   0.14
+  in                256    226    +30 |    207    226 |   0.65   0.93
+  the               269    244    +25 |    214    182 |   0.58   0.29
+
+  Sentence 2: "Nevertheless in view of the worldwide..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  Nevertheless      424    446    -22 |    255    247 |   0.27   0.07
+  in                306    398    -91 |    249    242 |   0.65   0.79
+  view              341    362    -21 |    222    252 |   0.25   0.36
+  of                219    236    -17 |    195    236 |   0.65   0.64
+  the               257    245    +12 |    212    200 |   0.62   0.71
+  worldwide         531    489    +42 |    253    230 |   0.22   0.07
+
+
+[Epoch  27/50] 13.8s | bert_lr=2.50e-06 head_lr=6.25e-05
+  Train: loss=35.1 (trt=66 ffd=33 gaze=42 skip=0.016)
+  Val:   loss=1322.0 | r_TRT=0.383  r_FFD=0.174  r_Gaze=0.307  r_skip=0.644
+  Val:   MAE_TRT=61.9ms  MAE_FFD=36.6ms
+  Pred:  mean_TRT=255ms (human=263ms)
+
+[Epoch  28/50] 13.9s | bert_lr=1.25e-06 head_lr=3.13e-05
+  Train: loss=35.8 (trt=67 ffd=34 gaze=43 skip=0.016)
+  Val:   loss=1329.4 | r_TRT=0.382  r_FFD=0.174  r_Gaze=0.308  r_skip=0.645
+  Val:   MAE_TRT=62.2ms  MAE_FFD=36.7ms
+  Pred:  mean_TRT=256ms (human=263ms)
+
+[Epoch  29/50] 13.9s | bert_lr=1.25e-06 head_lr=3.13e-05
+  Train: loss=34.7 (trt=65 ffd=33 gaze=41 skip=0.016)
+  Val:   loss=1331.2 | r_TRT=0.381  r_FFD=0.173  r_Gaze=0.306  r_skip=0.645
+  Val:   MAE_TRT=62.3ms  MAE_FFD=36.9ms
+  Pred:  mean_TRT=256ms (human=263ms)
+
+[Epoch  30/50] 13.9s | bert_lr=1.25e-06 head_lr=3.13e-05
+  Train: loss=35.1 (trt=66 ffd=33 gaze=42 skip=0.016)
+  Val:   loss=1334.4 | r_TRT=0.383  r_FFD=0.175  r_Gaze=0.308  r_skip=0.645
+  Val:   MAE_TRT=62.5ms  MAE_FFD=36.9ms
+  Pred:  mean_TRT=258ms (human=263ms)
+
+[Epoch  31/50] 13.9s | bert_lr=1.25e-06 head_lr=3.13e-05
+  Train: loss=34.3 (trt=64 ffd=32 gaze=41 skip=0.016)
+  Val:   loss=1327.9 | r_TRT=0.382  r_FFD=0.175  r_Gaze=0.308  r_skip=0.644
+  Val:   MAE_TRT=62.2ms  MAE_FFD=36.8ms
+  Pred:  mean_TRT=256ms (human=263ms)
+  Sentence 1: "The intense interest aroused in the..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  The               284    313    -29 |    212    215 |   0.67   0.14
+  intense           523    550    -27 |    268    197 |   0.26   0.36
+  interest          420    425     -4 |    251    240 |   0.22   0.21
+  aroused           335    347    -13 |    221    190 |   0.39   0.14
+  in                258    226    +32 |    209    226 |   0.66   0.93
+  the               271    244    +27 |    216    182 |   0.58   0.29
+
+  Sentence 2: "Nevertheless in view of the worldwide..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  Nevertheless      429    446    -17 |    258    247 |   0.27   0.07
+  in                306    398    -92 |    249    242 |   0.65   0.79
+  view              344    362    -18 |    223    252 |   0.25   0.36
+  of                227    236     -9 |    200    236 |   0.64   0.64
+  the               263    245    +19 |    216    200 |   0.61   0.71
+  worldwide         529    489    +40 |    251    230 |   0.22   0.07
+
+
+[Epoch  32/50] 14.0s | bert_lr=1.25e-06 head_lr=3.13e-05
+  Train: loss=34.3 (trt=64 ffd=32 gaze=41 skip=0.016)
+  Val:   loss=1326.7 | r_TRT=0.383  r_FFD=0.176  r_Gaze=0.308  r_skip=0.645
+  Val:   MAE_TRT=62.1ms  MAE_FFD=36.7ms
+  Pred:  mean_TRT=255ms (human=263ms)
+
+[Epoch  33/50] 13.0s | bert_lr=1.25e-06 head_lr=3.13e-05
+  Train: loss=34.9 (trt=66 ffd=33 gaze=42 skip=0.016)
+  Val:   loss=1328.4 | r_TRT=0.382  r_FFD=0.174  r_Gaze=0.306  r_skip=0.645
+  Val:   MAE_TRT=62.2ms  MAE_FFD=36.7ms
+  Pred:  mean_TRT=256ms (human=263ms)
+
+[Epoch  34/50] 13.8s | bert_lr=6.25e-07 head_lr=1.56e-05
+  Train: loss=33.6 (trt=63 ffd=32 gaze=40 skip=0.016)
+  Val:   loss=1324.5 | r_TRT=0.382  r_FFD=0.174  r_Gaze=0.306  r_skip=0.645
+  Val:   MAE_TRT=62.0ms  MAE_FFD=36.7ms
+  Pred:  mean_TRT=255ms (human=263ms)
+
+[Epoch  35/50] 13.9s | bert_lr=6.25e-07 head_lr=1.56e-05
+  Train: loss=33.9 (trt=63 ffd=32 gaze=41 skip=0.016)
+  Val:   loss=1328.9 | r_TRT=0.382  r_FFD=0.175  r_Gaze=0.306  r_skip=0.645
+  Val:   MAE_TRT=62.2ms  MAE_FFD=36.7ms
+  Pred:  mean_TRT=255ms (human=263ms)
+
+[Epoch  36/50] 14.1s | bert_lr=6.25e-07 head_lr=1.56e-05
+  Train: loss=33.5 (trt=62 ffd=31 gaze=40 skip=0.016)
+  Val:   loss=1327.1 | r_TRT=0.382  r_FFD=0.174  r_Gaze=0.307  r_skip=0.645
+  Val:   MAE_TRT=62.2ms  MAE_FFD=36.7ms
+  Pred:  mean_TRT=257ms (human=263ms)
+  Sentence 1: "The intense interest aroused in the..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  The               280    313    -33 |    209    215 |   0.66   0.14
+  intense           517    550    -33 |    265    197 |   0.26   0.36
+  interest          417    425     -7 |    249    240 |   0.22   0.21
+  aroused           325    347    -22 |    217    190 |   0.39   0.14
+  in                255    226    +29 |    207    226 |   0.66   0.93
+  the               270    244    +25 |    214    182 |   0.58   0.29
+
+  Sentence 2: "Nevertheless in view of the worldwide..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  Nevertheless      426    446    -19 |    258    247 |   0.27   0.07
+  in                307    398    -91 |    251    242 |   0.65   0.79
+  view              341    362    -21 |    221    252 |   0.24   0.36
+  of                225    236    -11 |    199    236 |   0.64   0.64
+  the               261    245    +16 |    215    200 |   0.61   0.71
+  worldwide         527    489    +38 |    250    230 |   0.22   0.07
+
+
+[Epoch  37/50] 14.1s | bert_lr=6.25e-07 head_lr=1.56e-05
+  Train: loss=34.1 (trt=64 ffd=32 gaze=40 skip=0.016)
+  Val:   loss=1332.9 | r_TRT=0.381  r_FFD=0.174  r_Gaze=0.306  r_skip=0.645
+  Val:   MAE_TRT=62.4ms  MAE_FFD=36.8ms
+  Pred:  mean_TRT=256ms (human=263ms)
+
+[Epoch  38/50] 14.0s | bert_lr=6.25e-07 head_lr=1.56e-05
+  Train: loss=33.8 (trt=63 ffd=32 gaze=40 skip=0.016)
+  Val:   loss=1329.9 | r_TRT=0.381  r_FFD=0.173  r_Gaze=0.306  r_skip=0.645
+  Val:   MAE_TRT=62.2ms  MAE_FFD=36.8ms
+  Pred:  mean_TRT=255ms (human=263ms)
+
+[Epoch  39/50] 14.0s | bert_lr=6.25e-07 head_lr=1.56e-05
+  Train: loss=33.4 (trt=63 ffd=31 gaze=40 skip=0.016)
+  Val:   loss=1330.1 | r_TRT=0.381  r_FFD=0.174  r_Gaze=0.306  r_skip=0.645
+  Val:   MAE_TRT=62.3ms  MAE_FFD=36.8ms
+  Pred:  mean_TRT=256ms (human=263ms)
+
+[Epoch  40/50] 13.9s | bert_lr=3.13e-07 head_lr=7.81e-06
+  Train: loss=33.7 (trt=63 ffd=32 gaze=40 skip=0.016)
+  Val:   loss=1324.9 | r_TRT=0.380  r_FFD=0.171  r_Gaze=0.305  r_skip=0.645
+  Val:   MAE_TRT=62.0ms  MAE_FFD=36.7ms
+  Pred:  mean_TRT=255ms (human=263ms)
+
+[Epoch  41/50] 13.9s | bert_lr=3.13e-07 head_lr=7.81e-06
+  Train: loss=33.7 (trt=63 ffd=32 gaze=40 skip=0.016)
+  Val:   loss=1327.6 | r_TRT=0.382  r_FFD=0.173  r_Gaze=0.306  r_skip=0.645
+  Val:   MAE_TRT=62.2ms  MAE_FFD=36.7ms
+  Pred:  mean_TRT=256ms (human=263ms)
+  Sentence 1: "The intense interest aroused in the..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  The               277    313    -36 |    207    215 |   0.67   0.14
+  intense           519    550    -32 |    264    197 |   0.26   0.36
+  interest          416    425     -8 |    248    240 |   0.22   0.21
+  aroused           324    347    -23 |    216    190 |   0.39   0.14
+  in                254    226    +28 |    206    226 |   0.66   0.93
+  the               267    244    +23 |    213    182 |   0.59   0.29
+
+  Sentence 2: "Nevertheless in view of the worldwide..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  Nevertheless      428    446    -18 |    258    247 |   0.27   0.07
+  in                306    398    -92 |    250    242 |   0.65   0.79
+  view              341    362    -21 |    220    252 |   0.24   0.36
+  of                225    236    -11 |    198    236 |   0.64   0.64
+  the               259    245    +15 |    213    200 |   0.62   0.71
+  worldwide         537    489    +48 |    252    230 |   0.22   0.07
+
+
+[Epoch  42/50] 14.0s | bert_lr=3.13e-07 head_lr=7.81e-06
+  Train: loss=33.2 (trt=62 ffd=31 gaze=40 skip=0.016)
+  Val:   loss=1329.3 | r_TRT=0.382  r_FFD=0.173  r_Gaze=0.307  r_skip=0.645
+  Val:   MAE_TRT=62.2ms  MAE_FFD=36.8ms
+  Pred:  mean_TRT=256ms (human=263ms)
+
+[Epoch  43/50] 14.0s | bert_lr=3.13e-07 head_lr=7.81e-06
+  Train: loss=33.6 (trt=63 ffd=31 gaze=40 skip=0.016)
+  Val:   loss=1327.8 | r_TRT=0.382  r_FFD=0.172  r_Gaze=0.306  r_skip=0.645
+  Val:   MAE_TRT=62.2ms  MAE_FFD=36.7ms
+  Pred:  mean_TRT=257ms (human=263ms)
+
+[Epoch  44/50] 13.9s | bert_lr=3.13e-07 head_lr=7.81e-06
+  Train: loss=33.7 (trt=63 ffd=32 gaze=40 skip=0.016)
+  Val:   loss=1330.6 | r_TRT=0.382  r_FFD=0.174  r_Gaze=0.307  r_skip=0.645
+  Val:   MAE_TRT=62.3ms  MAE_FFD=36.8ms
+  Pred:  mean_TRT=255ms (human=263ms)
+
+[Epoch  45/50] 13.7s | bert_lr=3.13e-07 head_lr=7.81e-06
+  Train: loss=34.0 (trt=64 ffd=32 gaze=41 skip=0.016)
+  Val:   loss=1328.2 | r_TRT=0.382  r_FFD=0.173  r_Gaze=0.307  r_skip=0.645
+  Val:   MAE_TRT=62.2ms  MAE_FFD=36.7ms
+  Pred:  mean_TRT=256ms (human=263ms)
+
+[Epoch  46/50] 12.9s | bert_lr=1.56e-07 head_lr=3.91e-06
+  Train: loss=34.3 (trt=64 ffd=32 gaze=41 skip=0.016)
+  Val:   loss=1330.0 | r_TRT=0.383  r_FFD=0.175  r_Gaze=0.308  r_skip=0.645
+  Val:   MAE_TRT=62.2ms  MAE_FFD=36.8ms
+  Pred:  mean_TRT=255ms (human=263ms)
+  Sentence 1: "The intense interest aroused in the..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  The               276    313    -37 |    207    215 |   0.67   0.14
+  intense           518    550    -32 |    264    197 |   0.26   0.36
+  interest          414    425    -10 |    248    240 |   0.22   0.21
+  aroused           325    347    -23 |    216    190 |   0.39   0.14
+  in                252    226    +26 |    206    226 |   0.67   0.93
+  the               266    244    +22 |    213    182 |   0.59   0.29
+
+  Sentence 2: "Nevertheless in view of the worldwide..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  Nevertheless      429    446    -17 |    259    247 |   0.27   0.07
+  in                305    398    -93 |    251    242 |   0.66   0.79
+  view              341    362    -21 |    221    252 |   0.24   0.36
+  of                224    236    -12 |    198    236 |   0.64   0.64
+  the               258    245    +13 |    213    200 |   0.62   0.71
+  worldwide         536    489    +47 |    252    230 |   0.22   0.07
+
+
+[Epoch  47/50] 13.9s | bert_lr=1.56e-07 head_lr=3.91e-06
+  Train: loss=33.7 (trt=63 ffd=32 gaze=40 skip=0.016)
+  Val:   loss=1328.0 | r_TRT=0.382  r_FFD=0.175  r_Gaze=0.308  r_skip=0.645
+  Val:   MAE_TRT=62.2ms  MAE_FFD=36.8ms
+  Pred:  mean_TRT=256ms (human=263ms)
+
+[Epoch  48/50] 14.0s | bert_lr=1.56e-07 head_lr=3.91e-06
+  Train: loss=32.8 (trt=61 ffd=31 gaze=39 skip=0.016)
+  Val:   loss=1328.8 | r_TRT=0.382  r_FFD=0.175  r_Gaze=0.307  r_skip=0.645
+  Val:   MAE_TRT=62.2ms  MAE_FFD=36.8ms
+  Pred:  mean_TRT=255ms (human=263ms)
+
+[Epoch  49/50] 14.0s | bert_lr=1.56e-07 head_lr=3.91e-06
+  Train: loss=33.4 (trt=62 ffd=31 gaze=40 skip=0.016)
+  Val:   loss=1330.2 | r_TRT=0.382  r_FFD=0.175  r_Gaze=0.308  r_skip=0.645
+  Val:   MAE_TRT=62.3ms  MAE_FFD=36.8ms
+  Pred:  mean_TRT=255ms (human=263ms)
+
+[Epoch  50/50] 14.0s | bert_lr=1.56e-07 head_lr=3.91e-06
+  Train: loss=32.9 (trt=62 ffd=31 gaze=39 skip=0.016)
+  Val:   loss=1329.5 | r_TRT=0.382  r_FFD=0.175  r_Gaze=0.307  r_skip=0.645
+  Val:   MAE_TRT=62.2ms  MAE_FFD=36.8ms
+  Pred:  mean_TRT=255ms (human=263ms)
+
+==========================================================================================
+Training complete! Best val r_TRT = 0.449
+==========================================================================================
+  Loaded best model from epoch 4
+
+GECO Test Set:
+  r_TRT=0.450  r_FFD=0.223  r_Gaze=0.386  r_skip=0.642
+  MAE_TRT=59.9ms  MAE_FFD=34.9ms
+
+Sample test predictions:
+  Sentence 1: "I will therefore briefly set down..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  I                 183    184     -1 |    171    184 |   0.79   0.86
+  will              270    233    +37 |    220    117 |   0.53   0.64
+  therefore         327    301    +26 |    228    225 |   0.32   0.14
+  briefly           324    421    -97 |    225    231 |   0.31   0.50
+  set               271    276     -5 |    214    199 |   0.49   0.50
+  down              250    249     +1 |    209    194 |   0.58   0.36
+  the               211    161    +50 |    187    161 |   0.71   0.64
+  circumstances     305    261    +43 |    215    208 |   0.28   0.00
+
+  Sentence 2: "I had been invalided home from..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  I                 187    267    -80 |    174    207 |   0.78   0.43
+  had               276    274     +1 |    217    224 |   0.52   0.29
+  been              248    301    -52 |    205    219 |   0.61   0.21
+  invalided         383   1063   -681 |    225    217 |   0.21   0.00
+  home              272    571   -298 |    213    271 |   0.51   0.29
+  from              263    435   -172 |    215    224 |   0.54   0.14
+  the               250    196    +54 |    207    129 |   0.61   0.79
+  Front             250    307    -57 |    206    256 |   0.53   0.00
+
+  Sentence 3: "Oh yes"
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  Oh                261    235    +25 |    208    235 |   0.53   0.64
+  yes               306    232    +74 |    220    204 |   0.35   0.14
+
+
+Loading Provo for cross-corpus evaluation...
+  Provo: 151 sentences, 2654 words
+
+Provo (cross-corpus):
+  r_TRT=0.590  r_FFD=0.287  r_Gaze=0.565  r_skip=0.779
+  MAE_TRT=45.9ms  MAE_FFD=17.8ms
+
+Sample Provo predictions:
+  Sentence 1: "are now rumblings that apple might..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  are               237    333    -95 |    203    182 |   0.64   0.42
+  now               302    282    +20 |    219    185 |   0.39   0.51
+  rumblings         374    408    -34 |    230    194 |   0.21   0.18
+  that              240    311    -71 |    201    214 |   0.63   0.51
+  apple             325    252    +73 |    216    201 |   0.32   0.29
+  might             285    301    -16 |    217    228 |   0.45   0.24
+  soon              292    233    +59 |    218    204 |   0.42   0.30
+  invade            310    300    +11 |    220    216 |   0.35   0.14
+
+  Sentence 2: "the watch doesn't have a microphone..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  the               265    195    +70 |    204    195 |   0.54   0.92
+  watch             296    377    -81 |    218    241 |   0.34   0.27
+  doesn't           286    272    +15 |    216    201 |   0.49   0.17
+  have              272    237    +36 |    215    203 |   0.53   0.45
+  a                 253    213    +40 |    208    199 |   0.58   0.83
+  microphone        306    307     -0 |    224    216 |   0.33   0.07
+  or                254    253     +1 |    210    241 |   0.57   0.85
+  speaker           305    294    +12 |    223    218 |   0.30   0.14
+
+  Sentence 3: "you can glance at the watch..."
+  word             pTRT   hTRT    err |   pFFD   hFFD |  pSkip  hSkip
+  ----------------------------------------------------------------------
+  you               226    274    -48 |    195    225 |   0.70   0.74
+  can               268    290    -21 |    215    230 |   0.53   0.45
+  glance            305    251    +54 |    220    206 |   0.36   0.20
+  at                222    187    +36 |    197    166 |   0.69   0.87
+  the               250    226    +23 |    205    215 |   0.60   0.52
+  watch             310    284    +27 |    227    218 |   0.32   0.39
+  face              256    279    -23 |    210    212 |   0.52   0.35
+  to                209    268    -59 |    191    237 |   0.72   0.74
+
+
+==========================================================================================
+SUMMARY: BERT Direct Regression (no E-Z Reader)
+==========================================================================================
+  Metric                  GECO Test  Provo (cross)
+  --------------------------------------------------
+  r_TRT                       0.450          0.590
+  r_FFD                       0.223          0.287
+  r_Gaze                      0.386          0.565
+  r_Skip                      0.642          0.779
+  MAE_TRT (ms)                 59.9           45.9
+  MAE_FFD (ms)                 34.9           17.8

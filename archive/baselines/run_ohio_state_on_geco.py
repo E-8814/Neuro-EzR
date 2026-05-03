@@ -497,11 +497,16 @@ def main():
                         help="Which metric to train (default: all)")
     parser.add_argument("--use-raw", action="store_true",
                         help="Train on per-participant data (like original) instead of aggregated")
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--output_dir", type=str, default=None,
+                        help="Override save_dir (default: checkpoints_ohio_state_<model>)")
     args = parser.parse_args()
 
     data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
-    save_dir = os.path.join(os.path.dirname(__file__),
-                            f"checkpoints_ohio_state_{args.model.replace('-', '_')}")
+    save_dir = args.output_dir or os.path.join(
+        os.path.dirname(__file__),
+        f"checkpoints_ohio_state_{args.model.replace('-', '_')}",
+    )
     os.makedirs(save_dir, exist_ok=True)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -605,7 +610,7 @@ def main():
             max_grad_norm=1.0,       # original default
             warmup_prop=0.1,         # original default
             weight_decay=0.01,       # original default
-            seed=42,
+            seed=args.seed,
             device=device,
         )
 
