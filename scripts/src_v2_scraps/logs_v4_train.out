@@ -1,2097 +1,0 @@
-nohup: ignoring input
-Auto-freeze: 16/22 layers
-Device: cuda
-Loading GECO Corpus...
-  Loading GECO material...
-    5285 sentences, 54362 words
-    Loaded predictability for 5285 sentences
-  Loading GECO reading data...
-    72669 participant × sentence combinations
-  Raw observations: 68,681
-  Train: 54,930 | Val: 6,871 | Test: 6,880
-  Aggregated sentences: 4994
-  Aggregated: 3995 train | 499 val | 500 test
-
-Loading model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
-  Freezing first 16 layers
-`torch_dtype` is deprecated! Use `dtype` instead!
-Loading weights:   0%|          | 0/200 [00:00<?, ?it/s]Loading weights:   0%|          | 1/200 [00:00<00:00, 4177.59it/s, Materializing param=embed_tokens.weight]Loading weights:   0%|          | 1/200 [00:00<00:01, 166.80it/s, Materializing param=embed_tokens.weight] Loading weights:   1%|          | 2/200 [00:00<00:00, 307.62it/s, Materializing param=layers.0.input_layernorm.weight]Loading weights:   1%|          | 2/200 [00:00<00:00, 299.66it/s, Materializing param=layers.0.input_layernorm.weight]Loading weights:   2%|▏         | 3/200 [00:00<00:00, 431.85it/s, Materializing param=layers.0.mlp.down_proj.weight]  Loading weights:   2%|▏         | 3/200 [00:00<00:00, 424.54it/s, Materializing param=layers.0.mlp.down_proj.weight]Loading weights:   2%|▏         | 4/200 [00:00<00:00, 548.76it/s, Materializing param=layers.0.mlp.gate_proj.weight]Loading weights:   2%|▏         | 4/200 [00:00<00:00, 538.39it/s, Materializing param=layers.0.mlp.gate_proj.weight]Loading weights:   2%|▎         | 5/200 [00:00<00:00, 650.10it/s, Materializing param=layers.0.mlp.up_proj.weight]  Loading weights:   2%|▎         | 5/200 [00:00<00:00, 641.84it/s, Materializing param=layers.0.mlp.up_proj.weight]Loading weights:   3%|▎         | 6/200 [00:00<00:00, 749.67it/s, Materializing param=layers.0.post_attention_layernorm.weight]Loading weights:   3%|▎         | 6/200 [00:00<00:00, 740.85it/s, Materializing param=layers.0.post_attention_layernorm.weight]Loading weights:   4%|▎         | 7/200 [00:00<00:00, 844.34it/s, Materializing param=layers.0.self_attn.k_proj.weight]        Loading weights:   4%|▎         | 7/200 [00:00<00:00, 835.85it/s, Materializing param=layers.0.self_attn.k_proj.weight]Loading weights:   4%|▍         | 8/200 [00:00<00:00, 933.00it/s, Materializing param=layers.0.self_attn.o_proj.weight]Loading weights:   4%|▍         | 8/200 [00:00<00:00, 924.36it/s, Materializing param=layers.0.self_attn.o_proj.weight]Loading weights:   4%|▍         | 9/200 [00:00<00:00, 1020.10it/s, Materializing param=layers.0.self_attn.q_proj.weight]Loading weights:   4%|▍         | 9/200 [00:00<00:00, 1013.06it/s, Materializing param=layers.0.self_attn.q_proj.weight]Loading weights:   5%|▌         | 10/200 [00:00<00:00, 1110.07it/s, Materializing param=layers.0.self_attn.v_proj.weight]Loading weights:   5%|▌         | 10/200 [00:00<00:00, 1102.95it/s, Materializing param=layers.0.self_attn.v_proj.weight]Loading weights:   6%|▌         | 11/200 [00:00<00:00, 766.55it/s, Materializing param=layers.1.input_layernorm.weight]  Loading weights:   6%|▌         | 11/200 [00:00<00:00, 750.29it/s, Materializing param=layers.1.input_layernorm.weight]Loading weights:   6%|▌         | 12/200 [00:00<00:00, 467.68it/s, Materializing param=layers.1.mlp.down_proj.weight]  Loading weights:   6%|▌         | 12/200 [00:00<00:00, 462.96it/s, Materializing param=layers.1.mlp.down_proj.weight]Loading weights:   6%|▋         | 13/200 [00:00<00:00, 362.39it/s, Materializing param=layers.1.mlp.gate_proj.weight]Loading weights:   6%|▋         | 13/200 [00:00<00:00, 350.35it/s, Materializing param=layers.1.mlp.gate_proj.weight]Loading weights:   7%|▋         | 14/200 [00:00<00:00, 211.12it/s, Materializing param=layers.1.mlp.up_proj.weight]  Loading weights:   7%|▋         | 14/200 [00:00<00:00, 210.14it/s, Materializing param=layers.1.mlp.up_proj.weight]Loading weights:   8%|▊         | 15/200 [00:00<00:00, 224.06it/s, Materializing param=layers.1.post_attention_layernorm.weight]Loading weights:   8%|▊         | 15/200 [00:00<00:00, 223.71it/s, Materializing param=layers.1.post_attention_layernorm.weight]Loading weights:   8%|▊         | 16/200 [00:00<00:00, 237.75it/s, Materializing param=layers.1.self_attn.k_proj.weight]        Loading weights:   8%|▊         | 16/200 [00:00<00:00, 237.47it/s, Materializing param=layers.1.self_attn.k_proj.weight]Loading weights:   8%|▊         | 17/200 [00:00<00:00, 251.74it/s, Materializing param=layers.1.self_attn.o_proj.weight]Loading weights:   8%|▊         | 17/200 [00:00<00:00, 251.42it/s, Materializing param=layers.1.self_attn.o_proj.weight]Loading weights:   9%|▉         | 18/200 [00:00<00:00, 265.33it/s, Materializing param=layers.1.self_attn.q_proj.weight]Loading weights:   9%|▉         | 18/200 [00:00<00:00, 265.06it/s, Materializing param=layers.1.self_attn.q_proj.weight]Loading weights:  10%|▉         | 19/200 [00:00<00:00, 279.18it/s, Materializing param=layers.1.self_attn.v_proj.weight]Loading weights:  10%|▉         | 19/200 [00:00<00:00, 278.90it/s, Materializing param=layers.1.self_attn.v_proj.weight]Loading weights:  10%|█         | 20/200 [00:00<00:00, 292.56it/s, Materializing param=layers.2.input_layernorm.weight] Loading weights:  10%|█         | 20/200 [00:00<00:00, 292.02it/s, Materializing param=layers.2.input_layernorm.weight]Loading weights:  10%|█         | 21/200 [00:00<00:00, 305.82it/s, Materializing param=layers.2.mlp.down_proj.weight]  Loading weights:  10%|█         | 21/200 [00:00<00:00, 301.48it/s, Materializing param=layers.2.mlp.down_proj.weight]Loading weights:  11%|█         | 22/200 [00:00<00:00, 312.90it/s, Materializing param=layers.2.mlp.gate_proj.weight]Loading weights:  11%|█         | 22/200 [00:00<00:00, 311.82it/s, Materializing param=layers.2.mlp.gate_proj.weight]Loading weights:  12%|█▏        | 23/200 [00:00<00:00, 306.16it/s, Materializing param=layers.2.mlp.up_proj.weight]  Loading weights:  12%|█▏        | 23/200 [00:00<00:00, 302.99it/s, Materializing param=layers.2.mlp.up_proj.weight]Loading weights:  12%|█▏        | 24/200 [00:00<00:00, 313.66it/s, Materializing param=layers.2.post_attention_layernorm.weight]Loading weights:  12%|█▏        | 24/200 [00:00<00:00, 312.31it/s, Materializing param=layers.2.post_attention_layernorm.weight]Loading weights:  12%|█▎        | 25/200 [00:00<00:00, 324.29it/s, Materializing param=layers.2.self_attn.k_proj.weight]        Loading weights:  12%|█▎        | 25/200 [00:00<00:00, 323.98it/s, Materializing param=layers.2.self_attn.k_proj.weight]Loading weights:  13%|█▎        | 26/200 [00:00<00:00, 262.76it/s, Materializing param=layers.2.self_attn.o_proj.weight]Loading weights:  13%|█▎        | 26/200 [00:00<00:00, 251.92it/s, Materializing param=layers.2.self_attn.o_proj.weight]Loading weights:  14%|█▎        | 27/200 [00:00<00:00, 243.42it/s, Materializing param=layers.2.self_attn.o_proj.weight]Loading weights:  14%|█▎        | 27/200 [00:00<00:00, 243.42it/s, Materializing param=layers.2.self_attn.q_proj.weight]Loading weights:  14%|█▎        | 27/200 [00:00<00:00, 243.42it/s, Materializing param=layers.2.self_attn.q_proj.weight]Loading weights:  14%|█▍        | 28/200 [00:00<00:00, 243.42it/s, Materializing param=layers.2.self_attn.v_proj.weight]Loading weights:  14%|█▍        | 28/200 [00:00<00:00, 243.42it/s, Materializing param=layers.2.self_attn.v_proj.weight]Loading weights:  14%|█▍        | 29/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.input_layernorm.weight] Loading weights:  14%|█▍        | 29/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.input_layernorm.weight]Loading weights:  15%|█▌        | 30/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.mlp.down_proj.weight]  Loading weights:  15%|█▌        | 30/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.mlp.down_proj.weight]Loading weights:  16%|█▌        | 31/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.mlp.gate_proj.weight]Loading weights:  16%|█▌        | 31/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.mlp.gate_proj.weight]Loading weights:  16%|█▌        | 32/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.mlp.up_proj.weight]  Loading weights:  16%|█▌        | 32/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.mlp.up_proj.weight]Loading weights:  16%|█▋        | 33/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.post_attention_layernorm.weight]Loading weights:  16%|█▋        | 33/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.post_attention_layernorm.weight]Loading weights:  17%|█▋        | 34/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.self_attn.k_proj.weight]        Loading weights:  17%|█▋        | 34/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.self_attn.k_proj.weight]Loading weights:  18%|█▊        | 35/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.self_attn.o_proj.weight]Loading weights:  18%|█▊        | 35/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.self_attn.o_proj.weight]Loading weights:  18%|█▊        | 36/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.self_attn.q_proj.weight]Loading weights:  18%|█▊        | 36/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.self_attn.q_proj.weight]Loading weights:  18%|█▊        | 37/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.self_attn.v_proj.weight]Loading weights:  18%|█▊        | 37/200 [00:00<00:00, 243.42it/s, Materializing param=layers.3.self_attn.v_proj.weight]Loading weights:  19%|█▉        | 38/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.input_layernorm.weight] Loading weights:  19%|█▉        | 38/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.input_layernorm.weight]Loading weights:  20%|█▉        | 39/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.mlp.down_proj.weight]  Loading weights:  20%|█▉        | 39/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.mlp.down_proj.weight]Loading weights:  20%|██        | 40/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.mlp.gate_proj.weight]Loading weights:  20%|██        | 40/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.mlp.gate_proj.weight]Loading weights:  20%|██        | 41/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.mlp.up_proj.weight]  Loading weights:  20%|██        | 41/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.mlp.up_proj.weight]Loading weights:  21%|██        | 42/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.post_attention_layernorm.weight]Loading weights:  21%|██        | 42/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.post_attention_layernorm.weight]Loading weights:  22%|██▏       | 43/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.self_attn.k_proj.weight]        Loading weights:  22%|██▏       | 43/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.self_attn.k_proj.weight]Loading weights:  22%|██▏       | 44/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.self_attn.o_proj.weight]Loading weights:  22%|██▏       | 44/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.self_attn.o_proj.weight]Loading weights:  22%|██▎       | 45/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.self_attn.q_proj.weight]Loading weights:  22%|██▎       | 45/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.self_attn.q_proj.weight]Loading weights:  23%|██▎       | 46/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.self_attn.v_proj.weight]Loading weights:  23%|██▎       | 46/200 [00:00<00:00, 243.42it/s, Materializing param=layers.4.self_attn.v_proj.weight]Loading weights:  24%|██▎       | 47/200 [00:00<00:00, 243.42it/s, Materializing param=layers.5.input_layernorm.weight] Loading weights:  24%|██▎       | 47/200 [00:00<00:00, 243.42it/s, Materializing param=layers.5.input_layernorm.weight]Loading weights:  24%|██▍       | 48/200 [00:00<00:00, 243.42it/s, Materializing param=layers.5.mlp.down_proj.weight]  Loading weights:  24%|██▍       | 48/200 [00:00<00:00, 243.42it/s, Materializing param=layers.5.mlp.down_proj.weight]Loading weights:  24%|██▍       | 49/200 [00:00<00:00, 243.42it/s, Materializing param=layers.5.mlp.gate_proj.weight]Loading weights:  24%|██▍       | 49/200 [00:00<00:00, 243.42it/s, Materializing param=layers.5.mlp.gate_proj.weight]Loading weights:  25%|██▌       | 50/200 [00:00<00:00, 243.42it/s, Materializing param=layers.5.mlp.up_proj.weight]  Loading weights:  25%|██▌       | 50/200 [00:00<00:00, 243.42it/s, Materializing param=layers.5.mlp.up_proj.weight]Loading weights:  26%|██▌       | 51/200 [00:00<00:00, 243.42it/s, Materializing param=layers.5.post_attention_layernorm.weight]Loading weights:  26%|██▌       | 51/200 [00:00<00:00, 243.42it/s, Materializing param=layers.5.post_attention_layernorm.weight]Loading weights:  26%|██▌       | 52/200 [00:00<00:00, 234.71it/s, Materializing param=layers.5.post_attention_layernorm.weight]Loading weights:  26%|██▌       | 52/200 [00:00<00:00, 234.71it/s, Materializing param=layers.5.self_attn.k_proj.weight]        Loading weights:  26%|██▌       | 52/200 [00:00<00:00, 234.71it/s, Materializing param=layers.5.self_attn.k_proj.weight]Loading weights:  26%|██▋       | 53/200 [00:00<00:00, 234.71it/s, Materializing param=layers.5.self_attn.o_proj.weight]Loading weights:  26%|██▋       | 53/200 [00:00<00:00, 234.71it/s, Materializing param=layers.5.self_attn.o_proj.weight]Loading weights:  27%|██▋       | 54/200 [00:00<00:00, 234.71it/s, Materializing param=layers.5.self_attn.q_proj.weight]Loading weights:  27%|██▋       | 54/200 [00:00<00:00, 234.71it/s, Materializing param=layers.5.self_attn.q_proj.weight]Loading weights:  28%|██▊       | 55/200 [00:00<00:00, 234.71it/s, Materializing param=layers.5.self_attn.v_proj.weight]Loading weights:  28%|██▊       | 55/200 [00:00<00:00, 234.71it/s, Materializing param=layers.5.self_attn.v_proj.weight]Loading weights:  28%|██▊       | 56/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.input_layernorm.weight] Loading weights:  28%|██▊       | 56/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.input_layernorm.weight]Loading weights:  28%|██▊       | 57/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.mlp.down_proj.weight]  Loading weights:  28%|██▊       | 57/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.mlp.down_proj.weight]Loading weights:  29%|██▉       | 58/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.mlp.gate_proj.weight]Loading weights:  29%|██▉       | 58/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.mlp.gate_proj.weight]Loading weights:  30%|██▉       | 59/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.mlp.up_proj.weight]  Loading weights:  30%|██▉       | 59/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.mlp.up_proj.weight]Loading weights:  30%|███       | 60/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.post_attention_layernorm.weight]Loading weights:  30%|███       | 60/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.post_attention_layernorm.weight]Loading weights:  30%|███       | 61/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.self_attn.k_proj.weight]        Loading weights:  30%|███       | 61/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.self_attn.k_proj.weight]Loading weights:  31%|███       | 62/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.self_attn.o_proj.weight]Loading weights:  31%|███       | 62/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.self_attn.o_proj.weight]Loading weights:  32%|███▏      | 63/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.self_attn.q_proj.weight]Loading weights:  32%|███▏      | 63/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.self_attn.q_proj.weight]Loading weights:  32%|███▏      | 64/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.self_attn.v_proj.weight]Loading weights:  32%|███▏      | 64/200 [00:00<00:00, 234.71it/s, Materializing param=layers.6.self_attn.v_proj.weight]Loading weights:  32%|███▎      | 65/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.input_layernorm.weight] Loading weights:  32%|███▎      | 65/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.input_layernorm.weight]Loading weights:  33%|███▎      | 66/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.mlp.down_proj.weight]  Loading weights:  33%|███▎      | 66/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.mlp.down_proj.weight]Loading weights:  34%|███▎      | 67/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.mlp.gate_proj.weight]Loading weights:  34%|███▎      | 67/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.mlp.gate_proj.weight]Loading weights:  34%|███▍      | 68/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.mlp.up_proj.weight]  Loading weights:  34%|███▍      | 68/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.mlp.up_proj.weight]Loading weights:  34%|███▍      | 69/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.post_attention_layernorm.weight]Loading weights:  34%|███▍      | 69/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.post_attention_layernorm.weight]Loading weights:  35%|███▌      | 70/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.self_attn.k_proj.weight]        Loading weights:  35%|███▌      | 70/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.self_attn.k_proj.weight]Loading weights:  36%|███▌      | 71/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.self_attn.o_proj.weight]Loading weights:  36%|███▌      | 71/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.self_attn.o_proj.weight]Loading weights:  36%|███▌      | 72/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.self_attn.q_proj.weight]Loading weights:  36%|███▌      | 72/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.self_attn.q_proj.weight]Loading weights:  36%|███▋      | 73/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.self_attn.v_proj.weight]Loading weights:  36%|███▋      | 73/200 [00:00<00:00, 234.71it/s, Materializing param=layers.7.self_attn.v_proj.weight]Loading weights:  37%|███▋      | 74/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.input_layernorm.weight] Loading weights:  37%|███▋      | 74/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.input_layernorm.weight]Loading weights:  38%|███▊      | 75/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.mlp.down_proj.weight]  Loading weights:  38%|███▊      | 75/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.mlp.down_proj.weight]Loading weights:  38%|███▊      | 76/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.mlp.gate_proj.weight]Loading weights:  38%|███▊      | 76/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.mlp.gate_proj.weight]Loading weights:  38%|███▊      | 77/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.mlp.up_proj.weight]  Loading weights:  38%|███▊      | 77/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.mlp.up_proj.weight]Loading weights:  39%|███▉      | 78/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.post_attention_layernorm.weight]Loading weights:  39%|███▉      | 78/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.post_attention_layernorm.weight]Loading weights:  40%|███▉      | 79/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.self_attn.k_proj.weight]        Loading weights:  40%|███▉      | 79/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.self_attn.k_proj.weight]Loading weights:  40%|████      | 80/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.self_attn.o_proj.weight]Loading weights:  40%|████      | 80/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.self_attn.o_proj.weight]Loading weights:  40%|████      | 81/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.self_attn.q_proj.weight]Loading weights:  40%|████      | 81/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.self_attn.q_proj.weight]Loading weights:  41%|████      | 82/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.self_attn.v_proj.weight]Loading weights:  41%|████      | 82/200 [00:00<00:00, 234.71it/s, Materializing param=layers.8.self_attn.v_proj.weight]Loading weights:  42%|████▏     | 83/200 [00:00<00:00, 234.71it/s, Materializing param=layers.9.input_layernorm.weight] Loading weights:  42%|████▏     | 83/200 [00:00<00:00, 234.71it/s, Materializing param=layers.9.input_layernorm.weight]Loading weights:  42%|████▏     | 84/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.input_layernorm.weight]Loading weights:  42%|████▏     | 84/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.mlp.down_proj.weight]  Loading weights:  42%|████▏     | 84/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.mlp.down_proj.weight]Loading weights:  42%|████▎     | 85/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.mlp.gate_proj.weight]Loading weights:  42%|████▎     | 85/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.mlp.gate_proj.weight]Loading weights:  43%|████▎     | 86/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.mlp.up_proj.weight]  Loading weights:  43%|████▎     | 86/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.mlp.up_proj.weight]Loading weights:  44%|████▎     | 87/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.post_attention_layernorm.weight]Loading weights:  44%|████▎     | 87/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.post_attention_layernorm.weight]Loading weights:  44%|████▍     | 88/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.self_attn.k_proj.weight]        Loading weights:  44%|████▍     | 88/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.self_attn.k_proj.weight]Loading weights:  44%|████▍     | 89/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.self_attn.o_proj.weight]Loading weights:  44%|████▍     | 89/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.self_attn.o_proj.weight]Loading weights:  45%|████▌     | 90/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.self_attn.q_proj.weight]Loading weights:  45%|████▌     | 90/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.self_attn.q_proj.weight]Loading weights:  46%|████▌     | 91/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.self_attn.v_proj.weight]Loading weights:  46%|████▌     | 91/200 [00:00<00:00, 262.59it/s, Materializing param=layers.9.self_attn.v_proj.weight]Loading weights:  46%|████▌     | 92/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.input_layernorm.weight]Loading weights:  46%|████▌     | 92/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.input_layernorm.weight]Loading weights:  46%|████▋     | 93/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.mlp.down_proj.weight]  Loading weights:  46%|████▋     | 93/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.mlp.down_proj.weight]Loading weights:  47%|████▋     | 94/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.mlp.gate_proj.weight]Loading weights:  47%|████▋     | 94/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.mlp.gate_proj.weight]Loading weights:  48%|████▊     | 95/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.mlp.up_proj.weight]  Loading weights:  48%|████▊     | 95/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.mlp.up_proj.weight]Loading weights:  48%|████▊     | 96/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.post_attention_layernorm.weight]Loading weights:  48%|████▊     | 96/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.post_attention_layernorm.weight]Loading weights:  48%|████▊     | 97/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.self_attn.k_proj.weight]        Loading weights:  48%|████▊     | 97/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.self_attn.k_proj.weight]Loading weights:  49%|████▉     | 98/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.self_attn.o_proj.weight]Loading weights:  49%|████▉     | 98/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.self_attn.o_proj.weight]Loading weights:  50%|████▉     | 99/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.self_attn.q_proj.weight]Loading weights:  50%|████▉     | 99/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.self_attn.q_proj.weight]Loading weights:  50%|█████     | 100/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.self_attn.v_proj.weight]Loading weights:  50%|█████     | 100/200 [00:00<00:00, 262.59it/s, Materializing param=layers.10.self_attn.v_proj.weight]Loading weights:  50%|█████     | 101/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.input_layernorm.weight] Loading weights:  50%|█████     | 101/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.input_layernorm.weight]Loading weights:  51%|█████     | 102/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.mlp.down_proj.weight]  Loading weights:  51%|█████     | 102/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.mlp.down_proj.weight]Loading weights:  52%|█████▏    | 103/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.mlp.gate_proj.weight]Loading weights:  52%|█████▏    | 103/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.mlp.gate_proj.weight]Loading weights:  52%|█████▏    | 104/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.mlp.up_proj.weight]  Loading weights:  52%|█████▏    | 104/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.mlp.up_proj.weight]Loading weights:  52%|█████▎    | 105/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.post_attention_layernorm.weight]Loading weights:  52%|█████▎    | 105/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.post_attention_layernorm.weight]Loading weights:  53%|█████▎    | 106/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.self_attn.k_proj.weight]        Loading weights:  53%|█████▎    | 106/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.self_attn.k_proj.weight]Loading weights:  54%|█████▎    | 107/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.self_attn.o_proj.weight]Loading weights:  54%|█████▎    | 107/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.self_attn.o_proj.weight]Loading weights:  54%|█████▍    | 108/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.self_attn.q_proj.weight]Loading weights:  54%|█████▍    | 108/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.self_attn.q_proj.weight]Loading weights:  55%|█████▍    | 109/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.self_attn.v_proj.weight]Loading weights:  55%|█████▍    | 109/200 [00:00<00:00, 262.59it/s, Materializing param=layers.11.self_attn.v_proj.weight]Loading weights:  55%|█████▌    | 110/200 [00:00<00:00, 262.59it/s, Materializing param=layers.12.input_layernorm.weight] Loading weights:  55%|█████▌    | 110/200 [00:00<00:00, 262.59it/s, Materializing param=layers.12.input_layernorm.weight]Loading weights:  56%|█████▌    | 111/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.input_layernorm.weight]Loading weights:  56%|█████▌    | 111/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.mlp.down_proj.weight]  Loading weights:  56%|█████▌    | 111/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.mlp.down_proj.weight]Loading weights:  56%|█████▌    | 112/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.mlp.gate_proj.weight]Loading weights:  56%|█████▌    | 112/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.mlp.gate_proj.weight]Loading weights:  56%|█████▋    | 113/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.mlp.up_proj.weight]  Loading weights:  56%|█████▋    | 113/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.mlp.up_proj.weight]Loading weights:  57%|█████▋    | 114/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.post_attention_layernorm.weight]Loading weights:  57%|█████▋    | 114/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.post_attention_layernorm.weight]Loading weights:  57%|█████▊    | 115/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.self_attn.k_proj.weight]        Loading weights:  57%|█████▊    | 115/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.self_attn.k_proj.weight]Loading weights:  58%|█████▊    | 116/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.self_attn.o_proj.weight]Loading weights:  58%|█████▊    | 116/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.self_attn.o_proj.weight]Loading weights:  58%|█████▊    | 117/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.self_attn.q_proj.weight]Loading weights:  58%|█████▊    | 117/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.self_attn.q_proj.weight]Loading weights:  59%|█████▉    | 118/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.self_attn.v_proj.weight]Loading weights:  59%|█████▉    | 118/200 [00:00<00:00, 252.98it/s, Materializing param=layers.12.self_attn.v_proj.weight]Loading weights:  60%|█████▉    | 119/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.input_layernorm.weight] Loading weights:  60%|█████▉    | 119/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.input_layernorm.weight]Loading weights:  60%|██████    | 120/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.mlp.down_proj.weight]  Loading weights:  60%|██████    | 120/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.mlp.down_proj.weight]Loading weights:  60%|██████    | 121/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.mlp.gate_proj.weight]Loading weights:  60%|██████    | 121/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.mlp.gate_proj.weight]Loading weights:  61%|██████    | 122/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.mlp.up_proj.weight]  Loading weights:  61%|██████    | 122/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.mlp.up_proj.weight]Loading weights:  62%|██████▏   | 123/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.post_attention_layernorm.weight]Loading weights:  62%|██████▏   | 123/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.post_attention_layernorm.weight]Loading weights:  62%|██████▏   | 124/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.self_attn.k_proj.weight]        Loading weights:  62%|██████▏   | 124/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.self_attn.k_proj.weight]Loading weights:  62%|██████▎   | 125/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.self_attn.o_proj.weight]Loading weights:  62%|██████▎   | 125/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.self_attn.o_proj.weight]Loading weights:  63%|██████▎   | 126/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.self_attn.q_proj.weight]Loading weights:  63%|██████▎   | 126/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.self_attn.q_proj.weight]Loading weights:  64%|██████▎   | 127/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.self_attn.v_proj.weight]Loading weights:  64%|██████▎   | 127/200 [00:00<00:00, 252.98it/s, Materializing param=layers.13.self_attn.v_proj.weight]Loading weights:  64%|██████▍   | 128/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.input_layernorm.weight] Loading weights:  64%|██████▍   | 128/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.input_layernorm.weight]Loading weights:  64%|██████▍   | 129/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.mlp.down_proj.weight]  Loading weights:  64%|██████▍   | 129/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.mlp.down_proj.weight]Loading weights:  65%|██████▌   | 130/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.mlp.gate_proj.weight]Loading weights:  65%|██████▌   | 130/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.mlp.gate_proj.weight]Loading weights:  66%|██████▌   | 131/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.mlp.up_proj.weight]  Loading weights:  66%|██████▌   | 131/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.mlp.up_proj.weight]Loading weights:  66%|██████▌   | 132/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.post_attention_layernorm.weight]Loading weights:  66%|██████▌   | 132/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.post_attention_layernorm.weight]Loading weights:  66%|██████▋   | 133/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.self_attn.k_proj.weight]        Loading weights:  66%|██████▋   | 133/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.self_attn.k_proj.weight]Loading weights:  67%|██████▋   | 134/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.self_attn.o_proj.weight]Loading weights:  67%|██████▋   | 134/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.self_attn.o_proj.weight]Loading weights:  68%|██████▊   | 135/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.self_attn.q_proj.weight]Loading weights:  68%|██████▊   | 135/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.self_attn.q_proj.weight]Loading weights:  68%|██████▊   | 136/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.self_attn.v_proj.weight]Loading weights:  68%|██████▊   | 136/200 [00:00<00:00, 252.98it/s, Materializing param=layers.14.self_attn.v_proj.weight]Loading weights:  68%|██████▊   | 137/200 [00:00<00:00, 246.75it/s, Materializing param=layers.14.self_attn.v_proj.weight]Loading weights:  68%|██████▊   | 137/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.input_layernorm.weight] Loading weights:  68%|██████▊   | 137/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.input_layernorm.weight]Loading weights:  69%|██████▉   | 138/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.mlp.down_proj.weight]  Loading weights:  69%|██████▉   | 138/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.mlp.down_proj.weight]Loading weights:  70%|██████▉   | 139/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.mlp.gate_proj.weight]Loading weights:  70%|██████▉   | 139/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.mlp.gate_proj.weight]Loading weights:  70%|███████   | 140/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.mlp.up_proj.weight]  Loading weights:  70%|███████   | 140/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.mlp.up_proj.weight]Loading weights:  70%|███████   | 141/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.post_attention_layernorm.weight]Loading weights:  70%|███████   | 141/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.post_attention_layernorm.weight]Loading weights:  71%|███████   | 142/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.self_attn.k_proj.weight]        Loading weights:  71%|███████   | 142/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.self_attn.k_proj.weight]Loading weights:  72%|███████▏  | 143/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.self_attn.o_proj.weight]Loading weights:  72%|███████▏  | 143/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.self_attn.o_proj.weight]Loading weights:  72%|███████▏  | 144/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.self_attn.q_proj.weight]Loading weights:  72%|███████▏  | 144/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.self_attn.q_proj.weight]Loading weights:  72%|███████▎  | 145/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.self_attn.v_proj.weight]Loading weights:  72%|███████▎  | 145/200 [00:00<00:00, 246.75it/s, Materializing param=layers.15.self_attn.v_proj.weight]Loading weights:  73%|███████▎  | 146/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.input_layernorm.weight] Loading weights:  73%|███████▎  | 146/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.input_layernorm.weight]Loading weights:  74%|███████▎  | 147/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.mlp.down_proj.weight]  Loading weights:  74%|███████▎  | 147/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.mlp.down_proj.weight]Loading weights:  74%|███████▍  | 148/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.mlp.gate_proj.weight]Loading weights:  74%|███████▍  | 148/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.mlp.gate_proj.weight]Loading weights:  74%|███████▍  | 149/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.mlp.up_proj.weight]  Loading weights:  74%|███████▍  | 149/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.mlp.up_proj.weight]Loading weights:  75%|███████▌  | 150/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.post_attention_layernorm.weight]Loading weights:  75%|███████▌  | 150/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.post_attention_layernorm.weight]Loading weights:  76%|███████▌  | 151/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.self_attn.k_proj.weight]        Loading weights:  76%|███████▌  | 151/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.self_attn.k_proj.weight]Loading weights:  76%|███████▌  | 152/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.self_attn.o_proj.weight]Loading weights:  76%|███████▌  | 152/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.self_attn.o_proj.weight]Loading weights:  76%|███████▋  | 153/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.self_attn.q_proj.weight]Loading weights:  76%|███████▋  | 153/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.self_attn.q_proj.weight]Loading weights:  77%|███████▋  | 154/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.self_attn.v_proj.weight]Loading weights:  77%|███████▋  | 154/200 [00:00<00:00, 246.75it/s, Materializing param=layers.16.self_attn.v_proj.weight]Loading weights:  78%|███████▊  | 155/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.input_layernorm.weight] Loading weights:  78%|███████▊  | 155/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.input_layernorm.weight]Loading weights:  78%|███████▊  | 156/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.mlp.down_proj.weight]  Loading weights:  78%|███████▊  | 156/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.mlp.down_proj.weight]Loading weights:  78%|███████▊  | 157/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.mlp.gate_proj.weight]Loading weights:  78%|███████▊  | 157/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.mlp.gate_proj.weight]Loading weights:  79%|███████▉  | 158/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.mlp.up_proj.weight]  Loading weights:  79%|███████▉  | 158/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.mlp.up_proj.weight]Loading weights:  80%|███████▉  | 159/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.post_attention_layernorm.weight]Loading weights:  80%|███████▉  | 159/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.post_attention_layernorm.weight]Loading weights:  80%|████████  | 160/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.self_attn.k_proj.weight]        Loading weights:  80%|████████  | 160/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.self_attn.k_proj.weight]Loading weights:  80%|████████  | 161/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.self_attn.o_proj.weight]Loading weights:  80%|████████  | 161/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.self_attn.o_proj.weight]Loading weights:  81%|████████  | 162/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.self_attn.q_proj.weight]Loading weights:  81%|████████  | 162/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.self_attn.q_proj.weight]Loading weights:  82%|████████▏ | 163/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.self_attn.v_proj.weight]Loading weights:  82%|████████▏ | 163/200 [00:00<00:00, 246.75it/s, Materializing param=layers.17.self_attn.v_proj.weight]Loading weights:  82%|████████▏ | 164/200 [00:00<00:00, 250.32it/s, Materializing param=layers.17.self_attn.v_proj.weight]Loading weights:  82%|████████▏ | 164/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.input_layernorm.weight] Loading weights:  82%|████████▏ | 164/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.input_layernorm.weight]Loading weights:  82%|████████▎ | 165/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.mlp.down_proj.weight]  Loading weights:  82%|████████▎ | 165/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.mlp.down_proj.weight]Loading weights:  83%|████████▎ | 166/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.mlp.gate_proj.weight]Loading weights:  83%|████████▎ | 166/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.mlp.gate_proj.weight]Loading weights:  84%|████████▎ | 167/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.mlp.up_proj.weight]  Loading weights:  84%|████████▎ | 167/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.mlp.up_proj.weight]Loading weights:  84%|████████▍ | 168/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.post_attention_layernorm.weight]Loading weights:  84%|████████▍ | 168/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.post_attention_layernorm.weight]Loading weights:  84%|████████▍ | 169/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.self_attn.k_proj.weight]        Loading weights:  84%|████████▍ | 169/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.self_attn.k_proj.weight]Loading weights:  85%|████████▌ | 170/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.self_attn.o_proj.weight]Loading weights:  85%|████████▌ | 170/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.self_attn.o_proj.weight]Loading weights:  86%|████████▌ | 171/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.self_attn.q_proj.weight]Loading weights:  86%|████████▌ | 171/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.self_attn.q_proj.weight]Loading weights:  86%|████████▌ | 172/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.self_attn.v_proj.weight]Loading weights:  86%|████████▌ | 172/200 [00:00<00:00, 250.32it/s, Materializing param=layers.18.self_attn.v_proj.weight]Loading weights:  86%|████████▋ | 173/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.input_layernorm.weight] Loading weights:  86%|████████▋ | 173/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.input_layernorm.weight]Loading weights:  87%|████████▋ | 174/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.mlp.down_proj.weight]  Loading weights:  87%|████████▋ | 174/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.mlp.down_proj.weight]Loading weights:  88%|████████▊ | 175/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.mlp.gate_proj.weight]Loading weights:  88%|████████▊ | 175/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.mlp.gate_proj.weight]Loading weights:  88%|████████▊ | 176/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.mlp.up_proj.weight]  Loading weights:  88%|████████▊ | 176/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.mlp.up_proj.weight]Loading weights:  88%|████████▊ | 177/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.post_attention_layernorm.weight]Loading weights:  88%|████████▊ | 177/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.post_attention_layernorm.weight]Loading weights:  89%|████████▉ | 178/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.self_attn.k_proj.weight]        Loading weights:  89%|████████▉ | 178/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.self_attn.k_proj.weight]Loading weights:  90%|████████▉ | 179/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.self_attn.o_proj.weight]Loading weights:  90%|████████▉ | 179/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.self_attn.o_proj.weight]Loading weights:  90%|█████████ | 180/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.self_attn.q_proj.weight]Loading weights:  90%|█████████ | 180/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.self_attn.q_proj.weight]Loading weights:  90%|█████████ | 181/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.self_attn.v_proj.weight]Loading weights:  90%|█████████ | 181/200 [00:00<00:00, 250.32it/s, Materializing param=layers.19.self_attn.v_proj.weight]Loading weights:  91%|█████████ | 182/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.input_layernorm.weight] Loading weights:  91%|█████████ | 182/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.input_layernorm.weight]Loading weights:  92%|█████████▏| 183/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.mlp.down_proj.weight]  Loading weights:  92%|█████████▏| 183/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.mlp.down_proj.weight]Loading weights:  92%|█████████▏| 184/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.mlp.gate_proj.weight]Loading weights:  92%|█████████▏| 184/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.mlp.gate_proj.weight]Loading weights:  92%|█████████▎| 185/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.mlp.up_proj.weight]  Loading weights:  92%|█████████▎| 185/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.mlp.up_proj.weight]Loading weights:  93%|█████████▎| 186/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.post_attention_layernorm.weight]Loading weights:  93%|█████████▎| 186/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.post_attention_layernorm.weight]Loading weights:  94%|█████████▎| 187/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.self_attn.k_proj.weight]        Loading weights:  94%|█████████▎| 187/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.self_attn.k_proj.weight]Loading weights:  94%|█████████▍| 188/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.self_attn.o_proj.weight]Loading weights:  94%|█████████▍| 188/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.self_attn.o_proj.weight]Loading weights:  94%|█████████▍| 189/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.self_attn.q_proj.weight]Loading weights:  94%|█████████▍| 189/200 [00:00<00:00, 250.32it/s, Materializing param=layers.20.self_attn.q_proj.weight]Loading weights:  95%|█████████▌| 190/200 [00:00<00:00, 246.53it/s, Materializing param=layers.20.self_attn.q_proj.weight]Loading weights:  95%|█████████▌| 190/200 [00:00<00:00, 246.53it/s, Materializing param=layers.20.self_attn.v_proj.weight]Loading weights:  95%|█████████▌| 190/200 [00:00<00:00, 246.53it/s, Materializing param=layers.20.self_attn.v_proj.weight]Loading weights:  96%|█████████▌| 191/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.input_layernorm.weight] Loading weights:  96%|█████████▌| 191/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.input_layernorm.weight]Loading weights:  96%|█████████▌| 192/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.mlp.down_proj.weight]  Loading weights:  96%|█████████▌| 192/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.mlp.down_proj.weight]Loading weights:  96%|█████████▋| 193/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.mlp.gate_proj.weight]Loading weights:  96%|█████████▋| 193/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.mlp.gate_proj.weight]Loading weights:  97%|█████████▋| 194/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.mlp.up_proj.weight]  Loading weights:  97%|█████████▋| 194/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.mlp.up_proj.weight]Loading weights:  98%|█████████▊| 195/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.post_attention_layernorm.weight]Loading weights:  98%|█████████▊| 195/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.post_attention_layernorm.weight]Loading weights:  98%|█████████▊| 196/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.self_attn.k_proj.weight]        Loading weights:  98%|█████████▊| 196/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.self_attn.k_proj.weight]Loading weights:  98%|█████████▊| 197/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.self_attn.o_proj.weight]Loading weights:  98%|█████████▊| 197/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.self_attn.o_proj.weight]Loading weights:  99%|█████████▉| 198/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.self_attn.q_proj.weight]Loading weights:  99%|█████████▉| 198/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.self_attn.q_proj.weight]Loading weights: 100%|█████████▉| 199/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.self_attn.v_proj.weight]Loading weights: 100%|█████████▉| 199/200 [00:00<00:00, 246.53it/s, Materializing param=layers.21.self_attn.v_proj.weight]Loading weights: 100%|██████████| 200/200 [00:00<00:00, 246.53it/s, Materializing param=norm.weight]                      Loading weights: 100%|██████████| 200/200 [00:00<00:00, 246.53it/s, Materializing param=norm.weight]Loading weights: 100%|██████████| 200/200 [00:00<00:00, 257.16it/s, Materializing param=norm.weight]
-[1mLlamaModel LOAD REPORT[0m from: TinyLlama/TinyLlama-1.1B-Chat-v1.0
-Key            | Status     |  | 
----------------+------------+--+-
-lm_head.weight | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-  Trainable (LM):      264,267,776 (lr=2e-05)
-  Trainable (heads):   591,107 (lr=0.0005)
-  Trainable (EZR):     8 (lr=0.001)
-  Initial delta:       0.3400
-
-==========================================================================================
-Training: Neural E-Z Reader (aligned for discrete simulation)
-  Model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
-  Effective batch size: 64
-  AMP: True
-  Loss: 0.2*TRT + 0.2*FFD + 0.4*Gaze + 0.4*Skip (all words, v2 style)
-==========================================================================================
-
-[Epoch   1/50] 745.6s | lm_lr=2.00e-05 head_lr=5.00e-04
-  Train: loss=937.1 (trt=1731 ffd=820 gaze=1066 skip=0.358) | 54,930 samples
-  Val:   loss=4922.9 | r_TRT=0.462  r_FFD=0.203  r_Gaze=0.388  r_skip=0.696
-  Val:   MAE_TRT=107.2ms  MAE_FFD=86.2ms
-  Pred:  mean_TRT=164ms (human=263ms) | L1=94+/-28ms  L2=31+/-9ms  delta=0.3263
-  Learned parameters:
-    delta (L2/L1)            = 0.3263 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.0ms (init=125)
-    saccade_finishing         = 25.0ms (init=25)
-    time_attention_shift      = 25.0ms (init=25)
-    eccentricity             = 0.1487 (init=0.1)
-    l2_contribution (FFD)    = -0.0680 (init=0.3)
-    integration_threshold    = 50.2ms (init=50)
-    integration_sharpness    = 0.2269 (init=0.1)
-    l1_scale                 = 50.0 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               62    20 |    93   313  -220 |    76   215 |  0.64  0.14
-  intense          130    42 |   336   550  -214 |   216   197 |  0.20  0.36
-  interest         116    38 |   301   425  -124 |   210   240 |  0.27  0.21
-  aroused          129    42 |   343   347    -5 |   215   190 |  0.21  0.14
-  in                57    19 |    85   226  -141 |    70   226 |  0.66  0.93
-  the               83    27 |   127   244  -118 |   101   182 |  0.56  0.29
-  public           109    36 |   241   251   -10 |   165   232 |  0.33  0.36
-  by                86    28 |   129   236  -107 |   104   236 |  0.55  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     128    42 |   355   446   -91 |   309   247 |  0.29  0.07
-  in                63    20 |    93   398  -304 |    76   242 |  0.64  0.79
-  view             126    41 |   200   362  -162 |   153   252 |  0.43  0.36
-  of                99    32 |   156   236   -80 |   120   236 |  0.49  0.64
-  the               63    21 |    94   245  -150 |    77   200 |  0.63  0.71
-  worldwide        125    41 |   331   489  -158 |   245   230 |  0.25  0.07
-  notoriety        129    42 |   394   882  -488 |   253   231 |  0.17  0.29
-  which            116    38 |   212   371  -159 |   158   170 |  0.41  0.71
-
-  ** NEW BEST (r_TRT=0.462) **
-
-[Epoch   2/50] 762.0s | lm_lr=2.00e-05 head_lr=5.00e-04
-  Train: loss=904.8 (trt=1666 ffd=795 gaze=1030 skip=0.375) | 54,930 samples
-  Val:   loss=4986.7 | r_TRT=0.466  r_FFD=0.203  r_Gaze=0.387  r_skip=0.695
-  Val:   MAE_TRT=108.9ms  MAE_FFD=88.4ms
-  Pred:  mean_TRT=161ms (human=263ms) | L1=94+/-26ms  L2=29+/-8ms  delta=0.3144
-  Learned parameters:
-    delta (L2/L1)            = 0.3144 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.0ms (init=125)
-    saccade_finishing         = 25.0ms (init=25)
-    time_attention_shift      = 25.0ms (init=25)
-    eccentricity             = 0.1357 (init=0.1)
-    l2_contribution (FFD)    = -0.2167 (init=0.3)
-    integration_threshold    = 50.4ms (init=50)
-    integration_sharpness    = 0.2436 (init=0.1)
-    l1_scale                 = 50.0 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               68    21 |   100   313  -213 |    80   215 |  0.62  0.14
-  intense          137    43 |   329   550  -221 |   219   197 |  0.23  0.36
-  interest         125    39 |   310   425  -115 |   217   240 |  0.27  0.21
-  aroused          131    41 |   303   347   -44 |   209   190 |  0.28  0.14
-  in                75    24 |   111   226  -115 |    89   226 |  0.59  0.93
-  the              104    33 |   159   244   -85 |   123   182 |  0.49  0.29
-  public           107    34 |   207   251   -44 |   156   232 |  0.40  0.36
-  by                96    30 |   141   236   -96 |   114   236 |  0.54  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     121    38 |   338   446  -107 |   276   247 |  0.27  0.07
-  in                81    26 |   120   398  -277 |    96   242 |  0.57  0.79
-  view             142    45 |   237   362  -125 |   168   252 |  0.38  0.36
-  of                70    22 |   106   236  -130 |    84   236 |  0.61  0.64
-  the               65    21 |    95   245  -150 |    77   200 |  0.64  0.71
-  worldwide        130    41 |   327   489  -162 |   242   230 |  0.26  0.07
-  notoriety        137    43 |   372   882  -510 |   255   231 |  0.23  0.29
-  which            108    34 |   177   371  -194 |   143   170 |  0.47  0.71
-
-  ** NEW BEST (r_TRT=0.466) **
-
-[Epoch   3/50] 797.8s | lm_lr=2.00e-05 head_lr=5.00e-04
-  Train: loss=887.1 (trt=1633 ffd=780 gaze=1010 skip=0.375) | 54,930 samples
-  Val:   loss=5592.0 | r_TRT=0.461  r_FFD=0.200  r_Gaze=0.383  r_skip=0.696
-  Val:   MAE_TRT=117.8ms  MAE_FFD=94.0ms
-  Pred:  mean_TRT=151ms (human=263ms) | L1=90+/-29ms  L2=27+/-9ms  delta=0.3038
-  Learned parameters:
-    delta (L2/L1)            = 0.3038 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.0ms (init=125)
-    saccade_finishing         = 25.0ms (init=25)
-    time_attention_shift      = 25.0ms (init=25)
-    eccentricity             = 0.1314 (init=0.1)
-    l2_contribution (FFD)    = -0.2953 (init=0.3)
-    integration_threshold    = 50.6ms (init=50)
-    integration_sharpness    = 0.2397 (init=0.1)
-    l1_scale                 = 50.0 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               65    20 |    91   313  -223 |    76   215 |  0.65  0.14
-  intense          139    42 |   369   550  -181 |   218   197 |  0.12  0.36
-  interest         126    38 |   309   425  -116 |   214   240 |  0.26  0.21
-  aroused          141    43 |   337   347   -10 |   220   190 |  0.24  0.14
-  in                63    19 |    87   226  -139 |    73   226 |  0.66  0.93
-  the              100    30 |   151   244   -93 |   117   182 |  0.51  0.29
-  public           105    32 |   195   251   -55 |   150   232 |  0.43  0.36
-  by                83    25 |   116   236  -121 |    97   236 |  0.59  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     120    37 |   348   446   -97 |   267   247 |  0.24  0.07
-  in                73    22 |   104   398  -293 |    86   242 |  0.61  0.79
-  view             147    45 |   223   362  -139 |   171   252 |  0.42  0.36
-  of                63    19 |    91   236  -145 |    74   236 |  0.65  0.64
-  the               56    17 |    76   245  -169 |    65   200 |  0.69  0.71
-  worldwide        150    46 |   434   489   -55 |   274   230 |  0.11  0.07
-  notoriety        181    55 |   590   882  -292 |   330   231 |  0.21  0.29
-  which            112    34 |   184   371  -187 |   146   170 |  0.46  0.71
-
-
-[Epoch   4/50] 792.1s | lm_lr=2.00e-05 head_lr=5.00e-04
-  Train: loss=871.5 (trt=1602 ffd=768 gaze=992 skip=0.377) | 54,930 samples
-  Val:   loss=5065.4 | r_TRT=0.465  r_FFD=0.200  r_Gaze=0.389  r_skip=0.688
-  Val:   MAE_TRT=111.1ms  MAE_FFD=90.1ms
-  Pred:  mean_TRT=159ms (human=263ms) | L1=95+/-26ms  L2=28+/-8ms  delta=0.2950
-  Learned parameters:
-    delta (L2/L1)            = 0.2950 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.0ms (init=125)
-    saccade_finishing         = 25.0ms (init=25)
-    time_attention_shift      = 25.0ms (init=25)
-    eccentricity             = 0.1318 (init=0.1)
-    l2_contribution (FFD)    = -0.3521 (init=0.3)
-    integration_threshold    = 50.7ms (init=50)
-    integration_sharpness    = 0.2208 (init=0.1)
-    l1_scale                 = 50.0 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               68    20 |    97   313  -216 |    79   215 |  0.63  0.14
-  intense          149    44 |   357   550  -193 |   232   197 |  0.19  0.36
-  interest         140    41 |   344   425   -81 |   236   240 |  0.25  0.21
-  aroused          137    41 |   326   347   -21 |   213   190 |  0.25  0.14
-  in                76    22 |   109   226  -117 |    87   226 |  0.60  0.93
-  the              112    33 |   168   244   -76 |   129   182 |  0.48  0.29
-  public           103    30 |   182   251   -68 |   146   232 |  0.46  0.36
-  by                98    29 |   136   236  -100 |   114   236 |  0.55  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     126    37 |   409   446   -37 |   278   247 |  0.13  0.07
-  in                77    23 |   110   398  -288 |    89   242 |  0.60  0.79
-  view             155    46 |   249   362  -113 |   179   252 |  0.38  0.36
-  of                78    23 |   116   236  -120 |    90   236 |  0.58  0.64
-  the               70    21 |   100   245  -144 |    81   200 |  0.62  0.71
-  worldwide        137    40 |   440   489   -49 |   248   230 |  0.02  0.07
-  notoriety        175    52 |   499   882  -383 |   318   231 |  0.25  0.29
-  which            113    33 |   184   371  -188 |   145   170 |  0.46  0.71
-
-
-[Epoch   5/50] 807.7s | lm_lr=2.00e-05 head_lr=5.00e-04
-  Train: loss=865.7 (trt=1591 ffd=763 gaze=986 skip=0.377) | 54,930 samples
-  Val:   loss=4981.0 | r_TRT=0.466  r_FFD=0.202  r_Gaze=0.382  r_skip=0.685
-  Val:   MAE_TRT=109.8ms  MAE_FFD=88.0ms
-  Pred:  mean_TRT=160ms (human=263ms) | L1=98+/-29ms  L2=28+/-8ms  delta=0.2884
-  Learned parameters:
-    delta (L2/L1)            = 0.2884 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.0ms (init=125)
-    saccade_finishing         = 25.0ms (init=25)
-    time_attention_shift      = 25.0ms (init=25)
-    eccentricity             = 0.1257 (init=0.1)
-    l2_contribution (FFD)    = -0.3962 (init=0.3)
-    integration_threshold    = 50.8ms (init=50)
-    integration_sharpness    = 0.2061 (init=0.1)
-    l1_scale                 = 50.0 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               68    20 |    96   313  -217 |    79   215 |  0.63  0.14
-  intense          142    41 |   383   550  -167 |   216   197 |  0.09  0.36
-  interest         140    40 |   344   425   -81 |   231   240 |  0.24  0.21
-  aroused          137    39 |   312   347   -36 |   208   190 |  0.27  0.14
-  in                71    21 |   100   226  -126 |    82   226 |  0.63  0.93
-  the              123    36 |   185   244   -59 |   142   182 |  0.45  0.29
-  public           113    33 |   202   251   -49 |   158   232 |  0.43  0.36
-  by               111    32 |   152   236   -84 |   128   236 |  0.53  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     126    36 |   353   446   -92 |   271   247 |  0.24  0.07
-  in                79    23 |   110   398  -287 |    90   242 |  0.60  0.79
-  view             153    44 |   238   362  -123 |   176   252 |  0.39  0.36
-  of                81    23 |   118   236  -118 |    93   236 |  0.58  0.64
-  the               71    20 |    99   245  -146 |    81   200 |  0.63  0.71
-  worldwide        152    44 |   423   489   -66 |   269   230 |  0.12  0.07
-  notoriety        172    50 |   522   882  -360 |   306   231 |  0.18  0.29
-  which            126    36 |   213   371  -158 |   160   170 |  0.42  0.71
-
-
-[Epoch   6/50] 681.4s | lm_lr=2.00e-05 head_lr=5.00e-04
-  Train: loss=859.4 (trt=1577 ffd=759 gaze=979 skip=0.377) | 54,930 samples
-  Val:   loss=5262.6 | r_TRT=0.465  r_FFD=0.201  r_Gaze=0.384  r_skip=0.686
-  Val:   MAE_TRT=112.3ms  MAE_FFD=91.3ms
-  Pred:  mean_TRT=158ms (human=263ms) | L1=95+/-31ms  L2=27+/-9ms  delta=0.2828
-  Learned parameters:
-    delta (L2/L1)            = 0.2828 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.0ms (init=125)
-    saccade_finishing         = 25.0ms (init=25)
-    time_attention_shift      = 25.0ms (init=25)
-    eccentricity             = 0.1269 (init=0.1)
-    l2_contribution (FFD)    = -0.4216 (init=0.3)
-    integration_threshold    = 50.9ms (init=50)
-    integration_sharpness    = 0.1879 (init=0.1)
-    l1_scale                 = 50.0 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               64    18 |    89   313  -224 |    74   215 |  0.66  0.14
-  intense          143    40 |   419   550  -131 |   218   197 |  0.01  0.36
-  interest         138    39 |   351   425   -74 |   228   240 |  0.22  0.21
-  aroused          136    39 |   338   347   -10 |   208   190 |  0.20  0.14
-  in                69    19 |    96   226  -130 |    79   226 |  0.64  0.93
-  the              124    35 |   187   244   -57 |   141   182 |  0.45  0.29
-  public           103    29 |   189   251   -62 |   144   232 |  0.44  0.36
-  by               108    31 |   147   236   -89 |   124   236 |  0.54  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     134    38 |   384   446   -61 |   290   247 |  0.21  0.07
-  in                73    21 |   102   398  -296 |    84   242 |  0.62  0.79
-  view             160    45 |   250   362  -111 |   182   252 |  0.38  0.36
-  of                66    19 |    96   236  -140 |    75   236 |  0.63  0.64
-  the               63    18 |    87   245  -157 |    72   200 |  0.66  0.71
-  worldwide        168    48 |   469   489   -20 |   299   230 |  0.11  0.07
-  notoriety        199    56 |   748   882  -134 |   354   231 |  0.06  0.29
-  which            124    35 |   221   371  -151 |   158   170 |  0.40  0.71
-
-
-[Epoch   7/50] 834.6s | lm_lr=1.00e-05 head_lr=2.50e-04
-  Train: loss=860.8 (trt=1584 ffd=759 gaze=980 skip=0.376) | 54,930 samples
-  Val:   loss=5386.3 | r_TRT=0.465  r_FFD=0.196  r_Gaze=0.384  r_skip=0.680
-  Val:   MAE_TRT=115.2ms  MAE_FFD=93.6ms
-  Pred:  mean_TRT=155ms (human=263ms) | L1=94+/-28ms  L2=26+/-8ms  delta=0.2789
-  Learned parameters:
-    delta (L2/L1)            = 0.2789 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.0ms (init=125)
-    saccade_finishing         = 25.0ms (init=25)
-    time_attention_shift      = 25.0ms (init=25)
-    eccentricity             = 0.1293 (init=0.1)
-    l2_contribution (FFD)    = -0.4496 (init=0.3)
-    integration_threshold    = 50.9ms (init=50)
-    integration_sharpness    = 0.1896 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               66    19 |    95   313  -218 |    76   215 |  0.63  0.14
-  intense          157    44 |   449   550  -101 |   240   197 |  0.01  0.36
-  interest         143    40 |   378   425   -47 |   237   240 |  0.18  0.21
-  aroused          133    37 |   334   347   -14 |   204   190 |  0.20  0.14
-  in                73    20 |   105   226  -121 |    83   226 |  0.61  0.93
-  the              125    35 |   195   244   -49 |   142   182 |  0.43  0.29
-  public           100    28 |   186   251   -65 |   140   232 |  0.44  0.36
-  by               102    29 |   142   236   -94 |   116   236 |  0.54  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     128    36 |   364   446   -82 |   278   247 |  0.23  0.07
-  in                79    22 |   113   398  -284 |    90   242 |  0.59  0.79
-  view             165    46 |   254   362  -108 |   188   252 |  0.39  0.36
-  of                75    21 |   115   236  -121 |    85   236 |  0.58  0.64
-  the               72    20 |   107   245  -138 |    82   200 |  0.60  0.71
-  worldwide        160    45 |   444   489   -45 |   286   230 |  0.12  0.07
-  notoriety        201    56 |   676   882  -207 |   359   231 |  0.14  0.29
-  which            116    32 |   207   371  -165 |   147   170 |  0.41  0.71
-
-
-[Epoch   8/50] 549.8s | lm_lr=1.00e-05 head_lr=2.50e-04
-  Train: loss=848.9 (trt=1561 ffd=749 gaze=966 skip=0.378) | 54,930 samples
-  Val:   loss=5314.8 | r_TRT=0.465  r_FFD=0.201  r_Gaze=0.384  r_skip=0.683
-  Val:   MAE_TRT=117.1ms  MAE_FFD=91.1ms
-  Pred:  mean_TRT=152ms (human=263ms) | L1=96+/-30ms  L2=27+/-8ms  delta=0.2776
-  Learned parameters:
-    delta (L2/L1)            = 0.2776 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.1ms (init=125)
-    saccade_finishing         = 25.1ms (init=25)
-    time_attention_shift      = 25.1ms (init=25)
-    eccentricity             = 0.1261 (init=0.1)
-    l2_contribution (FFD)    = -0.4669 (init=0.3)
-    integration_threshold    = 51.0ms (init=50)
-    integration_sharpness    = 0.1830 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               76    21 |   104   313  -209 |    86   215 |  0.62  0.14
-  intense          146    41 |   424   550  -127 |   221   197 |  0.01  0.36
-  interest         147    41 |   378   425   -47 |   240   240 |  0.19  0.21
-  aroused          138    38 |   335   347   -12 |   209   190 |  0.22  0.14
-  in                73    20 |   101   226  -125 |    83   226 |  0.63  0.93
-  the              126    35 |   190   244   -54 |   144   182 |  0.44  0.29
-  public           106    29 |   187   251   -64 |   147   232 |  0.45  0.36
-  by               114    32 |   147   236   -90 |   129   236 |  0.55  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     131    36 |   372   446   -73 |   281   247 |  0.22  0.07
-  in                80    22 |   109   398  -289 |    91   242 |  0.61  0.79
-  view             170    47 |   252   362  -109 |   193   252 |  0.41  0.36
-  of                75    21 |   108   236  -128 |    86   236 |  0.60  0.64
-  the               68    19 |    93   245  -152 |    78   200 |  0.65  0.71
-  worldwide        168    47 |   452   489   -37 |   297   230 |  0.14  0.07
-  notoriety        204    57 |   659   882  -223 |   360   231 |  0.18  0.29
-  which            125    35 |   219   371  -152 |   158   170 |  0.41  0.71
-
-
-[Epoch   9/50] 828.1s | lm_lr=1.00e-05 head_lr=2.50e-04
-  Train: loss=845.3 (trt=1552 ffd=747 gaze=963 skip=0.377) | 54,930 samples
-  Val:   loss=4746.4 | r_TRT=0.464  r_FFD=0.204  r_Gaze=0.382  r_skip=0.682
-  Val:   MAE_TRT=106.0ms  MAE_FFD=85.1ms
-  Pred:  mean_TRT=168ms (human=263ms) | L1=103+/-34ms  L2=29+/-9ms  delta=0.2763
-  Learned parameters:
-    delta (L2/L1)            = 0.2763 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.1ms (init=125)
-    saccade_finishing         = 25.1ms (init=25)
-    time_attention_shift      = 25.1ms (init=25)
-    eccentricity             = 0.1215 (init=0.1)
-    l2_contribution (FFD)    = -0.4771 (init=0.3)
-    integration_threshold    = 51.0ms (init=50)
-    integration_sharpness    = 0.1758 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               69    19 |    95   313  -218 |    78   215 |  0.64  0.14
-  intense          156    43 |   446   550  -104 |   233   197 |  0.00  0.36
-  interest         152    42 |   409   425   -16 |   246   240 |  0.16  0.21
-  aroused          143    40 |   358   347   +11 |   215   190 |  0.19  0.14
-  in                75    21 |   105   226  -121 |    85   226 |  0.62  0.93
-  the              135    37 |   210   244   -34 |   153   182 |  0.41  0.29
-  public           112    31 |   205   251   -46 |   154   232 |  0.42  0.36
-  by               122    34 |   161   236   -75 |   139   236 |  0.52  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     138    38 |   399   446   -47 |   290   247 |  0.18  0.07
-  in                78    21 |   106   398  -292 |    88   242 |  0.62  0.79
-  view             180    50 |   293   362   -68 |   204   252 |  0.35  0.36
-  of                85    24 |   126   236  -110 |    96   236 |  0.56  0.64
-  the               75    21 |   104   245  -141 |    85   200 |  0.62  0.71
-  worldwide        170    47 |   493   489    +4 |   295   230 |  0.06  0.07
-  notoriety        221    61 |   760   882  -122 |   384   231 |  0.12  0.29
-  which            131    36 |   234   371  -137 |   164   170 |  0.39  0.71
-
-
-[Epoch  10/50] 774.8s | lm_lr=1.00e-05 head_lr=2.50e-04
-  Train: loss=844.5 (trt=1552 ffd=745 gaze=961 skip=0.377) | 54,930 samples
-  Val:   loss=5108.7 | r_TRT=0.463  r_FFD=0.200  r_Gaze=0.379  r_skip=0.686
-  Val:   MAE_TRT=112.3ms  MAE_FFD=89.4ms
-  Pred:  mean_TRT=158ms (human=263ms) | L1=98+/-30ms  L2=27+/-8ms  delta=0.2743
-  Learned parameters:
-    delta (L2/L1)            = 0.2743 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.1ms (init=125)
-    saccade_finishing         = 25.1ms (init=25)
-    time_attention_shift      = 25.1ms (init=25)
-    eccentricity             = 0.1203 (init=0.1)
-    l2_contribution (FFD)    = -0.4926 (init=0.3)
-    integration_threshold    = 51.0ms (init=50)
-    integration_sharpness    = 0.1721 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               66    18 |    94   313  -219 |    75   215 |  0.64  0.14
-  intense          141    39 |   407   550  -143 |   210   197 |  0.02  0.36
-  interest         140    38 |   354   425   -71 |   225   240 |  0.20  0.21
-  aroused          132    36 |   320   347   -28 |   197   190 |  0.22  0.14
-  in                71    19 |   100   226  -126 |    80   226 |  0.62  0.93
-  the              130    36 |   201   244   -43 |   148   182 |  0.42  0.29
-  public           107    29 |   193   251   -57 |   147   232 |  0.43  0.36
-  by               117    32 |   150   236   -87 |   133   236 |  0.55  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     130    36 |   368   446   -78 |   273   247 |  0.21  0.07
-  in                77    21 |   107   398  -291 |    87   242 |  0.61  0.79
-  view             164    45 |   254   362  -108 |   185   252 |  0.38  0.36
-  of                80    22 |   120   236  -116 |    90   236 |  0.57  0.64
-  the               71    19 |   100   245  -145 |    80   200 |  0.62  0.71
-  worldwide        155    43 |   425   489   -64 |   269   230 |  0.12  0.07
-  notoriety        204    56 |   584   882  -298 |   354   231 |  0.24  0.29
-  which            123    34 |   210   371  -161 |   154   170 |  0.42  0.71
-
-
-[Epoch  11/50] 749.7s | lm_lr=1.00e-05 head_lr=2.50e-04
-  Train: loss=844.0 (trt=1548 ffd=747 gaze=961 skip=0.376) | 54,930 samples
-  Val:   loss=5437.4 | r_TRT=0.466  r_FFD=0.201  r_Gaze=0.383  r_skip=0.683
-  Val:   MAE_TRT=117.6ms  MAE_FFD=92.8ms
-  Pred:  mean_TRT=152ms (human=263ms) | L1=95+/-30ms  L2=26+/-8ms  delta=0.2729
-  Learned parameters:
-    delta (L2/L1)            = 0.2729 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.1ms (init=125)
-    saccade_finishing         = 25.1ms (init=25)
-    time_attention_shift      = 25.1ms (init=25)
-    eccentricity             = 0.1219 (init=0.1)
-    l2_contribution (FFD)    = -0.5023 (init=0.3)
-    integration_threshold    = 51.0ms (init=50)
-    integration_sharpness    = 0.1699 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               71    19 |    99   313  -214 |    80   215 |  0.63  0.14
-  intense          144    39 |   414   550  -136 |   216   197 |  0.02  0.36
-  interest         141    38 |   373   425   -52 |   227   240 |  0.17  0.21
-  aroused          129    35 |   324   347   -23 |   192   190 |  0.19  0.14
-  in                74    20 |   102   226  -124 |    84   226 |  0.62  0.93
-  the              125    34 |   189   244   -55 |   141   182 |  0.44  0.29
-  public           106    29 |   195   251   -55 |   146   232 |  0.43  0.36
-  by               115    31 |   143   236   -94 |   129   236 |  0.56  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     128    35 |   366   446   -79 |   269   247 |  0.21  0.07
-  in                79    21 |   105   398  -292 |    89   242 |  0.62  0.79
-  view             165    45 |   258   362  -103 |   186   252 |  0.37  0.36
-  of                78    21 |   111   236  -125 |    88   236 |  0.60  0.64
-  the               70    19 |    96   245  -149 |    79   200 |  0.64  0.71
-  worldwide        161    44 |   445   489   -43 |   279   230 |  0.10  0.07
-  notoriety        208    57 |   624   882  -258 |   361   231 |  0.21  0.29
-  which            115    31 |   193   371  -178 |   143   170 |  0.45  0.71
-
-
-[Epoch  12/50] 735.6s | lm_lr=1.00e-05 head_lr=2.50e-04
-  Train: loss=840.7 (trt=1541 ffd=744 gaze=958 skip=0.376) | 54,930 samples
-  Val:   loss=5088.4 | r_TRT=0.465  r_FFD=0.200  r_Gaze=0.384  r_skip=0.681
-  Val:   MAE_TRT=110.7ms  MAE_FFD=89.6ms
-  Pred:  mean_TRT=162ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2725
-  Learned parameters:
-    delta (L2/L1)            = 0.2725 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.1ms (init=125)
-    saccade_finishing         = 25.1ms (init=25)
-    time_attention_shift      = 25.1ms (init=25)
-    eccentricity             = 0.1224 (init=0.1)
-    l2_contribution (FFD)    = -0.5078 (init=0.3)
-    integration_threshold    = 51.0ms (init=50)
-    integration_sharpness    = 0.1658 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               67    18 |    95   313  -219 |    76   215 |  0.64  0.14
-  intense          165    45 |   466   550   -85 |   246   197 |  0.00  0.36
-  interest         157    43 |   439   425   +14 |   254   240 |  0.13  0.21
-  aroused          145    39 |   367   347   +20 |   217   190 |  0.18  0.14
-  in                73    20 |   101   226  -125 |    82   226 |  0.62  0.93
-  the              136    37 |   204   244   -40 |   153   182 |  0.43  0.29
-  public           111    30 |   200   251   -50 |   153   232 |  0.43  0.36
-  by               121    33 |   152   236   -84 |   137   236 |  0.55  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     141    38 |   395   446   -51 |   296   247 |  0.20  0.07
-  in                80    22 |   110   398  -288 |    90   242 |  0.61  0.79
-  view             183    50 |   292   362   -70 |   206   252 |  0.36  0.36
-  of                82    22 |   124   236  -112 |    93   236 |  0.56  0.64
-  the               74    20 |   104   245  -140 |    84   200 |  0.61  0.71
-  worldwide        184    50 |   535   489   +46 |   320   230 |  0.05  0.07
-  notoriety        232    63 |   780   882  -102 |   403   231 |  0.15  0.29
-  which            119    32 |   209   371  -162 |   148   170 |  0.42  0.71
-
-
-[Epoch  13/50] 749.7s | lm_lr=1.00e-05 head_lr=2.50e-04
-  Train: loss=840.3 (trt=1543 ffd=742 gaze=957 skip=0.377) | 54,930 samples
-  Val:   loss=5114.9 | r_TRT=0.464  r_FFD=0.201  r_Gaze=0.383  r_skip=0.682
-  Val:   MAE_TRT=111.5ms  MAE_FFD=89.9ms
-  Pred:  mean_TRT=160ms (human=263ms) | L1=98+/-31ms  L2=27+/-8ms  delta=0.2711
-  Learned parameters:
-    delta (L2/L1)            = 0.2711 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.1ms (init=125)
-    saccade_finishing         = 25.1ms (init=25)
-    time_attention_shift      = 25.1ms (init=25)
-    eccentricity             = 0.1211 (init=0.1)
-    l2_contribution (FFD)    = -0.5130 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1589 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               72    19 |   102   313  -211 |    81   215 |  0.62  0.14
-  intense          148    40 |   429   550  -121 |   221   197 |  0.01  0.36
-  interest         148    40 |   395   425   -30 |   239   240 |  0.16  0.21
-  aroused          138    37 |   346   347    -1 |   206   190 |  0.19  0.14
-  in                69    19 |    94   226  -132 |    78   226 |  0.65  0.93
-  the              136    37 |   203   244   -41 |   153   182 |  0.43  0.29
-  public           110    30 |   197   251   -54 |   150   232 |  0.43  0.36
-  by               119    32 |   149   236   -87 |   134   236 |  0.55  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     134    36 |   385   446   -61 |   280   247 |  0.19  0.07
-  in                81    22 |   111   398  -287 |    92   242 |  0.61  0.79
-  view             170    46 |   268   362   -94 |   191   252 |  0.37  0.36
-  of                83    23 |   124   236  -112 |    94   236 |  0.56  0.64
-  the               75    20 |   106   245  -138 |    84   200 |  0.61  0.71
-  worldwide        161    44 |   475   489   -14 |   279   230 |  0.05  0.07
-  notoriety        199    54 |   582   882  -300 |   345   231 |  0.21  0.29
-  which            117    32 |   209   371  -162 |   146   170 |  0.41  0.71
-
-
-[Epoch  14/50] 769.9s | lm_lr=1.00e-05 head_lr=2.50e-04
-  Train: loss=840.0 (trt=1540 ffd=744 gaze=956 skip=0.376) | 54,930 samples
-  Val:   loss=5024.8 | r_TRT=0.463  r_FFD=0.202  r_Gaze=0.384  r_skip=0.688
-  Val:   MAE_TRT=109.5ms  MAE_FFD=88.8ms
-  Pred:  mean_TRT=163ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2696
-  Learned parameters:
-    delta (L2/L1)            = 0.2696 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.1ms (init=125)
-    saccade_finishing         = 25.1ms (init=25)
-    time_attention_shift      = 25.1ms (init=25)
-    eccentricity             = 0.1223 (init=0.1)
-    l2_contribution (FFD)    = -0.5169 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1584 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               71    19 |    97   313  -216 |    80   215 |  0.63  0.14
-  intense          147    40 |   427   550  -123 |   220   197 |  0.00  0.36
-  interest         147    40 |   401   425   -24 |   237   240 |  0.14  0.21
-  aroused          140    38 |   356   347    +8 |   208   190 |  0.17  0.14
-  in                66    18 |    90   226  -136 |    74   226 |  0.66  0.93
-  the              136    37 |   209   244   -35 |   153   182 |  0.41  0.29
-  public           112    30 |   203   251   -47 |   154   232 |  0.42  0.36
-  by               120    32 |   150   236   -86 |   135   236 |  0.55  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     138    37 |   401   446   -44 |   290   247 |  0.17  0.07
-  in                79    21 |   110   398  -288 |    89   242 |  0.61  0.79
-  view             171    46 |   270   362   -92 |   193   252 |  0.36  0.36
-  of                83    22 |   125   236  -111 |    93   236 |  0.56  0.64
-  the               74    20 |   105   245  -140 |    84   200 |  0.61  0.71
-  worldwide        172    46 |   486   489    -3 |   298   230 |  0.08  0.07
-  notoriety        219    59 |   684   882  -198 |   381   231 |  0.19  0.29
-  which            118    32 |   220   371  -151 |   148   170 |  0.39  0.71
-
-
-[Epoch  15/50] 787.4s | lm_lr=5.00e-06 head_lr=1.25e-04
-  Train: loss=838.9 (trt=1536 ffd=742 gaze=957 skip=0.376) | 54,930 samples
-  Val:   loss=5140.6 | r_TRT=0.465  r_FFD=0.203  r_Gaze=0.381  r_skip=0.681
-  Val:   MAE_TRT=113.1ms  MAE_FFD=89.4ms
-  Pred:  mean_TRT=157ms (human=263ms) | L1=100+/-32ms  L2=27+/-9ms  delta=0.2690
-  Learned parameters:
-    delta (L2/L1)            = 0.2690 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.1ms (init=125)
-    saccade_finishing         = 25.1ms (init=25)
-    time_attention_shift      = 25.1ms (init=25)
-    eccentricity             = 0.1161 (init=0.1)
-    l2_contribution (FFD)    = -0.5253 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1538 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               69    18 |    95   313  -218 |    77   215 |  0.64  0.14
-  intense          146    39 |   420   550  -131 |   215   197 |  0.01  0.36
-  interest         149    40 |   382   425   -43 |   236   240 |  0.19  0.21
-  aroused          138    37 |   337   347   -10 |   203   190 |  0.21  0.14
-  in                66    18 |    93   226  -133 |    75   226 |  0.64  0.93
-  the              134    36 |   203   244   -42 |   151   182 |  0.43  0.29
-  public           112    30 |   191   251   -60 |   152   232 |  0.46  0.36
-  by               121    33 |   152   236   -84 |   136   236 |  0.55  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     137    37 |   382   446   -64 |   281   247 |  0.20  0.07
-  in                81    22 |   111   398  -287 |    92   242 |  0.61  0.79
-  view             172    46 |   256   362  -106 |   193   252 |  0.40  0.36
-  of                84    23 |   119   236  -117 |    94   236 |  0.58  0.64
-  the               77    21 |   106   245  -139 |    86   200 |  0.61  0.71
-  worldwide        165    44 |   459   489   -30 |   281   230 |  0.09  0.07
-  notoriety        213    57 |   599   882  -283 |   363   231 |  0.24  0.29
-  which            117    31 |   203   371  -169 |   145   170 |  0.43  0.71
-
-
-[Epoch  16/50] 759.2s | lm_lr=5.00e-06 head_lr=1.25e-04
-  Train: loss=835.1 (trt=1531 ffd=740 gaze=951 skip=0.375) | 54,930 samples
-  Val:   loss=5024.1 | r_TRT=0.462  r_FFD=0.200  r_Gaze=0.381  r_skip=0.681
-  Val:   MAE_TRT=110.9ms  MAE_FFD=88.8ms
-  Pred:  mean_TRT=161ms (human=263ms) | L1=100+/-32ms  L2=27+/-9ms  delta=0.2693
-  Learned parameters:
-    delta (L2/L1)            = 0.2693 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.1ms (init=125)
-    saccade_finishing         = 25.1ms (init=25)
-    time_attention_shift      = 25.1ms (init=25)
-    eccentricity             = 0.1165 (init=0.1)
-    l2_contribution (FFD)    = -0.5274 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1491 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               71    19 |   101   313  -212 |    79   215 |  0.62  0.14
-  intense          153    41 |   439   550  -111 |   226   197 |  0.00  0.36
-  interest         155    42 |   419   425    -6 |   247   240 |  0.15  0.21
-  aroused          140    38 |   363   347   +16 |   207   190 |  0.17  0.14
-  in                69    19 |    97   226  -129 |    77   226 |  0.64  0.93
-  the              140    38 |   213   244   -31 |   158   182 |  0.42  0.29
-  public           112    30 |   191   251   -60 |   152   232 |  0.46  0.36
-  by               123    33 |   154   236   -82 |   138   236 |  0.55  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     138    37 |   398   446   -48 |   283   247 |  0.17  0.07
-  in                81    22 |   111   398  -287 |    91   242 |  0.61  0.79
-  view             180    48 |   278   362   -84 |   202   252 |  0.38  0.36
-  of                84    23 |   122   236  -114 |    95   236 |  0.57  0.64
-  the               75    20 |   106   245  -139 |    84   200 |  0.61  0.71
-  worldwide        177    48 |   492   489    +3 |   302   230 |  0.09  0.07
-  notoriety        242    65 |   700   882  -182 |   413   231 |  0.23  0.29
-  which            117    32 |   214   371  -157 |   146   170 |  0.41  0.71
-
-
-[Epoch  17/50] 788.0s | lm_lr=5.00e-06 head_lr=1.25e-04
-  Train: loss=837.4 (trt=1534 ffd=742 gaze=954 skip=0.375) | 54,930 samples
-  Val:   loss=5090.7 | r_TRT=0.462  r_FFD=0.202  r_Gaze=0.381  r_skip=0.680
-  Val:   MAE_TRT=113.0ms  MAE_FFD=89.0ms
-  Pred:  mean_TRT=158ms (human=263ms) | L1=100+/-32ms  L2=27+/-9ms  delta=0.2693
-  Learned parameters:
-    delta (L2/L1)            = 0.2693 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1159 (init=0.1)
-    l2_contribution (FFD)    = -0.5309 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1474 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               71    19 |    99   313  -214 |    80   215 |  0.63  0.14
-  intense          148    40 |   428   550  -122 |   219   197 |  0.01  0.36
-  interest         152    41 |   409   425   -16 |   242   240 |  0.15  0.21
-  aroused          137    37 |   357   347    +9 |   202   190 |  0.16  0.14
-  in                73    20 |   100   226  -126 |    82   226 |  0.63  0.93
-  the              140    38 |   211   244   -33 |   157   182 |  0.42  0.29
-  public           114    31 |   193   251   -58 |   154   232 |  0.46  0.36
-  by               122    33 |   150   236   -86 |   137   236 |  0.56  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     137    37 |   385   446   -60 |   281   247 |  0.19  0.07
-  in                83    22 |   110   398  -287 |    93   242 |  0.61  0.79
-  view             179    48 |   281   362   -81 |   201   252 |  0.37  0.36
-  of                85    23 |   118   236  -118 |    95   236 |  0.59  0.64
-  the               76    21 |   105   245  -140 |    86   200 |  0.62  0.71
-  worldwide        171    46 |   465   489   -24 |   291   230 |  0.11  0.07
-  notoriety        231    62 |   674   882  -208 |   393   231 |  0.22  0.29
-  which            115    31 |   209   371  -162 |   143   170 |  0.41  0.71
-
-
-[Epoch  18/50] 766.9s | lm_lr=5.00e-06 head_lr=1.25e-04
-  Train: loss=835.0 (trt=1531 ffd=739 gaze=951 skip=0.376) | 54,930 samples
-  Val:   loss=5166.3 | r_TRT=0.461  r_FFD=0.202  r_Gaze=0.381  r_skip=0.682
-  Val:   MAE_TRT=113.5ms  MAE_FFD=89.7ms
-  Pred:  mean_TRT=158ms (human=263ms) | L1=99+/-32ms  L2=27+/-9ms  delta=0.2691
-  Learned parameters:
-    delta (L2/L1)            = 0.2691 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1155 (init=0.1)
-    l2_contribution (FFD)    = -0.5361 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1461 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               71    19 |    99   313  -215 |    80   215 |  0.63  0.14
-  intense          153    41 |   437   550  -113 |   225   197 |  0.00  0.36
-  interest         153    41 |   412   425   -13 |   242   240 |  0.15  0.21
-  aroused          137    37 |   355   347    +7 |   201   190 |  0.17  0.14
-  in                70    19 |    94   226  -132 |    78   226 |  0.64  0.93
-  the              138    37 |   206   244   -39 |   155   182 |  0.43  0.29
-  public           114    31 |   192   251   -59 |   155   232 |  0.46  0.36
-  by               121    33 |   150   236   -87 |   136   236 |  0.56  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     137    37 |   384   446   -62 |   280   247 |  0.19  0.07
-  in                81    22 |   108   398  -290 |    91   242 |  0.62  0.79
-  view             178    48 |   275   362   -87 |   200   252 |  0.38  0.36
-  of                84    23 |   115   236  -121 |    94   236 |  0.60  0.64
-  the               74    20 |   102   245  -142 |    83   200 |  0.62  0.71
-  worldwide        172    46 |   474   489   -15 |   293   230 |  0.10  0.07
-  notoriety        242    65 |   712   882  -170 |   411   231 |  0.21  0.29
-  which            116    31 |   209   371  -162 |   144   170 |  0.42  0.71
-
-
-[Epoch  19/50] 783.1s | lm_lr=5.00e-06 head_lr=1.25e-04
-  Train: loss=836.7 (trt=1535 ffd=740 gaze=953 skip=0.375) | 54,930 samples
-  Val:   loss=5208.4 | r_TRT=0.462  r_FFD=0.201  r_Gaze=0.382  r_skip=0.680
-  Val:   MAE_TRT=114.9ms  MAE_FFD=90.0ms
-  Pred:  mean_TRT=155ms (human=263ms) | L1=99+/-32ms  L2=27+/-9ms  delta=0.2687
-  Learned parameters:
-    delta (L2/L1)            = 0.2687 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1162 (init=0.1)
-    l2_contribution (FFD)    = -0.5391 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1434 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               69    19 |    97   313  -216 |    78   215 |  0.63  0.14
-  intense          148    40 |   424   550  -127 |   217   197 |  0.01  0.36
-  interest         149    40 |   388   425   -36 |   237   240 |  0.18  0.21
-  aroused          135    36 |   340   347    -7 |   199   190 |  0.19  0.14
-  in                72    19 |    99   226  -127 |    81   226 |  0.63  0.93
-  the              139    37 |   205   244   -39 |   156   182 |  0.43  0.29
-  public           114    31 |   191   251   -60 |   155   232 |  0.46  0.36
-  by               121    32 |   148   236   -88 |   136   236 |  0.56  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     135    36 |   371   446   -74 |   278   247 |  0.21  0.07
-  in                82    22 |   109   398  -289 |    92   242 |  0.62  0.79
-  view             171    46 |   256   362  -106 |   192   252 |  0.40  0.36
-  of                81    22 |   110   236  -126 |    91   236 |  0.61  0.64
-  the               72    19 |    99   245  -146 |    81   200 |  0.63  0.71
-  worldwide        166    45 |   439   489   -50 |   283   230 |  0.14  0.07
-  notoriety        232    62 |   644   882  -238 |   395   231 |  0.25  0.29
-  which            116    31 |   203   371  -168 |   143   170 |  0.43  0.71
-
-
-[Epoch  20/50] 767.6s | lm_lr=5.00e-06 head_lr=1.25e-04
-  Train: loss=833.1 (trt=1527 ffd=738 gaze=949 skip=0.376) | 54,930 samples
-  Val:   loss=5269.6 | r_TRT=0.462  r_FFD=0.201  r_Gaze=0.381  r_skip=0.681
-  Val:   MAE_TRT=114.3ms  MAE_FFD=91.1ms
-  Pred:  mean_TRT=156ms (human=263ms) | L1=98+/-32ms  L2=26+/-9ms  delta=0.2688
-  Learned parameters:
-    delta (L2/L1)            = 0.2688 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1145 (init=0.1)
-    l2_contribution (FFD)    = -0.5404 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1389 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               69    19 |    96   313  -217 |    78   215 |  0.63  0.14
-  intense          151    41 |   432   550  -118 |   221   197 |  0.01  0.36
-  interest         151    41 |   406   425   -19 |   239   240 |  0.16  0.21
-  aroused          135    36 |   354   347    +6 |   199   190 |  0.17  0.14
-  in                70    19 |    96   226  -130 |    78   226 |  0.64  0.93
-  the              139    37 |   208   244   -36 |   156   182 |  0.43  0.29
-  public           113    30 |   192   251   -59 |   153   232 |  0.46  0.36
-  by               119    32 |   150   236   -87 |   134   236 |  0.56  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     136    37 |   385   446   -61 |   278   247 |  0.19  0.07
-  in                79    21 |   106   398  -292 |    89   242 |  0.62  0.79
-  view             175    47 |   270   362   -92 |   197   252 |  0.38  0.36
-  of                82    22 |   113   236  -123 |    92   236 |  0.60  0.64
-  the               71    19 |    98   245  -146 |    79   200 |  0.63  0.71
-  worldwide        172    46 |   466   489   -23 |   291   230 |  0.11  0.07
-  notoriety        244    65 |   712   882  -170 |   413   231 |  0.21  0.29
-  which            114    31 |   207   371  -164 |   141   170 |  0.42  0.71
-
-
-[Epoch  21/50] 756.2s | lm_lr=2.50e-06 head_lr=6.25e-05
-  Train: loss=834.3 (trt=1530 ffd=740 gaze=950 skip=0.375) | 54,930 samples
-  Val:   loss=5120.1 | r_TRT=0.462  r_FFD=0.202  r_Gaze=0.381  r_skip=0.677
-  Val:   MAE_TRT=112.4ms  MAE_FFD=89.9ms
-  Pred:  mean_TRT=158ms (human=263ms) | L1=99+/-31ms  L2=27+/-8ms  delta=0.2689
-  Learned parameters:
-    delta (L2/L1)            = 0.2689 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1102 (init=0.1)
-    l2_contribution (FFD)    = -0.5391 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1364 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               72    19 |   104   313  -209 |    81   215 |  0.61  0.14
-  intense          145    39 |   420   550  -130 |   211   197 |  0.01  0.36
-  interest         150    40 |   399   425   -26 |   235   240 |  0.16  0.21
-  aroused          135    36 |   352   347    +5 |   196   190 |  0.16  0.14
-  in                72    19 |    98   226  -128 |    81   226 |  0.64  0.93
-  the              138    37 |   206   244   -38 |   155   182 |  0.43  0.29
-  public           115    31 |   192   251   -59 |   154   232 |  0.46  0.36
-  by               119    32 |   147   236   -89 |   133   236 |  0.56  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     134    36 |   376   446   -70 |   270   247 |  0.19  0.07
-  in                82    22 |   111   398  -287 |    93   242 |  0.61  0.79
-  view             175    47 |   265   362   -97 |   197   252 |  0.39  0.36
-  of                83    22 |   114   236  -122 |    93   236 |  0.60  0.64
-  the               75    20 |   105   245  -139 |    84   200 |  0.61  0.71
-  worldwide        168    45 |   449   489   -40 |   281   230 |  0.12  0.07
-  notoriety        239    64 |   659   882  -223 |   400   231 |  0.24  0.29
-  which            114    31 |   209   371  -162 |   140   170 |  0.42  0.71
-
-
-[Epoch  22/50] 766.8s | lm_lr=2.50e-06 head_lr=6.25e-05
-  Train: loss=830.2 (trt=1522 ffd=735 gaze=946 skip=0.375) | 54,930 samples
-  Val:   loss=5093.4 | r_TRT=0.461  r_FFD=0.202  r_Gaze=0.380  r_skip=0.678
-  Val:   MAE_TRT=112.3ms  MAE_FFD=89.0ms
-  Pred:  mean_TRT=159ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2689
-  Learned parameters:
-    delta (L2/L1)            = 0.2689 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1115 (init=0.1)
-    l2_contribution (FFD)    = -0.5392 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1359 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               71    19 |   100   313  -213 |    79   215 |  0.62  0.14
-  intense          150    40 |   430   550  -120 |   219   197 |  0.01  0.36
-  interest         153    41 |   407   425   -18 |   241   240 |  0.17  0.21
-  aroused          136    37 |   354   347    +6 |   198   190 |  0.17  0.14
-  in                71    19 |    97   226  -129 |    80   226 |  0.64  0.93
-  the              144    39 |   213   244   -31 |   162   182 |  0.43  0.29
-  public           116    31 |   195   251   -56 |   157   232 |  0.46  0.36
-  by               125    33 |   152   236   -85 |   140   236 |  0.56  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     137    37 |   373   446   -72 |   276   247 |  0.21  0.07
-  in                81    22 |   108   398  -290 |    91   242 |  0.62  0.79
-  view             180    48 |   274   362   -88 |   202   252 |  0.39  0.36
-  of                83    22 |   113   236  -123 |    94   236 |  0.61  0.64
-  the               73    20 |   103   245  -142 |    82   200 |  0.62  0.71
-  worldwide        172    46 |   458   489   -31 |   289   230 |  0.12  0.07
-  notoriety        239    64 |   694   882  -188 |   402   231 |  0.21  0.29
-  which            117    31 |   217   371  -155 |   144   170 |  0.41  0.71
-
-
-[Epoch  23/50] 809.9s | lm_lr=2.50e-06 head_lr=6.25e-05
-  Train: loss=831.3 (trt=1524 ffd=736 gaze=947 skip=0.375) | 54,930 samples
-  Val:   loss=5155.7 | r_TRT=0.461  r_FFD=0.202  r_Gaze=0.380  r_skip=0.678
-  Val:   MAE_TRT=113.4ms  MAE_FFD=89.5ms
-  Pred:  mean_TRT=157ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2688
-  Learned parameters:
-    delta (L2/L1)            = 0.2688 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1120 (init=0.1)
-    l2_contribution (FFD)    = -0.5408 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1354 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               69    18 |    96   313  -217 |    77   215 |  0.63  0.14
-  intense          148    40 |   424   550  -126 |   216   197 |  0.01  0.36
-  interest         152    41 |   401   425   -24 |   239   240 |  0.17  0.21
-  aroused          136    36 |   351   347    +4 |   198   190 |  0.17  0.14
-  in                71    19 |    94   226  -132 |    79   226 |  0.65  0.93
-  the              142    38 |   213   244   -31 |   160   182 |  0.42  0.29
-  public           116    31 |   194   251   -57 |   156   232 |  0.46  0.36
-  by               122    33 |   151   236   -85 |   138   236 |  0.56  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     136    36 |   373   446   -73 |   274   247 |  0.20  0.07
-  in                79    21 |   103   398  -294 |    89   242 |  0.63  0.79
-  view             176    47 |   272   362   -90 |   198   252 |  0.38  0.36
-  of                82    22 |   110   236  -126 |    92   236 |  0.61  0.64
-  the               72    19 |    99   245  -146 |    81   200 |  0.63  0.71
-  worldwide        169    45 |   450   489   -39 |   284   230 |  0.12  0.07
-  notoriety        240    64 |   693   882  -190 |   404   231 |  0.21  0.29
-  which            116    31 |   216   371  -156 |   143   170 |  0.41  0.71
-
-
-[Epoch  24/50] 779.4s | lm_lr=2.50e-06 head_lr=6.25e-05
-  Train: loss=831.6 (trt=1522 ffd=738 gaze=948 skip=0.375) | 54,930 samples
-  Val:   loss=5147.0 | r_TRT=0.461  r_FFD=0.202  r_Gaze=0.380  r_skip=0.675
-  Val:   MAE_TRT=113.5ms  MAE_FFD=89.7ms
-  Pred:  mean_TRT=157ms (human=263ms) | L1=100+/-32ms  L2=27+/-9ms  delta=0.2689
-  Learned parameters:
-    delta (L2/L1)            = 0.2689 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1110 (init=0.1)
-    l2_contribution (FFD)    = -0.5426 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1355 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               72    19 |   101   313  -212 |    80   215 |  0.62  0.14
-  intense          150    40 |   431   550  -119 |   219   197 |  0.01  0.36
-  interest         154    41 |   410   425   -14 |   241   240 |  0.16  0.21
-  aroused          135    36 |   356   347    +8 |   197   190 |  0.16  0.14
-  in                74    20 |   101   226  -125 |    83   226 |  0.63  0.93
-  the              143    38 |   214   244   -30 |   160   182 |  0.42  0.29
-  public           115    31 |   193   251   -58 |   154   232 |  0.46  0.36
-  by               122    33 |   150   236   -87 |   137   236 |  0.56  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     137    37 |   377   446   -69 |   276   247 |  0.20  0.07
-  in                81    22 |   108   398  -290 |    91   242 |  0.62  0.79
-  view             178    48 |   273   362   -88 |   200   252 |  0.38  0.36
-  of                84    23 |   114   236  -122 |    94   236 |  0.60  0.64
-  the               74    20 |   104   245  -141 |    83   200 |  0.62  0.71
-  worldwide        172    46 |   461   489   -28 |   289   230 |  0.12  0.07
-  notoriety        246    66 |   712   882  -171 |   413   231 |  0.21  0.29
-  which            115    31 |   216   371  -156 |   141   170 |  0.40  0.71
-
-
-[Epoch  25/50] 774.1s | lm_lr=2.50e-06 head_lr=6.25e-05
-  Train: loss=832.6 (trt=1527 ffd=738 gaze=948 skip=0.375) | 54,930 samples
-  Val:   loss=5135.2 | r_TRT=0.460  r_FFD=0.201  r_Gaze=0.380  r_skip=0.677
-  Val:   MAE_TRT=113.0ms  MAE_FFD=89.7ms
-  Pred:  mean_TRT=157ms (human=263ms) | L1=100+/-31ms  L2=27+/-8ms  delta=0.2688
-  Learned parameters:
-    delta (L2/L1)            = 0.2688 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1113 (init=0.1)
-    l2_contribution (FFD)    = -0.5445 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1343 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               71    19 |   100   313  -213 |    80   215 |  0.62  0.14
-  intense          148    40 |   425   550  -125 |   215   197 |  0.01  0.36
-  interest         149    40 |   396   425   -29 |   234   240 |  0.17  0.21
-  aroused          134    36 |   349   347    +2 |   195   190 |  0.17  0.14
-  in                73    20 |    98   226  -128 |    82   226 |  0.64  0.93
-  the              141    38 |   211   244   -33 |   158   182 |  0.43  0.29
-  public           115    31 |   193   251   -57 |   155   232 |  0.46  0.36
-  by               122    33 |   150   236   -86 |   137   236 |  0.56  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     135    36 |   372   446   -74 |   272   247 |  0.20  0.07
-  in                82    22 |   109   398  -289 |    92   242 |  0.62  0.79
-  view             172    46 |   268   362   -94 |   193   252 |  0.38  0.36
-  of                84    23 |   113   236  -123 |    94   236 |  0.61  0.64
-  the               74    20 |   103   245  -142 |    83   200 |  0.62  0.71
-  worldwide        168    45 |   447   489   -42 |   282   230 |  0.13  0.07
-  notoriety        239    64 |   677   882  -205 |   402   231 |  0.23  0.29
-  which            115    31 |   215   371  -156 |   142   170 |  0.40  0.71
-
-
-[Epoch  26/50] 778.9s | lm_lr=2.50e-06 head_lr=6.25e-05
-  Train: loss=836.0 (trt=1532 ffd=739 gaze=953 skip=0.374) | 54,930 samples
-  Val:   loss=5270.0 | r_TRT=0.462  r_FFD=0.202  r_Gaze=0.381  r_skip=0.676
-  Val:   MAE_TRT=115.6ms  MAE_FFD=90.7ms
-  Pred:  mean_TRT=155ms (human=263ms) | L1=99+/-33ms  L2=27+/-9ms  delta=0.2688
-  Learned parameters:
-    delta (L2/L1)            = 0.2688 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1121 (init=0.1)
-    l2_contribution (FFD)    = -0.5450 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1345 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    98   313  -216 |    78   215 |  0.63  0.14
-  intense          153    41 |   436   550  -114 |   224   197 |  0.01  0.36
-  interest         154    41 |   401   425   -23 |   242   240 |  0.19  0.21
-  aroused          136    37 |   352   347    +5 |   199   190 |  0.18  0.14
-  in                71    19 |    95   226  -131 |    80   226 |  0.65  0.93
-  the              142    38 |   209   244   -35 |   159   182 |  0.43  0.29
-  public           115    31 |   192   251   -58 |   156   232 |  0.47  0.36
-  by               121    33 |   148   236   -88 |   136   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    37 |   377   446   -69 |   280   247 |  0.21  0.07
-  in                79    21 |   106   398  -292 |    89   242 |  0.62  0.79
-  view             177    48 |   271   362   -90 |   198   252 |  0.38  0.36
-  of                82    22 |   108   236  -128 |    92   236 |  0.62  0.64
-  the               72    19 |    98   245  -147 |    81   200 |  0.63  0.71
-  worldwide        174    47 |   455   489   -34 |   292   230 |  0.13  0.07
-  notoriety        248    67 |   706   882  -176 |   417   231 |  0.23  0.29
-  which            115    31 |   213   371  -158 |   141   170 |  0.41  0.71
-
-
-[Epoch  27/50] 770.5s | lm_lr=1.25e-06 head_lr=3.13e-05
-  Train: loss=828.7 (trt=1517 ffd=735 gaze=945 skip=0.375) | 54,930 samples
-  Val:   loss=5255.7 | r_TRT=0.461  r_FFD=0.202  r_Gaze=0.381  r_skip=0.676
-  Val:   MAE_TRT=114.3ms  MAE_FFD=90.9ms
-  Pred:  mean_TRT=157ms (human=263ms) | L1=99+/-33ms  L2=27+/-9ms  delta=0.2689
-  Learned parameters:
-    delta (L2/L1)            = 0.2689 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1102 (init=0.1)
-    l2_contribution (FFD)    = -0.5458 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1341 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               69    19 |    98   313  -216 |    78   215 |  0.63  0.14
-  intense          154    41 |   439   550  -111 |   224   197 |  0.00  0.36
-  interest         154    42 |   415   425    -9 |   242   240 |  0.16  0.21
-  aroused          137    37 |   363   347   +15 |   200   190 |  0.16  0.14
-  in                70    19 |    94   226  -132 |    79   226 |  0.65  0.93
-  the              142    38 |   213   244   -31 |   159   182 |  0.42  0.29
-  public           115    31 |   194   251   -56 |   155   232 |  0.46  0.36
-  by               120    32 |   147   236   -90 |   135   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     140    38 |   388   446   -57 |   280   247 |  0.18  0.07
-  in                78    21 |   106   398  -292 |    88   242 |  0.62  0.79
-  view             177    47 |   278   362   -84 |   198   252 |  0.37  0.36
-  of                82    22 |   109   236  -127 |    92   236 |  0.61  0.64
-  the               72    19 |    99   245  -146 |    81   200 |  0.63  0.71
-  worldwide        175    47 |   468   489   -21 |   293   230 |  0.11  0.07
-  notoriety        244    66 |   710   882  -172 |   408   231 |  0.21  0.29
-  which            113    30 |   214   371  -157 |   140   170 |  0.40  0.71
-
-
-[Epoch  28/50] 797.1s | lm_lr=1.25e-06 head_lr=3.13e-05
-  Train: loss=829.4 (trt=1518 ffd=736 gaze=945 skip=0.374) | 54,930 samples
-  Val:   loss=5277.7 | r_TRT=0.461  r_FFD=0.202  r_Gaze=0.379  r_skip=0.675
-  Val:   MAE_TRT=115.7ms  MAE_FFD=90.5ms
-  Pred:  mean_TRT=155ms (human=263ms) | L1=99+/-33ms  L2=27+/-9ms  delta=0.2689
-  Learned parameters:
-    delta (L2/L1)            = 0.2689 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1104 (init=0.1)
-    l2_contribution (FFD)    = -0.5459 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1333 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               69    18 |    95   313  -218 |    77   215 |  0.64  0.14
-  intense          151    41 |   433   550  -117 |   220   197 |  0.01  0.36
-  interest         153    41 |   401   425   -23 |   239   240 |  0.18  0.21
-  aroused          136    37 |   354   347    +7 |   198   190 |  0.17  0.14
-  in                71    19 |    94   226  -132 |    79   226 |  0.65  0.93
-  the              143    38 |   211   244   -33 |   161   182 |  0.43  0.29
-  public           116    31 |   192   251   -59 |   156   232 |  0.47  0.36
-  by               122    33 |   147   236   -89 |   137   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     138    37 |   378   446   -68 |   277   247 |  0.20  0.07
-  in                79    21 |   104   398  -293 |    89   242 |  0.63  0.79
-  view             176    47 |   271   362   -91 |   197   252 |  0.38  0.36
-  of                83    22 |   108   236  -128 |    93   236 |  0.62  0.64
-  the               72    19 |    98   245  -147 |    81   200 |  0.64  0.71
-  worldwide        172    46 |   456   489   -32 |   288   230 |  0.12  0.07
-  notoriety        243    65 |   690   882  -192 |   407   231 |  0.22  0.29
-  which            114    31 |   212   371  -159 |   141   170 |  0.41  0.71
-
-
-[Epoch  29/50] 794.9s | lm_lr=1.25e-06 head_lr=3.13e-05
-  Train: loss=827.4 (trt=1517 ffd=733 gaze=942 skip=0.375) | 54,930 samples
-  Val:   loss=5156.7 | r_TRT=0.461  r_FFD=0.202  r_Gaze=0.380  r_skip=0.674
-  Val:   MAE_TRT=113.9ms  MAE_FFD=89.5ms
-  Pred:  mean_TRT=157ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2689
-  Learned parameters:
-    delta (L2/L1)            = 0.2689 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1107 (init=0.1)
-    l2_contribution (FFD)    = -0.5461 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1334 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    97   313  -216 |    78   215 |  0.63  0.14
-  intense          152    41 |   435   550  -115 |   221   197 |  0.00  0.36
-  interest         154    42 |   407   425   -17 |   242   240 |  0.17  0.21
-  aroused          136    37 |   357   347   +10 |   199   190 |  0.16  0.14
-  in                73    20 |    98   226  -128 |    82   226 |  0.64  0.93
-  the              143    39 |   213   244   -31 |   161   182 |  0.43  0.29
-  public           116    31 |   193   251   -58 |   156   232 |  0.47  0.36
-  by               122    33 |   148   236   -88 |   137   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    37 |   380   446   -66 |   280   247 |  0.20  0.07
-  in                81    22 |   108   398  -290 |    91   242 |  0.62  0.79
-  view             178    48 |   277   362   -84 |   200   252 |  0.37  0.36
-  of                84    23 |   111   236  -125 |    94   236 |  0.61  0.64
-  the               74    20 |   101   245  -144 |    83   200 |  0.63  0.71
-  worldwide        174    47 |   464   489   -25 |   292   230 |  0.12  0.07
-  notoriety        242    65 |   692   882  -190 |   406   231 |  0.22  0.29
-  which            114    31 |   213   371  -159 |   141   170 |  0.41  0.71
-
-
-[Epoch  30/50] 800.5s | lm_lr=1.25e-06 head_lr=3.13e-05
-  Train: loss=824.3 (trt=1512 ffd=731 gaze=938 skip=0.376) | 54,930 samples
-  Val:   loss=5090.0 | r_TRT=0.460  r_FFD=0.201  r_Gaze=0.379  r_skip=0.674
-  Val:   MAE_TRT=112.2ms  MAE_FFD=89.1ms
-  Pred:  mean_TRT=159ms (human=263ms) | L1=100+/-32ms  L2=27+/-9ms  delta=0.2690
-  Learned parameters:
-    delta (L2/L1)            = 0.2690 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1102 (init=0.1)
-    l2_contribution (FFD)    = -0.5460 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1328 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |   100   313  -213 |    79   215 |  0.62  0.14
-  intense          151    41 |   433   550  -117 |   219   197 |  0.00  0.36
-  interest         154    41 |   404   425   -20 |   240   240 |  0.17  0.21
-  aroused          136    36 |   355   347    +7 |   197   190 |  0.17  0.14
-  in                74    20 |   102   226  -124 |    83   226 |  0.63  0.93
-  the              143    39 |   214   244   -30 |   161   182 |  0.43  0.29
-  public           116    31 |   193   251   -57 |   156   232 |  0.46  0.36
-  by               122    33 |   150   236   -86 |   137   236 |  0.56  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     138    37 |   376   446   -70 |   276   247 |  0.20  0.07
-  in                82    22 |   112   398  -286 |    92   242 |  0.61  0.79
-  view             178    48 |   277   362   -84 |   199   252 |  0.37  0.36
-  of                85    23 |   114   236  -122 |    95   236 |  0.61  0.64
-  the               74    20 |   104   245  -141 |    83   200 |  0.62  0.71
-  worldwide        174    47 |   463   489   -26 |   291   230 |  0.12  0.07
-  notoriety        245    66 |   698   882  -184 |   410   231 |  0.22  0.29
-  which            114    31 |   212   371  -159 |   140   170 |  0.41  0.71
-
-
-[Epoch  31/50] 793.8s | lm_lr=1.25e-06 head_lr=3.13e-05
-  Train: loss=832.7 (trt=1530 ffd=737 gaze=947 skip=0.374) | 54,930 samples
-  Val:   loss=5233.8 | r_TRT=0.460  r_FFD=0.201  r_Gaze=0.379  r_skip=0.675
-  Val:   MAE_TRT=114.5ms  MAE_FFD=90.5ms
-  Pred:  mean_TRT=156ms (human=263ms) | L1=99+/-32ms  L2=27+/-9ms  delta=0.2689
-  Learned parameters:
-    delta (L2/L1)            = 0.2689 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1101 (init=0.1)
-    l2_contribution (FFD)    = -0.5462 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1331 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               69    19 |    97   313  -216 |    77   215 |  0.63  0.14
-  intense          150    40 |   430   550  -120 |   218   197 |  0.01  0.36
-  interest         152    41 |   398   425   -27 |   238   240 |  0.18  0.21
-  aroused          135    36 |   351   347    +3 |   196   190 |  0.17  0.14
-  in                72    19 |    98   226  -128 |    81   226 |  0.64  0.93
-  the              142    38 |   211   244   -33 |   160   182 |  0.43  0.29
-  public           115    31 |   190   251   -60 |   154   232 |  0.47  0.36
-  by               121    32 |   147   236   -89 |   136   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     137    37 |   372   446   -73 |   274   247 |  0.21  0.07
-  in                80    22 |   109   398  -289 |    90   242 |  0.62  0.79
-  view             176    47 |   273   362   -89 |   198   252 |  0.38  0.36
-  of                84    23 |   111   236  -125 |    94   236 |  0.61  0.64
-  the               73    20 |   101   245  -144 |    82   200 |  0.63  0.71
-  worldwide        173    46 |   457   489   -32 |   289   230 |  0.13  0.07
-  notoriety        247    66 |   695   882  -188 |   413   231 |  0.23  0.29
-  which            112    30 |   210   371  -161 |   139   170 |  0.41  0.71
-
-
-[Epoch  32/50] 826.8s | lm_lr=1.25e-06 head_lr=3.13e-05
-  Train: loss=831.8 (trt=1524 ffd=736 gaze=948 skip=0.374) | 54,930 samples
-  Val:   loss=5126.2 | r_TRT=0.460  r_FFD=0.202  r_Gaze=0.379  r_skip=0.674
-  Val:   MAE_TRT=112.6ms  MAE_FFD=89.2ms
-  Pred:  mean_TRT=158ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2690
-  Learned parameters:
-    delta (L2/L1)            = 0.2690 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1103 (init=0.1)
-    l2_contribution (FFD)    = -0.5458 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1321 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    99   313  -215 |    78   215 |  0.63  0.14
-  intense          150    40 |   431   550  -119 |   218   197 |  0.00  0.36
-  interest         153    41 |   403   425   -21 |   240   240 |  0.18  0.21
-  aroused          136    37 |   356   347    +9 |   198   190 |  0.16  0.14
-  in                72    19 |    97   226  -129 |    81   226 |  0.64  0.93
-  the              144    39 |   215   244   -30 |   161   182 |  0.42  0.29
-  public           117    31 |   195   251   -56 |   157   232 |  0.46  0.36
-  by               123    33 |   150   236   -86 |   138   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    37 |   379   446   -67 |   278   247 |  0.20  0.07
-  in                82    22 |   112   398  -286 |    92   242 |  0.61  0.79
-  view             176    47 |   276   362   -86 |   198   252 |  0.37  0.36
-  of                86    23 |   114   236  -122 |    97   236 |  0.61  0.64
-  the               74    20 |   103   245  -142 |    83   200 |  0.62  0.71
-  worldwide        174    47 |   461   489   -28 |   291   230 |  0.12  0.07
-  notoriety        249    67 |   701   882  -181 |   417   231 |  0.23  0.29
-  which            115    31 |   217   371  -155 |   141   170 |  0.40  0.71
-
-
-[Epoch  33/50] 796.4s | lm_lr=6.25e-07 head_lr=1.56e-05
-  Train: loss=829.9 (trt=1521 ffd=736 gaze=945 skip=0.375) | 54,930 samples
-  Val:   loss=5078.0 | r_TRT=0.460  r_FFD=0.201  r_Gaze=0.380  r_skip=0.674
-  Val:   MAE_TRT=111.8ms  MAE_FFD=89.1ms
-  Pred:  mean_TRT=160ms (human=263ms) | L1=101+/-33ms  L2=27+/-9ms  delta=0.2690
-  Learned parameters:
-    delta (L2/L1)            = 0.2690 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1108 (init=0.1)
-    l2_contribution (FFD)    = -0.5459 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1315 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               71    19 |   101   313  -212 |    80   215 |  0.62  0.14
-  intense          151    41 |   434   550  -116 |   220   197 |  0.00  0.36
-  interest         155    42 |   408   425   -16 |   243   240 |  0.18  0.21
-  aroused          137    37 |   360   347   +13 |   200   190 |  0.16  0.14
-  in                74    20 |   102   226  -124 |    83   226 |  0.63  0.93
-  the              144    39 |   215   244   -29 |   162   182 |  0.42  0.29
-  public           117    31 |   195   251   -56 |   157   232 |  0.46  0.36
-  by               122    33 |   150   236   -86 |   137   236 |  0.56  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    38 |   382   446   -64 |   280   247 |  0.20  0.07
-  in                82    22 |   114   398  -284 |    92   242 |  0.60  0.79
-  view             177    48 |   278   362   -84 |   199   252 |  0.37  0.36
-  of                86    23 |   116   236  -120 |    97   236 |  0.60  0.64
-  the               75    20 |   106   245  -139 |    84   200 |  0.61  0.71
-  worldwide        175    47 |   464   489   -25 |   293   230 |  0.12  0.07
-  notoriety        249    67 |   702   882  -181 |   417   231 |  0.23  0.29
-  which            114    31 |   217   371  -155 |   141   170 |  0.40  0.71
-
-
-[Epoch  34/50] 794.0s | lm_lr=6.25e-07 head_lr=1.56e-05
-  Train: loss=825.3 (trt=1513 ffd=731 gaze=940 skip=0.376) | 54,930 samples
-  Val:   loss=5148.2 | r_TRT=0.460  r_FFD=0.201  r_Gaze=0.379  r_skip=0.674
-  Val:   MAE_TRT=113.1ms  MAE_FFD=89.6ms
-  Pred:  mean_TRT=158ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2690
-  Learned parameters:
-    delta (L2/L1)            = 0.2690 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1103 (init=0.1)
-    l2_contribution (FFD)    = -0.5463 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1317 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    99   313  -214 |    79   215 |  0.62  0.14
-  intense          151    41 |   433   550  -117 |   220   197 |  0.00  0.36
-  interest         155    42 |   405   425   -20 |   242   240 |  0.18  0.21
-  aroused          136    37 |   356   347    +8 |   198   190 |  0.17  0.14
-  in                73    20 |   100   226  -126 |    82   226 |  0.63  0.93
-  the              144    39 |   214   244   -30 |   161   182 |  0.43  0.29
-  public           116    31 |   193   251   -58 |   156   232 |  0.47  0.36
-  by               122    33 |   149   236   -87 |   137   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    37 |   378   446   -68 |   279   247 |  0.20  0.07
-  in                81    22 |   112   398  -286 |    91   242 |  0.61  0.79
-  view             178    48 |   276   362   -85 |   200   252 |  0.37  0.36
-  of                86    23 |   114   236  -122 |    96   236 |  0.61  0.64
-  the               74    20 |   104   245  -141 |    83   200 |  0.62  0.71
-  worldwide        175    47 |   461   489   -28 |   293   230 |  0.13  0.07
-  notoriety        250    67 |   702   882  -180 |   418   231 |  0.23  0.29
-  which            114    31 |   214   371  -157 |   141   170 |  0.41  0.71
-
-
-[Epoch  35/50] 822.2s | lm_lr=6.25e-07 head_lr=1.56e-05
-  Train: loss=829.3 (trt=1520 ffd=736 gaze=944 skip=0.375) | 54,930 samples
-  Val:   loss=5136.3 | r_TRT=0.460  r_FFD=0.202  r_Gaze=0.379  r_skip=0.674
-  Val:   MAE_TRT=112.6ms  MAE_FFD=89.4ms
-  Pred:  mean_TRT=159ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2691
-  Learned parameters:
-    delta (L2/L1)            = 0.2691 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1103 (init=0.1)
-    l2_contribution (FFD)    = -0.5460 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1315 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    99   313  -214 |    79   215 |  0.63  0.14
-  intense          151    41 |   434   550  -116 |   220   197 |  0.00  0.36
-  interest         156    42 |   409   425   -16 |   243   240 |  0.18  0.21
-  aroused          137    37 |   359   347   +11 |   199   190 |  0.16  0.14
-  in                73    20 |   100   226  -126 |    81   226 |  0.63  0.93
-  the              145    39 |   217   244   -27 |   163   182 |  0.42  0.29
-  public           117    31 |   194   251   -57 |   157   232 |  0.46  0.36
-  by               122    33 |   150   236   -86 |   138   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    37 |   381   446   -65 |   279   247 |  0.20  0.07
-  in                81    22 |   112   398  -286 |    91   242 |  0.61  0.79
-  view             179    48 |   278   362   -83 |   201   252 |  0.37  0.36
-  of                86    23 |   114   236  -122 |    97   236 |  0.61  0.64
-  the               74    20 |   104   245  -141 |    83   200 |  0.62  0.71
-  worldwide        176    47 |   465   489   -24 |   294   230 |  0.12  0.07
-  notoriety        252    68 |   704   882  -178 |   423   231 |  0.24  0.29
-  which            114    31 |   216   371  -155 |   141   170 |  0.40  0.71
-
-
-[Epoch  36/50] 821.8s | lm_lr=6.25e-07 head_lr=1.56e-05
-  Train: loss=827.1 (trt=1515 ffd=733 gaze=942 skip=0.375) | 54,930 samples
-  Val:   loss=5117.4 | r_TRT=0.460  r_FFD=0.201  r_Gaze=0.379  r_skip=0.674
-  Val:   MAE_TRT=112.5ms  MAE_FFD=89.3ms
-  Pred:  mean_TRT=159ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2691
-  Learned parameters:
-    delta (L2/L1)            = 0.2691 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1102 (init=0.1)
-    l2_contribution (FFD)    = -0.5462 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1310 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    99   313  -214 |    78   215 |  0.63  0.14
-  intense          151    41 |   433   550  -117 |   219   197 |  0.00  0.36
-  interest         155    42 |   404   425   -21 |   242   240 |  0.18  0.21
-  aroused          137    37 |   357   347   +10 |   198   190 |  0.17  0.14
-  in                73    20 |   101   226  -125 |    82   226 |  0.63  0.93
-  the              144    39 |   216   244   -28 |   162   182 |  0.42  0.29
-  public           117    31 |   194   251   -57 |   157   232 |  0.46  0.36
-  by               122    33 |   150   236   -87 |   137   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    37 |   379   446   -67 |   279   247 |  0.20  0.07
-  in                81    22 |   111   398  -286 |    91   242 |  0.61  0.79
-  view             177    48 |   274   362   -88 |   199   252 |  0.38  0.36
-  of                86    23 |   114   236  -122 |    96   236 |  0.61  0.64
-  the               74    20 |   104   245  -141 |    83   200 |  0.62  0.71
-  worldwide        174    47 |   459   489   -30 |   292   230 |  0.13  0.07
-  notoriety        250    67 |   697   882  -185 |   419   231 |  0.24  0.29
-  which            114    31 |   216   371  -155 |   141   170 |  0.41  0.71
-
-
-[Epoch  37/50] 807.4s | lm_lr=6.25e-07 head_lr=1.56e-05
-  Train: loss=827.2 (trt=1514 ffd=734 gaze=943 skip=0.375) | 54,930 samples
-  Val:   loss=5186.4 | r_TRT=0.460  r_FFD=0.201  r_Gaze=0.380  r_skip=0.674
-  Val:   MAE_TRT=114.1ms  MAE_FFD=89.9ms
-  Pred:  mean_TRT=157ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2690
-  Learned parameters:
-    delta (L2/L1)            = 0.2690 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1100 (init=0.1)
-    l2_contribution (FFD)    = -0.5465 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1310 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               69    19 |    97   313  -216 |    78   215 |  0.63  0.14
-  intense          151    41 |   434   550  -116 |   220   197 |  0.00  0.36
-  interest         155    42 |   403   425   -21 |   242   240 |  0.19  0.21
-  aroused          136    37 |   355   347    +8 |   198   190 |  0.17  0.14
-  in                73    20 |    99   226  -127 |    82   226 |  0.63  0.93
-  the              144    39 |   214   244   -30 |   161   182 |  0.43  0.29
-  public           116    31 |   192   251   -59 |   156   232 |  0.47  0.36
-  by               121    33 |   148   236   -89 |   136   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    37 |   378   446   -68 |   278   247 |  0.20  0.07
-  in                80    22 |   109   398  -288 |    90   242 |  0.61  0.79
-  view             178    48 |   273   362   -88 |   199   252 |  0.38  0.36
-  of                85    23 |   112   236  -124 |    96   236 |  0.61  0.64
-  the               73    20 |   102   245  -143 |    82   200 |  0.62  0.71
-  worldwide        175    47 |   458   489   -31 |   292   230 |  0.13  0.07
-  notoriety        250    67 |   694   882  -188 |   418   231 |  0.24  0.29
-  which            113    30 |   213   371  -158 |   140   170 |  0.41  0.71
-
-
-[Epoch  38/50] 807.4s | lm_lr=6.25e-07 head_lr=1.56e-05
-  Train: loss=825.9 (trt=1510 ffd=733 gaze=942 skip=0.375) | 54,930 samples
-  Val:   loss=5139.5 | r_TRT=0.460  r_FFD=0.202  r_Gaze=0.379  r_skip=0.674
-  Val:   MAE_TRT=113.2ms  MAE_FFD=89.4ms
-  Pred:  mean_TRT=158ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2691
-  Learned parameters:
-    delta (L2/L1)            = 0.2691 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1096 (init=0.1)
-    l2_contribution (FFD)    = -0.5464 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1304 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    98   313  -215 |    78   215 |  0.63  0.14
-  intense          151    41 |   434   550  -117 |   220   197 |  0.00  0.36
-  interest         155    42 |   403   425   -21 |   242   240 |  0.19  0.21
-  aroused          136    37 |   355   347    +8 |   198   190 |  0.17  0.14
-  in                73    20 |    99   226  -127 |    82   226 |  0.63  0.93
-  the              144    39 |   215   244   -29 |   162   182 |  0.43  0.29
-  public           117    31 |   193   251   -58 |   157   232 |  0.47  0.36
-  by               122    33 |   149   236   -87 |   137   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    37 |   378   446   -67 |   279   247 |  0.20  0.07
-  in                80    22 |   110   398  -288 |    90   242 |  0.61  0.79
-  view             178    48 |   273   362   -88 |   200   252 |  0.38  0.36
-  of                86    23 |   113   236  -123 |    96   236 |  0.61  0.64
-  the               74    20 |   102   245  -143 |    83   200 |  0.62  0.71
-  worldwide        175    47 |   457   489   -32 |   292   230 |  0.13  0.07
-  notoriety        249    67 |   686   882  -196 |   415   231 |  0.25  0.29
-  which            114    31 |   215   371  -157 |   141   170 |  0.41  0.71
-
-
-[Epoch  39/50] 799.2s | lm_lr=3.13e-07 head_lr=7.81e-06
-  Train: loss=824.7 (trt=1509 ffd=732 gaze=940 skip=0.376) | 54,930 samples
-  Val:   loss=5187.7 | r_TRT=0.460  r_FFD=0.202  r_Gaze=0.380  r_skip=0.674
-  Val:   MAE_TRT=114.1ms  MAE_FFD=89.8ms
-  Pred:  mean_TRT=157ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2691
-  Learned parameters:
-    delta (L2/L1)            = 0.2691 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1096 (init=0.1)
-    l2_contribution (FFD)    = -0.5468 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1308 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    98   313  -215 |    79   215 |  0.63  0.14
-  intense          151    41 |   433   550  -117 |   220   197 |  0.01  0.36
-  interest         155    42 |   404   425   -20 |   242   240 |  0.18  0.21
-  aroused          136    37 |   354   347    +6 |   198   190 |  0.17  0.14
-  in                72    19 |    99   226  -127 |    81   226 |  0.64  0.93
-  the              144    39 |   214   244   -30 |   162   182 |  0.43  0.29
-  public           117    31 |   192   251   -59 |   156   232 |  0.47  0.36
-  by               122    33 |   148   236   -88 |   137   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    37 |   378   446   -67 |   278   247 |  0.20  0.07
-  in                80    22 |   109   398  -288 |    90   242 |  0.61  0.79
-  view             178    48 |   276   362   -86 |   200   252 |  0.38  0.36
-  of                85    23 |   112   236  -124 |    96   236 |  0.61  0.64
-  the               74    20 |   102   245  -143 |    83   200 |  0.62  0.71
-  worldwide        175    47 |   459   489   -29 |   293   230 |  0.13  0.07
-  notoriety        248    67 |   691   882  -191 |   415   231 |  0.24  0.29
-  which            114    31 |   213   371  -158 |   140   170 |  0.41  0.71
-
-
-[Epoch  40/50] 794.1s | lm_lr=3.13e-07 head_lr=7.81e-06
-  Train: loss=827.0 (trt=1512 ffd=734 gaze=943 skip=0.375) | 54,930 samples
-  Val:   loss=5174.7 | r_TRT=0.460  r_FFD=0.201  r_Gaze=0.379  r_skip=0.674
-  Val:   MAE_TRT=113.8ms  MAE_FFD=89.8ms
-  Pred:  mean_TRT=157ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2691
-  Learned parameters:
-    delta (L2/L1)            = 0.2691 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1098 (init=0.1)
-    l2_contribution (FFD)    = -0.5468 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1308 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    98   313  -215 |    78   215 |  0.63  0.14
-  intense          151    41 |   433   550  -117 |   220   197 |  0.01  0.36
-  interest         155    42 |   403   425   -22 |   242   240 |  0.19  0.21
-  aroused          136    37 |   353   347    +5 |   197   190 |  0.18  0.14
-  in                72    19 |    99   226  -127 |    81   226 |  0.63  0.93
-  the              144    39 |   213   244   -31 |   161   182 |  0.43  0.29
-  public           116    31 |   192   251   -59 |   156   232 |  0.47  0.36
-  by               121    33 |   148   236   -88 |   136   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    37 |   377   446   -68 |   278   247 |  0.20  0.07
-  in                80    21 |   110   398  -288 |    90   242 |  0.61  0.79
-  view             179    48 |   274   362   -87 |   200   252 |  0.38  0.36
-  of                85    23 |   113   236  -123 |    96   236 |  0.61  0.64
-  the               73    20 |   102   245  -142 |    82   200 |  0.62  0.71
-  worldwide        176    47 |   458   489   -31 |   294   230 |  0.14  0.07
-  notoriety        250    67 |   688   882  -194 |   417   231 |  0.25  0.29
-  which            113    31 |   213   371  -158 |   140   170 |  0.41  0.71
-
-
-[Epoch  41/50] 749.6s | lm_lr=3.13e-07 head_lr=7.81e-06
-  Train: loss=829.9 (trt=1521 ffd=736 gaze=945 skip=0.374) | 54,930 samples
-  Val:   loss=5172.0 | r_TRT=0.460  r_FFD=0.202  r_Gaze=0.379  r_skip=0.673
-  Val:   MAE_TRT=113.7ms  MAE_FFD=89.8ms
-  Pred:  mean_TRT=157ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2691
-  Learned parameters:
-    delta (L2/L1)            = 0.2691 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1096 (init=0.1)
-    l2_contribution (FFD)    = -0.5468 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1308 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    99   313  -215 |    79   215 |  0.63  0.14
-  intense          150    40 |   431   550  -119 |   218   197 |  0.01  0.36
-  interest         154    41 |   400   425   -24 |   241   240 |  0.19  0.21
-  aroused          135    36 |   350   347    +3 |   196   190 |  0.17  0.14
-  in                72    19 |    99   226  -127 |    81   226 |  0.63  0.93
-  the              143    39 |   213   244   -31 |   161   182 |  0.43  0.29
-  public           116    31 |   192   251   -58 |   156   232 |  0.47  0.36
-  by               121    33 |   148   236   -88 |   136   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     138    37 |   377   446   -69 |   277   247 |  0.20  0.07
-  in                80    22 |   110   398  -287 |    90   242 |  0.61  0.79
-  view             177    48 |   273   362   -88 |   199   252 |  0.38  0.36
-  of                86    23 |   113   236  -123 |    96   236 |  0.61  0.64
-  the               74    20 |   103   245  -142 |    83   200 |  0.62  0.71
-  worldwide        175    47 |   456   489   -33 |   292   230 |  0.14  0.07
-  notoriety        249    67 |   684   882  -198 |   416   231 |  0.25  0.29
-  which            113    30 |   213   371  -158 |   140   170 |  0.41  0.71
-
-
-[Epoch  42/50] 669.0s | lm_lr=3.13e-07 head_lr=7.81e-06
-  Train: loss=828.9 (trt=1514 ffd=735 gaze=946 skip=0.374) | 54,930 samples
-  Val:   loss=5148.1 | r_TRT=0.460  r_FFD=0.201  r_Gaze=0.379  r_skip=0.674
-  Val:   MAE_TRT=113.3ms  MAE_FFD=89.6ms
-  Pred:  mean_TRT=157ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2691
-  Learned parameters:
-    delta (L2/L1)            = 0.2691 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1097 (init=0.1)
-    l2_contribution (FFD)    = -0.5468 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1306 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    99   313  -215 |    79   215 |  0.63  0.14
-  intense          151    41 |   432   550  -118 |   219   197 |  0.01  0.36
-  interest         154    42 |   402   425   -23 |   241   240 |  0.18  0.21
-  aroused          135    36 |   352   347    +5 |   196   190 |  0.17  0.14
-  in                72    19 |    99   226  -127 |    81   226 |  0.63  0.93
-  the              143    39 |   214   244   -30 |   161   182 |  0.43  0.29
-  public           117    31 |   193   251   -58 |   157   232 |  0.47  0.36
-  by               122    33 |   149   236   -88 |   137   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    37 |   378   446   -68 |   278   247 |  0.20  0.07
-  in                80    22 |   110   398  -287 |    90   242 |  0.61  0.79
-  view             178    48 |   274   362   -87 |   200   252 |  0.38  0.36
-  of                86    23 |   113   236  -123 |    96   236 |  0.61  0.64
-  the               74    20 |   103   245  -142 |    83   200 |  0.62  0.71
-  worldwide        175    47 |   458   489   -30 |   293   230 |  0.13  0.07
-  notoriety        250    67 |   688   882  -194 |   417   231 |  0.25  0.29
-  which            113    31 |   214   371  -157 |   140   170 |  0.41  0.71
-
-
-[Epoch  43/50] 611.5s | lm_lr=3.13e-07 head_lr=7.81e-06
-  Train: loss=828.6 (trt=1519 ffd=734 gaze=944 skip=0.374) | 54,930 samples
-  Val:   loss=5153.8 | r_TRT=0.460  r_FFD=0.201  r_Gaze=0.380  r_skip=0.674
-  Val:   MAE_TRT=113.5ms  MAE_FFD=89.6ms
-  Pred:  mean_TRT=157ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2691
-  Learned parameters:
-    delta (L2/L1)            = 0.2691 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1099 (init=0.1)
-    l2_contribution (FFD)    = -0.5471 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1301 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    98   313  -215 |    78   215 |  0.63  0.14
-  intense          152    41 |   435   550  -115 |   221   197 |  0.00  0.36
-  interest         155    42 |   406   425   -18 |   243   240 |  0.18  0.21
-  aroused          136    37 |   356   347    +8 |   198   190 |  0.17  0.14
-  in                72    19 |    99   226  -127 |    81   226 |  0.63  0.93
-  the              144    39 |   214   244   -30 |   161   182 |  0.43  0.29
-  public           117    31 |   192   251   -58 |   157   232 |  0.47  0.36
-  by               121    33 |   148   236   -88 |   136   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     140    38 |   381   446   -65 |   279   247 |  0.20  0.07
-  in                80    21 |   110   398  -288 |    90   242 |  0.61  0.79
-  view             179    48 |   274   362   -87 |   201   252 |  0.38  0.36
-  of                86    23 |   113   236  -123 |    96   236 |  0.61  0.64
-  the               74    20 |   102   245  -142 |    83   200 |  0.62  0.71
-  worldwide        176    47 |   461   489   -28 |   294   230 |  0.13  0.07
-  notoriety        250    67 |   687   882  -195 |   418   231 |  0.25  0.29
-  which            113    31 |   214   371  -158 |   140   170 |  0.41  0.71
-
-
-[Epoch  44/50] 552.7s | lm_lr=3.13e-07 head_lr=7.81e-06
-  Train: loss=828.9 (trt=1518 ffd=735 gaze=945 skip=0.375) | 54,930 samples
-  Val:   loss=5151.6 | r_TRT=0.460  r_FFD=0.201  r_Gaze=0.380  r_skip=0.674
-  Val:   MAE_TRT=113.3ms  MAE_FFD=89.6ms
-  Pred:  mean_TRT=158ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2692
-  Learned parameters:
-    delta (L2/L1)            = 0.2692 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1096 (init=0.1)
-    l2_contribution (FFD)    = -0.5474 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1300 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    98   313  -215 |    79   215 |  0.63  0.14
-  intense          152    41 |   434   550  -116 |   220   197 |  0.00  0.36
-  interest         155    42 |   406   425   -19 |   242   240 |  0.18  0.21
-  aroused          136    37 |   355   347    +8 |   197   190 |  0.17  0.14
-  in                72    20 |    99   226  -127 |    81   226 |  0.63  0.93
-  the              144    39 |   214   244   -30 |   161   182 |  0.43  0.29
-  public           117    31 |   193   251   -58 |   156   232 |  0.47  0.36
-  by               121    33 |   149   236   -88 |   136   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    37 |   380   446   -66 |   278   247 |  0.20  0.07
-  in                80    22 |   110   398  -287 |    90   242 |  0.61  0.79
-  view             178    48 |   275   362   -87 |   200   252 |  0.38  0.36
-  of                86    23 |   113   236  -123 |    96   236 |  0.61  0.64
-  the               74    20 |   103   245  -142 |    83   200 |  0.62  0.71
-  worldwide        175    47 |   461   489   -28 |   293   230 |  0.13  0.07
-  notoriety        250    67 |   690   882  -192 |   418   231 |  0.25  0.29
-  which            113    30 |   214   371  -158 |   139   170 |  0.41  0.71
-
-
-[Epoch  45/50] 452.0s | lm_lr=1.56e-07 head_lr=3.91e-06
-  Train: loss=827.6 (trt=1513 ffd=735 gaze=944 skip=0.375) | 54,930 samples
-  Val:   loss=5134.1 | r_TRT=0.460  r_FFD=0.201  r_Gaze=0.379  r_skip=0.674
-  Val:   MAE_TRT=113.0ms  MAE_FFD=89.5ms
-  Pred:  mean_TRT=158ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2692
-  Learned parameters:
-    delta (L2/L1)            = 0.2692 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1095 (init=0.1)
-    l2_contribution (FFD)    = -0.5472 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1300 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    99   313  -214 |    79   215 |  0.63  0.14
-  intense          151    41 |   434   550  -116 |   220   197 |  0.00  0.36
-  interest         155    42 |   406   425   -18 |   242   240 |  0.18  0.21
-  aroused          136    37 |   356   347    +9 |   197   190 |  0.17  0.14
-  in                73    20 |   100   226  -126 |    82   226 |  0.63  0.93
-  the              144    39 |   215   244   -29 |   162   182 |  0.43  0.29
-  public           117    31 |   193   251   -58 |   156   232 |  0.47  0.36
-  by               122    33 |   149   236   -87 |   137   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    37 |   381   446   -65 |   278   247 |  0.20  0.07
-  in                80    22 |   111   398  -287 |    90   242 |  0.61  0.79
-  view             178    48 |   275   362   -86 |   200   252 |  0.38  0.36
-  of                86    23 |   113   236  -123 |    97   236 |  0.61  0.64
-  the               74    20 |   103   245  -142 |    83   200 |  0.62  0.71
-  worldwide        176    47 |   462   489   -27 |   293   230 |  0.13  0.07
-  notoriety        251    68 |   695   882  -187 |   420   231 |  0.24  0.29
-  which            113    31 |   214   371  -157 |   140   170 |  0.41  0.71
-
-
-[Epoch  46/50] 396.5s | lm_lr=1.56e-07 head_lr=3.91e-06
-  Train: loss=826.1 (trt=1510 ffd=733 gaze=943 skip=0.375) | 54,930 samples
-  Val:   loss=5106.4 | r_TRT=0.460  r_FFD=0.201  r_Gaze=0.379  r_skip=0.674
-  Val:   MAE_TRT=112.6ms  MAE_FFD=89.1ms
-  Pred:  mean_TRT=159ms (human=263ms) | L1=101+/-33ms  L2=27+/-9ms  delta=0.2692
-  Learned parameters:
-    delta (L2/L1)            = 0.2692 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1097 (init=0.1)
-    l2_contribution (FFD)    = -0.5471 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1298 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    99   313  -214 |    79   215 |  0.63  0.14
-  intense          153    41 |   437   550  -113 |   222   197 |  0.00  0.36
-  interest         156    42 |   410   425   -15 |   244   240 |  0.18  0.21
-  aroused          137    37 |   359   347   +11 |   199   190 |  0.17  0.14
-  in                73    20 |   100   226  -126 |    82   226 |  0.63  0.93
-  the              145    39 |   216   244   -28 |   163   182 |  0.42  0.29
-  public           117    32 |   194   251   -57 |   157   232 |  0.47  0.36
-  by               122    33 |   150   236   -87 |   137   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     140    38 |   383   446   -63 |   280   247 |  0.20  0.07
-  in                80    22 |   111   398  -287 |    90   242 |  0.61  0.79
-  view             179    48 |   277   362   -85 |   201   252 |  0.38  0.36
-  of                86    23 |   114   236  -122 |    97   236 |  0.61  0.64
-  the               74    20 |   103   245  -142 |    83   200 |  0.62  0.71
-  worldwide        177    48 |   465   489   -24 |   296   230 |  0.13  0.07
-  notoriety        252    68 |   699   882  -183 |   422   231 |  0.24  0.29
-  which            114    31 |   216   371  -156 |   140   170 |  0.41  0.71
-
-
-[Epoch  47/50] 420.4s | lm_lr=1.56e-07 head_lr=3.91e-06
-  Train: loss=831.7 (trt=1524 ffd=737 gaze=947 skip=0.373) | 54,930 samples
-  Val:   loss=5133.9 | r_TRT=0.460  r_FFD=0.202  r_Gaze=0.379  r_skip=0.673
-  Val:   MAE_TRT=113.1ms  MAE_FFD=89.4ms
-  Pred:  mean_TRT=158ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2692
-  Learned parameters:
-    delta (L2/L1)            = 0.2692 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1096 (init=0.1)
-    l2_contribution (FFD)    = -0.5472 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1298 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    99   313  -214 |    79   215 |  0.63  0.14
-  intense          152    41 |   435   550  -115 |   221   197 |  0.00  0.36
-  interest         156    42 |   407   425   -18 |   243   240 |  0.18  0.21
-  aroused          136    37 |   357   347    +9 |   198   190 |  0.17  0.14
-  in                73    20 |   100   226  -126 |    82   226 |  0.63  0.93
-  the              144    39 |   214   244   -30 |   162   182 |  0.43  0.29
-  public           117    31 |   193   251   -58 |   157   232 |  0.47  0.36
-  by               122    33 |   149   236   -87 |   137   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    37 |   381   446   -65 |   278   247 |  0.20  0.07
-  in                80    22 |   111   398  -287 |    90   242 |  0.61  0.79
-  view             179    48 |   275   362   -87 |   201   252 |  0.38  0.36
-  of                86    23 |   113   236  -123 |    97   236 |  0.61  0.64
-  the               74    20 |   103   245  -142 |    83   200 |  0.62  0.71
-  worldwide        176    47 |   462   489   -27 |   294   230 |  0.13  0.07
-  notoriety        252    68 |   695   882  -187 |   420   231 |  0.24  0.29
-  which            114    31 |   214   371  -157 |   140   170 |  0.41  0.71
-
-
-[Epoch  48/50] 423.7s | lm_lr=1.56e-07 head_lr=3.91e-06
-  Train: loss=830.3 (trt=1524 ffd=735 gaze=945 skip=0.374) | 54,930 samples
-  Val:   loss=5135.0 | r_TRT=0.460  r_FFD=0.202  r_Gaze=0.379  r_skip=0.673
-  Val:   MAE_TRT=113.0ms  MAE_FFD=89.4ms
-  Pred:  mean_TRT=158ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2692
-  Learned parameters:
-    delta (L2/L1)            = 0.2692 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1095 (init=0.1)
-    l2_contribution (FFD)    = -0.5472 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1297 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    98   313  -215 |    79   215 |  0.63  0.14
-  intense          152    41 |   435   550  -115 |   220   197 |  0.00  0.36
-  interest         155    42 |   407   425   -18 |   243   240 |  0.18  0.21
-  aroused          136    37 |   356   347    +9 |   198   190 |  0.17  0.14
-  in                73    20 |   100   226  -126 |    81   226 |  0.63  0.93
-  the              144    39 |   215   244   -29 |   162   182 |  0.43  0.29
-  public           117    32 |   193   251   -57 |   157   232 |  0.47  0.36
-  by               122    33 |   149   236   -87 |   137   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    37 |   380   446   -65 |   278   247 |  0.20  0.07
-  in                80    22 |   111   398  -287 |    90   242 |  0.61  0.79
-  view             178    48 |   275   362   -87 |   200   252 |  0.38  0.36
-  of                86    23 |   113   236  -123 |    97   236 |  0.61  0.64
-  the               74    20 |   103   245  -142 |    83   200 |  0.62  0.71
-  worldwide        176    47 |   462   489   -27 |   294   230 |  0.13  0.07
-  notoriety        252    68 |   694   882  -188 |   420   231 |  0.24  0.29
-  which            114    31 |   215   371  -157 |   140   170 |  0.41  0.71
-
-
-[Epoch  49/50] 424.8s | lm_lr=1.56e-07 head_lr=3.91e-06
-  Train: loss=825.4 (trt=1511 ffd=733 gaze=941 skip=0.375) | 54,930 samples
-  Val:   loss=5138.2 | r_TRT=0.460  r_FFD=0.201  r_Gaze=0.379  r_skip=0.673
-  Val:   MAE_TRT=113.2ms  MAE_FFD=89.4ms
-  Pred:  mean_TRT=158ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2692
-  Learned parameters:
-    delta (L2/L1)            = 0.2692 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1095 (init=0.1)
-    l2_contribution (FFD)    = -0.5473 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1297 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    98   313  -215 |    79   215 |  0.63  0.14
-  intense          152    41 |   436   550  -114 |   221   197 |  0.00  0.36
-  interest         156    42 |   407   425   -17 |   243   240 |  0.18  0.21
-  aroused          136    37 |   357   347    +9 |   198   190 |  0.17  0.14
-  in                72    20 |   100   226  -126 |    81   226 |  0.63  0.93
-  the              144    39 |   215   244   -30 |   162   182 |  0.43  0.29
-  public           117    32 |   193   251   -58 |   157   232 |  0.47  0.36
-  by               122    33 |   149   236   -87 |   137   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    38 |   380   446   -65 |   279   247 |  0.20  0.07
-  in                80    22 |   110   398  -287 |    90   242 |  0.61  0.79
-  view             179    48 |   275   362   -87 |   200   252 |  0.38  0.36
-  of                86    23 |   113   236  -123 |    97   236 |  0.61  0.64
-  the               74    20 |   103   245  -142 |    83   200 |  0.62  0.71
-  worldwide        176    47 |   462   489   -27 |   294   230 |  0.13  0.07
-  notoriety        251    68 |   694   882  -188 |   420   231 |  0.24  0.29
-  which            114    31 |   214   371  -157 |   140   170 |  0.41  0.71
-
-
-[Epoch  50/50] 426.4s | lm_lr=1.56e-07 head_lr=3.91e-06
-  Train: loss=826.6 (trt=1514 ffd=733 gaze=942 skip=0.375) | 54,930 samples
-  Val:   loss=5118.1 | r_TRT=0.460  r_FFD=0.201  r_Gaze=0.379  r_skip=0.673
-  Val:   MAE_TRT=112.7ms  MAE_FFD=89.3ms
-  Pred:  mean_TRT=158ms (human=263ms) | L1=100+/-33ms  L2=27+/-9ms  delta=0.2692
-  Learned parameters:
-    delta (L2/L1)            = 0.2692 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1095 (init=0.1)
-    l2_contribution (FFD)    = -0.5472 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1295 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-  Sentence 1: "The intense interest aroused in the..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  The               70    19 |    99   313  -214 |    79   215 |  0.63  0.14
-  intense          152    41 |   436   550  -114 |   221   197 |  0.00  0.36
-  interest         156    42 |   408   425   -17 |   243   240 |  0.18  0.21
-  aroused          136    37 |   357   347   +10 |   198   190 |  0.17  0.14
-  in                73    20 |   100   226  -126 |    82   226 |  0.63  0.93
-  the              144    39 |   215   244   -29 |   162   182 |  0.43  0.29
-  public           117    32 |   193   251   -57 |   157   232 |  0.47  0.36
-  by               122    33 |   150   236   -87 |   137   236 |  0.57  0.50
-
-  Sentence 2: "Nevertheless in view of the worldwide..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Nevertheless     139    38 |   381   446   -65 |   279   247 |  0.20  0.07
-  in                80    22 |   111   398  -287 |    90   242 |  0.61  0.79
-  view             179    48 |   275   362   -86 |   200   252 |  0.38  0.36
-  of                86    23 |   113   236  -123 |    97   236 |  0.61  0.64
-  the               74    20 |   103   245  -142 |    83   200 |  0.62  0.71
-  worldwide        176    47 |   463   489   -26 |   294   230 |  0.13  0.07
-  notoriety        251    68 |   695   882  -187 |   420   231 |  0.24  0.29
-  which            114    31 |   215   371  -156 |   140   170 |  0.41  0.71
-
-
-==========================================================================================
-Training complete! Best val r_TRT = 0.466
-Final delta = 0.2692
-==========================================================================================
-
-Test: r_TRT=0.459  r_FFD=0.199  r_Gaze=0.390  r_skip=0.680
-  MAE_TRT=113.0ms  MAE_FFD=89.5ms
-
-Sample test predictions:
-  Sentence 1: "I will therefore briefly set down..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  I                 40    11 |    51   184  -132 |    45   184 |  0.77  0.86
-  will             128    34 |   183   233   -50 |   144   117 |  0.47  0.64
-  therefore        117    32 |   253   301   -47 |   196   225 |  0.37  0.14
-  briefly          116    31 |   258   421  -163 |   168   231 |  0.32  0.50
-  set              101    27 |   144   276  -132 |   113   199 |  0.54  0.50
-  down             146    39 |   205   249   -44 |   164   194 |  0.47  0.36
-  the               73    20 |   106   161   -55 |    82   161 |  0.61  0.64
-  circumstances    117    32 |   338   261   +76 |   247   208 |  0.24  0.00
-  which             84    23 |   143   303  -160 |   103   284 |  0.52  0.43
-  led               79    21 |   118   208   -90 |    89   208 |  0.58  0.64
-
-  Sentence 2: "I had been invalided home from..."
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  I                 40    11 |    51   267  -216 |    45   207 |  0.77  0.43
-  had              100    27 |   146   274  -128 |   113   224 |  0.52  0.29
-  been             108    29 |   155   301  -145 |   122   219 |  0.52  0.21
-  invalided        150    41 |   394  1063  -669 |   251   217 |  0.17  0.00
-  home             104    28 |   159   571  -411 |   116   271 |  0.50  0.29
-  from              90    24 |   113   435  -322 |   101   224 |  0.62  0.14
-  the               70    19 |    91   196  -105 |    78   129 |  0.66  0.79
-  Front            111    30 |   156   307  -151 |   137   256 |  0.53  0.00
-  and               62    17 |    76   272  -195 |    69   164 |  0.70  0.36
-  after            130    35 |   199   223   -24 |   160   223 |  0.45  0.36
-
-  Sentence 3: "Oh yes"
-  word              L1    L2 |  pTRT  hTRT   err |  pFFD  hFFD | pSkip hSkip
-  --------------------------------------------------------------------------------
-  Oh                86    23 |   116   235  -119 |    97   235 |  0.59  0.64
-  yes              144    39 |   208   232   -25 |   161   204 |  0.45  0.14
-
-
-Final parameters:
-  Learned parameters:
-    delta (L2/L1)            = 0.2692 (init=0.34, literature=0.20-0.85)
-    saccade_programming      = 125.2ms (init=125)
-    saccade_finishing         = 25.2ms (init=25)
-    time_attention_shift      = 25.2ms (init=25)
-    eccentricity             = 0.1095 (init=0.1)
-    l2_contribution (FFD)    = -0.5472 (init=0.3)
-    integration_threshold    = 51.1ms (init=50)
-    integration_sharpness    = 0.1295 (init=0.1)
-    l1_scale                 = 50.1 (init=50)
-
-Sim params saved in checkpoint: {'saccade_programming': 125.21694946289062, 'saccade_finishing': 25.216978073120117, 'time_attention_shift': 25.216978073120117, 'eccentricity': 0.10949241369962692, 'integration_threshold': 51.12308883666992, 'integration_sharpness': 0.12954850494861603, 'delta': 0.2692224383354187}

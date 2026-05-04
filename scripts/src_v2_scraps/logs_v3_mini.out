@@ -1,590 +1,0 @@
-nohup: ignoring input
-Device: cuda
-Loading Provo scanpaths...
-  Total scanpaths: 11,236
-  Split: train=7,770  val=1,407  test=2,059
-  Fixations per scanpath: mean=10.9, max=41
-
-Loading model: prajjwal1/bert-mini
-Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]Loading weights:   1%|▏         | 1/71 [00:00<00:00, 20661.60it/s, Materializing param=embeddings.LayerNorm.bias]Loading weights:   1%|▏         | 1/71 [00:00<00:00, 8830.11it/s, Materializing param=embeddings.LayerNorm.bias] Loading weights:   3%|▎         | 2/71 [00:00<00:00, 8322.03it/s, Materializing param=embeddings.LayerNorm.weight]Loading weights:   3%|▎         | 2/71 [00:00<00:00, 6870.28it/s, Materializing param=embeddings.LayerNorm.weight]Loading weights:   4%|▍         | 3/71 [00:00<00:00, 7879.09it/s, Materializing param=embeddings.position_embeddings.weight]Loading weights:   4%|▍         | 3/71 [00:00<00:00, 7029.56it/s, Materializing param=embeddings.position_embeddings.weight]Loading weights:   6%|▌         | 4/71 [00:00<00:00, 7717.21it/s, Materializing param=embeddings.token_type_embeddings.weight]Loading weights:   6%|▌         | 4/71 [00:00<00:00, 6845.05it/s, Materializing param=embeddings.token_type_embeddings.weight]Loading weights:   7%|▋         | 5/71 [00:00<00:00, 7394.75it/s, Materializing param=embeddings.word_embeddings.weight]      Loading weights:   7%|▋         | 5/71 [00:00<00:00, 6939.62it/s, Materializing param=embeddings.word_embeddings.weight]Loading weights:   8%|▊         | 6/71 [00:00<00:00, 7507.70it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.bias]Loading weights:   8%|▊         | 6/71 [00:00<00:00, 7102.97it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.bias]Loading weights:  10%|▉         | 7/71 [00:00<00:00, 7557.30it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.weight]Loading weights:  10%|▉         | 7/71 [00:00<00:00, 7260.17it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.weight]Loading weights:  11%|█▏        | 8/71 [00:00<00:00, 7688.92it/s, Materializing param=encoder.layer.0.attention.output.dense.bias]      Loading weights:  11%|█▏        | 8/71 [00:00<00:00, 7418.62it/s, Materializing param=encoder.layer.0.attention.output.dense.bias]Loading weights:  13%|█▎        | 9/71 [00:00<00:00, 7765.63it/s, Materializing param=encoder.layer.0.attention.output.dense.weight]Loading weights:  13%|█▎        | 9/71 [00:00<00:00, 7513.68it/s, Materializing param=encoder.layer.0.attention.output.dense.weight]Loading weights:  14%|█▍        | 10/71 [00:00<00:00, 7850.09it/s, Materializing param=encoder.layer.0.attention.self.key.bias]     Loading weights:  14%|█▍        | 10/71 [00:00<00:00, 7624.62it/s, Materializing param=encoder.layer.0.attention.self.key.bias]Loading weights:  15%|█▌        | 11/71 [00:00<00:00, 7936.92it/s, Materializing param=encoder.layer.0.attention.self.key.weight]Loading weights:  15%|█▌        | 11/71 [00:00<00:00, 7729.49it/s, Materializing param=encoder.layer.0.attention.self.key.weight]Loading weights:  17%|█▋        | 12/71 [00:00<00:00, 8020.98it/s, Materializing param=encoder.layer.0.attention.self.query.bias]Loading weights:  17%|█▋        | 12/71 [00:00<00:00, 7827.63it/s, Materializing param=encoder.layer.0.attention.self.query.bias]Loading weights:  18%|█▊        | 13/71 [00:00<00:00, 8093.51it/s, Materializing param=encoder.layer.0.attention.self.query.weight]Loading weights:  18%|█▊        | 13/71 [00:00<00:00, 7911.48it/s, Materializing param=encoder.layer.0.attention.self.query.weight]Loading weights:  20%|█▉        | 14/71 [00:00<00:00, 8161.26it/s, Materializing param=encoder.layer.0.attention.self.value.bias]  Loading weights:  20%|█▉        | 14/71 [00:00<00:00, 7992.41it/s, Materializing param=encoder.layer.0.attention.self.value.bias]Loading weights:  21%|██        | 15/71 [00:00<00:00, 8232.73it/s, Materializing param=encoder.layer.0.attention.self.value.weight]Loading weights:  21%|██        | 15/71 [00:00<00:00, 8067.00it/s, Materializing param=encoder.layer.0.attention.self.value.weight]Loading weights:  23%|██▎       | 16/71 [00:00<00:00, 8254.47it/s, Materializing param=encoder.layer.0.intermediate.dense.bias]    Loading weights:  23%|██▎       | 16/71 [00:00<00:00, 8096.14it/s, Materializing param=encoder.layer.0.intermediate.dense.bias]Loading weights:  24%|██▍       | 17/71 [00:00<00:00, 8261.29it/s, Materializing param=encoder.layer.0.intermediate.dense.weight]Loading weights:  24%|██▍       | 17/71 [00:00<00:00, 8101.71it/s, Materializing param=encoder.layer.0.intermediate.dense.weight]Loading weights:  25%|██▌       | 18/71 [00:00<00:00, 8296.43it/s, Materializing param=encoder.layer.0.output.LayerNorm.bias]    Loading weights:  25%|██▌       | 18/71 [00:00<00:00, 8166.30it/s, Materializing param=encoder.layer.0.output.LayerNorm.bias]Loading weights:  27%|██▋       | 19/71 [00:00<00:00, 8364.83it/s, Materializing param=encoder.layer.0.output.LayerNorm.weight]Loading weights:  27%|██▋       | 19/71 [00:00<00:00, 8233.47it/s, Materializing param=encoder.layer.0.output.LayerNorm.weight]Loading weights:  28%|██▊       | 20/71 [00:00<00:00, 8424.83it/s, Materializing param=encoder.layer.0.output.dense.bias]      Loading weights:  28%|██▊       | 20/71 [00:00<00:00, 8303.91it/s, Materializing param=encoder.layer.0.output.dense.bias]Loading weights:  30%|██▉       | 21/71 [00:00<00:00, 8482.32it/s, Materializing param=encoder.layer.0.output.dense.weight]Loading weights:  30%|██▉       | 21/71 [00:00<00:00, 8363.12it/s, Materializing param=encoder.layer.0.output.dense.weight]Loading weights:  31%|███       | 22/71 [00:00<00:00, 8534.47it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.bias]Loading weights:  31%|███       | 22/71 [00:00<00:00, 8417.69it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.bias]Loading weights:  32%|███▏      | 23/71 [00:00<00:00, 8570.45it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.weight]Loading weights:  32%|███▏      | 23/71 [00:00<00:00, 8457.74it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.weight]Loading weights:  34%|███▍      | 24/71 [00:00<00:00, 8608.11it/s, Materializing param=encoder.layer.1.attention.output.dense.bias]      Loading weights:  34%|███▍      | 24/71 [00:00<00:00, 8499.10it/s, Materializing param=encoder.layer.1.attention.output.dense.bias]Loading weights:  35%|███▌      | 25/71 [00:00<00:00, 8638.79it/s, Materializing param=encoder.layer.1.attention.output.dense.weight]Loading weights:  35%|███▌      | 25/71 [00:00<00:00, 8535.42it/s, Materializing param=encoder.layer.1.attention.output.dense.weight]Loading weights:  37%|███▋      | 26/71 [00:00<00:00, 8675.57it/s, Materializing param=encoder.layer.1.attention.self.key.bias]      Loading weights:  37%|███▋      | 26/71 [00:00<00:00, 8575.29it/s, Materializing param=encoder.layer.1.attention.self.key.bias]Loading weights:  38%|███▊      | 27/71 [00:00<00:00, 8707.90it/s, Materializing param=encoder.layer.1.attention.self.key.weight]Loading weights:  38%|███▊      | 27/71 [00:00<00:00, 8609.26it/s, Materializing param=encoder.layer.1.attention.self.key.weight]Loading weights:  39%|███▉      | 28/71 [00:00<00:00, 8731.64it/s, Materializing param=encoder.layer.1.attention.self.query.bias]Loading weights:  39%|███▉      | 28/71 [00:00<00:00, 8635.97it/s, Materializing param=encoder.layer.1.attention.self.query.bias]Loading weights:  41%|████      | 29/71 [00:00<00:00, 8755.12it/s, Materializing param=encoder.layer.1.attention.self.query.weight]Loading weights:  41%|████      | 29/71 [00:00<00:00, 8660.36it/s, Materializing param=encoder.layer.1.attention.self.query.weight]Loading weights:  42%|████▏     | 30/71 [00:00<00:00, 8776.53it/s, Materializing param=encoder.layer.1.attention.self.value.bias]  Loading weights:  42%|████▏     | 30/71 [00:00<00:00, 8682.06it/s, Materializing param=encoder.layer.1.attention.self.value.bias]Loading weights:  44%|████▎     | 31/71 [00:00<00:00, 8792.50it/s, Materializing param=encoder.layer.1.attention.self.value.weight]Loading weights:  44%|████▎     | 31/71 [00:00<00:00, 8704.21it/s, Materializing param=encoder.layer.1.attention.self.value.weight]Loading weights:  45%|████▌     | 32/71 [00:00<00:00, 8813.30it/s, Materializing param=encoder.layer.1.intermediate.dense.bias]    Loading weights:  45%|████▌     | 32/71 [00:00<00:00, 8726.77it/s, Materializing param=encoder.layer.1.intermediate.dense.bias]Loading weights:  46%|████▋     | 33/71 [00:00<00:00, 8830.68it/s, Materializing param=encoder.layer.1.intermediate.dense.weight]Loading weights:  46%|████▋     | 33/71 [00:00<00:00, 8744.21it/s, Materializing param=encoder.layer.1.intermediate.dense.weight]Loading weights:  48%|████▊     | 34/71 [00:00<00:00, 8850.39it/s, Materializing param=encoder.layer.1.output.LayerNorm.bias]    Loading weights:  48%|████▊     | 34/71 [00:00<00:00, 8770.38it/s, Materializing param=encoder.layer.1.output.LayerNorm.bias]Loading weights:  49%|████▉     | 35/71 [00:00<00:00, 8876.57it/s, Materializing param=encoder.layer.1.output.LayerNorm.weight]Loading weights:  49%|████▉     | 35/71 [00:00<00:00, 8796.78it/s, Materializing param=encoder.layer.1.output.LayerNorm.weight]Loading weights:  51%|█████     | 36/71 [00:00<00:00, 8900.90it/s, Materializing param=encoder.layer.1.output.dense.bias]      Loading weights:  51%|█████     | 36/71 [00:00<00:00, 8824.95it/s, Materializing param=encoder.layer.1.output.dense.bias]Loading weights:  52%|█████▏    | 37/71 [00:00<00:00, 8926.10it/s, Materializing param=encoder.layer.1.output.dense.weight]Loading weights:  52%|█████▏    | 37/71 [00:00<00:00, 8852.78it/s, Materializing param=encoder.layer.1.output.dense.weight]Loading weights:  54%|█████▎    | 38/71 [00:00<00:00, 8954.13it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.bias]Loading weights:  54%|█████▎    | 38/71 [00:00<00:00, 8880.30it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.bias]Loading weights:  55%|█████▍    | 39/71 [00:00<00:00, 8966.61it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.weight]Loading weights:  55%|█████▍    | 39/71 [00:00<00:00, 8892.52it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.weight]Loading weights:  56%|█████▋    | 40/71 [00:00<00:00, 8979.46it/s, Materializing param=encoder.layer.2.attention.output.dense.bias]      Loading weights:  56%|█████▋    | 40/71 [00:00<00:00, 8907.47it/s, Materializing param=encoder.layer.2.attention.output.dense.bias]Loading weights:  58%|█████▊    | 41/71 [00:00<00:00, 8993.59it/s, Materializing param=encoder.layer.2.attention.output.dense.weight]Loading weights:  58%|█████▊    | 41/71 [00:00<00:00, 8923.12it/s, Materializing param=encoder.layer.2.attention.output.dense.weight]Loading weights:  59%|█████▉    | 42/71 [00:00<00:00, 9007.10it/s, Materializing param=encoder.layer.2.attention.self.key.bias]      Loading weights:  59%|█████▉    | 42/71 [00:00<00:00, 8939.90it/s, Materializing param=encoder.layer.2.attention.self.key.bias]Loading weights:  61%|██████    | 43/71 [00:00<00:00, 9021.81it/s, Materializing param=encoder.layer.2.attention.self.key.weight]Loading weights:  61%|██████    | 43/71 [00:00<00:00, 8955.96it/s, Materializing param=encoder.layer.2.attention.self.key.weight]Loading weights:  62%|██████▏   | 44/71 [00:00<00:00, 9038.12it/s, Materializing param=encoder.layer.2.attention.self.query.bias]Loading weights:  62%|██████▏   | 44/71 [00:00<00:00, 8972.21it/s, Materializing param=encoder.layer.2.attention.self.query.bias]Loading weights:  63%|██████▎   | 45/71 [00:00<00:00, 9046.38it/s, Materializing param=encoder.layer.2.attention.self.query.weight]Loading weights:  63%|██████▎   | 45/71 [00:00<00:00, 8980.95it/s, Materializing param=encoder.layer.2.attention.self.query.weight]Loading weights:  65%|██████▍   | 46/71 [00:00<00:00, 9055.15it/s, Materializing param=encoder.layer.2.attention.self.value.bias]  Loading weights:  65%|██████▍   | 46/71 [00:00<00:00, 8990.59it/s, Materializing param=encoder.layer.2.attention.self.value.bias]Loading weights:  66%|██████▌   | 47/71 [00:00<00:00, 9063.55it/s, Materializing param=encoder.layer.2.attention.self.value.weight]Loading weights:  66%|██████▌   | 47/71 [00:00<00:00, 9001.89it/s, Materializing param=encoder.layer.2.attention.self.value.weight]Loading weights:  68%|██████▊   | 48/71 [00:00<00:00, 9075.31it/s, Materializing param=encoder.layer.2.intermediate.dense.bias]    Loading weights:  68%|██████▊   | 48/71 [00:00<00:00, 9014.35it/s, Materializing param=encoder.layer.2.intermediate.dense.bias]Loading weights:  69%|██████▉   | 49/71 [00:00<00:00, 9086.61it/s, Materializing param=encoder.layer.2.intermediate.dense.weight]Loading weights:  69%|██████▉   | 49/71 [00:00<00:00, 9027.93it/s, Materializing param=encoder.layer.2.intermediate.dense.weight]Loading weights:  70%|███████   | 50/71 [00:00<00:00, 9100.64it/s, Materializing param=encoder.layer.2.output.LayerNorm.bias]    Loading weights:  70%|███████   | 50/71 [00:00<00:00, 9042.18it/s, Materializing param=encoder.layer.2.output.LayerNorm.bias]Loading weights:  72%|███████▏  | 51/71 [00:00<00:00, 9112.61it/s, Materializing param=encoder.layer.2.output.LayerNorm.weight]Loading weights:  72%|███████▏  | 51/71 [00:00<00:00, 9057.05it/s, Materializing param=encoder.layer.2.output.LayerNorm.weight]Loading weights:  73%|███████▎  | 52/71 [00:00<00:00, 9128.36it/s, Materializing param=encoder.layer.2.output.dense.bias]      Loading weights:  73%|███████▎  | 52/71 [00:00<00:00, 9073.29it/s, Materializing param=encoder.layer.2.output.dense.bias]Loading weights:  75%|███████▍  | 53/71 [00:00<00:00, 9141.68it/s, Materializing param=encoder.layer.2.output.dense.weight]Loading weights:  75%|███████▍  | 53/71 [00:00<00:00, 9087.49it/s, Materializing param=encoder.layer.2.output.dense.weight]Loading weights:  76%|███████▌  | 54/71 [00:00<00:00, 9156.02it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.bias]Loading weights:  76%|███████▌  | 54/71 [00:00<00:00, 9101.93it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.bias]Loading weights:  77%|███████▋  | 55/71 [00:00<00:00, 9164.42it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.weight]Loading weights:  77%|███████▋  | 55/71 [00:00<00:00, 9109.41it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.weight]Loading weights:  79%|███████▉  | 56/71 [00:00<00:00, 9158.58it/s, Materializing param=encoder.layer.3.attention.output.dense.bias]      Loading weights:  79%|███████▉  | 56/71 [00:00<00:00, 9104.97it/s, Materializing param=encoder.layer.3.attention.output.dense.bias]Loading weights:  80%|████████  | 57/71 [00:00<00:00, 9165.94it/s, Materializing param=encoder.layer.3.attention.output.dense.weight]Loading weights:  80%|████████  | 57/71 [00:00<00:00, 9113.19it/s, Materializing param=encoder.layer.3.attention.output.dense.weight]Loading weights:  82%|████████▏ | 58/71 [00:00<00:00, 9171.68it/s, Materializing param=encoder.layer.3.attention.self.key.bias]      Loading weights:  82%|████████▏ | 58/71 [00:00<00:00, 9119.08it/s, Materializing param=encoder.layer.3.attention.self.key.bias]Loading weights:  83%|████████▎ | 59/71 [00:00<00:00, 9171.45it/s, Materializing param=encoder.layer.3.attention.self.key.weight]Loading weights:  83%|████████▎ | 59/71 [00:00<00:00, 9120.40it/s, Materializing param=encoder.layer.3.attention.self.key.weight]Loading weights:  85%|████████▍ | 60/71 [00:00<00:00, 9177.91it/s, Materializing param=encoder.layer.3.attention.self.query.bias]Loading weights:  85%|████████▍ | 60/71 [00:00<00:00, 9129.30it/s, Materializing param=encoder.layer.3.attention.self.query.bias]Loading weights:  86%|████████▌ | 61/71 [00:00<00:00, 9185.16it/s, Materializing param=encoder.layer.3.attention.self.query.weight]Loading weights:  86%|████████▌ | 61/71 [00:00<00:00, 9135.31it/s, Materializing param=encoder.layer.3.attention.self.query.weight]Loading weights:  87%|████████▋ | 62/71 [00:00<00:00, 9189.58it/s, Materializing param=encoder.layer.3.attention.self.value.bias]  Loading weights:  87%|████████▋ | 62/71 [00:00<00:00, 9140.81it/s, Materializing param=encoder.layer.3.attention.self.value.bias]Loading weights:  89%|████████▊ | 63/71 [00:00<00:00, 9193.55it/s, Materializing param=encoder.layer.3.attention.self.value.weight]Loading weights:  89%|████████▊ | 63/71 [00:00<00:00, 9145.51it/s, Materializing param=encoder.layer.3.attention.self.value.weight]Loading weights:  90%|█████████ | 64/71 [00:00<00:00, 9198.35it/s, Materializing param=encoder.layer.3.intermediate.dense.bias]    Loading weights:  90%|█████████ | 64/71 [00:00<00:00, 9149.44it/s, Materializing param=encoder.layer.3.intermediate.dense.bias]Loading weights:  92%|█████████▏| 65/71 [00:00<00:00, 9203.31it/s, Materializing param=encoder.layer.3.intermediate.dense.weight]Loading weights:  92%|█████████▏| 65/71 [00:00<00:00, 9157.25it/s, Materializing param=encoder.layer.3.intermediate.dense.weight]Loading weights:  93%|█████████▎| 66/71 [00:00<00:00, 9211.20it/s, Materializing param=encoder.layer.3.output.LayerNorm.bias]    Loading weights:  93%|█████████▎| 66/71 [00:00<00:00, 9166.97it/s, Materializing param=encoder.layer.3.output.LayerNorm.bias]Loading weights:  94%|█████████▍| 67/71 [00:00<00:00, 9220.97it/s, Materializing param=encoder.layer.3.output.LayerNorm.weight]Loading weights:  94%|█████████▍| 67/71 [00:00<00:00, 9176.71it/s, Materializing param=encoder.layer.3.output.LayerNorm.weight]Loading weights:  96%|█████████▌| 68/71 [00:00<00:00, 9230.78it/s, Materializing param=encoder.layer.3.output.dense.bias]      Loading weights:  96%|█████████▌| 68/71 [00:00<00:00, 9187.66it/s, Materializing param=encoder.layer.3.output.dense.bias]Loading weights:  97%|█████████▋| 69/71 [00:00<00:00, 9240.92it/s, Materializing param=encoder.layer.3.output.dense.weight]Loading weights:  97%|█████████▋| 69/71 [00:00<00:00, 9197.45it/s, Materializing param=encoder.layer.3.output.dense.weight]Loading weights:  99%|█████████▊| 70/71 [00:00<00:00, 9249.32it/s, Materializing param=pooler.dense.bias]                  Loading weights:  99%|█████████▊| 70/71 [00:00<00:00, 9207.55it/s, Materializing param=pooler.dense.bias]Loading weights: 100%|██████████| 71/71 [00:00<00:00, 9265.00it/s, Materializing param=pooler.dense.weight]Loading weights: 100%|██████████| 71/71 [00:00<00:00, 9223.39it/s, Materializing param=pooler.dense.weight]Loading weights: 100%|██████████| 71/71 [00:00<00:00, 9131.47it/s, Materializing param=pooler.dense.weight]
-[1mBertModel LOAD REPORT[0m from: prajjwal1/bert-mini
-Key                                        | Status     |  | 
--------------------------------------------+------------+--+-
-bert.embeddings.position_ids               | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
-cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
-cls.seq_relationship.weight                | UNEXPECTED |  | 
-cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
-cls.predictions.bias                       | UNEXPECTED |  | 
-cls.predictions.decoder.bias               | UNEXPECTED |  | 
-cls.seq_relationship.bias                  | UNEXPECTED |  | 
-cls.predictions.decoder.weight             | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-  Total params: 11,829,255
-  Frozen: 9,525,248
-  Trainable BERT: 1,645,312 (lr=2e-05)
-  Trainable heads: 658,695 (lr=0.0005)
-  Freeze layers: 2
-
-==========================================================================================
-Training Sequential EZ Reader on PROVO
-  Batch size: 8 | Accum steps: 4
-  Effective batch: 32
-  Loss weights: duration=1.0, saccade=1.0
-  Visual span sigma init: 4.0
-==========================================================================================
-
-[Epoch   1/30] 111.4s
-  Train: dur_loss=8726.1  sac_loss=2.923  total=8729.06  (7,770 scanpaths)
-  Val TF: dur_loss=7663.1  sac_loss=2.737
-  Val Free: r_FFD=0.097  r_TRT=0.184  (17 sentences, 383 words)
-  Val Free: pred_FFD=47ms (human=209ms)  pred_TRT=540ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0655
-    l2_contribution=0.3128 (effective=0.8617)
-    visual_span_sigma=3.83 words
-  Sentence: agree that california's three strikes and you're out...
-  Human scanpath (19 fixations):
-    1. [0] 'agree' 136ms
-    2. [2] 'california's' 572ms
-    3. [3] 'three' 240ms
-    4. [4] 'strikes' 273ms
-    5. [6] 'you're' 288ms
-    6. [7] 'out' 164ms
-    7. [8] 'law' 206ms
-    8. [9] 'will' 151ms
-  Model scanpath (50 fixations):
-    1. [0] 'agree' 220ms
-    2. [2] 'california's' 248ms
-    3. [4] 'strikes' 235ms
-    4. [4] 'strikes' 236ms
-    5. [4] 'strikes' 238ms
-    6. [22] 'vital' 228ms
-    7. [23] 'services' 238ms
-    8. [23] 'services' 238ms
-
-  ** NEW BEST (r_FFD=0.097) **
-
-[Epoch   2/30] 104.2s
-  Train: dur_loss=6906.5  sac_loss=2.719  total=6909.26  (7,770 scanpaths)
-  Val TF: dur_loss=7043.2  sac_loss=2.597
-  Val Free: r_FFD=0.190  r_TRT=0.244  (17 sentences, 383 words)
-  Val Free: pred_FFD=50ms (human=209ms)  pred_TRT=481ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0496
-    l2_contribution=0.3114 (effective=0.8609)
-    visual_span_sigma=3.52 words
-  Sentence: agree that california's three strikes and you're out...
-  Human scanpath (19 fixations):
-    1. [0] 'agree' 136ms
-    2. [2] 'california's' 572ms
-    3. [3] 'three' 240ms
-    4. [4] 'strikes' 273ms
-    5. [6] 'you're' 288ms
-    6. [7] 'out' 164ms
-    7. [8] 'law' 206ms
-    8. [9] 'will' 151ms
-  Model scanpath (50 fixations):
-    1. [0] 'agree' 197ms
-    2. [1] 'that' 199ms
-    3. [3] 'three' 204ms
-    4. [4] 'strikes' 210ms
-    5. [4] 'strikes' 212ms
-    6. [4] 'strikes' 213ms
-    7. [4] 'strikes' 215ms
-    8. [22] 'vital' 207ms
-
-  ** NEW BEST (r_FFD=0.190) **
-
-[Epoch   3/30] 104.9s
-  Train: dur_loss=6862.0  sac_loss=2.608  total=6864.56  (7,770 scanpaths)
-  Val TF: dur_loss=7072.6  sac_loss=2.563
-  Val Free: r_FFD=0.216  r_TRT=0.283  (17 sentences, 383 words)
-  Val Free: pred_FFD=54ms (human=209ms)  pred_TRT=479ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0435
-    l2_contribution=0.3110 (effective=0.8607)
-    visual_span_sigma=3.19 words
-  Sentence: agree that california's three strikes and you're out...
-  Human scanpath (19 fixations):
-    1. [0] 'agree' 136ms
-    2. [2] 'california's' 572ms
-    3. [3] 'three' 240ms
-    4. [4] 'strikes' 273ms
-    5. [6] 'you're' 288ms
-    6. [7] 'out' 164ms
-    7. [8] 'law' 206ms
-    8. [9] 'will' 151ms
-  Model scanpath (50 fixations):
-    1. [0] 'agree' 199ms
-    2. [1] 'that' 199ms
-    3. [4] 'strikes' 206ms
-    4. [4] 'strikes' 208ms
-    5. [4] 'strikes' 209ms
-    6. [4] 'strikes' 211ms
-    7. [4] 'strikes' 212ms
-    8. [4] 'strikes' 213ms
-
-  ** NEW BEST (r_FFD=0.216) **
-
-[Epoch   4/30] 101.8s
-  Train: dur_loss=6852.9  sac_loss=2.533  total=6855.45  (7,770 scanpaths)
-  Val TF: dur_loss=7030.9  sac_loss=2.495
-  Val Free: r_FFD=0.221  r_TRT=0.271  (17 sentences, 383 words)
-  Val Free: pred_FFD=57ms (human=209ms)  pred_TRT=499ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0338
-    l2_contribution=0.3109 (effective=0.8607)
-    visual_span_sigma=2.95 words
-  Sentence: agree that california's three strikes and you're out...
-  Human scanpath (19 fixations):
-    1. [0] 'agree' 136ms
-    2. [2] 'california's' 572ms
-    3. [3] 'three' 240ms
-    4. [4] 'strikes' 273ms
-    5. [6] 'you're' 288ms
-    6. [7] 'out' 164ms
-    7. [8] 'law' 206ms
-    8. [9] 'will' 151ms
-  Model scanpath (50 fixations):
-    1. [0] 'agree' 194ms
-    2. [2] 'california's' 211ms
-    3. [4] 'strikes' 204ms
-    4. [4] 'strikes' 207ms
-    5. [4] 'strikes' 210ms
-    6. [4] 'strikes' 213ms
-    7. [8] 'law' 203ms
-    8. [22] 'vital' 194ms
-
-  ** NEW BEST (r_FFD=0.221) **
-
-[Epoch   5/30] 102.9s
-  Train: dur_loss=6833.9  sac_loss=2.415  total=6836.28  (7,770 scanpaths)
-  Val TF: dur_loss=7037.4  sac_loss=2.374
-  Val Free: r_FFD=0.187  r_TRT=0.236  (17 sentences, 383 words)
-  Val Free: pred_FFD=60ms (human=209ms)  pred_TRT=507ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0320
-    l2_contribution=0.3106 (effective=0.8605)
-    visual_span_sigma=2.76 words
-
-[Epoch   6/30] 103.1s
-  Train: dur_loss=6779.6  sac_loss=2.312  total=6781.87  (7,770 scanpaths)
-  Val TF: dur_loss=7031.7  sac_loss=2.296
-  Val Free: r_FFD=0.209  r_TRT=0.231  (17 sentences, 383 words)
-  Val Free: pred_FFD=59ms (human=209ms)  pred_TRT=505ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0315
-    l2_contribution=0.3102 (effective=0.8603)
-    visual_span_sigma=2.59 words
-  Sentence: agree that california's three strikes and you're out...
-  Human scanpath (19 fixations):
-    1. [0] 'agree' 136ms
-    2. [2] 'california's' 572ms
-    3. [3] 'three' 240ms
-    4. [4] 'strikes' 273ms
-    5. [6] 'you're' 288ms
-    6. [7] 'out' 164ms
-    7. [8] 'law' 206ms
-    8. [9] 'will' 151ms
-  Model scanpath (50 fixations):
-    1. [0] 'agree' 203ms
-    2. [2] 'california's' 220ms
-    3. [2] 'california's' 219ms
-    4. [3] 'three' 212ms
-    5. [3] 'three' 215ms
-    6. [8] 'law' 207ms
-    7. [12] 'financial' 195ms
-    8. [13] 'disaster' 196ms
-
-
-[Epoch   7/30] 102.0s
-  Train: dur_loss=6746.3  sac_loss=2.188  total=6748.53  (7,770 scanpaths)
-  Val TF: dur_loss=7099.8  sac_loss=2.155
-  Val Free: r_FFD=0.203  r_TRT=0.117  (17 sentences, 383 words)
-  Val Free: pred_FFD=64ms (human=209ms)  pred_TRT=521ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0270
-    l2_contribution=0.3102 (effective=0.8602)
-    visual_span_sigma=2.45 words
-
-[Epoch   8/30] 103.1s
-  Train: dur_loss=6779.5  sac_loss=2.100  total=6781.63  (7,770 scanpaths)
-  Val TF: dur_loss=7045.6  sac_loss=2.143
-  Val Free: r_FFD=0.130  r_TRT=0.135  (17 sentences, 383 words)
-  Val Free: pred_FFD=60ms (human=209ms)  pred_TRT=508ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0255
-    l2_contribution=0.3097 (effective=0.8599)
-    visual_span_sigma=2.33 words
-
-[Epoch   9/30] 101.5s
-  Train: dur_loss=6737.1  sac_loss=2.057  total=6739.15  (7,770 scanpaths)
-  Val TF: dur_loss=7149.4  sac_loss=2.089
-  Val Free: r_FFD=0.125  r_TRT=0.158  (17 sentences, 383 words)
-  Val Free: pred_FFD=60ms (human=209ms)  pred_TRT=506ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0271
-    l2_contribution=0.3091 (effective=0.8596)
-    visual_span_sigma=2.21 words
-
-[Epoch  10/30] 102.2s
-  Train: dur_loss=6712.1  sac_loss=2.000  total=6714.08  (7,770 scanpaths)
-  Val TF: dur_loss=7122.3  sac_loss=2.094
-  Val Free: r_FFD=0.093  r_TRT=0.057  (17 sentences, 383 words)
-  Val Free: pred_FFD=62ms (human=209ms)  pred_TRT=499ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0264
-    l2_contribution=0.3091 (effective=0.8596)
-    visual_span_sigma=2.11 words
-
-[Epoch  11/30] 100.6s
-  Train: dur_loss=6636.9  sac_loss=1.940  total=6638.89  (7,770 scanpaths)
-  Val TF: dur_loss=7135.3  sac_loss=2.073
-  Val Free: r_FFD=0.074  r_TRT=0.045  (17 sentences, 383 words)
-  Val Free: pred_FFD=57ms (human=209ms)  pred_TRT=483ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0246
-    l2_contribution=0.3091 (effective=0.8596)
-    visual_span_sigma=2.05 words
-  Sentence: agree that california's three strikes and you're out...
-  Human scanpath (19 fixations):
-    1. [0] 'agree' 136ms
-    2. [2] 'california's' 572ms
-    3. [3] 'three' 240ms
-    4. [4] 'strikes' 273ms
-    5. [6] 'you're' 288ms
-    6. [7] 'out' 164ms
-    7. [8] 'law' 206ms
-    8. [9] 'will' 151ms
-  Model scanpath (50 fixations):
-    1. [0] 'agree' 189ms
-    2. [2] 'california's' 212ms
-    3. [3] 'three' 204ms
-    4. [3] 'three' 207ms
-    5. [3] 'three' 209ms
-    6. [3] 'three' 211ms
-    7. [3] 'three' 213ms
-    8. [3] 'three' 215ms
-
-
-[Epoch  12/30] 100.7s
-  Train: dur_loss=6598.9  sac_loss=1.910  total=6600.86  (7,770 scanpaths)
-  Val TF: dur_loss=7078.9  sac_loss=2.020
-  Val Free: r_FFD=0.119  r_TRT=0.100  (17 sentences, 383 words)
-  Val Free: pred_FFD=69ms (human=209ms)  pred_TRT=506ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0252
-    l2_contribution=0.3095 (effective=0.8598)
-    visual_span_sigma=2.01 words
-
-[Epoch  13/30] 100.2s
-  Train: dur_loss=6605.1  sac_loss=1.883  total=6606.99  (7,770 scanpaths)
-  Val TF: dur_loss=7059.7  sac_loss=2.033
-  Val Free: r_FFD=0.086  r_TRT=0.084  (17 sentences, 383 words)
-  Val Free: pred_FFD=62ms (human=209ms)  pred_TRT=517ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0242
-    l2_contribution=0.3099 (effective=0.8601)
-    visual_span_sigma=1.96 words
-
-[Epoch  14/30] 100.3s
-  Train: dur_loss=6585.3  sac_loss=1.855  total=6587.19  (7,770 scanpaths)
-  Val TF: dur_loss=7088.7  sac_loss=2.025
-  Val Free: r_FFD=0.087  r_TRT=0.015  (17 sentences, 383 words)
-  Val Free: pred_FFD=63ms (human=209ms)  pred_TRT=504ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0250
-    l2_contribution=0.3100 (effective=0.8601)
-    visual_span_sigma=1.92 words
-
-[Epoch  15/30] 100.2s
-  Train: dur_loss=6581.3  sac_loss=1.842  total=6583.14  (7,770 scanpaths)
-  Val TF: dur_loss=7125.7  sac_loss=2.000
-  Val Free: r_FFD=0.068  r_TRT=0.043  (17 sentences, 383 words)
-  Val Free: pred_FFD=64ms (human=209ms)  pred_TRT=497ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0241
-    l2_contribution=0.3101 (effective=0.8602)
-    visual_span_sigma=1.88 words
-
-[Epoch  16/30] 99.2s
-  Train: dur_loss=6538.7  sac_loss=1.816  total=6540.54  (7,770 scanpaths)
-  Val TF: dur_loss=7062.0  sac_loss=2.000
-  Val Free: r_FFD=0.110  r_TRT=0.064  (17 sentences, 383 words)
-  Val Free: pred_FFD=54ms (human=209ms)  pred_TRT=509ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0240
-    l2_contribution=0.3104 (effective=0.8604)
-    visual_span_sigma=1.84 words
-  Sentence: agree that california's three strikes and you're out...
-  Human scanpath (19 fixations):
-    1. [0] 'agree' 136ms
-    2. [2] 'california's' 572ms
-    3. [3] 'three' 240ms
-    4. [4] 'strikes' 273ms
-    5. [6] 'you're' 288ms
-    6. [7] 'out' 164ms
-    7. [8] 'law' 206ms
-    8. [9] 'will' 151ms
-  Model scanpath (50 fixations):
-    1. [0] 'agree' 175ms
-    2. [2] 'california's' 222ms
-    3. [3] 'three' 213ms
-    4. [3] 'three' 216ms
-    5. [3] 'three' 218ms
-    6. [3] 'three' 221ms
-    7. [3] 'three' 224ms
-    8. [3] 'three' 226ms
-
-
-[Epoch  17/30] 100.1s
-  Train: dur_loss=6549.5  sac_loss=1.787  total=6551.30  (7,770 scanpaths)
-  Val TF: dur_loss=7118.7  sac_loss=1.972
-  Val Free: r_FFD=0.097  r_TRT=0.024  (17 sentences, 383 words)
-  Val Free: pred_FFD=55ms (human=209ms)  pred_TRT=502ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0254
-    l2_contribution=0.3104 (effective=0.8604)
-    visual_span_sigma=1.82 words
-
-[Epoch  18/30] 100.2s
-  Train: dur_loss=6546.7  sac_loss=1.767  total=6548.45  (7,770 scanpaths)
-  Val TF: dur_loss=7122.3  sac_loss=1.954
-  Val Free: r_FFD=0.120  r_TRT=0.038  (17 sentences, 383 words)
-  Val Free: pred_FFD=57ms (human=209ms)  pred_TRT=514ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0250
-    l2_contribution=0.3108 (effective=0.8606)
-    visual_span_sigma=1.80 words
-
-[Epoch  19/30] 100.1s
-  Train: dur_loss=6501.5  sac_loss=1.758  total=6503.29  (7,770 scanpaths)
-  Val TF: dur_loss=7162.3  sac_loss=1.958
-  Val Free: r_FFD=0.089  r_TRT=0.021  (17 sentences, 383 words)
-  Val Free: pred_FFD=67ms (human=209ms)  pred_TRT=512ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.0  l2_scale=30.0
-    eccentricity=0.0248
-    l2_contribution=0.3109 (effective=0.8606)
-    visual_span_sigma=1.79 words
-
-[Epoch  20/30] 100.6s
-  Train: dur_loss=6495.0  sac_loss=1.740  total=6496.74  (7,770 scanpaths)
-  Val TF: dur_loss=7118.4  sac_loss=1.943
-  Val Free: r_FFD=0.119  r_TRT=0.067  (17 sentences, 383 words)
-  Val Free: pred_FFD=60ms (human=209ms)  pred_TRT=518ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.1  l2_scale=30.0
-    eccentricity=0.0243
-    l2_contribution=0.3109 (effective=0.8606)
-    visual_span_sigma=1.77 words
-
-[Epoch  21/30] 100.8s
-  Train: dur_loss=6475.9  sac_loss=1.731  total=6477.64  (7,770 scanpaths)
-  Val TF: dur_loss=7146.6  sac_loss=1.935
-  Val Free: r_FFD=0.064  r_TRT=-0.001  (17 sentences, 383 words)
-  Val Free: pred_FFD=68ms (human=209ms)  pred_TRT=499ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.1  l2_scale=30.0
-    eccentricity=0.0245
-    l2_contribution=0.3109 (effective=0.8606)
-    visual_span_sigma=1.76 words
-  Sentence: agree that california's three strikes and you're out...
-  Human scanpath (19 fixations):
-    1. [0] 'agree' 136ms
-    2. [2] 'california's' 572ms
-    3. [3] 'three' 240ms
-    4. [4] 'strikes' 273ms
-    5. [6] 'you're' 288ms
-    6. [7] 'out' 164ms
-    7. [8] 'law' 206ms
-    8. [9] 'will' 151ms
-  Model scanpath (50 fixations):
-    1. [0] 'agree' 181ms
-    2. [2] 'california's' 217ms
-    3. [3] 'three' 207ms
-    4. [3] 'three' 209ms
-    5. [3] 'three' 213ms
-    6. [3] 'three' 216ms
-    7. [3] 'three' 219ms
-    8. [5] 'and' 218ms
-
-
-[Epoch  22/30] 100.3s
-  Train: dur_loss=6466.9  sac_loss=1.722  total=6468.59  (7,770 scanpaths)
-  Val TF: dur_loss=7170.7  sac_loss=1.946
-  Val Free: r_FFD=0.109  r_TRT=0.001  (17 sentences, 383 words)
-  Val Free: pred_FFD=59ms (human=209ms)  pred_TRT=503ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.1  l2_scale=30.0
-    eccentricity=0.0241
-    l2_contribution=0.3110 (effective=0.8607)
-    visual_span_sigma=1.74 words
-
-[Epoch  23/30] 137.6s
-  Train: dur_loss=6440.2  sac_loss=1.708  total=6441.89  (7,770 scanpaths)
-  Val TF: dur_loss=7134.0  sac_loss=1.935
-  Val Free: r_FFD=0.118  r_TRT=0.021  (17 sentences, 383 words)
-  Val Free: pred_FFD=69ms (human=209ms)  pred_TRT=515ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.1  l2_scale=30.0
-    eccentricity=0.0248
-    l2_contribution=0.3114 (effective=0.8609)
-    visual_span_sigma=1.74 words
-
-[Epoch  24/30] 149.7s
-  Train: dur_loss=6427.7  sac_loss=1.698  total=6429.37  (7,770 scanpaths)
-  Val TF: dur_loss=7152.9  sac_loss=1.928
-  Val Free: r_FFD=0.134  r_TRT=0.056  (17 sentences, 383 words)
-  Val Free: pred_FFD=63ms (human=209ms)  pred_TRT=504ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.1  l2_scale=30.0
-    eccentricity=0.0244
-    l2_contribution=0.3112 (effective=0.8608)
-    visual_span_sigma=1.73 words
-
-[Epoch  25/30] 147.3s
-  Train: dur_loss=6466.3  sac_loss=1.696  total=6468.04  (7,770 scanpaths)
-  Val TF: dur_loss=7142.8  sac_loss=1.923
-  Val Free: r_FFD=0.092  r_TRT=0.036  (17 sentences, 383 words)
-  Val Free: pred_FFD=71ms (human=209ms)  pred_TRT=507ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.1  l2_scale=30.0
-    eccentricity=0.0244
-    l2_contribution=0.3114 (effective=0.8609)
-    visual_span_sigma=1.72 words
-
-[Epoch  26/30] 146.4s
-  Train: dur_loss=6438.1  sac_loss=1.693  total=6439.78  (7,770 scanpaths)
-  Val TF: dur_loss=7131.4  sac_loss=1.926
-  Val Free: r_FFD=0.091  r_TRT=0.013  (17 sentences, 383 words)
-  Val Free: pred_FFD=71ms (human=209ms)  pred_TRT=515ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.1  l2_scale=30.0
-    eccentricity=0.0245
-    l2_contribution=0.3117 (effective=0.8611)
-    visual_span_sigma=1.72 words
-  Sentence: agree that california's three strikes and you're out...
-  Human scanpath (19 fixations):
-    1. [0] 'agree' 136ms
-    2. [2] 'california's' 572ms
-    3. [3] 'three' 240ms
-    4. [4] 'strikes' 273ms
-    5. [6] 'you're' 288ms
-    6. [7] 'out' 164ms
-    7. [8] 'law' 206ms
-    8. [9] 'will' 151ms
-  Model scanpath (50 fixations):
-    1. [0] 'agree' 184ms
-    2. [2] 'california's' 222ms
-    3. [3] 'three' 212ms
-    4. [3] 'three' 213ms
-    5. [3] 'three' 218ms
-    6. [3] 'three' 222ms
-    7. [5] 'and' 219ms
-    8. [6] 'you're' 222ms
-
-
-[Epoch  27/30] 145.3s
-  Train: dur_loss=6435.5  sac_loss=1.686  total=6437.15  (7,770 scanpaths)
-  Val TF: dur_loss=7143.9  sac_loss=1.908
-  Val Free: r_FFD=0.045  r_TRT=-0.025  (17 sentences, 383 words)
-  Val Free: pred_FFD=67ms (human=209ms)  pred_TRT=507ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.1  l2_scale=30.0
-    eccentricity=0.0240
-    l2_contribution=0.3116 (effective=0.8611)
-    visual_span_sigma=1.71 words
-
-[Epoch  28/30] 145.4s
-  Train: dur_loss=6441.4  sac_loss=1.680  total=6443.06  (7,770 scanpaths)
-  Val TF: dur_loss=7135.0  sac_loss=1.909
-  Val Free: r_FFD=0.068  r_TRT=-0.025  (17 sentences, 383 words)
-  Val Free: pred_FFD=66ms (human=209ms)  pred_TRT=513ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.1  l2_scale=30.0
-    eccentricity=0.0244
-    l2_contribution=0.3118 (effective=0.8612)
-    visual_span_sigma=1.70 words
-
-[Epoch  29/30] 146.0s
-  Train: dur_loss=6434.7  sac_loss=1.673  total=6436.38  (7,770 scanpaths)
-  Val TF: dur_loss=7140.6  sac_loss=1.909
-  Val Free: r_FFD=0.083  r_TRT=-0.026  (17 sentences, 383 words)
-  Val Free: pred_FFD=68ms (human=209ms)  pred_TRT=506ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.1  l2_scale=30.0
-    eccentricity=0.0243
-    l2_contribution=0.3118 (effective=0.8611)
-    visual_span_sigma=1.70 words
-
-[Epoch  30/30] 146.0s
-  Train: dur_loss=6423.9  sac_loss=1.675  total=6425.57  (7,770 scanpaths)
-  Val TF: dur_loss=7145.2  sac_loss=1.910
-  Val Free: r_FFD=0.047  r_TRT=-0.032  (17 sentences, 383 words)
-  Val Free: pred_FFD=69ms (human=209ms)  pred_TRT=512ms (human=284ms)
-  EZ Reader params:
-    l1_scale=50.1  l2_scale=30.0
-    eccentricity=0.0243
-    l2_contribution=0.3119 (effective=0.8612)
-    visual_span_sigma=1.69 words
-
-==========================================================================================
-Training complete! Best val r_FFD = 0.221
-==========================================================================================
-
-Test results (free-running):
-  r_FFD=0.090  r_TRT=0.243
-  pred_FFD=54ms (human=209ms)
-  pred_TRT=619ms (human=292ms)
-
-Final parameters:
-  EZ Reader params:
-    l1_scale=120.0  l2_scale=60.0
-    eccentricity=0.0188
-    l2_contribution=0.3164 (effective=0.8638)
-    visual_span_sigma=2.71 words
-
-Sample test scanpath:
-  Sentence: days later the british astronomer richard was observing...
-  Human scanpath (26 fixations):
-    1. [0] 'days' 159ms
-    2. [1] 'later' 175ms
-    3. [3] 'british' 125ms
-    4. [4] 'astronomer' 341ms
-    5. [5] 'richard' 253ms
-    6. [6] 'was' 272ms
-    7. [7] 'observing' 124ms
-    8. [8] 'the' 238ms
-  Model scanpath (50 fixations):
-    1. [0] 'days' 208ms
-    2. [1] 'later' 213ms
-    3. [3] 'british' 210ms
-    4. [7] 'observing' 210ms
-    5. [9] 'interesting' 222ms
-    6. [9] 'interesting' 229ms
-    7. [9] 'interesting' 230ms
-    8. [9] 'interesting' 229ms
-
