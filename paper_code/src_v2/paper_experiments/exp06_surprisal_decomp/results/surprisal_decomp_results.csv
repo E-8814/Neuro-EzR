@@ -1,0 +1,9 @@
+corpus,statistic,value,n,interpretation
+geco_test,"r(L1, surprisal)",0.34817864165378704,5501,L1 correlation with TinyLlama surprisal
+geco_test,"partial_r(L1, h_TRT | surprisal+controls)",0.18261823412817596,5501,L1's unique correlation with TRT after controls
+geco_test,deltaR2_L1_beyond_surprisal_controls,0.027133841728791408,5501,Variance L1 adds beyond surprisal + log_freq + word_length
+geco_test,deltaR2_surprisal_beyond_L1_controls,0.0028831362224085444,5501,Variance surprisal adds beyond L1 + controls
+provo,"r(L1, surprisal)",0.40183037663645255,2654,L1 correlation with TinyLlama surprisal
+provo,"partial_r(L1, h_TRT | surprisal+controls)",0.0626527555188023,2654,L1's unique correlation with TRT after controls
+provo,deltaR2_L1_beyond_surprisal_controls,0.0022351665115354358,2654,Variance L1 adds beyond surprisal + log_freq + word_length
+provo,deltaR2_surprisal_beyond_L1_controls,0.04988713962709157,2654,Variance surprisal adds beyond L1 + controls

@@ -1,0 +1,21 @@
+# Core deep learning
+torch>=2.0
+transformers>=4.36
+
+# Numerical / data
+numpy
+pandas
+scipy
+
+# Plotting
+matplotlib
+
+# Baselines
+lightgbm          # archive/baselines/lightgbm_baseline.py (sklearn fallback if missing)
+scikit-learn      # GradientBoosting fallback for LightGBM
+
+# Classical E-Z Reader simulator (archive/original_ezreader/ez_reader_engine.py)
+simpy
+
+# Utilities
+tqdm
