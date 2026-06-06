@@ -18,9 +18,26 @@ archive/data
 # Logs
 *.log
 training_log.txt
+logs/
 
 # Data (large public datasets - download separately)
 data/
+
+# Paper sources + drafts (kept locally, not tracked)
+paper/
+paper_code/
+results/
+surprisal_decomposition/
+what_will_be_in_paper/
+proposal_simple.tex
+proposal_v2.tex
+proposal_v3.tex
+proposal_v4.tex
+proposal_v5.tex
+proposal_ResearchWorkshop_3_notes.pdf
+claude.txt
+CLUSTER_GUIDE.md
+neuro_ezr_paper*.pdf
 
 # IDE
 .vscode/
