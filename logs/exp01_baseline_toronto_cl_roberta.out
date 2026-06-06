@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/u384661/Neuro_EZR/archive/baselines/run_toronto_on_geco.py", line 44, in <module>
-    import src.model as toronto_model
-  File "/home/u384661/Neuro_EZR/archive/baselines/cmcl21_torontocl/src/model.py", line 4, in <module>
-    import transformers
-ModuleNotFoundError: No module named 'transformers'

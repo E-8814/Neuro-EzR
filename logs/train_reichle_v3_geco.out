@@ -1,1714 +1,0 @@
-nohup: ignoring input
-Auto-freeze: 16/22 layers
-Device: cuda
-Loading SUBTLEX from /home/u384661/Neuro_EZR/src_v2/lm_train/../../data/SUBTLEXus.txt...
-  74,286 entries
-Loading GECO Corpus...
-  Loading GECO material...
-    5285 sentences, 54362 words
-    Loaded predictability for 5285 sentences
-  Loading GECO reading data...
-    72669 participant × sentence combinations
-  Raw per-participant observations: 68,681
-  Train: 54,930 | Val: 6,871 | Test: 6,880
-  Aggregated sentences (min 5 participants): 4994
-  Aggregated: 3995 train | 499 val | 500 test
-
-Loading model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
-  Freezing first 16 layers
-`torch_dtype` is deprecated! Use `dtype` instead!
-Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights:   0%|          | 1/201 [00:00<00:00, 15033.35it/s, Materializing param=lm_head.weight]Loading weights:   0%|          | 1/201 [00:00<00:00, 2341.88it/s, Materializing param=lm_head.weight] Loading weights:   1%|          | 2/201 [00:00<00:09, 20.17it/s, Materializing param=model.embed_tokens.weight]Loading weights:   1%|          | 2/201 [00:00<00:09, 20.15it/s, Materializing param=model.embed_tokens.weight]Loading weights:   1%|▏         | 3/201 [00:00<00:06, 30.18it/s, Materializing param=model.layers.0.input_layernorm.weight]Loading weights:   1%|▏         | 3/201 [00:00<00:06, 30.16it/s, Materializing param=model.layers.0.input_layernorm.weight]Loading weights:   2%|▏         | 4/201 [00:00<00:04, 40.16it/s, Materializing param=model.layers.0.mlp.down_proj.weight]  Loading weights:   2%|▏         | 4/201 [00:00<00:04, 40.13it/s, Materializing param=model.layers.0.mlp.down_proj.weight]Loading weights:   2%|▏         | 5/201 [00:00<00:03, 50.11it/s, Materializing param=model.layers.0.mlp.gate_proj.weight]Loading weights:   2%|▏         | 5/201 [00:00<00:03, 50.08it/s, Materializing param=model.layers.0.mlp.gate_proj.weight]Loading weights:   3%|▎         | 6/201 [00:00<00:03, 60.03it/s, Materializing param=model.layers.0.mlp.up_proj.weight]  Loading weights:   3%|▎         | 6/201 [00:00<00:03, 60.00it/s, Materializing param=model.layers.0.mlp.up_proj.weight]Loading weights:   3%|▎         | 7/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.0.mlp.up_proj.weight]Loading weights:   3%|▎         | 7/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.0.post_attention_layernorm.weight]Loading weights:   3%|▎         | 7/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.0.post_attention_layernorm.weight]Loading weights:   4%|▍         | 8/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.0.self_attn.k_proj.weight]        Loading weights:   4%|▍         | 8/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.0.self_attn.k_proj.weight]Loading weights:   4%|▍         | 9/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.0.self_attn.o_proj.weight]Loading weights:   4%|▍         | 9/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.0.self_attn.o_proj.weight]Loading weights:   5%|▍         | 10/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.0.self_attn.q_proj.weight]Loading weights:   5%|▍         | 10/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.0.self_attn.q_proj.weight]Loading weights:   5%|▌         | 11/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.0.self_attn.v_proj.weight]Loading weights:   5%|▌         | 11/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.0.self_attn.v_proj.weight]Loading weights:   6%|▌         | 12/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.input_layernorm.weight] Loading weights:   6%|▌         | 12/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.input_layernorm.weight]Loading weights:   6%|▋         | 13/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.mlp.down_proj.weight]  Loading weights:   6%|▋         | 13/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.mlp.down_proj.weight]Loading weights:   7%|▋         | 14/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.mlp.gate_proj.weight]Loading weights:   7%|▋         | 14/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.mlp.gate_proj.weight]Loading weights:   7%|▋         | 15/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.mlp.up_proj.weight]  Loading weights:   7%|▋         | 15/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.mlp.up_proj.weight]Loading weights:   8%|▊         | 16/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.post_attention_layernorm.weight]Loading weights:   8%|▊         | 16/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.post_attention_layernorm.weight]Loading weights:   8%|▊         | 17/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.self_attn.k_proj.weight]        Loading weights:   8%|▊         | 17/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.self_attn.k_proj.weight]Loading weights:   9%|▉         | 18/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.self_attn.o_proj.weight]Loading weights:   9%|▉         | 18/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.self_attn.o_proj.weight]Loading weights:   9%|▉         | 19/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.self_attn.q_proj.weight]Loading weights:   9%|▉         | 19/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.self_attn.q_proj.weight]Loading weights:  10%|▉         | 20/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.self_attn.v_proj.weight]Loading weights:  10%|▉         | 20/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.1.self_attn.v_proj.weight]Loading weights:  10%|█         | 21/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.input_layernorm.weight] Loading weights:  10%|█         | 21/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.input_layernorm.weight]Loading weights:  11%|█         | 22/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.mlp.down_proj.weight]  Loading weights:  11%|█         | 22/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.mlp.down_proj.weight]Loading weights:  11%|█▏        | 23/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.mlp.gate_proj.weight]Loading weights:  11%|█▏        | 23/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.mlp.gate_proj.weight]Loading weights:  12%|█▏        | 24/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.mlp.up_proj.weight]  Loading weights:  12%|█▏        | 24/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.mlp.up_proj.weight]Loading weights:  12%|█▏        | 25/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.post_attention_layernorm.weight]Loading weights:  12%|█▏        | 25/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.post_attention_layernorm.weight]Loading weights:  13%|█▎        | 26/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.self_attn.k_proj.weight]        Loading weights:  13%|█▎        | 26/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.self_attn.k_proj.weight]Loading weights:  13%|█▎        | 27/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.self_attn.o_proj.weight]Loading weights:  13%|█▎        | 27/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.self_attn.o_proj.weight]Loading weights:  14%|█▍        | 28/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.self_attn.q_proj.weight]Loading weights:  14%|█▍        | 28/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.self_attn.q_proj.weight]Loading weights:  14%|█▍        | 29/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.self_attn.v_proj.weight]Loading weights:  14%|█▍        | 29/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.2.self_attn.v_proj.weight]Loading weights:  15%|█▍        | 30/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.input_layernorm.weight] Loading weights:  15%|█▍        | 30/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.input_layernorm.weight]Loading weights:  15%|█▌        | 31/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.mlp.down_proj.weight]  Loading weights:  15%|█▌        | 31/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.mlp.down_proj.weight]Loading weights:  16%|█▌        | 32/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.mlp.gate_proj.weight]Loading weights:  16%|█▌        | 32/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.mlp.gate_proj.weight]Loading weights:  16%|█▋        | 33/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.mlp.up_proj.weight]  Loading weights:  16%|█▋        | 33/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.mlp.up_proj.weight]Loading weights:  17%|█▋        | 34/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.post_attention_layernorm.weight]Loading weights:  17%|█▋        | 34/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.post_attention_layernorm.weight]Loading weights:  17%|█▋        | 35/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.self_attn.k_proj.weight]        Loading weights:  17%|█▋        | 35/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.self_attn.k_proj.weight]Loading weights:  18%|█▊        | 36/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.self_attn.o_proj.weight]Loading weights:  18%|█▊        | 36/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.self_attn.o_proj.weight]Loading weights:  18%|█▊        | 37/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.self_attn.q_proj.weight]Loading weights:  18%|█▊        | 37/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.self_attn.q_proj.weight]Loading weights:  19%|█▉        | 38/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.self_attn.v_proj.weight]Loading weights:  19%|█▉        | 38/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.3.self_attn.v_proj.weight]Loading weights:  19%|█▉        | 39/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.input_layernorm.weight] Loading weights:  19%|█▉        | 39/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.input_layernorm.weight]Loading weights:  20%|█▉        | 40/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.mlp.down_proj.weight]  Loading weights:  20%|█▉        | 40/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.mlp.down_proj.weight]Loading weights:  20%|██        | 41/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.mlp.gate_proj.weight]Loading weights:  20%|██        | 41/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.mlp.gate_proj.weight]Loading weights:  21%|██        | 42/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.mlp.up_proj.weight]  Loading weights:  21%|██        | 42/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.mlp.up_proj.weight]Loading weights:  21%|██▏       | 43/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.post_attention_layernorm.weight]Loading weights:  21%|██▏       | 43/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.post_attention_layernorm.weight]Loading weights:  22%|██▏       | 44/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.self_attn.k_proj.weight]        Loading weights:  22%|██▏       | 44/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.self_attn.k_proj.weight]Loading weights:  22%|██▏       | 45/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.self_attn.o_proj.weight]Loading weights:  22%|██▏       | 45/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.self_attn.o_proj.weight]Loading weights:  23%|██▎       | 46/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.self_attn.q_proj.weight]Loading weights:  23%|██▎       | 46/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.self_attn.q_proj.weight]Loading weights:  23%|██▎       | 47/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.self_attn.v_proj.weight]Loading weights:  23%|██▎       | 47/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.4.self_attn.v_proj.weight]Loading weights:  24%|██▍       | 48/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.5.input_layernorm.weight] Loading weights:  24%|██▍       | 48/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.5.input_layernorm.weight]Loading weights:  24%|██▍       | 49/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.5.mlp.down_proj.weight]  Loading weights:  24%|██▍       | 49/201 [00:00<00:02, 69.94it/s, Materializing param=model.layers.5.mlp.down_proj.weight]Loading weights:  25%|██▍       | 50/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.5.mlp.down_proj.weight]Loading weights:  25%|██▍       | 50/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.5.mlp.gate_proj.weight]Loading weights:  25%|██▍       | 50/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.5.mlp.gate_proj.weight]Loading weights:  25%|██▌       | 51/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.5.mlp.up_proj.weight]  Loading weights:  25%|██▌       | 51/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.5.mlp.up_proj.weight]Loading weights:  26%|██▌       | 52/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.5.post_attention_layernorm.weight]Loading weights:  26%|██▌       | 52/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.5.post_attention_layernorm.weight]Loading weights:  26%|██▋       | 53/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.5.self_attn.k_proj.weight]        Loading weights:  26%|██▋       | 53/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.5.self_attn.k_proj.weight]Loading weights:  27%|██▋       | 54/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.5.self_attn.o_proj.weight]Loading weights:  27%|██▋       | 54/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.5.self_attn.o_proj.weight]Loading weights:  27%|██▋       | 55/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.5.self_attn.q_proj.weight]Loading weights:  27%|██▋       | 55/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.5.self_attn.q_proj.weight]Loading weights:  28%|██▊       | 56/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.5.self_attn.v_proj.weight]Loading weights:  28%|██▊       | 56/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.5.self_attn.v_proj.weight]Loading weights:  28%|██▊       | 57/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.input_layernorm.weight] Loading weights:  28%|██▊       | 57/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.input_layernorm.weight]Loading weights:  29%|██▉       | 58/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.mlp.down_proj.weight]  Loading weights:  29%|██▉       | 58/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.mlp.down_proj.weight]Loading weights:  29%|██▉       | 59/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.mlp.gate_proj.weight]Loading weights:  29%|██▉       | 59/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.mlp.gate_proj.weight]Loading weights:  30%|██▉       | 60/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.mlp.up_proj.weight]  Loading weights:  30%|██▉       | 60/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.mlp.up_proj.weight]Loading weights:  30%|███       | 61/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.post_attention_layernorm.weight]Loading weights:  30%|███       | 61/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.post_attention_layernorm.weight]Loading weights:  31%|███       | 62/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.self_attn.k_proj.weight]        Loading weights:  31%|███       | 62/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.self_attn.k_proj.weight]Loading weights:  31%|███▏      | 63/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.self_attn.o_proj.weight]Loading weights:  31%|███▏      | 63/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.self_attn.o_proj.weight]Loading weights:  32%|███▏      | 64/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.self_attn.q_proj.weight]Loading weights:  32%|███▏      | 64/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.self_attn.q_proj.weight]Loading weights:  32%|███▏      | 65/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.self_attn.v_proj.weight]Loading weights:  32%|███▏      | 65/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.6.self_attn.v_proj.weight]Loading weights:  33%|███▎      | 66/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.input_layernorm.weight] Loading weights:  33%|███▎      | 66/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.input_layernorm.weight]Loading weights:  33%|███▎      | 67/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.mlp.down_proj.weight]  Loading weights:  33%|███▎      | 67/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.mlp.down_proj.weight]Loading weights:  34%|███▍      | 68/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.mlp.gate_proj.weight]Loading weights:  34%|███▍      | 68/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.mlp.gate_proj.weight]Loading weights:  34%|███▍      | 69/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.mlp.up_proj.weight]  Loading weights:  34%|███▍      | 69/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.mlp.up_proj.weight]Loading weights:  35%|███▍      | 70/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.post_attention_layernorm.weight]Loading weights:  35%|███▍      | 70/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.post_attention_layernorm.weight]Loading weights:  35%|███▌      | 71/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.self_attn.k_proj.weight]        Loading weights:  35%|███▌      | 71/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.self_attn.k_proj.weight]Loading weights:  36%|███▌      | 72/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.self_attn.o_proj.weight]Loading weights:  36%|███▌      | 72/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.self_attn.o_proj.weight]Loading weights:  36%|███▋      | 73/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.self_attn.q_proj.weight]Loading weights:  36%|███▋      | 73/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.self_attn.q_proj.weight]Loading weights:  37%|███▋      | 74/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.self_attn.v_proj.weight]Loading weights:  37%|███▋      | 74/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.7.self_attn.v_proj.weight]Loading weights:  37%|███▋      | 75/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.input_layernorm.weight] Loading weights:  37%|███▋      | 75/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.input_layernorm.weight]Loading weights:  38%|███▊      | 76/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.mlp.down_proj.weight]  Loading weights:  38%|███▊      | 76/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.mlp.down_proj.weight]Loading weights:  38%|███▊      | 77/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.mlp.gate_proj.weight]Loading weights:  38%|███▊      | 77/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.mlp.gate_proj.weight]Loading weights:  39%|███▉      | 78/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.mlp.up_proj.weight]  Loading weights:  39%|███▉      | 78/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.mlp.up_proj.weight]Loading weights:  39%|███▉      | 79/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.post_attention_layernorm.weight]Loading weights:  39%|███▉      | 79/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.post_attention_layernorm.weight]Loading weights:  40%|███▉      | 80/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.self_attn.k_proj.weight]        Loading weights:  40%|███▉      | 80/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.self_attn.k_proj.weight]Loading weights:  40%|████      | 81/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.self_attn.o_proj.weight]Loading weights:  40%|████      | 81/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.self_attn.o_proj.weight]Loading weights:  41%|████      | 82/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.self_attn.q_proj.weight]Loading weights:  41%|████      | 82/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.self_attn.q_proj.weight]Loading weights:  41%|████▏     | 83/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.self_attn.v_proj.weight]Loading weights:  41%|████▏     | 83/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.8.self_attn.v_proj.weight]Loading weights:  42%|████▏     | 84/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.9.input_layernorm.weight] Loading weights:  42%|████▏     | 84/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.9.input_layernorm.weight]Loading weights:  42%|████▏     | 85/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.9.mlp.down_proj.weight]  Loading weights:  42%|████▏     | 85/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.9.mlp.down_proj.weight]Loading weights:  43%|████▎     | 86/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.9.mlp.gate_proj.weight]Loading weights:  43%|████▎     | 86/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.9.mlp.gate_proj.weight]Loading weights:  43%|████▎     | 87/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.9.mlp.up_proj.weight]  Loading weights:  43%|████▎     | 87/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.9.mlp.up_proj.weight]Loading weights:  44%|████▍     | 88/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.9.post_attention_layernorm.weight]Loading weights:  44%|████▍     | 88/201 [00:00<00:00, 271.81it/s, Materializing param=model.layers.9.post_attention_layernorm.weight]Loading weights:  44%|████▍     | 89/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.9.post_attention_layernorm.weight]Loading weights:  44%|████▍     | 89/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.9.self_attn.k_proj.weight]        Loading weights:  44%|████▍     | 89/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.9.self_attn.k_proj.weight]Loading weights:  45%|████▍     | 90/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.9.self_attn.o_proj.weight]Loading weights:  45%|████▍     | 90/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.9.self_attn.o_proj.weight]Loading weights:  45%|████▌     | 91/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.9.self_attn.q_proj.weight]Loading weights:  45%|████▌     | 91/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.9.self_attn.q_proj.weight]Loading weights:  46%|████▌     | 92/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.9.self_attn.v_proj.weight]Loading weights:  46%|████▌     | 92/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.9.self_attn.v_proj.weight]Loading weights:  46%|████▋     | 93/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.input_layernorm.weight]Loading weights:  46%|████▋     | 93/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.input_layernorm.weight]Loading weights:  47%|████▋     | 94/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.mlp.down_proj.weight]  Loading weights:  47%|████▋     | 94/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.mlp.down_proj.weight]Loading weights:  47%|████▋     | 95/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.mlp.gate_proj.weight]Loading weights:  47%|████▋     | 95/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.mlp.gate_proj.weight]Loading weights:  48%|████▊     | 96/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.mlp.up_proj.weight]  Loading weights:  48%|████▊     | 96/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.mlp.up_proj.weight]Loading weights:  48%|████▊     | 97/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.post_attention_layernorm.weight]Loading weights:  48%|████▊     | 97/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.post_attention_layernorm.weight]Loading weights:  49%|████▉     | 98/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.self_attn.k_proj.weight]        Loading weights:  49%|████▉     | 98/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.self_attn.k_proj.weight]Loading weights:  49%|████▉     | 99/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.self_attn.o_proj.weight]Loading weights:  49%|████▉     | 99/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.self_attn.o_proj.weight]Loading weights:  50%|████▉     | 100/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.self_attn.q_proj.weight]Loading weights:  50%|████▉     | 100/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.self_attn.q_proj.weight]Loading weights:  50%|█████     | 101/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.self_attn.v_proj.weight]Loading weights:  50%|█████     | 101/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.10.self_attn.v_proj.weight]Loading weights:  51%|█████     | 102/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.input_layernorm.weight] Loading weights:  51%|█████     | 102/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.input_layernorm.weight]Loading weights:  51%|█████     | 103/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.mlp.down_proj.weight]  Loading weights:  51%|█████     | 103/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.mlp.down_proj.weight]Loading weights:  52%|█████▏    | 104/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.mlp.gate_proj.weight]Loading weights:  52%|█████▏    | 104/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.mlp.gate_proj.weight]Loading weights:  52%|█████▏    | 105/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.mlp.up_proj.weight]  Loading weights:  52%|█████▏    | 105/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.mlp.up_proj.weight]Loading weights:  53%|█████▎    | 106/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.post_attention_layernorm.weight]Loading weights:  53%|█████▎    | 106/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.post_attention_layernorm.weight]Loading weights:  53%|█████▎    | 107/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.self_attn.k_proj.weight]        Loading weights:  53%|█████▎    | 107/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.self_attn.k_proj.weight]Loading weights:  54%|█████▎    | 108/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.self_attn.o_proj.weight]Loading weights:  54%|█████▎    | 108/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.self_attn.o_proj.weight]Loading weights:  54%|█████▍    | 109/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.self_attn.q_proj.weight]Loading weights:  54%|█████▍    | 109/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.self_attn.q_proj.weight]Loading weights:  55%|█████▍    | 110/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.self_attn.v_proj.weight]Loading weights:  55%|█████▍    | 110/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.11.self_attn.v_proj.weight]Loading weights:  55%|█████▌    | 111/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.input_layernorm.weight] Loading weights:  55%|█████▌    | 111/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.input_layernorm.weight]Loading weights:  56%|█████▌    | 112/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.mlp.down_proj.weight]  Loading weights:  56%|█████▌    | 112/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.mlp.down_proj.weight]Loading weights:  56%|█████▌    | 113/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.mlp.gate_proj.weight]Loading weights:  56%|█████▌    | 113/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.mlp.gate_proj.weight]Loading weights:  57%|█████▋    | 114/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.mlp.up_proj.weight]  Loading weights:  57%|█████▋    | 114/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.mlp.up_proj.weight]Loading weights:  57%|█████▋    | 115/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.post_attention_layernorm.weight]Loading weights:  57%|█████▋    | 115/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.post_attention_layernorm.weight]Loading weights:  58%|█████▊    | 116/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.self_attn.k_proj.weight]        Loading weights:  58%|█████▊    | 116/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.self_attn.k_proj.weight]Loading weights:  58%|█████▊    | 117/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.self_attn.o_proj.weight]Loading weights:  58%|█████▊    | 117/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.self_attn.o_proj.weight]Loading weights:  59%|█████▊    | 118/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.self_attn.q_proj.weight]Loading weights:  59%|█████▊    | 118/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.self_attn.q_proj.weight]Loading weights:  59%|█████▉    | 119/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.self_attn.v_proj.weight]Loading weights:  59%|█████▉    | 119/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.12.self_attn.v_proj.weight]Loading weights:  60%|█████▉    | 120/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.13.input_layernorm.weight] Loading weights:  60%|█████▉    | 120/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.13.input_layernorm.weight]Loading weights:  60%|██████    | 121/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.13.mlp.down_proj.weight]  Loading weights:  60%|██████    | 121/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.13.mlp.down_proj.weight]Loading weights:  61%|██████    | 122/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.13.mlp.gate_proj.weight]Loading weights:  61%|██████    | 122/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.13.mlp.gate_proj.weight]Loading weights:  61%|██████    | 123/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.13.mlp.up_proj.weight]  Loading weights:  61%|██████    | 123/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.13.mlp.up_proj.weight]Loading weights:  62%|██████▏   | 124/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.13.post_attention_layernorm.weight]Loading weights:  62%|██████▏   | 124/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.13.post_attention_layernorm.weight]Loading weights:  62%|██████▏   | 125/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.13.self_attn.k_proj.weight]        Loading weights:  62%|██████▏   | 125/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.13.self_attn.k_proj.weight]Loading weights:  63%|██████▎   | 126/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.13.self_attn.o_proj.weight]Loading weights:  63%|██████▎   | 126/201 [00:00<00:00, 323.85it/s, Materializing param=model.layers.13.self_attn.o_proj.weight]Loading weights:  63%|██████▎   | 127/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.13.self_attn.o_proj.weight]Loading weights:  63%|██████▎   | 127/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.13.self_attn.q_proj.weight]Loading weights:  63%|██████▎   | 127/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.13.self_attn.q_proj.weight]Loading weights:  64%|██████▎   | 128/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.13.self_attn.v_proj.weight]Loading weights:  64%|██████▎   | 128/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.13.self_attn.v_proj.weight]Loading weights:  64%|██████▍   | 129/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.input_layernorm.weight] Loading weights:  64%|██████▍   | 129/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.input_layernorm.weight]Loading weights:  65%|██████▍   | 130/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.mlp.down_proj.weight]  Loading weights:  65%|██████▍   | 130/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.mlp.down_proj.weight]Loading weights:  65%|██████▌   | 131/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.mlp.gate_proj.weight]Loading weights:  65%|██████▌   | 131/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.mlp.gate_proj.weight]Loading weights:  66%|██████▌   | 132/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.mlp.up_proj.weight]  Loading weights:  66%|██████▌   | 132/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.mlp.up_proj.weight]Loading weights:  66%|██████▌   | 133/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.post_attention_layernorm.weight]Loading weights:  66%|██████▌   | 133/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.post_attention_layernorm.weight]Loading weights:  67%|██████▋   | 134/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.self_attn.k_proj.weight]        Loading weights:  67%|██████▋   | 134/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.self_attn.k_proj.weight]Loading weights:  67%|██████▋   | 135/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.self_attn.o_proj.weight]Loading weights:  67%|██████▋   | 135/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.self_attn.o_proj.weight]Loading weights:  68%|██████▊   | 136/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.self_attn.q_proj.weight]Loading weights:  68%|██████▊   | 136/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.self_attn.q_proj.weight]Loading weights:  68%|██████▊   | 137/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.self_attn.v_proj.weight]Loading weights:  68%|██████▊   | 137/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.14.self_attn.v_proj.weight]Loading weights:  69%|██████▊   | 138/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.input_layernorm.weight] Loading weights:  69%|██████▊   | 138/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.input_layernorm.weight]Loading weights:  69%|██████▉   | 139/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.mlp.down_proj.weight]  Loading weights:  69%|██████▉   | 139/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.mlp.down_proj.weight]Loading weights:  70%|██████▉   | 140/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.mlp.gate_proj.weight]Loading weights:  70%|██████▉   | 140/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.mlp.gate_proj.weight]Loading weights:  70%|███████   | 141/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.mlp.up_proj.weight]  Loading weights:  70%|███████   | 141/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.mlp.up_proj.weight]Loading weights:  71%|███████   | 142/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.post_attention_layernorm.weight]Loading weights:  71%|███████   | 142/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.post_attention_layernorm.weight]Loading weights:  71%|███████   | 143/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.self_attn.k_proj.weight]        Loading weights:  71%|███████   | 143/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.self_attn.k_proj.weight]Loading weights:  72%|███████▏  | 144/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.self_attn.o_proj.weight]Loading weights:  72%|███████▏  | 144/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.self_attn.o_proj.weight]Loading weights:  72%|███████▏  | 145/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.self_attn.q_proj.weight]Loading weights:  72%|███████▏  | 145/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.self_attn.q_proj.weight]Loading weights:  73%|███████▎  | 146/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.self_attn.v_proj.weight]Loading weights:  73%|███████▎  | 146/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.15.self_attn.v_proj.weight]Loading weights:  73%|███████▎  | 147/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.input_layernorm.weight] Loading weights:  73%|███████▎  | 147/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.input_layernorm.weight]Loading weights:  74%|███████▎  | 148/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.mlp.down_proj.weight]  Loading weights:  74%|███████▎  | 148/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.mlp.down_proj.weight]Loading weights:  74%|███████▍  | 149/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.mlp.gate_proj.weight]Loading weights:  74%|███████▍  | 149/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.mlp.gate_proj.weight]Loading weights:  75%|███████▍  | 150/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.mlp.up_proj.weight]  Loading weights:  75%|███████▍  | 150/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.mlp.up_proj.weight]Loading weights:  75%|███████▌  | 151/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.post_attention_layernorm.weight]Loading weights:  75%|███████▌  | 151/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.post_attention_layernorm.weight]Loading weights:  76%|███████▌  | 152/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.self_attn.k_proj.weight]        Loading weights:  76%|███████▌  | 152/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.self_attn.k_proj.weight]Loading weights:  76%|███████▌  | 153/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.self_attn.o_proj.weight]Loading weights:  76%|███████▌  | 153/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.self_attn.o_proj.weight]Loading weights:  77%|███████▋  | 154/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.self_attn.q_proj.weight]Loading weights:  77%|███████▋  | 154/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.self_attn.q_proj.weight]Loading weights:  77%|███████▋  | 155/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.self_attn.v_proj.weight]Loading weights:  77%|███████▋  | 155/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.16.self_attn.v_proj.weight]Loading weights:  78%|███████▊  | 156/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.input_layernorm.weight] Loading weights:  78%|███████▊  | 156/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.input_layernorm.weight]Loading weights:  78%|███████▊  | 157/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.mlp.down_proj.weight]  Loading weights:  78%|███████▊  | 157/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.mlp.down_proj.weight]Loading weights:  79%|███████▊  | 158/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.mlp.gate_proj.weight]Loading weights:  79%|███████▊  | 158/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.mlp.gate_proj.weight]Loading weights:  79%|███████▉  | 159/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.mlp.up_proj.weight]  Loading weights:  79%|███████▉  | 159/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.mlp.up_proj.weight]Loading weights:  80%|███████▉  | 160/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.post_attention_layernorm.weight]Loading weights:  80%|███████▉  | 160/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.post_attention_layernorm.weight]Loading weights:  80%|████████  | 161/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.self_attn.k_proj.weight]        Loading weights:  80%|████████  | 161/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.self_attn.k_proj.weight]Loading weights:  81%|████████  | 162/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.self_attn.o_proj.weight]Loading weights:  81%|████████  | 162/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.self_attn.o_proj.weight]Loading weights:  81%|████████  | 163/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.self_attn.q_proj.weight]Loading weights:  81%|████████  | 163/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.self_attn.q_proj.weight]Loading weights:  82%|████████▏ | 164/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.self_attn.v_proj.weight]Loading weights:  82%|████████▏ | 164/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.17.self_attn.v_proj.weight]Loading weights:  82%|████████▏ | 165/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.18.input_layernorm.weight] Loading weights:  82%|████████▏ | 165/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.18.input_layernorm.weight]Loading weights:  83%|████████▎ | 166/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.18.mlp.down_proj.weight]  Loading weights:  83%|████████▎ | 166/201 [00:00<00:00, 328.13it/s, Materializing param=model.layers.18.mlp.down_proj.weight]Loading weights:  83%|████████▎ | 167/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.18.mlp.down_proj.weight]Loading weights:  83%|████████▎ | 167/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.18.mlp.gate_proj.weight]Loading weights:  83%|████████▎ | 167/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.18.mlp.gate_proj.weight]Loading weights:  84%|████████▎ | 168/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.18.mlp.up_proj.weight]  Loading weights:  84%|████████▎ | 168/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.18.mlp.up_proj.weight]Loading weights:  84%|████████▍ | 169/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.18.post_attention_layernorm.weight]Loading weights:  84%|████████▍ | 169/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.18.post_attention_layernorm.weight]Loading weights:  85%|████████▍ | 170/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.18.self_attn.k_proj.weight]        Loading weights:  85%|████████▍ | 170/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.18.self_attn.k_proj.weight]Loading weights:  85%|████████▌ | 171/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.18.self_attn.o_proj.weight]Loading weights:  85%|████████▌ | 171/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.18.self_attn.o_proj.weight]Loading weights:  86%|████████▌ | 172/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.18.self_attn.q_proj.weight]Loading weights:  86%|████████▌ | 172/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.18.self_attn.q_proj.weight]Loading weights:  86%|████████▌ | 173/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.18.self_attn.v_proj.weight]Loading weights:  86%|████████▌ | 173/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.18.self_attn.v_proj.weight]Loading weights:  87%|████████▋ | 174/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.input_layernorm.weight] Loading weights:  87%|████████▋ | 174/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.input_layernorm.weight]Loading weights:  87%|████████▋ | 175/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.mlp.down_proj.weight]  Loading weights:  87%|████████▋ | 175/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.mlp.down_proj.weight]Loading weights:  88%|████████▊ | 176/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.mlp.gate_proj.weight]Loading weights:  88%|████████▊ | 176/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.mlp.gate_proj.weight]Loading weights:  88%|████████▊ | 177/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.mlp.up_proj.weight]  Loading weights:  88%|████████▊ | 177/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.mlp.up_proj.weight]Loading weights:  89%|████████▊ | 178/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.post_attention_layernorm.weight]Loading weights:  89%|████████▊ | 178/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.post_attention_layernorm.weight]Loading weights:  89%|████████▉ | 179/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.self_attn.k_proj.weight]        Loading weights:  89%|████████▉ | 179/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.self_attn.k_proj.weight]Loading weights:  90%|████████▉ | 180/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.self_attn.o_proj.weight]Loading weights:  90%|████████▉ | 180/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.self_attn.o_proj.weight]Loading weights:  90%|█████████ | 181/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.self_attn.q_proj.weight]Loading weights:  90%|█████████ | 181/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.self_attn.q_proj.weight]Loading weights:  91%|█████████ | 182/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.self_attn.v_proj.weight]Loading weights:  91%|█████████ | 182/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.19.self_attn.v_proj.weight]Loading weights:  91%|█████████ | 183/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.input_layernorm.weight] Loading weights:  91%|█████████ | 183/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.input_layernorm.weight]Loading weights:  92%|█████████▏| 184/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.mlp.down_proj.weight]  Loading weights:  92%|█████████▏| 184/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.mlp.down_proj.weight]Loading weights:  92%|█████████▏| 185/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.mlp.gate_proj.weight]Loading weights:  92%|█████████▏| 185/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.mlp.gate_proj.weight]Loading weights:  93%|█████████▎| 186/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.mlp.up_proj.weight]  Loading weights:  93%|█████████▎| 186/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.mlp.up_proj.weight]Loading weights:  93%|█████████▎| 187/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.post_attention_layernorm.weight]Loading weights:  93%|█████████▎| 187/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.post_attention_layernorm.weight]Loading weights:  94%|█████████▎| 188/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.self_attn.k_proj.weight]        Loading weights:  94%|█████████▎| 188/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.self_attn.k_proj.weight]Loading weights:  94%|█████████▍| 189/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.self_attn.o_proj.weight]Loading weights:  94%|█████████▍| 189/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.self_attn.o_proj.weight]Loading weights:  95%|█████████▍| 190/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.self_attn.q_proj.weight]Loading weights:  95%|█████████▍| 190/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.self_attn.q_proj.weight]Loading weights:  95%|█████████▌| 191/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.self_attn.v_proj.weight]Loading weights:  95%|█████████▌| 191/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.20.self_attn.v_proj.weight]Loading weights:  96%|█████████▌| 192/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.input_layernorm.weight] Loading weights:  96%|█████████▌| 192/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.input_layernorm.weight]Loading weights:  96%|█████████▌| 193/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.mlp.down_proj.weight]  Loading weights:  96%|█████████▌| 193/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.mlp.down_proj.weight]Loading weights:  97%|█████████▋| 194/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.mlp.gate_proj.weight]Loading weights:  97%|█████████▋| 194/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.mlp.gate_proj.weight]Loading weights:  97%|█████████▋| 195/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.mlp.up_proj.weight]  Loading weights:  97%|█████████▋| 195/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.mlp.up_proj.weight]Loading weights:  98%|█████████▊| 196/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.post_attention_layernorm.weight]Loading weights:  98%|█████████▊| 196/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.post_attention_layernorm.weight]Loading weights:  98%|█████████▊| 197/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.self_attn.k_proj.weight]        Loading weights:  98%|█████████▊| 197/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.self_attn.k_proj.weight]Loading weights:  99%|█████████▊| 198/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.self_attn.o_proj.weight]Loading weights:  99%|█████████▊| 198/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.self_attn.o_proj.weight]Loading weights:  99%|█████████▉| 199/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.self_attn.q_proj.weight]Loading weights:  99%|█████████▉| 199/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.self_attn.q_proj.weight]Loading weights: 100%|█████████▉| 200/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.self_attn.v_proj.weight]Loading weights: 100%|█████████▉| 200/201 [00:00<00:00, 352.58it/s, Materializing param=model.layers.21.self_attn.v_proj.weight]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 352.58it/s, Materializing param=model.norm.weight]                      Loading weights: 100%|██████████| 201/201 [00:00<00:00, 352.58it/s, Materializing param=model.norm.weight]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 333.01it/s, Materializing param=model.norm.weight]
-  Total parameters:      1,100,639,502
-  Frozen (LM):           770,244,608
-  Trainable LM:          329,803,776   (lr=2e-05)
-  Trainable heads:       591,106   (lr=0.0005)
-  Trainable cognitive:   12    (lr=0.001)
-
-==========================================================================================
-Training REICHLE v3 model on GECO
-  Model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
-  v3 fixes: L1 floor -> 30 ms, surprisal clipped at 12 nats, delta allowed >= 0.1
-  L1 = alpha1 - alpha2*ln(freq) + alpha3*clip(surprisal, 12) + residual_LLM
-  L2 = delta * base_L1 | FFD = L1_ecc + M1 + M2
-  Gaze = FFD + P_refix * (L2 + M1 + M2)
-  TRT = Gaze + I + pF * reg_weight * prev_gaze
-  Skip = learned head (parallel parafoveal), detached from TRT gradient
-  Batch: 32 | Accum: 2 | Effective: 64
-  AMP: True
-  Regularizers: delta_reg(0.1-0.5) + skip_prior(0.45) + residual_L2(0.001)
-==========================================================================================
-  Reichle formula parameters:
-    alpha1 (base ms)       =  104.00    (Reichle 2003: 104)
-    alpha2 (freq coef)     =  3.5000    (Reichle 2003: 3.5)
-    alpha3 (surprisal coef)=  4.0000    (init 4.0 ms/nat, clipped @ 12)
-    delta  (L2/L1)         =  0.3400    (Reichle 2003: 0.34, allowed >= 0.1)
-  Cognitive cascade:
-    epsilon (ecc exponent) =  1.1500    (Reichle: 1.15, constrained >= 1)
-    M1 (labile)    =  125.00 ms  (Reichle: 125)
-    M2 (non-labile)=   25.00 ms  (Reichle: 25)
-    I  (integration)=   25.00 ms  (Reichle: 25)
-    pF (integration failure) = 0.0100  (Reichle: ~0.01)
-    reg_weight (regression cost) = 0.5000
-    lambda_refix     =  0.4000
-    refix_pivot      =    8.00 chars
-    L1 clamp         = [30.0, 500.0] ms
-
-[Epoch   1/50] 364.8s | lm_lr=2.00e-05 head_lr=5.00e-04 cog_lr=1.00e-03
-  Train: loss=809.4 (trt=1318 ffd=934 gaze=985 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.442  r_FFD=0.210  r_Gaze=0.378  r_skip=0.405
-  Val:   MAE_TRT=57.5ms  MAE_FFD=36.5ms  MAE_Gaze=44.0ms
-  Val:   Bias_TRT=-4.6ms  Bias_FFD=+11.3ms
-  Pred:  mean_TRT=259ms (human=263ms) | L1=73+/-19  L2=17+/-4  mean_skip=0.720
-  Reichle: a1=103.87 a2=3.492 a3=3.859 d=0.276 eps=1.126 M1=123.8 M2=23.8 pF=0.0041 res_abs_mean=49.48 surp_mean=13.35
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                66    17 10.27 -40.6 |   238   291   -53 |   214   242 |   214   260 |  0.76  0.21
-  a                 94    26 17.77  -7.8 |   266   179   +87 |   242   179 |   242   179 |  0.76  0.79
-  boy              103    25 13.47 -23.3 |   276   216   +60 |   250   200 |   252   216 |  0.76  0.36
-  though           115    23 14.54 -33.0 |   302   364   -61 |   262   234 |   278   305 |  0.76  0.07
-  I                 58    16 13.70 -41.8 |   230   248   -19 |   205   248 |   205   248 |  0.76  0.86
-  had               83    20 14.73 -36.5 |   256   343   -87 |   231   238 |   232   268 |  0.76  0.50
-  often             67    15  8.65 -56.7 |   245   237    +8 |   214   237 |   221   237 |  0.71  0.43
-  stayed           104    21 11.93 -47.1 |   291   279   +12 |   251   244 |   267   279 |  0.75  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                60    16 12.69 -48.9 |   232   257   -25 |   207   218 |   208   218 |  0.74  0.21
-  had               89    22 17.00 -31.6 |   262   249   +12 |   237   208 |   238   208 |  0.77  0.43
-  been              77    18 11.42 -43.7 |   252   240   +11 |   225   207 |   228   207 |  0.76  0.36
-  completely        37     6  5.28 -73.6 |   328   245   +82 |   184   203 |   304   218 |  0.58  0.00
-  under             81    18 15.51 -53.2 |   259   306   -46 |   229   212 |   235   250 |  0.73  0.21
-  his               66    16 12.98 -50.7 |   239   216   +23 |   214   216 |   215   216 |  0.73  0.50
-  wifes             85    18 28.51 -83.3 |   263   221   +42 |   233   173 |   239   185 |  0.45  0.29
-  ascendancy       125    20 16.05 -71.0 |   427   546  -119 |   272   247 |   403   455 |  0.61  0.00
-
-  ** NEW BEST (r_TRT=0.442) **
-
-[Epoch   2/50] 367.5s | lm_lr=2.00e-05 head_lr=5.00e-04 cog_lr=1.00e-03
-  Train: loss=718.1 (trt=1173 ffd=834 gaze=866 skip=0.015 res=0.188) | 54,930 samples
-  Val:   r_TRT=0.441  r_FFD=0.211  r_Gaze=0.379  r_skip=0.393
-  Val:   MAE_TRT=57.5ms  MAE_FFD=36.1ms  MAE_Gaze=43.3ms
-  Val:   Bias_TRT=-9.3ms  Bias_FFD=+9.6ms
-  Pred:  mean_TRT=254ms (human=263ms) | L1=73+/-19  L2=16+/-4  mean_skip=0.740
-  Reichle: a1=103.83 a2=3.501 a3=3.831 d=0.256 eps=1.113 M1=122.9 M2=22.9 pF=0.0026 res_abs_mean=47.38 surp_mean=13.19
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                64    15 10.03 -41.2 |   233   291   -58 |   210   242 |   210   260 |  0.77  0.21
-  a                100    26 19.98  -1.5 |   269   179   +89 |   246   179 |   246   179 |  0.73  0.79
-  boy              115    26 14.94 -10.7 |   285   216   +69 |   261   200 |   262   216 |  0.75  0.36
-  though           111    22 13.94 -32.7 |   291   364   -72 |   257   234 |   268   305 |  0.78  0.07
-  I                 54    14 10.70 -39.5 |   223   248   -25 |   200   248 |   200   248 |  0.78  0.86
-  had               91    21 11.41 -26.2 |   260   343   -83 |   237   238 |   237   268 |  0.78  0.50
-  often             75    15  8.87 -49.6 |   248   237   +11 |   221   237 |   225   237 |  0.76  0.43
-  stayed            94    18  9.54 -42.3 |   274   279    -5 |   240   244 |   251   279 |  0.77  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                62    15 12.18 -45.8 |   231   257   -26 |   208   218 |   208   218 |  0.77  0.21
-  had              102    23 15.13 -18.4 |   272   249   +22 |   248   208 |   249   208 |  0.77  0.43
-  been              83    18 11.14 -36.0 |   253   240   +13 |   229   207 |   230   207 |  0.78  0.36
-  completely        52     8  7.24 -70.4 |   340   245   +95 |   198   203 |   317   218 |  0.62  0.00
-  under             80    16 18.61 -52.3 |   253   306   -53 |   226   212 |   230   250 |  0.75  0.21
-  his               72    16 15.74 -44.8 |   241   216   +25 |   218   216 |   218   216 |  0.77  0.50
-  wifes             95    20 31.54 -73.2 |   268   221   +47 |   241   173 |   245   185 |  0.58  0.29
-  ascendancy       103    16 19.56 -79.7 |   398   546  -147 |   249   247 |   375   455 |  0.49  0.00
-
-
-[Epoch   3/50] 367.5s | lm_lr=2.00e-05 head_lr=5.00e-04 cog_lr=1.00e-03
-  Train: loss=701.8 (trt=1142 ffd=817 gaze=848 skip=0.015 res=0.184) | 54,930 samples
-  Val:   r_TRT=0.441  r_FFD=0.200  r_Gaze=0.381  r_skip=0.344
-  Val:   MAE_TRT=57.5ms  MAE_FFD=37.9ms  MAE_Gaze=44.0ms
-  Val:   Bias_TRT=-7.9ms  Bias_FFD=+12.3ms
-  Pred:  mean_TRT=255ms (human=263ms) | L1=77+/-23  L2=17+/-5  mean_skip=0.737
-  Reichle: a1=103.78 a2=3.516 a3=3.821 d=0.260 eps=1.106 M1=122.1 M2=22.1 pF=0.0019 res_abs_mean=39.98 surp_mean=11.41
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                67    16  9.16 -34.4 |   233   291   -58 |   211   242 |   211   260 |  0.78  0.21
-  a                103    27 16.80  +2.2 |   270   179   +90 |   247   179 |   247   179 |  0.75  0.79
-  boy              106    25 12.13 -17.7 |   273   216   +57 |   250   200 |   251   216 |  0.77  0.36
-  though           105    21 11.57 -34.1 |   281   364   -82 |   250   234 |   259   305 |  0.77  0.07
-  I                 55    14  8.32 -29.2 |   222   248   -27 |   199   248 |   200   248 |  0.78  0.86
-  had               98    23 11.12 -17.4 |   265   343   -78 |   243   238 |   243   268 |  0.77  0.50
-  often             78    17  7.83 -42.1 |   248   237   +11 |   222   237 |   226   237 |  0.76  0.43
-  stayed           100    20  8.51 -32.2 |   276   279    -3 |   245   244 |   254   279 |  0.78  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                69    17 13.30 -38.6 |   236   257   -21 |   213   218 |   214   218 |  0.77  0.21
-  had              112    26 12.07  -8.3 |   279   249   +30 |   256   208 |   257   208 |  0.76  0.43
-  been              69    16  9.02 -38.5 |   237   240    -3 |   214   207 |   215   207 |  0.77  0.36
-  completely        49     8  6.94 -69.7 |   334   245   +89 |   193   203 |   312   218 |  0.60  0.00
-  under             84    18 16.63 -47.9 |   254   306   -52 |   228   212 |   231   250 |  0.74  0.21
-  his               92    22 13.48 -25.8 |   259   216   +42 |   236   216 |   237   216 |  0.78  0.50
-  wifes            102    22 27.96 -66.3 |   272   221   +51 |   246   173 |   250   185 |  0.63  0.29
-  ascendancy       114    19 14.77 -70.7 |   408   546  -138 |   259   247 |   385   455 |  0.57  0.00
-
-
-[Epoch   4/50] 369.3s | lm_lr=2.00e-05 head_lr=5.00e-04 cog_lr=1.00e-03
-  Train: loss=687.9 (trt=1115 ffd=803 gaze=833 skip=0.015 res=0.181) | 54,930 samples
-  Val:   r_TRT=0.432  r_FFD=0.192  r_Gaze=0.372  r_skip=0.327
-  Val:   MAE_TRT=57.8ms  MAE_FFD=37.7ms  MAE_Gaze=44.1ms
-  Val:   Bias_TRT=-9.5ms  Bias_FFD=+11.8ms
-  Pred:  mean_TRT=254ms (human=263ms) | L1=78+/-22  L2=18+/-5  mean_skip=0.729
-  Reichle: a1=103.73 a2=3.528 a3=3.817 d=0.271 eps=1.101 M1=121.3 M2=21.3 pF=0.0015 res_abs_mean=37.77 surp_mean=11.20
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                63    16  9.49 -38.5 |   227   291   -63 |   206   242 |   206   260 |  0.75  0.21
-  a                101    27 15.93  +0.4 |   265   179   +86 |   244   179 |   244   179 |  0.74  0.79
-  boy              113    28 11.16  -7.8 |   277   216   +61 |   255   200 |   256   216 |  0.74  0.36
-  though           123    26 10.48 -15.0 |   296   364   -68 |   265   234 |   274   305 |  0.76  0.07
-  I                 66    18  8.92 -20.7 |   230   248   -19 |   208   248 |   208   248 |  0.76  0.86
-  had              106    26  9.02  -1.9 |   270   343   -73 |   248   238 |   249   268 |  0.74  0.50
-  often             79    18  6.43 -35.2 |   246   237    +9 |   221   237 |   224   237 |  0.75  0.43
-  stayed           102    22  7.73 -27.1 |   274   279    -5 |   244   244 |   253   279 |  0.76  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                65    17 13.66 -42.3 |   229   257   -28 |   207   218 |   208   218 |  0.75  0.21
-  had              123    30 14.02  +1.9 |   287   249   +38 |   265   208 |   266   208 |  0.73  0.43
-  been              70    16  6.56 -28.0 |   235   240    -6 |   212   207 |   214   207 |  0.76  0.36
-  completely        54     9  6.66 -64.9 |   335   245   +90 |   196   203 |   314   218 |  0.65  0.00
-  under             86    19 13.54 -45.1 |   253   306   -53 |   229   212 |   232   250 |  0.73  0.21
-  his               83    21 12.31 -32.9 |   248   216   +31 |   226   216 |   226   216 |  0.76  0.50
-  wifes             96    21 27.29 -70.3 |   263   221   +42 |   239   173 |   242   185 |  0.59  0.29
-  ascendancy       121    21 15.39 -64.7 |   412   546  -134 |   263   247 |   391   455 |  0.64  0.00
-
-
-[Epoch   5/50] 368.1s | lm_lr=2.00e-05 head_lr=5.00e-04 cog_lr=1.00e-03
-  Train: loss=673.2 (trt=1089 ffd=787 gaze=816 skip=0.015 res=0.181) | 54,930 samples
-  Val:   r_TRT=0.423  r_FFD=0.182  r_Gaze=0.364  r_skip=0.320
-  Val:   MAE_TRT=58.3ms  MAE_FFD=40.0ms  MAE_Gaze=45.5ms
-  Val:   Bias_TRT=-5.2ms  Bias_FFD=+16.9ms
-  Pred:  mean_TRT=258ms (human=263ms) | L1=85+/-24  L2=21+/-6  mean_skip=0.737
-  Reichle: a1=103.68 a2=3.527 a3=3.821 d=0.286 eps=1.095 M1=120.4 M2=20.4 pF=0.0012 res_abs_mean=29.52 surp_mean=10.22
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                80    22  9.67 -23.4 |   241   291   -50 |   221   242 |   221   260 |  0.76  0.21
-  a                129    37 13.55 +28.1 |   290   179  +111 |   270   179 |   270   179 |  0.73  0.79
-  boy              120    31 10.40  +2.2 |   282   216   +66 |   261   200 |   261   216 |  0.75  0.36
-  though           120    27 10.65 -16.9 |   290   364   -73 |   260   234 |   270   305 |  0.77  0.07
-  I                 72    20  7.11  -8.0 |   233   248   -16 |   212   248 |   213   248 |  0.77  0.86
-  had              108    28  8.06  +4.0 |   270   343   -74 |   249   238 |   249   268 |  0.76  0.50
-  often             86    20  6.53 -29.1 |   250   237   +13 |   227   237 |   230   237 |  0.76  0.43
-  stayed           104    24  7.58 -23.5 |   274   279    -5 |   245   244 |   254   279 |  0.76  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                74    20 13.55 -33.7 |   235   257   -22 |   215   218 |   215   218 |  0.75  0.21
-  had              123    32 12.49  +2.6 |   285   249   +35 |   264   208 |   264   208 |  0.76  0.43
-  been              86    21  6.69 -13.8 |   249   240    +8 |   227   207 |   228   207 |  0.77  0.36
-  completely        74    14  7.34 -53.2 |   355   245  +110 |   215   203 |   335   218 |  0.69  0.00
-  under             93    22 11.86 -37.6 |   258   306   -48 |   234   212 |   238   250 |  0.74  0.21
-  his               86    23 10.62 -24.5 |   248   216   +32 |   227   216 |   228   216 |  0.76  0.50
-  wifes             82    19 25.84 -81.5 |   246   221   +25 |   222   173 |   226   185 |  0.41  0.29
-  ascendancy       107    20 15.75 -72.3 |   393   546  -152 |   248   247 |   373   455 |  0.53  0.00
-
-
-[Epoch   6/50] 368.2s | lm_lr=2.00e-05 head_lr=5.00e-04 cog_lr=1.00e-03
-  Train: loss=659.6 (trt=1064 ffd=773 gaze=801 skip=0.015 res=0.179) | 54,930 samples
-  Val:   r_TRT=0.420  r_FFD=0.174  r_Gaze=0.359  r_skip=0.304
-  Val:   MAE_TRT=58.4ms  MAE_FFD=37.9ms  MAE_Gaze=44.5ms
-  Val:   Bias_TRT=-13.6ms  Bias_FFD=+9.5ms
-  Pred:  mean_TRT=250ms (human=263ms) | L1=79+/-24  L2=21+/-6  mean_skip=0.742
-  Reichle: a1=103.62 a2=3.526 a3=3.819 d=0.303 eps=1.090 M1=119.6 M2=19.6 pF=0.0009 res_abs_mean=35.02 surp_mean=10.62
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                75    22 10.69 -31.5 |   234   291   -57 |   214   242 |   214   260 |  0.77  0.21
-  a                128    39 13.07 +27.1 |   287   179  +107 |   267   179 |   267   179 |  0.76  0.79
-  boy               99    27  9.03 -11.7 |   258   216   +42 |   238   200 |   238   216 |  0.77  0.36
-  though           129    32 11.22  -9.9 |   297   364   -66 |   269   234 |   278   305 |  0.77  0.07
-  I                 58    17  7.22 -22.2 |   217   248   -32 |   197   248 |   197   248 |  0.77  0.86
-  had              120    33  7.78 +16.5 |   279   343   -64 |   259   238 |   259   268 |  0.77  0.50
-  often             76    20  5.71 -32.9 |   238   237    +1 |   216   237 |   219   237 |  0.76  0.43
-  stayed            98    24  7.59 -27.3 |   266   279   -13 |   237   244 |   246   279 |  0.77  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                66    19 14.75 -40.6 |   225   257   -32 |   205   218 |   205   218 |  0.75  0.21
-  had              126    35 14.53  +6.5 |   286   249   +36 |   265   208 |   266   208 |  0.77  0.43
-  been              68    18  6.82 -29.5 |   228   240   -12 |   207   207 |   209   207 |  0.77  0.36
-  completely        61    13  6.41 -57.1 |   338   245   +93 |   200   203 |   319   218 |  0.69  0.00
-  under             88    22 11.14 -38.5 |   250   306   -56 |   227   212 |   231   250 |  0.75  0.21
-  his               82    23 10.99 -29.4 |   241   216   +25 |   221   216 |   222   216 |  0.77  0.50
-  wifes             87    22 29.39 -75.8 |   249   221   +28 |   227   173 |   230   185 |  0.53  0.29
-  ascendancy       107    22 14.61 -70.6 |   391   546  -154 |   246   247 |   372   455 |  0.60  0.00
-
-
-[Epoch   7/50] 368.3s | lm_lr=1.00e-05 head_lr=2.50e-04 cog_lr=5.00e-04
-  Train: loss=645.6 (trt=1039 ffd=757 gaze=786 skip=0.015 res=0.178) | 54,930 samples
-  Val:   r_TRT=0.408  r_FFD=0.160  r_Gaze=0.347  r_skip=0.370
-  Val:   MAE_TRT=58.9ms  MAE_FFD=39.0ms  MAE_Gaze=45.2ms
-  Val:   Bias_TRT=-12.0ms  Bias_FFD=+11.8ms
-  Pred:  mean_TRT=251ms (human=263ms) | L1=84+/-26  L2=24+/-7  mean_skip=0.727
-  Reichle: a1=103.57 a2=3.522 a3=3.826 d=0.324 eps=1.086 M1=118.7 M2=18.7 pF=0.0008 res_abs_mean=30.85 surp_mean=10.11
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                73    23  8.64 -25.1 |   230   291   -61 |   211   242 |   211   260 |  0.75  0.21
-  a                116    37 12.87 +14.8 |   272   179   +92 |   253   179 |   253   179 |  0.76  0.79
-  boy              106    32  9.50  -6.4 |   263   216   +47 |   243   200 |   244   216 |  0.75  0.36
-  though           125    33 11.24 -12.7 |   291   364   -73 |   262   234 |   272   305 |  0.75  0.07
-  I                 66    21  6.14  -9.8 |   222   248   -26 |   204   248 |   204   248 |  0.76  0.86
-  had              101    30  7.00  +2.7 |   258   343   -86 |   238   238 |   239   268 |  0.76  0.50
-  often             76    21  6.82 -37.0 |   236   237    -1 |   214   237 |   217   237 |  0.73  0.43
-  stayed           106    28  8.26 -22.5 |   272   279    -7 |   244   244 |   253   279 |  0.75  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                74    23 12.47 -33.2 |   230   257   -27 |   211   218 |   212   218 |  0.74  0.21
-  had              129    39 13.04  +9.4 |   286   249   +36 |   266   208 |   267   208 |  0.76  0.43
-  been              71    20  6.52 -25.3 |   229   240   -12 |   209   207 |   210   207 |  0.75  0.36
-  completely        63    14  7.32 -58.8 |   338   245   +92 |   200   203 |   319   218 |  0.66  0.00
-  under             93    26 11.90 -36.8 |   253   306   -53 |   230   212 |   234   250 |  0.73  0.21
-  his               89    27 12.57 -26.5 |   246   216   +29 |   227   216 |   227   216 |  0.75  0.50
-  wifes             83    23 29.57 -78.7 |   243   221   +22 |   221   173 |   224   185 |  0.50  0.29
-  ascendancy       105    23 13.65 -70.9 |   387   546  -159 |   242   247 |   368   455 |  0.58  0.00
-
-
-[Epoch   8/50] 367.9s | lm_lr=1.00e-05 head_lr=2.50e-04 cog_lr=5.00e-04
-  Train: loss=634.8 (trt=1018 ffd=747 gaze=774 skip=0.015 res=0.178) | 54,930 samples
-  Val:   r_TRT=0.416  r_FFD=0.177  r_Gaze=0.358  r_skip=0.312
-  Val:   MAE_TRT=58.5ms  MAE_FFD=38.6ms  MAE_Gaze=45.1ms
-  Val:   Bias_TRT=-12.5ms  Bias_FFD=+11.6ms
-  Pred:  mean_TRT=251ms (human=263ms) | L1=84+/-25  L2=25+/-7  mean_skip=0.730
-  Reichle: a1=103.54 a2=3.521 a3=3.832 d=0.340 eps=1.084 M1=118.3 M2=18.3 pF=0.0007 res_abs_mean=29.66 surp_mean=9.93
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                74    24  9.09 -26.1 |   229   291   -62 |   211   242 |   211   260 |  0.74  0.21
-  a                105    36 12.43  +4.6 |   260   179   +81 |   242   179 |   242   179 |  0.76  0.79
-  boy              110    35  9.39  -1.9 |   266   216   +50 |   247   200 |   247   216 |  0.76  0.36
-  though           124    34 10.95 -12.4 |   288   364   -76 |   260   234 |   270   305 |  0.75  0.07
-  I                 63    21  6.06 -13.0 |   218   248   -31 |   199   248 |   199   248 |  0.75  0.86
-  had              104    33  6.30  +8.1 |   259   343   -84 |   240   238 |   241   268 |  0.76  0.50
-  often             82    24  6.57 -31.0 |   240   237    +3 |   218   237 |   222   237 |  0.74  0.43
-  stayed           107    30  7.75 -19.7 |   271   279    -8 |   244   244 |   253   279 |  0.75  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                69    23 12.87 -38.0 |   224   257   -33 |   205   218 |   206   218 |  0.73  0.21
-  had              128    40 12.46  +8.6 |   283   249   +34 |   265   208 |   265   208 |  0.76  0.43
-  been              79    24  6.91 -19.9 |   235   240    -5 |   216   207 |   217   207 |  0.75  0.36
-  completely        68    16  7.23 -54.7 |   343   245   +98 |   204   203 |   325   218 |  0.68  0.00
-  under             89    26 11.32 -37.6 |   247   306   -59 |   226   212 |   229   250 |  0.73  0.21
-  his               86    27 10.91 -25.1 |   241   216   +25 |   223   216 |   223   216 |  0.74  0.50
-  wifes             80    23 29.12 -81.4 |   238   221   +17 |   217   173 |   220   185 |  0.53  0.29
-  ascendancy       111    26 14.29 -66.4 |   394   546  -152 |   247   247 |   376   455 |  0.66  0.00
-
-
-[Epoch   9/50] 369.0s | lm_lr=1.00e-05 head_lr=2.50e-04 cog_lr=5.00e-04
-  Train: loss=628.7 (trt=1007 ffd=740 gaze=767 skip=0.015 res=0.178) | 54,930 samples
-  Val:   r_TRT=0.405  r_FFD=0.157  r_Gaze=0.346  r_skip=0.361
-  Val:   MAE_TRT=58.8ms  MAE_FFD=40.3ms  MAE_Gaze=45.9ms
-  Val:   Bias_TRT=-8.9ms  Bias_FFD=+15.6ms
-  Pred:  mean_TRT=254ms (human=263ms) | L1=89+/-26  L2=28+/-8  mean_skip=0.740
-  Reichle: a1=103.52 a2=3.517 a3=3.837 d=0.354 eps=1.083 M1=117.8 M2=17.9 pF=0.0006 res_abs_mean=26.70 surp_mean=9.96
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                80    27  9.17 -20.8 |   234   291   -57 |   216   242 |   216   260 |  0.75  0.21
-  a                118    42 12.45 +17.0 |   271   179   +92 |   254   179 |   254   179 |  0.81  0.79
-  boy              120    39  9.46  +6.4 |   274   216   +58 |   255   200 |   256   216 |  0.77  0.36
-  though           132    38 10.65  -4.1 |   295   364   -68 |   268   234 |   278   305 |  0.76  0.07
-  I                 75    27  6.51  -2.5 |   229   248   -20 |   211   248 |   211   248 |  0.77  0.86
-  had              116    38  6.64 +18.2 |   270   343   -73 |   252   238 |   252   268 |  0.80  0.50
-  often             86    26  6.42 -26.5 |   243   237    +6 |   222   237 |   225   237 |  0.74  0.43
-  stayed           111    32  7.58 -15.4 |   274   279    -5 |   247   244 |   256   279 |  0.75  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                75    26 12.61 -31.8 |   229   257   -28 |   211   218 |   211   218 |  0.74  0.21
-  had              141    46 12.80 +20.8 |   295   249   +46 |   277   208 |   277   208 |  0.80  0.43
-  been              88    28  5.91  -8.3 |   243   240    +2 |   223   207 |   225   207 |  0.76  0.36
-  completely        71    18  7.43 -53.2 |   346   245  +101 |   207   203 |   328   218 |  0.69  0.00
-  under             90    27 11.27 -36.7 |   247   306   -59 |   226   212 |   229   250 |  0.73  0.21
-  his               93    30 10.82 -18.7 |   247   216   +30 |   228   216 |   229   216 |  0.75  0.50
-  wifes             83    25 28.83 -78.8 |   240   221   +19 |   219   173 |   222   185 |  0.57  0.29
-  ascendancy       105    26 15.55 -70.0 |   387   546  -159 |   241   247 |   369   455 |  0.65  0.00
-
-
-[Epoch  10/50] 368.6s | lm_lr=1.00e-05 head_lr=2.50e-04 cog_lr=5.00e-04
-  Train: loss=621.9 (trt=994 ffd=733 gaze=760 skip=0.015 res=0.177) | 54,930 samples
-  Val:   r_TRT=0.414  r_FFD=0.172  r_Gaze=0.354  r_skip=0.349
-  Val:   MAE_TRT=58.6ms  MAE_FFD=39.5ms  MAE_Gaze=45.7ms
-  Val:   Bias_TRT=-11.9ms  Bias_FFD=+12.8ms
-  Pred:  mean_TRT=251ms (human=263ms) | L1=87+/-27  L2=28+/-9  mean_skip=0.728
-  Reichle: a1=103.49 a2=3.519 a3=3.842 d=0.368 eps=1.081 M1=117.4 M2=17.4 pF=0.0005 res_abs_mean=27.29 surp_mean=9.72
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                77    27  8.67 -22.2 |   229   291   -62 |   211   242 |   212   260 |  0.74  0.21
-  a                127    47 12.68 +26.1 |   279   179  +100 |   262   179 |   262   179 |  0.84  0.79
-  boy              118    40  9.38  +5.2 |   271   216   +55 |   253   200 |   253   216 |  0.76  0.36
-  though           130    39 10.69  -5.3 |   293   364   -71 |   265   234 |   275   305 |  0.75  0.07
-  I                 64    24  6.31 -12.3 |   217   248   -32 |   199   248 |   199   248 |  0.75  0.86
-  had              110    38  7.22 +10.8 |   263   343   -80 |   245   238 |   246   268 |  0.78  0.50
-  often             88    28  6.58 -25.2 |   244   237    +7 |   223   237 |   227   237 |  0.73  0.43
-  stayed           108    33  7.48 -17.1 |   270   279    -9 |   243   244 |   253   279 |  0.74  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                74    26 11.39 -31.2 |   226   257   -31 |   208   218 |   209   218 |  0.73  0.21
-  had              130    44 12.52 +10.2 |   282   249   +33 |   264   208 |   265   208 |  0.77  0.43
-  been              90    30  7.33 -11.1 |   244   240    +4 |   225   207 |   227   207 |  0.75  0.36
-  completely        67    17  6.87 -53.3 |   340   245   +95 |   202   203 |   323   218 |  0.68  0.00
-  under             88    28 10.70 -35.5 |   244   306   -62 |   223   212 |   227   250 |  0.73  0.21
-  his               90    31 10.43 -19.4 |   243   216   +27 |   225   216 |   225   216 |  0.74  0.50
-  wifes             84    27 29.07 -77.5 |   240   221   +19 |   219   173 |   223   185 |  0.55  0.29
-  ascendancy       108    28 15.24 -67.4 |   390   546  -156 |   243   247 |   372   455 |  0.65  0.00
-
-
-[Epoch  11/50] 368.8s | lm_lr=1.00e-05 head_lr=2.50e-04 cog_lr=5.00e-04
-  Train: loss=614.9 (trt=981 ffd=725 gaze=752 skip=0.015 res=0.177) | 54,930 samples
-  Val:   r_TRT=0.408  r_FFD=0.165  r_Gaze=0.349  r_skip=0.371
-  Val:   MAE_TRT=59.0ms  MAE_FFD=38.9ms  MAE_Gaze=45.4ms
-  Val:   Bias_TRT=-14.4ms  Bias_FFD=+10.6ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=86+/-26  L2=29+/-9  mean_skip=0.739
-  Reichle: a1=103.46 a2=3.518 a3=3.846 d=0.383 eps=1.080 M1=117.0 M2=17.0 pF=0.0004 res_abs_mean=28.84 surp_mean=10.00
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                80    30  9.39 -21.6 |   231   291   -60 |   214   242 |   214   260 |  0.75  0.21
-  a                104    40 12.03  +2.9 |   255   179   +76 |   238   179 |   238   179 |  0.82  0.79
-  boy              109    39  9.16  -1.5 |   261   216   +45 |   243   200 |   244   216 |  0.77  0.36
-  though           122    39 10.38 -10.4 |   284   364   -80 |   256   234 |   267   305 |  0.76  0.07
-  I                 62    24  5.64 -12.1 |   213   248   -35 |   196   248 |   196   248 |  0.77  0.86
-  had              115    41  7.12 +15.8 |   267   343   -76 |   249   238 |   250   268 |  0.81  0.50
-  often             84    28  6.46 -27.9 |   239   237    +2 |   218   237 |   222   237 |  0.74  0.43
-  stayed           108    34  7.74 -17.7 |   269   279   -10 |   242   244 |   252   279 |  0.75  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                74    27 12.86 -33.1 |   225   257   -32 |   208   218 |   208   218 |  0.73  0.21
-  had              122    43 11.30  +6.2 |   274   249   +24 |   256   208 |   257   208 |  0.78  0.43
-  been              84    29  6.77 -14.9 |   236   240    -4 |   218   207 |   219   207 |  0.76  0.36
-  completely        68    18  7.37 -54.6 |   340   245   +95 |   202   203 |   323   218 |  0.69  0.00
-  under             89    29 11.36 -37.8 |   243   306   -63 |   223   212 |   226   250 |  0.73  0.21
-  his               86    30 10.27 -22.8 |   237   216   +21 |   220   216 |   220   216 |  0.75  0.50
-  wifes             95    31 29.87 -68.5 |   249   221   +28 |   229   173 |   232   185 |  0.65  0.29
-  ascendancy       108    29 15.30 -66.7 |   390   546  -156 |   242   247 |   373   455 |  0.67  0.00
-
-
-[Epoch  12/50] 369.8s | lm_lr=1.00e-05 head_lr=2.50e-04 cog_lr=5.00e-04
-  Train: loss=608.6 (trt=970 ffd=718 gaze=745 skip=0.015 res=0.176) | 54,930 samples
-  Val:   r_TRT=0.411  r_FFD=0.165  r_Gaze=0.353  r_skip=0.419
-  Val:   MAE_TRT=58.6ms  MAE_FFD=39.9ms  MAE_Gaze=46.0ms
-  Val:   Bias_TRT=-10.2ms  Bias_FFD=+15.0ms
-  Pred:  mean_TRT=253ms (human=263ms) | L1=91+/-26  L2=32+/-9  mean_skip=0.735
-  Reichle: a1=103.44 a2=3.514 a3=3.852 d=0.396 eps=1.079 M1=116.6 M2=16.6 pF=0.0004 res_abs_mean=23.82 surp_mean=9.78
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                84    32  9.03 -16.4 |   234   291   -57 |   217   242 |   217   260 |  0.75  0.21
-  a                120    47 12.95 +18.6 |   269   179   +90 |   253   179 |   253   179 |  0.85  0.79
-  boy              119    44  9.56  +6.0 |   269   216   +53 |   252   200 |   253   216 |  0.76  0.36
-  though           139    46 10.50  +3.4 |   300   364   -64 |   272   234 |   283   305 |  0.75  0.07
-  I                 67    26  6.11  -9.3 |   216   248   -32 |   200   248 |   200   248 |  0.76  0.86
-  had              112    41  7.25 +12.6 |   263   343   -81 |   245   238 |   246   268 |  0.79  0.50
-  often             90    31  6.58 -23.3 |   244   237    +7 |   223   237 |   227   237 |  0.73  0.43
-  stayed           112    37  7.82 -15.0 |   272   279    -7 |   245   244 |   255   279 |  0.74  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    31 12.14 -26.9 |   230   257   -27 |   214   218 |   214   218 |  0.73  0.21
-  had              133    49 12.88 +13.8 |   284   249   +34 |   266   208 |   267   208 |  0.78  0.43
-  been              81    29  6.58 -16.3 |   232   240    -8 |   214   207 |   216   207 |  0.75  0.36
-  completely        73    21  7.42 -50.7 |   346   245  +100 |   206   203 |   329   218 |  0.69  0.00
-  under             91    31 10.48 -31.8 |   245   306   -61 |   225   212 |   228   250 |  0.73  0.21
-  his               97    36 10.09 -12.0 |   247   216   +30 |   230   216 |   230   216 |  0.75  0.50
-  wifes            108    37 27.98 -56.8 |   262   221   +40 |   241   173 |   245   185 |  0.69  0.29
-  ascendancy       118    33 14.83 -59.2 |   401   546  -145 |   252   247 |   385   455 |  0.68  0.00
-
-
-[Epoch  13/50] 367.9s | lm_lr=5.00e-06 head_lr=1.25e-04 cog_lr=2.50e-04
-  Train: loss=602.6 (trt=960 ffd=712 gaze=739 skip=0.015 res=0.176) | 54,930 samples
-  Val:   r_TRT=0.404  r_FFD=0.160  r_Gaze=0.346  r_skip=0.437
-  Val:   MAE_TRT=59.1ms  MAE_FFD=39.6ms  MAE_Gaze=45.8ms
-  Val:   Bias_TRT=-13.5ms  Bias_FFD=+12.2ms
-  Pred:  mean_TRT=250ms (human=263ms) | L1=89+/-27  L2=32+/-10  mean_skip=0.735
-  Reichle: a1=103.41 a2=3.510 a3=3.857 d=0.409 eps=1.077 M1=116.2 M2=16.2 pF=0.0003 res_abs_mean=25.90 surp_mean=9.60
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                80    31  8.88 -20.1 |   228   291   -62 |   212   242 |   212   260 |  0.75  0.21
-  a                135    55 12.21 +34.0 |   284   179  +104 |   267   179 |   267   179 |  0.91  0.79
-  boy              114    43  9.21  +2.4 |   263   216   +47 |   246   200 |   247   216 |  0.76  0.36
-  though           133    45 10.33  -0.6 |   293   364   -71 |   266   234 |   276   305 |  0.75  0.07
-  I                 69    28  5.92  -6.0 |   218   248   -31 |   202   248 |   202   248 |  0.78  0.86
-  had              115    44  6.75 +17.2 |   264   343   -79 |   247   238 |   248   268 |  0.82  0.50
-  often             92    32  6.45 -21.0 |   244   237    +7 |   224   237 |   228   237 |  0.74  0.43
-  stayed           115    39  7.73 -11.5 |   274   279    -5 |   248   244 |   258   279 |  0.74  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                74    29 11.70 -31.6 |   223   257   -34 |   207   218 |   207   218 |  0.73  0.21
-  had              131    50 12.45 +11.9 |   280   249   +31 |   263   208 |   264   208 |  0.79  0.43
-  been              89    32  6.61  -9.6 |   239   240    -2 |   221   207 |   222   207 |  0.75  0.36
-  completely        67    20  7.07 -53.3 |   337   245   +92 |   199   203 |   321   218 |  0.69  0.00
-  under             90    32 10.10 -31.7 |   242   306   -64 |   222   212 |   226   250 |  0.74  0.21
-  his               89    34  9.78 -17.5 |   238   216   +22 |   222   216 |   222   216 |  0.75  0.50
-  wifes             87    31 28.67 -74.9 |   239   221   +18 |   219   173 |   223   185 |  0.60  0.29
-  ascendancy       109    32 15.10 -65.8 |   389   546  -157 |   241   247 |   372   455 |  0.66  0.00
-
-
-[Epoch  14/50] 368.2s | lm_lr=5.00e-06 head_lr=1.25e-04 cog_lr=2.50e-04
-  Train: loss=596.8 (trt=949 ffd=706 gaze=732 skip=0.015 res=0.176) | 54,930 samples
-  Val:   r_TRT=0.410  r_FFD=0.166  r_Gaze=0.351  r_skip=0.454
-  Val:   MAE_TRT=58.9ms  MAE_FFD=39.2ms  MAE_Gaze=45.7ms
-  Val:   Bias_TRT=-13.8ms  Bias_FFD=+12.0ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=89+/-26  L2=33+/-10  mean_skip=0.739
-  Reichle: a1=103.40 a2=3.510 a3=3.860 d=0.417 eps=1.077 M1=115.9 M2=15.9 pF=0.0003 res_abs_mean=25.02 surp_mean=9.67
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                82    33  9.09 -18.5 |   230   291   -61 |   214   242 |   214   260 |  0.75  0.21
-  a                126    53 12.45 +25.1 |   274   179   +95 |   258   179 |   258   179 |  0.89  0.79
-  boy              119    46  9.25  +7.3 |   267   216   +51 |   251   200 |   251   216 |  0.77  0.36
-  though           134    46 10.52  -0.4 |   293   364   -70 |   266   234 |   277   305 |  0.75  0.07
-  I                 67    28  6.25  -9.3 |   215   248   -33 |   199   248 |   199   248 |  0.77  0.86
-  had              109    42  6.80 +11.7 |   258   343   -86 |   241   238 |   242   268 |  0.80  0.50
-  often             90    32  6.48 -22.5 |   242   237    +5 |   222   237 |   226   237 |  0.73  0.43
-  stayed           112    39  7.77 -14.4 |   270   279    -9 |   244   244 |   254   279 |  0.74  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                78    31 12.11 -29.3 |   226   257   -31 |   210   218 |   210   218 |  0.73  0.21
-  had              128    50 12.88  +9.5 |   277   249   +28 |   260   208 |   261   208 |  0.78  0.43
-  been              87    33  6.61 -10.7 |   237   240    -4 |   219   207 |   221   207 |  0.75  0.36
-  completely        70    21  7.34 -52.5 |   340   245   +95 |   201   203 |   324   218 |  0.70  0.00
-  under             89    32 10.02 -31.7 |   241   306   -65 |   221   212 |   225   250 |  0.75  0.21
-  his               93    36  9.98 -15.1 |   241   216   +25 |   225   216 |   225   216 |  0.75  0.50
-  wifes             92    33 28.86 -70.0 |   244   221   +23 |   224   173 |   228   185 |  0.65  0.29
-  ascendancy       115    34 15.18 -61.2 |   396   546  -150 |   247   247 |   380   455 |  0.69  0.00
-
-
-[Epoch  15/50] 370.0s | lm_lr=5.00e-06 head_lr=1.25e-04 cog_lr=2.50e-04
-  Train: loss=593.7 (trt=943 ffd=702 gaze=729 skip=0.015 res=0.176) | 54,930 samples
-  Val:   r_TRT=0.411  r_FFD=0.164  r_Gaze=0.353  r_skip=0.471
-  Val:   MAE_TRT=58.9ms  MAE_FFD=38.8ms  MAE_Gaze=45.2ms
-  Val:   Bias_TRT=-14.4ms  Bias_FFD=+11.6ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=89+/-25  L2=34+/-9  mean_skip=0.725
-  Reichle: a1=103.38 a2=3.510 a3=3.860 d=0.424 eps=1.076 M1=115.7 M2=15.7 pF=0.0003 res_abs_mean=24.72 surp_mean=9.78
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                81    33  8.95 -19.1 |   228   291   -63 |   212   242 |   213   260 |  0.73  0.21
-  a                113    48 12.18 +12.3 |   261   179   +81 |   245   179 |   245   179 |  0.85  0.79
-  boy              116    46  9.25  +4.4 |   264   216   +48 |   247   200 |   248   216 |  0.75  0.36
-  though           132    46 10.36  -1.8 |   290   364   -74 |   263   234 |   274   305 |  0.73  0.07
-  I                 64    27  5.98 -11.5 |   211   248   -37 |   195   248 |   195   248 |  0.76  0.86
-  had              108    43  6.90 +10.6 |   256   343   -87 |   240   238 |   240   268 |  0.79  0.50
-  often             91    33  6.57 -22.2 |   242   237    +5 |   222   237 |   226   237 |  0.72  0.43
-  stayed           110    39  7.72 -15.6 |   268   279   -12 |   241   244 |   252   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                75    30 11.71 -31.5 |   222   257   -35 |   206   218 |   206   218 |  0.72  0.21
-  had              126    50 12.80  +7.5 |   274   249   +25 |   258   208 |   258   208 |  0.76  0.43
-  been              87    33  6.53 -10.8 |   235   240    -5 |   218   207 |   220   207 |  0.74  0.36
-  completely        69    21  7.29 -52.6 |   339   245   +94 |   200   203 |   323   218 |  0.68  0.00
-  under             92    34 10.52 -31.1 |   243   306   -63 |   224   212 |   227   250 |  0.73  0.21
-  his               96    38 10.31 -13.5 |   243   216   +27 |   227   216 |   228   216 |  0.74  0.50
-  wifes             95    35 28.21 -68.1 |   246   221   +24 |   226   173 |   230   185 |  0.65  0.29
-  ascendancy       109    33 15.55 -65.0 |   389   546  -157 |   241   247 |   373   455 |  0.66  0.00
-
-
-[Epoch  16/50] 367.4s | lm_lr=5.00e-06 head_lr=1.25e-04 cog_lr=2.50e-04
-  Train: loss=590.3 (trt=936 ffd=699 gaze=725 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.408  r_FFD=0.161  r_Gaze=0.349  r_skip=0.470
-  Val:   MAE_TRT=59.0ms  MAE_FFD=39.3ms  MAE_Gaze=45.7ms
-  Val:   Bias_TRT=-13.8ms  Bias_FFD=+12.2ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=90+/-26  L2=35+/-10  mean_skip=0.729
-  Reichle: a1=103.37 a2=3.508 a3=3.864 d=0.431 eps=1.076 M1=115.5 M2=15.5 pF=0.0002 res_abs_mean=23.93 surp_mean=9.58
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                83    35  9.13 -17.7 |   230   291   -61 |   214   242 |   214   260 |  0.74  0.21
-  a                116    50 11.92 +14.8 |   262   179   +83 |   247   179 |   247   179 |  0.88  0.79
-  boy              116    46  9.02  +5.0 |   263   216   +47 |   247   200 |   247   216 |  0.76  0.36
-  though           131    47 10.53  -2.6 |   289   364   -74 |   262   234 |   274   305 |  0.73  0.07
-  I                 70    30  5.86  -5.1 |   217   248   -32 |   201   248 |   201   248 |  0.77  0.86
-  had              110    44  6.32 +14.2 |   257   343   -86 |   241   238 |   241   268 |  0.80  0.50
-  often             93    35  6.43 -19.6 |   244   237    +7 |   224   237 |   228   237 |  0.72  0.43
-  stayed           113    41  7.65 -12.7 |   271   279    -9 |   244   244 |   255   279 |  0.73  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                78    33 12.40 -29.0 |   225   257   -32 |   209   218 |   210   218 |  0.72  0.21
-  had              131    53 12.41 +12.1 |   278   249   +29 |   262   208 |   263   208 |  0.77  0.43
-  been              85    33  6.41 -11.9 |   233   240    -7 |   216   207 |   218   207 |  0.74  0.36
-  completely        71    22  7.40 -51.6 |   341   245   +96 |   202   203 |   325   218 |  0.69  0.00
-  under             91    34 10.13 -30.8 |   241   306   -65 |   222   212 |   226   250 |  0.74  0.21
-  his               95    38 10.00 -12.6 |   243   216   +26 |   227   216 |   227   216 |  0.74  0.50
-  wifes             94    35 28.21 -68.3 |   245   221   +23 |   225   173 |   229   185 |  0.66  0.29
-  ascendancy       110    34 15.05 -64.0 |   390   546  -155 |   241   247 |   375   455 |  0.67  0.00
-
-
-[Epoch  17/50] 367.2s | lm_lr=5.00e-06 head_lr=1.25e-04 cog_lr=2.50e-04
-  Train: loss=587.3 (trt=932 ffd=695 gaze=722 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.406  r_FFD=0.163  r_Gaze=0.348  r_skip=0.478
-  Val:   MAE_TRT=59.2ms  MAE_FFD=39.2ms  MAE_Gaze=45.8ms
-  Val:   Bias_TRT=-15.2ms  Bias_FFD=+10.9ms
-  Pred:  mean_TRT=248ms (human=263ms) | L1=89+/-27  L2=35+/-11  mean_skip=0.722
-  Reichle: a1=103.36 a2=3.507 a3=3.867 d=0.439 eps=1.075 M1=115.3 M2=15.3 pF=0.0002 res_abs_mean=25.30 surp_mean=9.57
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                84    35  9.17 -17.2 |   230   291   -61 |   214   242 |   215   260 |  0.73  0.21
-  a                128    56 11.95 +26.7 |   274   179   +94 |   258   179 |   258   179 |  0.91  0.79
-  boy              118    48  9.02  +7.2 |   264   216   +48 |   249   200 |   249   216 |  0.75  0.36
-  though           131    48 10.37  -2.2 |   288   364   -75 |   262   234 |   273   305 |  0.72  0.07
-  I                 62    27  5.47 -11.9 |   208   248   -41 |   192   248 |   192   248 |  0.77  0.86
-  had              114    46  6.53 +17.0 |   260   343   -83 |   244   238 |   245   268 |  0.81  0.50
-  often             93    35  6.48 -20.2 |   243   237    +6 |   223   237 |   227   237 |  0.71  0.43
-  stayed           113    41  7.68 -12.7 |   270   279    -9 |   244   244 |   255   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                78    33 12.41 -29.7 |   224   257   -33 |   208   218 |   208   218 |  0.71  0.21
-  had              138    56 12.55 +18.3 |   284   249   +35 |   268   208 |   269   208 |  0.78  0.43
-  been              87    34  6.53 -10.4 |   235   240    -6 |   218   207 |   219   207 |  0.74  0.36
-  completely        70    22  7.34 -51.9 |   340   245   +94 |   201   203 |   324   218 |  0.68  0.00
-  under             89    34 10.04 -31.7 |   239   306   -67 |   220   212 |   224   250 |  0.73  0.21
-  his               97    40 10.12 -11.2 |   244   216   +28 |   228   216 |   229   216 |  0.74  0.50
-  wifes             94    36 27.60 -68.3 |   244   221   +23 |   225   173 |   229   185 |  0.65  0.29
-  ascendancy       114    36 15.19 -61.4 |   395   546  -151 |   244   247 |   379   455 |  0.66  0.00
-
-
-[Epoch  18/50] 368.9s | lm_lr=5.00e-06 head_lr=1.25e-04 cog_lr=2.50e-04
-  Train: loss=584.5 (trt=926 ffd=692 gaze=719 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.407  r_FFD=0.163  r_Gaze=0.350  r_skip=0.501
-  Val:   MAE_TRT=59.0ms  MAE_FFD=39.5ms  MAE_Gaze=46.0ms
-  Val:   Bias_TRT=-13.6ms  Bias_FFD=+12.7ms
-  Pred:  mean_TRT=250ms (human=263ms) | L1=92+/-27  L2=36+/-11  mean_skip=0.739
-  Reichle: a1=103.35 a2=3.505 a3=3.870 d=0.446 eps=1.075 M1=115.1 M2=15.1 pF=0.0002 res_abs_mean=23.64 surp_mean=9.62
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                86    37  9.28 -15.7 |   231   291   -60 |   216   242 |   216   260 |  0.75  0.21
-  a                128    57 12.10 +27.0 |   274   179   +94 |   258   179 |   259   179 |  0.92  0.79
-  boy              119    49  9.05  +8.2 |   265   216   +49 |   249   200 |   250   216 |  0.76  0.36
-  though           136    51 10.48  +1.9 |   293   364   -70 |   267   234 |   278   305 |  0.74  0.07
-  I                 70    31  5.72  -4.9 |   215   248   -33 |   200   248 |   200   248 |  0.78  0.86
-  had              111    46  6.41 +15.2 |   257   343   -86 |   242   238 |   242   268 |  0.81  0.50
-  often             94    36  6.52 -19.6 |   243   237    +6 |   224   237 |   228   237 |  0.73  0.43
-  stayed           116    43  7.76 -10.5 |   272   279    -7 |   246   244 |   257   279 |  0.74  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                79    34 12.57 -28.5 |   224   257   -33 |   209   218 |   209   218 |  0.73  0.21
-  had              134    56 12.79 +14.7 |   280   249   +30 |   264   208 |   265   208 |  0.78  0.43
-  been              86    35  6.27 -10.1 |   233   240    -7 |   217   207 |   218   207 |  0.75  0.36
-  completely        72    23  7.37 -50.7 |   341   245   +96 |   202   203 |   326   218 |  0.70  0.00
-  under             91    35 10.16 -30.9 |   240   306   -66 |   221   212 |   225   250 |  0.75  0.21
-  his              100    42 10.08  -8.5 |   246   216   +30 |   230   216 |   231   216 |  0.76  0.50
-  wifes             93    36 27.97 -69.6 |   242   221   +21 |   223   173 |   227   185 |  0.65  0.29
-  ascendancy       116    37 15.15 -59.8 |   397   546  -149 |   246   247 |   382   455 |  0.68  0.00
-
-
-[Epoch  19/50] 370.0s | lm_lr=2.50e-06 head_lr=6.25e-05 cog_lr=1.25e-04
-  Train: loss=581.1 (trt=920 ffd=688 gaze=715 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.405  r_FFD=0.158  r_Gaze=0.346  r_skip=0.513
-  Val:   MAE_TRT=59.0ms  MAE_FFD=40.0ms  MAE_Gaze=46.2ms
-  Val:   Bias_TRT=-12.1ms  Bias_FFD=+14.3ms
-  Pred:  mean_TRT=251ms (human=263ms) | L1=94+/-26  L2=38+/-11  mean_skip=0.728
-  Reichle: a1=103.33 a2=3.504 a3=3.870 d=0.452 eps=1.074 M1=114.9 M2=14.9 pF=0.0002 res_abs_mean=22.40 surp_mean=9.67
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                86    38  9.18 -14.9 |   231   291   -60 |   216   242 |   216   260 |  0.74  0.21
-  a                126    57 12.15 +24.8 |   271   179   +91 |   256   179 |   256   179 |  0.91  0.79
-  boy              121    51  9.13  +9.8 |   266   216   +50 |   251   200 |   251   216 |  0.75  0.36
-  though           136    51 10.49  +1.9 |   292   364   -71 |   266   234 |   277   305 |  0.72  0.07
-  I                 70    32  5.95  -5.4 |   215   248   -34 |   200   248 |   200   248 |  0.78  0.86
-  had              116    49  6.94 +18.0 |   262   343   -82 |   246   238 |   247   268 |  0.81  0.50
-  often             94    37  6.57 -19.2 |   243   237    +6 |   224   237 |   228   237 |  0.72  0.43
-  stayed           116    44  7.82 -10.2 |   272   279    -7 |   246   244 |   257   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                80    35 12.49 -27.5 |   225   257   -32 |   210   218 |   210   218 |  0.72  0.21
-  had              138    58 13.08 +18.9 |   284   249   +34 |   268   208 |   269   208 |  0.77  0.43
-  been              95    38  6.63  -3.9 |   241   240    +1 |   225   207 |   226   207 |  0.75  0.36
-  completely        71    23  7.30 -50.5 |   340   245   +95 |   201   203 |   325   218 |  0.68  0.00
-  under             93    36 10.21 -28.9 |   242   306   -64 |   223   212 |   227   250 |  0.74  0.21
-  his              103    43  9.98  -5.3 |   248   216   +32 |   233   216 |   233   216 |  0.75  0.50
-  wifes             98    38 27.80 -64.7 |   247   221   +26 |   228   173 |   232   185 |  0.66  0.29
-  ascendancy       113    37 15.13 -61.9 |   393   546  -153 |   242   247 |   378   455 |  0.65  0.00
-
-
-[Epoch  20/50] 369.8s | lm_lr=2.50e-06 head_lr=6.25e-05 cog_lr=1.25e-04
-  Train: loss=578.5 (trt=915 ffd=686 gaze=712 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.402  r_FFD=0.157  r_Gaze=0.345  r_skip=0.513
-  Val:   MAE_TRT=59.2ms  MAE_FFD=39.5ms  MAE_Gaze=46.0ms
-  Val:   Bias_TRT=-14.2ms  Bias_FFD=+12.4ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=92+/-26  L2=37+/-11  mean_skip=0.725
-  Reichle: a1=103.33 a2=3.504 a3=3.871 d=0.455 eps=1.074 M1=114.8 M2=14.8 pF=0.0001 res_abs_mean=23.38 surp_mean=9.65
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                86    38  9.17 -15.2 |   230   291   -60 |   215   242 |   216   260 |  0.74  0.21
-  a                125    57 12.02 +24.1 |   270   179   +90 |   255   179 |   255   179 |  0.92  0.79
-  boy              118    50  8.95  +7.5 |   263   216   +47 |   247   200 |   248   216 |  0.75  0.36
-  though           134    51 10.46  +0.0 |   290   364   -74 |   263   234 |   275   305 |  0.72  0.07
-  I                 68    31  5.69  -6.6 |   212   248   -36 |   197   248 |   198   248 |  0.78  0.86
-  had              115    49  6.80 +17.1 |   260   343   -84 |   244   238 |   245   268 |  0.82  0.50
-  often             93    37  6.53 -19.7 |   242   237    +5 |   223   237 |   227   237 |  0.71  0.43
-  stayed           116    44  7.79 -10.6 |   271   279    -8 |   245   244 |   257   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                79    35 12.46 -28.5 |   223   257   -34 |   208   218 |   209   218 |  0.71  0.21
-  had              138    58 13.02 +18.3 |   283   249   +33 |   267   208 |   268   208 |  0.78  0.43
-  been              91    37  6.53  -6.8 |   237   240    -4 |   221   207 |   222   207 |  0.74  0.36
-  completely        72    24  7.39 -50.3 |   341   245   +96 |   202   203 |   326   218 |  0.68  0.00
-  under             91    36 10.29 -30.6 |   240   306   -66 |   221   212 |   225   250 |  0.73  0.21
-  his               99    42  9.93  -8.8 |   244   216   +28 |   229   216 |   229   216 |  0.75  0.50
-  wifes             96    38 28.08 -66.5 |   244   221   +23 |   226   173 |   230   185 |  0.66  0.29
-  ascendancy       113    37 14.97 -61.7 |   393   546  -153 |   242   247 |   378   455 |  0.66  0.00
-
-
-[Epoch  21/50] 365.6s | lm_lr=2.50e-06 head_lr=6.25e-05 cog_lr=1.25e-04
-  Train: loss=576.9 (trt=913 ffd=684 gaze=710 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.397  r_FFD=0.153  r_Gaze=0.340  r_skip=0.507
-  Val:   MAE_TRT=59.3ms  MAE_FFD=40.1ms  MAE_Gaze=46.5ms
-  Val:   Bias_TRT=-13.0ms  Bias_FFD=+13.6ms
-  Pred:  mean_TRT=250ms (human=263ms) | L1=93+/-27  L2=38+/-11  mean_skip=0.732
-  Reichle: a1=103.32 a2=3.502 a3=3.874 d=0.459 eps=1.074 M1=114.7 M2=14.7 pF=0.0001 res_abs_mean=23.47 surp_mean=9.64
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                86    38  9.09 -14.7 |   230   291   -60 |   216   242 |   216   260 |  0.74  0.21
-  a                133    61 11.85 +32.8 |   278   179   +98 |   263   179 |   263   179 |  0.95  0.79
-  boy              122    52  8.95 +11.4 |   267   216   +51 |   251   200 |   252   216 |  0.76  0.36
-  though           136    52 10.42  +2.1 |   292   364   -72 |   265   234 |   277   305 |  0.72  0.07
-  I                 71    33  5.75  -3.8 |   215   248   -33 |   200   248 |   200   248 |  0.79  0.86
-  had              117    50  6.56 +20.2 |   262   343   -81 |   247   238 |   247   268 |  0.84  0.50
-  often             94    37  6.49 -19.2 |   242   237    +5 |   223   237 |   227   237 |  0.72  0.43
-  stayed           116    45  7.73 -10.0 |   272   279    -8 |   246   244 |   257   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                80    35 12.47 -28.0 |   224   257   -33 |   209   218 |   209   218 |  0.71  0.21
-  had              140    60 12.94 +19.9 |   284   249   +35 |   269   208 |   270   208 |  0.79  0.43
-  been              91    37  6.37  -6.7 |   236   240    -4 |   220   207 |   221   207 |  0.75  0.36
-  completely        74    25  7.50 -49.5 |   343   245   +98 |   203   203 |   328   218 |  0.69  0.00
-  under             93    37 10.41 -29.6 |   241   306   -65 |   222   212 |   227   250 |  0.74  0.21
-  his              103    44 10.03  -5.6 |   248   216   +31 |   232   216 |   233   216 |  0.76  0.50
-  wifes             96    38 28.00 -66.8 |   244   221   +23 |   225   173 |   229   185 |  0.66  0.29
-  ascendancy       114    38 14.86 -60.4 |   395   546  -151 |   244   247 |   380   455 |  0.67  0.00
-
-
-[Epoch  22/50] 367.7s | lm_lr=2.50e-06 head_lr=6.25e-05 cog_lr=1.25e-04
-  Train: loss=575.7 (trt=910 ffd=683 gaze=709 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.398  r_FFD=0.153  r_Gaze=0.341  r_skip=0.521
-  Val:   MAE_TRT=59.2ms  MAE_FFD=40.1ms  MAE_Gaze=46.5ms
-  Val:   Bias_TRT=-12.4ms  Bias_FFD=+14.2ms
-  Pred:  mean_TRT=251ms (human=263ms) | L1=94+/-27  L2=39+/-11  mean_skip=0.723
-  Reichle: a1=103.31 a2=3.502 a3=3.874 d=0.463 eps=1.073 M1=114.6 M2=14.6 pF=0.0001 res_abs_mean=22.43 surp_mean=9.58
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                86    39  8.98 -14.2 |   230   291   -61 |   215   242 |   216   260 |  0.74  0.21
-  a                131    61 11.80 +30.4 |   275   179   +95 |   260   179 |   260   179 |  0.94  0.79
-  boy              121    52  8.94 +10.9 |   266   216   +50 |   251   200 |   251   216 |  0.75  0.36
-  though           137    53 10.46  +3.1 |   293   364   -71 |   266   234 |   278   305 |  0.71  0.07
-  I                 73    34  5.73  -2.1 |   216   248   -32 |   202   248 |   202   248 |  0.79  0.86
-  had              116    50  6.49 +19.4 |   260   343   -83 |   245   238 |   246   268 |  0.82  0.50
-  often             96    39  6.53 -17.4 |   244   237    +7 |   225   237 |   229   237 |  0.71  0.43
-  stayed           117    45  7.67  -9.1 |   272   279    -7 |   246   244 |   257   279 |  0.71  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                79    36 12.36 -28.0 |   223   257   -34 |   209   218 |   209   218 |  0.71  0.21
-  had              137    59 13.07 +17.9 |   282   249   +32 |   266   208 |   267   208 |  0.77  0.43
-  been              92    38  6.48  -5.9 |   237   240    -3 |   221   207 |   222   207 |  0.74  0.36
-  completely        75    25  7.49 -48.5 |   344   245   +99 |   204   203 |   330   218 |  0.68  0.00
-  under             93    37 10.24 -29.1 |   241   306   -65 |   222   212 |   226   250 |  0.73  0.21
-  his              102    44  9.85  -5.7 |   246   216   +30 |   231   216 |   232   216 |  0.75  0.50
-  wifes            100    40 28.02 -63.1 |   248   221   +26 |   229   173 |   233   185 |  0.68  0.29
-  ascendancy       116    39 14.89 -59.0 |   397   546  -149 |   245   247 |   382   455 |  0.66  0.00
-
-
-[Epoch  23/50] 365.5s | lm_lr=2.50e-06 head_lr=6.25e-05 cog_lr=1.25e-04
-  Train: loss=574.3 (trt=908 ffd=681 gaze=708 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.401  r_FFD=0.156  r_Gaze=0.344  r_skip=0.531
-  Val:   MAE_TRT=59.3ms  MAE_FFD=39.7ms  MAE_Gaze=46.3ms
-  Val:   Bias_TRT=-14.0ms  Bias_FFD=+12.7ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=93+/-27  L2=39+/-11  mean_skip=0.734
-  Reichle: a1=103.31 a2=3.503 a3=3.874 d=0.466 eps=1.073 M1=114.5 M2=14.5 pF=0.0001 res_abs_mean=22.90 surp_mean=9.55
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                86    39  8.99 -14.6 |   229   291   -61 |   215   242 |   215   260 |  0.75  0.21
-  a                126    59 11.79 +25.8 |   270   179   +90 |   255   179 |   255   179 |  0.93  0.79
-  boy              120    52  8.87  +9.7 |   264   216   +48 |   249   200 |   249   216 |  0.76  0.36
-  though           136    53 10.47  +2.4 |   292   364   -72 |   265   234 |   277   305 |  0.72  0.07
-  I                 70    33  5.63  -3.9 |   214   248   -35 |   199   248 |   199   248 |  0.79  0.86
-  had              115    50  6.49 +18.2 |   259   343   -85 |   244   238 |   244   268 |  0.83  0.50
-  often             94    38  6.52 -19.0 |   242   237    +5 |   223   237 |   227   237 |  0.72  0.43
-  stayed           116    45  7.70  -9.7 |   271   279    -8 |   245   244 |   257   279 |  0.73  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                79    36 12.35 -28.0 |   223   257   -34 |   208   218 |   209   218 |  0.72  0.21
-  had              134    58 12.92 +15.3 |   278   249   +29 |   263   208 |   264   208 |  0.78  0.43
-  been              90    38  6.43  -7.6 |   235   240    -6 |   219   207 |   220   207 |  0.75  0.36
-  completely        74    25  7.51 -48.9 |   343   245   +98 |   203   203 |   329   218 |  0.69  0.00
-  under             91    37 10.19 -30.1 |   239   306   -67 |   220   212 |   224   250 |  0.75  0.21
-  his              101    44  9.90  -7.3 |   245   216   +28 |   230   216 |   230   216 |  0.76  0.50
-  wifes            101    41 28.14 -61.9 |   249   221   +28 |   230   173 |   234   185 |  0.69  0.29
-  ascendancy       118    40 14.95 -58.0 |   398   546  -147 |   246   247 |   384   455 |  0.67  0.00
-
-
-[Epoch  24/50] 364.1s | lm_lr=2.50e-06 head_lr=6.25e-05 cog_lr=1.25e-04
-  Train: loss=572.6 (trt=905 ffd=679 gaze=706 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.401  r_FFD=0.154  r_Gaze=0.343  r_skip=0.532
-  Val:   MAE_TRT=59.3ms  MAE_FFD=40.1ms  MAE_Gaze=46.4ms
-  Val:   Bias_TRT=-13.3ms  Bias_FFD=+13.5ms
-  Pred:  mean_TRT=250ms (human=263ms) | L1=94+/-27  L2=39+/-11  mean_skip=0.734
-  Reichle: a1=103.30 a2=3.501 a3=3.876 d=0.469 eps=1.073 M1=114.4 M2=14.4 pF=0.0001 res_abs_mean=22.45 surp_mean=9.55
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                87    39  9.00 -13.3 |   230   291   -60 |   216   242 |   216   260 |  0.75  0.21
-  a                131    62 11.82 +30.5 |   274   179   +95 |   260   179 |   260   179 |  0.94  0.79
-  boy              122    53  8.88 +11.7 |   266   216   +50 |   251   200 |   251   216 |  0.76  0.36
-  though           137    54 10.47  +3.2 |   292   364   -71 |   266   234 |   278   305 |  0.72  0.07
-  I                 69    32  5.53  -5.1 |   212   248   -37 |   197   248 |   198   248 |  0.79  0.86
-  had              116    51  6.59 +19.0 |   260   343   -84 |   245   238 |   245   268 |  0.83  0.50
-  often             95    39  6.51 -17.9 |   242   237    +5 |   224   237 |   228   237 |  0.72  0.43
-  stayed           117    46  7.67  -8.9 |   272   279    -7 |   246   244 |   257   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                80    36 12.42 -27.3 |   224   257   -34 |   209   218 |   209   218 |  0.72  0.21
-  had              136    59 12.90 +16.5 |   280   249   +30 |   265   208 |   265   208 |  0.78  0.43
-  been              90    38  6.45  -7.2 |   235   240    -6 |   219   207 |   220   207 |  0.75  0.36
-  completely        74    25  7.47 -49.0 |   343   245   +98 |   203   203 |   328   218 |  0.69  0.00
-  under             93    38 10.18 -28.9 |   240   306   -66 |   222   212 |   226   250 |  0.75  0.21
-  his              102    45  9.90  -5.7 |   246   216   +30 |   231   216 |   232   216 |  0.76  0.50
-  wifes            104    43 27.90 -59.1 |   252   221   +30 |   233   173 |   237   185 |  0.70  0.29
-  ascendancy       116    40 15.02 -59.4 |   396   546  -150 |   244   247 |   381   455 |  0.67  0.00
-
-
-[Epoch  25/50] 364.0s | lm_lr=1.25e-06 head_lr=3.13e-05 cog_lr=6.25e-05
-  Train: loss=571.1 (trt=902 ffd=678 gaze=704 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.403  r_FFD=0.158  r_Gaze=0.345  r_skip=0.535
-  Val:   MAE_TRT=59.2ms  MAE_FFD=39.8ms  MAE_Gaze=46.4ms
-  Val:   Bias_TRT=-13.3ms  Bias_FFD=+13.5ms
-  Pred:  mean_TRT=250ms (human=263ms) | L1=94+/-27  L2=40+/-11  mean_skip=0.731
-  Reichle: a1=103.29 a2=3.501 a3=3.877 d=0.473 eps=1.073 M1=114.3 M2=14.3 pF=0.0001 res_abs_mean=21.87 surp_mean=9.55
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                87    40  8.97 -13.4 |   230   291   -61 |   215   242 |   216   260 |  0.75  0.21
-  a                128    60 11.86 +26.9 |   271   179   +91 |   256   179 |   256   179 |  0.94  0.79
-  boy              120    53  8.84 +10.0 |   263   216   +47 |   248   200 |   249   216 |  0.75  0.36
-  though           137    54 10.45  +3.1 |   292   364   -72 |   265   234 |   277   305 |  0.72  0.07
-  I                 69    33  5.63  -5.0 |   212   248   -36 |   198   248 |   198   248 |  0.79  0.86
-  had              116    51  6.56 +18.9 |   259   343   -84 |   244   238 |   245   268 |  0.83  0.50
-  often             96    40  6.53 -16.9 |   243   237    +6 |   225   237 |   229   237 |  0.72  0.43
-  stayed           117    47  7.66  -8.6 |   272   279    -8 |   246   244 |   257   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    37 12.37 -26.5 |   224   257   -33 |   210   218 |   210   218 |  0.72  0.21
-  had              136    60 12.74 +16.3 |   279   249   +30 |   264   208 |   265   208 |  0.77  0.43
-  been              91    39  6.43  -6.3 |   235   240    -5 |   220   207 |   221   207 |  0.75  0.36
-  completely        77    27  7.42 -46.4 |   347   245  +102 |   206   203 |   333   218 |  0.69  0.00
-  under             93    38 10.04 -28.1 |   240   306   -66 |   222   212 |   226   250 |  0.75  0.21
-  his              102    45  9.99  -6.6 |   245   216   +29 |   230   216 |   231   216 |  0.75  0.50
-  wifes            107    44 27.90 -56.6 |   254   221   +33 |   236   173 |   240   185 |  0.70  0.29
-  ascendancy       120    41 15.29 -55.9 |   402   546  -144 |   249   247 |   387   455 |  0.67  0.00
-
-
-[Epoch  26/50] 361.5s | lm_lr=1.25e-06 head_lr=3.13e-05 cog_lr=6.25e-05
-  Train: loss=569.2 (trt=899 ffd=675 gaze=702 skip=0.015 res=0.174) | 54,930 samples
-  Val:   r_TRT=0.401  r_FFD=0.155  r_Gaze=0.343  r_skip=0.534
-  Val:   MAE_TRT=59.4ms  MAE_FFD=39.4ms  MAE_Gaze=46.0ms
-  Val:   Bias_TRT=-15.6ms  Bias_FFD=+11.4ms
-  Pred:  mean_TRT=248ms (human=263ms) | L1=92+/-27  L2=39+/-11  mean_skip=0.726
-  Reichle: a1=103.29 a2=3.502 a3=3.876 d=0.475 eps=1.073 M1=114.2 M2=14.2 pF=0.0001 res_abs_mean=23.23 surp_mean=9.57
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                86    39  8.93 -14.5 |   228   291   -62 |   214   242 |   214   260 |  0.74  0.21
-  a                124    59 11.84 +23.1 |   267   179   +87 |   252   179 |   252   179 |  0.94  0.79
-  boy              118    52  8.76  +8.1 |   261   216   +45 |   246   200 |   247   216 |  0.74  0.36
-  though           134    54 10.48  +0.9 |   289   364   -74 |   263   234 |   275   305 |  0.71  0.07
-  I                 67    32  5.51  -6.8 |   210   248   -39 |   195   248 |   195   248 |  0.79  0.86
-  had              114    50  6.57 +17.2 |   257   343   -86 |   242   238 |   243   268 |  0.82  0.50
-  often             95    39  6.56 -18.1 |   242   237    +5 |   224   237 |   228   237 |  0.71  0.43
-  stayed           116    46  7.67  -9.8 |   270   279    -9 |   244   244 |   256   279 |  0.71  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                80    37 12.37 -27.8 |   222   257   -35 |   208   218 |   208   218 |  0.71  0.21
-  had              133    59 12.83 +14.0 |   276   249   +27 |   261   208 |   262   208 |  0.77  0.43
-  been              90    38  6.48  -7.4 |   234   240    -6 |   218   207 |   220   207 |  0.74  0.36
-  completely        74    26  7.53 -48.8 |   343   245   +98 |   203   203 |   329   218 |  0.69  0.00
-  under             91    38 10.15 -30.3 |   238   306   -68 |   219   212 |   223   250 |  0.74  0.21
-  his              100    44 10.03  -8.0 |   244   216   +27 |   229   216 |   229   216 |  0.75  0.50
-  wifes            103    42 28.07 -60.4 |   250   221   +28 |   231   173 |   235   185 |  0.70  0.29
-  ascendancy       117    40 15.16 -58.5 |   397   546  -149 |   245   247 |   383   455 |  0.67  0.00
-
-
-[Epoch  27/50] 363.2s | lm_lr=1.25e-06 head_lr=3.13e-05 cog_lr=6.25e-05
-  Train: loss=568.9 (trt=897 ffd=676 gaze=702 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.398  r_FFD=0.153  r_Gaze=0.340  r_skip=0.534
-  Val:   MAE_TRT=59.5ms  MAE_FFD=39.7ms  MAE_Gaze=46.2ms
-  Val:   Bias_TRT=-15.4ms  Bias_FFD=+11.5ms
-  Pred:  mean_TRT=248ms (human=263ms) | L1=92+/-28  L2=39+/-12  mean_skip=0.729
-  Reichle: a1=103.29 a2=3.502 a3=3.877 d=0.476 eps=1.072 M1=114.2 M2=14.2 pF=0.0001 res_abs_mean=23.63 surp_mean=9.59
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                86    39  8.94 -14.3 |   229   291   -62 |   214   242 |   214   260 |  0.75  0.21
-  a                128    61 11.84 +27.2 |   270   179   +91 |   256   179 |   256   179 |  0.95  0.79
-  boy              120    53  8.75 +10.0 |   263   216   +47 |   248   200 |   248   216 |  0.75  0.36
-  though           136    55 10.50  +2.4 |   291   364   -73 |   265   234 |   277   305 |  0.71  0.07
-  I                 68    33  5.54  -5.4 |   211   248   -37 |   197   248 |   197   248 |  0.80  0.86
-  had              117    52  6.62 +19.9 |   260   343   -83 |   245   238 |   246   268 |  0.83  0.50
-  often             95    39  6.54 -18.2 |   242   237    +5 |   223   237 |   227   237 |  0.71  0.43
-  stayed           116    47  7.66  -9.4 |   270   279    -9 |   245   244 |   256   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                79    36 12.36 -28.4 |   222   257   -35 |   207   218 |   208   218 |  0.71  0.21
-  had              135    60 12.96 +15.7 |   278   249   +29 |   263   208 |   264   208 |  0.78  0.43
-  been              90    39  6.42  -7.0 |   234   240    -6 |   219   207 |   220   207 |  0.74  0.36
-  completely        73    25  7.57 -50.0 |   341   245   +96 |   201   203 |   327   218 |  0.69  0.00
-  under             91    38 10.26 -30.8 |   237   306   -68 |   219   212 |   223   250 |  0.75  0.21
-  his              101    45 10.03  -7.4 |   244   216   +28 |   229   216 |   230   216 |  0.75  0.50
-  wifes            102    42 28.13 -61.5 |   248   221   +27 |   230   173 |   234   185 |  0.69  0.29
-  ascendancy       115    40 15.08 -59.5 |   395   546  -151 |   243   247 |   381   455 |  0.67  0.00
-
-
-[Epoch  28/50] 362.2s | lm_lr=1.25e-06 head_lr=3.13e-05 cog_lr=6.25e-05
-  Train: loss=567.8 (trt=896 ffd=674 gaze=700 skip=0.015 res=0.174) | 54,930 samples
-  Val:   r_TRT=0.400  r_FFD=0.155  r_Gaze=0.343  r_skip=0.539
-  Val:   MAE_TRT=59.4ms  MAE_FFD=39.6ms  MAE_Gaze=46.2ms
-  Val:   Bias_TRT=-14.7ms  Bias_FFD=+12.2ms
-  Pred:  mean_TRT=248ms (human=263ms) | L1=93+/-27  L2=40+/-12  mean_skip=0.732
-  Reichle: a1=103.28 a2=3.502 a3=3.877 d=0.478 eps=1.072 M1=114.1 M2=14.1 pF=0.0001 res_abs_mean=22.56 surp_mean=9.58
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                87    40  8.95 -13.6 |   229   291   -62 |   215   242 |   215   260 |  0.75  0.21
-  a                126    60 11.85 +25.5 |   269   179   +89 |   254   179 |   255   179 |  0.94  0.79
-  boy              118    53  8.75  +8.9 |   261   216   +45 |   247   200 |   247   216 |  0.75  0.36
-  though           136    55 10.48  +2.2 |   290   364   -73 |   264   234 |   276   305 |  0.72  0.07
-  I                 68    33  5.53  -5.8 |   210   248   -38 |   196   248 |   196   248 |  0.80  0.86
-  had              115    51  6.60 +18.1 |   258   343   -85 |   243   238 |   244   268 |  0.83  0.50
-  often             96    40  6.57 -17.3 |   243   237    +6 |   224   237 |   228   237 |  0.72  0.43
-  stayed           117    47  7.69  -8.8 |   271   279    -8 |   245   244 |   257   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                80    37 12.37 -27.3 |   223   257   -35 |   208   218 |   209   218 |  0.72  0.21
-  had              134    60 12.91 +14.9 |   277   249   +28 |   262   208 |   263   208 |  0.78  0.43
-  been              90    39  6.40  -6.9 |   234   240    -6 |   219   207 |   220   207 |  0.75  0.36
-  completely        74    26  7.55 -48.9 |   343   245   +98 |   203   203 |   329   218 |  0.69  0.00
-  under             92    38 10.22 -29.6 |   238   306   -67 |   220   212 |   224   250 |  0.75  0.21
-  his              102    45 10.03  -6.7 |   245   216   +28 |   230   216 |   230   216 |  0.76  0.50
-  wifes            105    43 28.03 -58.9 |   251   221   +30 |   233   173 |   237   185 |  0.70  0.29
-  ascendancy       119    42 15.30 -56.7 |   400   546  -146 |   247   247 |   386   455 |  0.67  0.00
-
-
-[Epoch  29/50] 361.6s | lm_lr=1.25e-06 head_lr=3.13e-05 cog_lr=6.25e-05
-  Train: loss=567.2 (trt=896 ffd=673 gaze=700 skip=0.015 res=0.174) | 54,930 samples
-  Val:   r_TRT=0.400  r_FFD=0.154  r_Gaze=0.343  r_skip=0.541
-  Val:   MAE_TRT=59.3ms  MAE_FFD=39.7ms  MAE_Gaze=46.3ms
-  Val:   Bias_TRT=-14.2ms  Bias_FFD=+12.8ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=94+/-27  L2=40+/-12  mean_skip=0.736
-  Reichle: a1=103.28 a2=3.501 a3=3.877 d=0.480 eps=1.072 M1=114.1 M2=14.1 pF=0.0001 res_abs_mean=22.17 surp_mean=9.56
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                87    40  8.95 -13.0 |   230   291   -61 |   215   242 |   215   260 |  0.75  0.21
-  a                125    60 11.80 +24.9 |   268   179   +88 |   254   179 |   254   179 |  0.94  0.79
-  boy              119    53  8.75  +9.2 |   261   216   +45 |   247   200 |   247   216 |  0.75  0.36
-  though           137    55 10.48  +2.8 |   291   364   -73 |   265   234 |   277   305 |  0.72  0.07
-  I                 69    33  5.53  -4.4 |   212   248   -37 |   198   248 |   198   248 |  0.80  0.86
-  had              117    52  6.63 +19.4 |   259   343   -84 |   245   238 |   245   268 |  0.83  0.50
-  often             97    40  6.56 -16.5 |   243   237    +6 |   225   237 |   229   237 |  0.72  0.43
-  stayed           118    47  7.67  -8.3 |   271   279    -8 |   246   244 |   257   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    37 12.37 -26.8 |   223   257   -34 |   209   218 |   209   218 |  0.72  0.21
-  had              135    60 12.94 +15.9 |   278   249   +28 |   263   208 |   264   208 |  0.78  0.43
-  been              91    39  6.33  -6.1 |   235   240    -6 |   219   207 |   221   207 |  0.75  0.36
-  completely        75    26  7.53 -48.5 |   343   245   +98 |   203   203 |   329   218 |  0.69  0.00
-  under             92    38 10.15 -29.3 |   238   306   -68 |   220   212 |   224   250 |  0.75  0.21
-  his              102    46  9.95  -6.2 |   245   216   +28 |   230   216 |   231   216 |  0.76  0.50
-  wifes            105    44 27.98 -58.2 |   252   221   +30 |   233   173 |   238   185 |  0.70  0.29
-  ascendancy       120    42 15.33 -55.9 |   401   546  -145 |   248   247 |   387   455 |  0.67  0.00
-
-
-[Epoch  30/50] 442.6s | lm_lr=1.25e-06 head_lr=3.13e-05 cog_lr=6.25e-05
-  Train: loss=566.8 (trt=894 ffd=673 gaze=699 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.399  r_FFD=0.153  r_Gaze=0.342  r_skip=0.543
-  Val:   MAE_TRT=59.4ms  MAE_FFD=39.8ms  MAE_Gaze=46.4ms
-  Val:   Bias_TRT=-13.9ms  Bias_FFD=+13.1ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=94+/-27  L2=41+/-12  mean_skip=0.732
-  Reichle: a1=103.28 a2=3.501 a3=3.878 d=0.482 eps=1.072 M1=114.0 M2=14.0 pF=0.0001 res_abs_mean=22.05 surp_mean=9.58
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    41  8.94 -12.6 |   230   291   -61 |   216   242 |   216   260 |  0.75  0.21
-  a                129    62 11.85 +28.7 |   272   179   +92 |   257   179 |   258   179 |  0.95  0.79
-  boy              119    53  8.76  +9.5 |   262   216   +46 |   247   200 |   248   216 |  0.75  0.36
-  though           137    55 10.49  +2.8 |   291   364   -73 |   265   234 |   277   305 |  0.71  0.07
-  I                 70    34  5.51  -4.0 |   212   248   -37 |   198   248 |   198   248 |  0.80  0.86
-  had              117    53  6.61 +20.3 |   260   343   -83 |   245   238 |   246   268 |  0.83  0.50
-  often             97    41  6.56 -16.7 |   243   237    +6 |   225   237 |   229   237 |  0.72  0.43
-  stayed           117    48  7.67  -8.4 |   271   279    -8 |   245   244 |   257   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    38 12.36 -26.3 |   223   257   -34 |   209   218 |   209   218 |  0.72  0.21
-  had              136    61 12.94 +16.9 |   279   249   +29 |   264   208 |   265   208 |  0.78  0.43
-  been              91    40  6.31  -5.8 |   235   240    -6 |   219   207 |   221   207 |  0.75  0.36
-  completely        75    26  7.53 -48.3 |   344   245   +98 |   203   203 |   330   218 |  0.69  0.00
-  under             92    39 10.18 -29.3 |   238   306   -67 |   220   212 |   224   250 |  0.75  0.21
-  his              103    46 10.04  -5.7 |   245   216   +29 |   231   216 |   231   216 |  0.76  0.50
-  wifes            107    45 28.04 -56.8 |   253   221   +32 |   235   173 |   239   185 |  0.70  0.29
-  ascendancy       121    42 15.25 -55.4 |   402   546  -144 |   249   247 |   388   455 |  0.67  0.00
-
-
-[Epoch  31/50] 595.3s | lm_lr=6.25e-07 head_lr=1.56e-05 cog_lr=3.13e-05
-  Train: loss=565.9 (trt=892 ffd=672 gaze=698 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.399  r_FFD=0.154  r_Gaze=0.342  r_skip=0.541
-  Val:   MAE_TRT=59.5ms  MAE_FFD=39.8ms  MAE_Gaze=46.3ms
-  Val:   Bias_TRT=-14.8ms  Bias_FFD=+12.2ms
-  Pred:  mean_TRT=248ms (human=263ms) | L1=94+/-27  L2=41+/-12  mean_skip=0.729
-  Reichle: a1=103.27 a2=3.501 a3=3.878 d=0.484 eps=1.072 M1=113.9 M2=13.9 pF=0.0001 res_abs_mean=22.72 surp_mean=9.54
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                87    41  8.91 -13.2 |   229   291   -62 |   215   242 |   215   260 |  0.75  0.21
-  a                132    64 11.84 +31.4 |   274   179   +95 |   260   179 |   260   179 |  0.95  0.79
-  boy              120    54  8.79 +10.7 |   263   216   +47 |   248   200 |   249   216 |  0.75  0.36
-  though           137    56 10.49  +3.5 |   292   364   -72 |   265   234 |   278   305 |  0.71  0.07
-  I                 69    33  5.48  -5.0 |   211   248   -38 |   197   248 |   197   248 |  0.80  0.86
-  had              118    53  6.54 +20.9 |   260   343   -83 |   246   238 |   246   268 |  0.84  0.50
-  often             96    40  6.53 -17.2 |   242   237    +5 |   224   237 |   228   237 |  0.71  0.43
-  stayed           118    48  7.68  -8.1 |   271   279    -8 |   246   244 |   257   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                80    38 12.34 -27.0 |   223   257   -35 |   208   218 |   209   218 |  0.71  0.21
-  had              137    62 12.98 +17.7 |   279   249   +30 |   265   208 |   265   208 |  0.78  0.43
-  been              91    39  6.27  -6.0 |   234   240    -6 |   219   207 |   220   207 |  0.75  0.36
-  completely        74    26  7.54 -49.3 |   342   245   +96 |   202   203 |   328   218 |  0.68  0.00
-  under             91    38 10.12 -29.9 |   237   306   -69 |   219   212 |   223   250 |  0.75  0.21
-  his              102    46  9.99  -5.9 |   245   216   +28 |   230   216 |   231   216 |  0.76  0.50
-  wifes            104    44 27.92 -59.1 |   250   221   +29 |   232   173 |   236   185 |  0.70  0.29
-  ascendancy       118    42 15.20 -57.0 |   399   546  -147 |   246   247 |   385   455 |  0.66  0.00
-
-
-[Epoch  32/50] 600.6s | lm_lr=6.25e-07 head_lr=1.56e-05 cog_lr=3.13e-05
-  Train: loss=565.4 (trt=891 ffd=672 gaze=698 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.399  r_FFD=0.153  r_Gaze=0.342  r_skip=0.543
-  Val:   MAE_TRT=59.4ms  MAE_FFD=40.1ms  MAE_Gaze=46.5ms
-  Val:   Bias_TRT=-13.4ms  Bias_FFD=+13.6ms
-  Pred:  mean_TRT=250ms (human=263ms) | L1=95+/-27  L2=41+/-12  mean_skip=0.734
-  Reichle: a1=103.27 a2=3.500 a3=3.878 d=0.485 eps=1.072 M1=113.9 M2=13.9 pF=0.0001 res_abs_mean=21.82 surp_mean=9.57
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    41  8.91 -12.4 |   230   291   -61 |   216   242 |   216   260 |  0.75  0.21
-  a                132    64 11.88 +31.0 |   274   179   +94 |   260   179 |   260   179 |  0.95  0.79
-  boy              121    55  8.79 +11.2 |   263   216   +47 |   249   200 |   249   216 |  0.75  0.36
-  though           138    56 10.52  +4.1 |   292   364   -71 |   266   234 |   278   305 |  0.71  0.07
-  I                 71    34  5.54  -3.4 |   212   248   -36 |   198   248 |   198   248 |  0.80  0.86
-  had              118    53  6.56 +21.3 |   261   343   -83 |   246   238 |   247   268 |  0.84  0.50
-  often             97    41  6.53 -15.9 |   243   237    +6 |   225   237 |   229   237 |  0.72  0.43
-  stayed           119    48  7.66  -7.0 |   273   279    -7 |   247   244 |   259   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    38 12.36 -26.1 |   223   257   -34 |   209   218 |   209   218 |  0.72  0.21
-  had              137    62 13.02 +17.5 |   279   249   +30 |   265   208 |   265   208 |  0.78  0.43
-  been              92    40  6.26  -5.0 |   235   240    -5 |   220   207 |   221   207 |  0.75  0.36
-  completely        76    27  7.56 -48.0 |   344   245   +99 |   204   203 |   330   218 |  0.69  0.00
-  under             93    39 10.16 -28.8 |   239   306   -67 |   221   212 |   225   250 |  0.75  0.21
-  his              104    47 10.01  -4.8 |   246   216   +30 |   232   216 |   232   216 |  0.76  0.50
-  wifes            107    45 27.99 -57.0 |   253   221   +31 |   235   173 |   239   185 |  0.71  0.29
-  ascendancy       121    43 15.19 -55.3 |   402   546  -144 |   248   247 |   388   455 |  0.67  0.00
-
-
-[Epoch  33/50] 595.6s | lm_lr=6.25e-07 head_lr=1.56e-05 cog_lr=3.13e-05
-  Train: loss=564.8 (trt=891 ffd=671 gaze=697 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.399  r_FFD=0.153  r_Gaze=0.341  r_skip=0.543
-  Val:   MAE_TRT=59.4ms  MAE_FFD=40.1ms  MAE_Gaze=46.6ms
-  Val:   Bias_TRT=-13.4ms  Bias_FFD=+13.6ms
-  Pred:  mean_TRT=250ms (human=263ms) | L1=95+/-27  L2=41+/-12  mean_skip=0.729
-  Reichle: a1=103.27 a2=3.500 a3=3.879 d=0.485 eps=1.072 M1=113.9 M2=13.9 pF=0.0001 res_abs_mean=21.81 surp_mean=9.56
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    41  8.91 -12.2 |   230   291   -61 |   216   242 |   216   260 |  0.75  0.21
-  a                131    64 11.86 +30.5 |   273   179   +94 |   259   179 |   259   179 |  0.95  0.79
-  boy              121    55  8.78 +11.4 |   263   216   +47 |   249   200 |   249   216 |  0.75  0.36
-  though           139    57 10.52  +4.4 |   293   364   -71 |   266   234 |   279   305 |  0.71  0.07
-  I                 71    34  5.55  -3.2 |   212   248   -36 |   199   248 |   199   248 |  0.80  0.86
-  had              118    54  6.55 +21.5 |   261   343   -83 |   246   238 |   247   268 |  0.83  0.50
-  often             98    41  6.54 -15.5 |   244   237    +7 |   226   237 |   230   237 |  0.71  0.43
-  stayed           119    49  7.65  -6.8 |   273   279    -6 |   247   244 |   259   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    38 12.36 -26.2 |   223   257   -34 |   209   218 |   209   218 |  0.71  0.21
-  had              137    62 13.02 +17.6 |   279   249   +30 |   265   208 |   265   208 |  0.77  0.43
-  been              91    40  6.20  -5.1 |   235   240    -6 |   219   207 |   221   207 |  0.75  0.36
-  completely        76    27  7.59 -48.0 |   344   245   +99 |   204   203 |   330   218 |  0.69  0.00
-  under             93    39 10.15 -28.7 |   239   306   -67 |   221   212 |   225   250 |  0.75  0.21
-  his              104    47  9.96  -4.6 |   246   216   +30 |   232   216 |   232   216 |  0.76  0.50
-  wifes            107    45 27.99 -56.9 |   253   221   +32 |   235   173 |   239   185 |  0.70  0.29
-  ascendancy       121    43 15.17 -55.3 |   402   546  -144 |   248   247 |   388   455 |  0.66  0.00
-
-
-[Epoch  34/50] 592.1s | lm_lr=6.25e-07 head_lr=1.56e-05 cog_lr=3.13e-05
-  Train: loss=564.3 (trt=890 ffd=670 gaze=697 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.400  r_FFD=0.154  r_Gaze=0.343  r_skip=0.544
-  Val:   MAE_TRT=59.4ms  MAE_FFD=39.8ms  MAE_Gaze=46.4ms
-  Val:   Bias_TRT=-14.2ms  Bias_FFD=+12.9ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=94+/-27  L2=41+/-12  mean_skip=0.728
-  Reichle: a1=103.27 a2=3.501 a3=3.878 d=0.486 eps=1.072 M1=113.9 M2=13.9 pF=0.0001 res_abs_mean=21.89 surp_mean=9.57
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                87    41  8.90 -12.7 |   229   291   -62 |   215   242 |   215   260 |  0.75  0.21
-  a                127    62 11.85 +26.4 |   269   179   +90 |   255   179 |   255   179 |  0.94  0.79
-  boy              119    54  8.75  +9.7 |   261   216   +45 |   247   200 |   247   216 |  0.75  0.36
-  though           137    56 10.52  +3.2 |   291   364   -72 |   265   234 |   277   305 |  0.71  0.07
-  I                 70    34  5.54  -4.3 |   211   248   -37 |   197   248 |   197   248 |  0.80  0.86
-  had              116    53  6.55 +19.7 |   259   343   -85 |   244   238 |   245   268 |  0.83  0.50
-  often             97    41  6.56 -16.0 |   243   237    +6 |   225   237 |   229   237 |  0.71  0.43
-  stayed           118    48  7.66  -7.5 |   272   279    -7 |   246   244 |   258   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    38 12.36 -26.5 |   223   257   -34 |   209   218 |   209   218 |  0.71  0.21
-  had              135    61 13.02 +15.8 |   277   249   +28 |   263   208 |   263   208 |  0.77  0.43
-  been              90    39  6.24  -6.6 |   233   240    -7 |   218   207 |   219   207 |  0.74  0.36
-  completely        76    27  7.62 -48.1 |   344   245   +99 |   203   203 |   330   218 |  0.69  0.00
-  under             93    39 10.17 -28.9 |   238   306   -67 |   220   212 |   224   250 |  0.75  0.21
-  his              103    47 10.00  -5.3 |   245   216   +29 |   231   216 |   231   216 |  0.76  0.50
-  wifes            107    45 28.00 -56.9 |   253   221   +31 |   234   173 |   239   185 |  0.70  0.29
-  ascendancy       121    43 15.20 -55.1 |   402   546  -143 |   249   247 |   388   455 |  0.66  0.00
-
-
-[Epoch  35/50] 599.6s | lm_lr=6.25e-07 head_lr=1.56e-05 cog_lr=3.13e-05
-  Train: loss=564.2 (trt=890 ffd=670 gaze=696 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.400  r_FFD=0.153  r_Gaze=0.342  r_skip=0.545
-  Val:   MAE_TRT=59.4ms  MAE_FFD=39.8ms  MAE_Gaze=46.3ms
-  Val:   Bias_TRT=-14.6ms  Bias_FFD=+12.5ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=94+/-27  L2=41+/-12  mean_skip=0.728
-  Reichle: a1=103.27 a2=3.501 a3=3.878 d=0.487 eps=1.072 M1=113.8 M2=13.8 pF=0.0001 res_abs_mean=22.04 surp_mean=9.56
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                87    41  8.90 -12.6 |   229   291   -62 |   215   242 |   215   260 |  0.75  0.21
-  a                127    62 11.83 +26.0 |   268   179   +89 |   254   179 |   254   179 |  0.94  0.79
-  boy              119    54  8.74  +9.6 |   261   216   +45 |   247   200 |   247   216 |  0.75  0.36
-  though           137    56 10.51  +3.1 |   291   364   -73 |   265   234 |   277   305 |  0.71  0.07
-  I                 69    34  5.53  -4.6 |   211   248   -38 |   197   248 |   197   248 |  0.80  0.86
-  had              116    53  6.54 +19.0 |   258   343   -85 |   243   238 |   244   268 |  0.83  0.50
-  often             97    41  6.58 -16.3 |   243   237    +6 |   225   237 |   229   237 |  0.71  0.43
-  stayed           118    48  7.67  -7.6 |   272   279    -8 |   246   244 |   258   279 |  0.71  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    38 12.36 -26.5 |   223   257   -34 |   209   218 |   209   218 |  0.71  0.21
-  had              135    61 13.00 +15.5 |   277   249   +27 |   262   208 |   263   208 |  0.77  0.43
-  been              90    40  6.22  -6.0 |   233   240    -7 |   218   207 |   220   207 |  0.74  0.36
-  completely        75    27  7.62 -48.8 |   343   245   +98 |   202   203 |   329   218 |  0.69  0.00
-  under             92    39 10.18 -29.1 |   238   306   -68 |   220   212 |   224   250 |  0.75  0.21
-  his              103    47  9.98  -5.3 |   245   216   +29 |   231   216 |   231   216 |  0.76  0.50
-  wifes            106    45 27.99 -57.8 |   252   221   +30 |   233   173 |   238   185 |  0.70  0.29
-  ascendancy       119    43 15.21 -56.2 |   400   546  -145 |   247   247 |   387   455 |  0.66  0.00
-
-
-[Epoch  36/50] 580.7s | lm_lr=6.25e-07 head_lr=1.56e-05 cog_lr=3.13e-05
-  Train: loss=563.7 (trt=888 ffd=670 gaze=696 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.400  r_FFD=0.155  r_Gaze=0.343  r_skip=0.547
-  Val:   MAE_TRT=59.4ms  MAE_FFD=39.8ms  MAE_Gaze=46.4ms
-  Val:   Bias_TRT=-14.2ms  Bias_FFD=+12.9ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=94+/-27  L2=41+/-12  mean_skip=0.736
-  Reichle: a1=103.27 a2=3.501 a3=3.878 d=0.488 eps=1.072 M1=113.8 M2=13.8 pF=0.0001 res_abs_mean=21.75 surp_mean=9.56
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    41  8.89 -12.5 |   229   291   -62 |   215   242 |   215   260 |  0.76  0.21
-  a                128    62 11.83 +27.0 |   269   179   +90 |   255   179 |   255   179 |  0.95  0.79
-  boy              119    54  8.74  +9.5 |   261   216   +45 |   247   200 |   247   216 |  0.75  0.36
-  though           137    56 10.52  +2.9 |   291   364   -73 |   264   234 |   277   305 |  0.71  0.07
-  I                 70    34  5.51  -4.1 |   211   248   -37 |   197   248 |   197   248 |  0.81  0.86
-  had              116    53  6.52 +19.3 |   258   343   -85 |   244   238 |   244   268 |  0.83  0.50
-  often             97    41  6.58 -16.1 |   243   237    +6 |   225   237 |   229   237 |  0.72  0.43
-  stayed           118    49  7.66  -7.5 |   272   279    -8 |   246   244 |   258   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    38 12.35 -26.4 |   223   257   -34 |   209   218 |   209   218 |  0.72  0.21
-  had              135    61 13.04 +15.7 |   277   249   +27 |   262   208 |   263   208 |  0.78  0.43
-  been              91    40  6.21  -5.7 |   234   240    -7 |   218   207 |   220   207 |  0.75  0.36
-  completely        76    27  7.63 -47.6 |   345   245  +100 |   204   203 |   331   218 |  0.70  0.00
-  under             93    39 10.14 -28.5 |   238   306   -67 |   220   212 |   225   250 |  0.76  0.21
-  his              103    47  9.95  -5.1 |   245   216   +29 |   231   216 |   231   216 |  0.76  0.50
-  wifes            107    46 27.95 -56.2 |   253   221   +32 |   235   173 |   239   185 |  0.71  0.29
-  ascendancy       122    43 15.22 -54.5 |   403   546  -142 |   249   247 |   390   455 |  0.67  0.00
-
-
-[Epoch  37/50] 362.3s | lm_lr=3.13e-07 head_lr=7.81e-06 cog_lr=1.56e-05
-  Train: loss=562.9 (trt=887 ffd=668 gaze=695 skip=0.015 res=0.174) | 54,930 samples
-  Val:   r_TRT=0.400  r_FFD=0.153  r_Gaze=0.342  r_skip=0.548
-  Val:   MAE_TRT=59.4ms  MAE_FFD=39.7ms  MAE_Gaze=46.3ms
-  Val:   Bias_TRT=-14.6ms  Bias_FFD=+12.6ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=94+/-27  L2=41+/-12  mean_skip=0.731
-  Reichle: a1=103.26 a2=3.501 a3=3.878 d=0.489 eps=1.072 M1=113.8 M2=13.8 pF=0.0001 res_abs_mean=21.98 surp_mean=9.56
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                87    41  8.90 -12.6 |   229   291   -62 |   215   242 |   215   260 |  0.75  0.21
-  a                127    62 11.84 +26.8 |   269   179   +90 |   255   179 |   255   179 |  0.94  0.79
-  boy              119    54  8.74  +9.6 |   261   216   +45 |   247   200 |   247   216 |  0.75  0.36
-  though           137    56 10.52  +3.1 |   291   364   -73 |   265   234 |   277   305 |  0.71  0.07
-  I                 70    34  5.54  -3.9 |   211   248   -37 |   198   248 |   198   248 |  0.80  0.86
-  had              116    53  6.51 +19.2 |   258   343   -86 |   243   238 |   244   268 |  0.83  0.50
-  often             97    41  6.58 -16.4 |   243   237    +6 |   225   237 |   229   237 |  0.72  0.43
-  stayed           118    49  7.66  -7.7 |   271   279    -8 |   246   244 |   258   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    38 12.37 -26.6 |   222   257   -35 |   208   218 |   209   218 |  0.72  0.21
-  had              134    61 13.06 +15.4 |   276   249   +27 |   262   208 |   263   208 |  0.77  0.43
-  been              90    40  6.19  -5.9 |   233   240    -7 |   218   207 |   219   207 |  0.75  0.36
-  completely        75    27  7.64 -48.4 |   343   245   +98 |   203   203 |   330   218 |  0.69  0.00
-  under             92    39 10.17 -29.0 |   238   306   -68 |   220   212 |   224   250 |  0.75  0.21
-  his              103    47  9.98  -5.0 |   245   216   +29 |   231   216 |   231   216 |  0.76  0.50
-  wifes            107    45 27.99 -57.0 |   252   221   +31 |   234   173 |   238   185 |  0.70  0.29
-  ascendancy       120    43 15.20 -55.6 |   401   546  -144 |   248   247 |   388   455 |  0.67  0.00
-
-
-[Epoch  38/50] 362.4s | lm_lr=3.13e-07 head_lr=7.81e-06 cog_lr=1.56e-05
-  Train: loss=562.7 (trt=887 ffd=669 gaze=695 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.399  r_FFD=0.152  r_Gaze=0.342  r_skip=0.547
-  Val:   MAE_TRT=59.4ms  MAE_FFD=39.9ms  MAE_Gaze=46.4ms
-  Val:   Bias_TRT=-14.0ms  Bias_FFD=+13.2ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=95+/-27  L2=42+/-12  mean_skip=0.732
-  Reichle: a1=103.26 a2=3.500 a3=3.879 d=0.489 eps=1.072 M1=113.8 M2=13.8 pF=0.0001 res_abs_mean=21.73 surp_mean=9.57
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    42  8.91 -12.2 |   229   291   -61 |   215   242 |   216   260 |  0.75  0.21
-  a                129    63 11.85 +28.3 |   270   179   +91 |   257   179 |   257   179 |  0.95  0.79
-  boy              120    55  8.75 +10.2 |   262   216   +46 |   247   200 |   248   216 |  0.75  0.36
-  though           138    57 10.53  +3.8 |   292   364   -72 |   265   234 |   278   305 |  0.71  0.07
-  I                 71    35  5.57  -3.2 |   212   248   -36 |   198   248 |   198   248 |  0.80  0.86
-  had              117    53  6.53 +20.0 |   259   343   -85 |   244   238 |   245   268 |  0.83  0.50
-  often             98    42  6.57 -15.8 |   243   237    +6 |   225   237 |   229   237 |  0.72  0.43
-  stayed           119    49  7.66  -7.0 |   272   279    -7 |   246   244 |   258   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    38 12.39 -26.2 |   223   257   -34 |   209   218 |   209   218 |  0.72  0.21
-  had              135    62 13.07 +15.9 |   277   249   +28 |   263   208 |   263   208 |  0.77  0.43
-  been              91    40  6.19  -5.0 |   234   240    -6 |   219   207 |   220   207 |  0.75  0.36
-  completely        76    27  7.63 -48.2 |   344   245   +99 |   203   203 |   330   218 |  0.69  0.00
-  under             93    40 10.18 -28.6 |   238   306   -67 |   220   212 |   225   250 |  0.75  0.21
-  his              104    47  9.97  -4.4 |   246   216   +29 |   231   216 |   232   216 |  0.76  0.50
-  wifes            106    45 28.00 -57.1 |   252   221   +31 |   234   173 |   238   185 |  0.71  0.29
-  ascendancy       120    43 15.15 -55.4 |   402   546  -144 |   248   247 |   388   455 |  0.67  0.00
-
-
-[Epoch  39/50] 362.4s | lm_lr=3.13e-07 head_lr=7.81e-06 cog_lr=1.56e-05
-  Train: loss=563.2 (trt=887 ffd=669 gaze=695 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.399  r_FFD=0.152  r_Gaze=0.342  r_skip=0.547
-  Val:   MAE_TRT=59.4ms  MAE_FFD=39.9ms  MAE_Gaze=46.4ms
-  Val:   Bias_TRT=-14.1ms  Bias_FFD=+13.1ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=95+/-27  L2=42+/-12  mean_skip=0.731
-  Reichle: a1=103.26 a2=3.501 a3=3.879 d=0.490 eps=1.072 M1=113.8 M2=13.8 pF=0.0001 res_abs_mean=21.79 surp_mean=9.56
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    42  8.91 -12.3 |   229   291   -62 |   215   242 |   216   260 |  0.75  0.21
-  a                129    63 11.85 +28.7 |   271   179   +92 |   257   179 |   257   179 |  0.95  0.79
-  boy              120    55  8.75 +10.4 |   262   216   +46 |   247   200 |   248   216 |  0.75  0.36
-  though           138    57 10.53  +3.8 |   292   364   -72 |   265   234 |   278   305 |  0.71  0.07
-  I                 71    35  5.55  -3.3 |   212   248   -36 |   198   248 |   198   248 |  0.80  0.86
-  had              117    53  6.53 +20.2 |   259   343   -85 |   244   238 |   245   268 |  0.83  0.50
-  often             98    42  6.57 -15.8 |   243   237    +6 |   225   237 |   229   237 |  0.71  0.43
-  stayed           119    49  7.66  -7.1 |   272   279    -7 |   246   244 |   258   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    38 12.39 -26.3 |   223   257   -34 |   209   218 |   209   218 |  0.71  0.21
-  had              135    62 13.09 +16.2 |   277   249   +28 |   263   208 |   263   208 |  0.77  0.43
-  been              91    40  6.18  -5.0 |   234   240    -6 |   219   207 |   220   207 |  0.75  0.36
-  completely        76    27  7.64 -48.1 |   344   245   +99 |   203   203 |   330   218 |  0.69  0.00
-  under             93    40 10.18 -28.5 |   238   306   -67 |   220   212 |   225   250 |  0.75  0.21
-  his              104    47  9.96  -4.5 |   246   216   +29 |   231   216 |   232   216 |  0.76  0.50
-  wifes            107    45 28.00 -57.1 |   252   221   +31 |   234   173 |   238   185 |  0.70  0.29
-  ascendancy       120    43 15.14 -55.4 |   402   546  -144 |   248   247 |   388   455 |  0.67  0.00
-
-
-[Epoch  40/50] 362.4s | lm_lr=3.13e-07 head_lr=7.81e-06 cog_lr=1.56e-05
-  Train: loss=562.7 (trt=886 ffd=669 gaze=695 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.398  r_FFD=0.152  r_Gaze=0.341  r_skip=0.547
-  Val:   MAE_TRT=59.4ms  MAE_FFD=39.8ms  MAE_Gaze=46.4ms
-  Val:   Bias_TRT=-14.4ms  Bias_FFD=+12.7ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=94+/-27  L2=41+/-12  mean_skip=0.734
-  Reichle: a1=103.26 a2=3.501 a3=3.879 d=0.490 eps=1.072 M1=113.8 M2=13.8 pF=0.0001 res_abs_mean=22.00 surp_mean=9.57
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    41  8.89 -12.5 |   229   291   -62 |   215   242 |   215   260 |  0.75  0.21
-  a                129    63 11.84 +28.2 |   270   179   +91 |   256   179 |   256   179 |  0.95  0.79
-  boy              119    55  8.73 +10.0 |   261   216   +45 |   247   200 |   247   216 |  0.75  0.36
-  though           137    57 10.54  +3.5 |   291   364   -72 |   265   234 |   277   305 |  0.71  0.07
-  I                 70    34  5.53  -3.7 |   211   248   -37 |   198   248 |   198   248 |  0.80  0.86
-  had              117    53  6.54 +20.1 |   259   343   -85 |   244   238 |   245   268 |  0.83  0.50
-  often             97    42  6.57 -16.0 |   243   237    +6 |   225   237 |   229   237 |  0.72  0.43
-  stayed           118    49  7.66  -7.4 |   272   279    -8 |   246   244 |   258   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    38 12.38 -26.4 |   223   257   -35 |   209   218 |   209   218 |  0.72  0.21
-  had              135    62 13.11 +15.9 |   277   249   +27 |   262   208 |   263   208 |  0.77  0.43
-  been              91    40  6.19  -5.2 |   234   240    -6 |   219   207 |   220   207 |  0.75  0.36
-  completely        76    27  7.65 -48.2 |   344   245   +99 |   203   203 |   330   218 |  0.69  0.00
-  under             93    40 10.19 -28.8 |   238   306   -68 |   220   212 |   224   250 |  0.75  0.21
-  his              103    47  9.97  -4.8 |   245   216   +29 |   231   216 |   232   216 |  0.76  0.50
-  wifes            106    45 28.02 -57.4 |   252   221   +30 |   234   173 |   238   185 |  0.70  0.29
-  ascendancy       120    43 15.12 -55.5 |   401   546  -144 |   248   247 |   388   455 |  0.67  0.00
-
-
-[Epoch  41/50] 362.4s | lm_lr=3.13e-07 head_lr=7.81e-06 cog_lr=1.56e-05
-  Train: loss=562.5 (trt=886 ffd=668 gaze=695 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.398  r_FFD=0.151  r_Gaze=0.341  r_skip=0.547
-  Val:   MAE_TRT=59.5ms  MAE_FFD=39.9ms  MAE_Gaze=46.4ms
-  Val:   Bias_TRT=-14.6ms  Bias_FFD=+12.6ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=94+/-27  L2=41+/-12  mean_skip=0.732
-  Reichle: a1=103.26 a2=3.501 a3=3.879 d=0.491 eps=1.072 M1=113.7 M2=13.7 pF=0.0001 res_abs_mean=22.20 surp_mean=9.56
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    42  8.90 -12.5 |   229   291   -62 |   215   242 |   215   260 |  0.75  0.21
-  a                129    63 11.82 +28.6 |   271   179   +91 |   257   179 |   257   179 |  0.95  0.79
-  boy              120    55  8.73 +10.3 |   261   216   +45 |   247   200 |   248   216 |  0.75  0.36
-  though           138    57 10.53  +3.8 |   291   364   -72 |   265   234 |   278   305 |  0.71  0.07
-  I                 70    34  5.50  -3.7 |   211   248   -37 |   198   248 |   198   248 |  0.80  0.86
-  had              117    54  6.54 +20.6 |   259   343   -84 |   245   238 |   245   268 |  0.83  0.50
-  often             97    42  6.57 -16.1 |   243   237    +6 |   225   237 |   229   237 |  0.72  0.43
-  stayed           118    49  7.65  -7.4 |   272   279    -8 |   246   244 |   258   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    38 12.39 -26.5 |   222   257   -35 |   208   218 |   209   218 |  0.72  0.21
-  had              135    62 13.12 +16.2 |   277   249   +28 |   263   208 |   263   208 |  0.77  0.43
-  been              91    40  6.18  -5.2 |   234   240    -7 |   219   207 |   220   207 |  0.75  0.36
-  completely        75    27  7.65 -48.8 |   343   245   +98 |   202   203 |   329   218 |  0.69  0.00
-  under             92    39 10.20 -29.1 |   238   306   -68 |   220   212 |   224   250 |  0.75  0.21
-  his              103    47  9.95  -4.7 |   245   216   +29 |   231   216 |   232   216 |  0.76  0.50
-  wifes            105    45 28.04 -58.0 |   251   221   +30 |   233   173 |   237   185 |  0.70  0.29
-  ascendancy       119    43 15.08 -56.2 |   400   546  -146 |   247   247 |   386   455 |  0.67  0.00
-
-
-[Epoch  42/50] 362.1s | lm_lr=3.13e-07 head_lr=7.81e-06 cog_lr=1.56e-05
-  Train: loss=562.2 (trt=886 ffd=668 gaze=694 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.398  r_FFD=0.152  r_Gaze=0.341  r_skip=0.548
-  Val:   MAE_TRT=59.5ms  MAE_FFD=39.9ms  MAE_Gaze=46.4ms
-  Val:   Bias_TRT=-14.5ms  Bias_FFD=+12.7ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=94+/-27  L2=42+/-12  mean_skip=0.736
-  Reichle: a1=103.26 a2=3.501 a3=3.879 d=0.491 eps=1.072 M1=113.7 M2=13.7 pF=0.0001 res_abs_mean=22.02 surp_mean=9.56
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    42  8.90 -12.3 |   229   291   -62 |   215   242 |   215   260 |  0.76  0.21
-  a                129    63 11.82 +28.0 |   270   179   +91 |   256   179 |   256   179 |  0.95  0.79
-  boy              120    55  8.73 +10.2 |   261   216   +45 |   247   200 |   248   216 |  0.75  0.36
-  though           138    57 10.53  +3.8 |   291   364   -72 |   265   234 |   278   305 |  0.71  0.07
-  I                 70    35  5.53  -3.4 |   212   248   -37 |   198   248 |   198   248 |  0.81  0.86
-  had              117    54  6.52 +20.4 |   259   343   -84 |   244   238 |   245   268 |  0.84  0.50
-  often             98    42  6.57 -15.9 |   243   237    +6 |   225   237 |   229   237 |  0.72  0.43
-  stayed           118    49  7.66  -7.3 |   272   279    -8 |   246   244 |   258   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    38 12.39 -26.4 |   222   257   -35 |   209   218 |   209   218 |  0.72  0.21
-  had              135    62 13.11 +16.1 |   277   249   +28 |   263   208 |   263   208 |  0.77  0.43
-  been              91    40  6.15  -5.4 |   233   240    -7 |   218   207 |   220   207 |  0.75  0.36
-  completely        75    27  7.65 -48.5 |   343   245   +98 |   203   203 |   330   218 |  0.70  0.00
-  under             93    40 10.18 -28.9 |   238   306   -68 |   220   212 |   224   250 |  0.76  0.21
-  his              104    47  9.96  -4.6 |   245   216   +29 |   231   216 |   232   216 |  0.76  0.50
-  wifes            106    45 28.04 -57.7 |   251   221   +30 |   233   173 |   238   185 |  0.71  0.29
-  ascendancy       120    43 15.12 -55.8 |   401   546  -145 |   247   247 |   387   455 |  0.67  0.00
-
-
-[Epoch  43/50] 365.2s | lm_lr=1.56e-07 head_lr=3.91e-06 cog_lr=7.81e-06
-  Train: loss=562.3 (trt=886 ffd=668 gaze=694 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.399  r_FFD=0.153  r_Gaze=0.342  r_skip=0.547
-  Val:   MAE_TRT=59.4ms  MAE_FFD=39.9ms  MAE_Gaze=46.4ms
-  Val:   Bias_TRT=-14.1ms  Bias_FFD=+13.1ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=95+/-27  L2=42+/-12  mean_skip=0.729
-  Reichle: a1=103.26 a2=3.500 a3=3.879 d=0.492 eps=1.072 M1=113.7 M2=13.7 pF=0.0001 res_abs_mean=21.67 surp_mean=9.56
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    42  8.89 -12.2 |   229   291   -62 |   215   242 |   215   260 |  0.75  0.21
-  a                129    63 11.83 +28.0 |   270   179   +91 |   256   179 |   256   179 |  0.95  0.79
-  boy              120    55  8.73 +10.2 |   261   216   +45 |   247   200 |   248   216 |  0.75  0.36
-  though           138    57 10.53  +3.8 |   291   364   -72 |   265   234 |   278   305 |  0.71  0.07
-  I                 71    35  5.53  -3.2 |   212   248   -37 |   198   248 |   198   248 |  0.80  0.86
-  had              117    54  6.52 +20.4 |   259   343   -85 |   244   238 |   245   268 |  0.83  0.50
-  often             98    42  6.57 -15.5 |   243   237    +6 |   225   237 |   230   237 |  0.71  0.43
-  stayed           119    49  7.66  -7.0 |   272   279    -7 |   246   244 |   258   279 |  0.71  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    39 12.39 -26.1 |   223   257   -34 |   209   218 |   209   218 |  0.71  0.21
-  had              135    62 13.10 +16.0 |   277   249   +28 |   263   208 |   263   208 |  0.77  0.43
-  been              91    40  6.14  -5.2 |   234   240    -7 |   218   207 |   220   207 |  0.74  0.36
-  completely        76    27  7.65 -47.7 |   345   245   +99 |   204   203 |   331   218 |  0.69  0.00
-  under             93    40 10.17 -28.5 |   238   306   -67 |   220   212 |   225   250 |  0.75  0.21
-  his              104    48  9.96  -4.6 |   245   216   +29 |   231   216 |   232   216 |  0.76  0.50
-  wifes            107    46 28.02 -56.6 |   253   221   +31 |   234   173 |   239   185 |  0.70  0.29
-  ascendancy       121    44 15.15 -54.8 |   403   546  -143 |   249   247 |   389   455 |  0.67  0.00
-
-
-[Epoch  44/50] 361.6s | lm_lr=1.56e-07 head_lr=3.91e-06 cog_lr=7.81e-06
-  Train: loss=562.1 (trt=886 ffd=668 gaze=694 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.399  r_FFD=0.153  r_Gaze=0.342  r_skip=0.547
-  Val:   MAE_TRT=59.4ms  MAE_FFD=39.9ms  MAE_Gaze=46.5ms
-  Val:   Bias_TRT=-14.1ms  Bias_FFD=+13.1ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=95+/-27  L2=42+/-12  mean_skip=0.730
-  Reichle: a1=103.26 a2=3.500 a3=3.879 d=0.492 eps=1.072 M1=113.7 M2=13.7 pF=0.0001 res_abs_mean=21.68 surp_mean=9.56
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    42  8.89 -12.2 |   229   291   -62 |   215   242 |   215   260 |  0.75  0.21
-  a                129    63 11.82 +28.3 |   270   179   +91 |   256   179 |   256   179 |  0.95  0.79
-  boy              120    55  8.73 +10.3 |   261   216   +45 |   247   200 |   248   216 |  0.75  0.36
-  though           138    57 10.53  +3.9 |   292   364   -72 |   265   234 |   278   305 |  0.71  0.07
-  I                 71    35  5.52  -3.1 |   212   248   -37 |   198   248 |   198   248 |  0.80  0.86
-  had              117    54  6.52 +20.5 |   259   343   -84 |   245   238 |   245   268 |  0.83  0.50
-  often             98    42  6.57 -15.5 |   243   237    +6 |   225   237 |   230   237 |  0.71  0.43
-  stayed           119    49  7.65  -6.9 |   272   279    -7 |   246   244 |   258   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    39 12.40 -26.1 |   223   257   -34 |   209   218 |   209   218 |  0.71  0.21
-  had              135    62 13.11 +16.3 |   277   249   +28 |   263   208 |   263   208 |  0.77  0.43
-  been              91    40  6.14  -5.1 |   234   240    -7 |   219   207 |   220   207 |  0.75  0.36
-  completely        76    27  7.65 -47.8 |   344   245   +99 |   204   203 |   331   218 |  0.69  0.00
-  under             93    40 10.17 -28.5 |   238   306   -67 |   220   212 |   225   250 |  0.75  0.21
-  his              104    48  9.96  -4.4 |   246   216   +29 |   231   216 |   232   216 |  0.76  0.50
-  wifes            107    46 28.03 -56.6 |   252   221   +31 |   234   173 |   239   185 |  0.70  0.29
-  ascendancy       121    44 15.14 -54.9 |   402   546  -143 |   248   247 |   389   455 |  0.67  0.00
-
-
-[Epoch  45/50] 362.5s | lm_lr=1.56e-07 head_lr=3.91e-06 cog_lr=7.81e-06
-  Train: loss=562.4 (trt=886 ffd=668 gaze=695 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.398  r_FFD=0.152  r_Gaze=0.341  r_skip=0.548
-  Val:   MAE_TRT=59.4ms  MAE_FFD=39.9ms  MAE_Gaze=46.5ms
-  Val:   Bias_TRT=-14.1ms  Bias_FFD=+13.1ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=95+/-27  L2=42+/-12  mean_skip=0.732
-  Reichle: a1=103.26 a2=3.500 a3=3.879 d=0.492 eps=1.072 M1=113.7 M2=13.7 pF=0.0001 res_abs_mean=21.75 surp_mean=9.56
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    42  8.89 -12.2 |   229   291   -62 |   215   242 |   215   260 |  0.75  0.21
-  a                129    63 11.82 +28.4 |   270   179   +91 |   256   179 |   256   179 |  0.95  0.79
-  boy              120    55  8.73 +10.5 |   262   216   +46 |   247   200 |   248   216 |  0.75  0.36
-  though           138    57 10.54  +4.0 |   292   364   -72 |   266   234 |   278   305 |  0.71  0.07
-  I                 71    35  5.53  -3.0 |   212   248   -36 |   198   248 |   198   248 |  0.80  0.86
-  had              117    54  6.52 +20.7 |   259   343   -84 |   245   238 |   245   268 |  0.83  0.50
-  often             98    42  6.57 -15.5 |   243   237    +6 |   225   237 |   230   237 |  0.72  0.43
-  stayed           119    49  7.65  -6.9 |   272   279    -7 |   246   244 |   258   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    39 12.40 -26.2 |   223   257   -35 |   209   218 |   209   218 |  0.72  0.21
-  had              135    62 13.13 +16.3 |   277   249   +28 |   263   208 |   263   208 |  0.77  0.43
-  been              91    40  6.14  -5.0 |   234   240    -7 |   219   207 |   220   207 |  0.75  0.36
-  completely        76    27  7.66 -48.0 |   344   245   +99 |   203   203 |   330   218 |  0.69  0.00
-  under             93    40 10.18 -28.6 |   238   306   -68 |   220   212 |   224   250 |  0.75  0.21
-  his              104    48  9.96  -4.3 |   246   216   +29 |   231   216 |   232   216 |  0.76  0.50
-  wifes            107    46 28.04 -56.9 |   252   221   +31 |   234   173 |   238   185 |  0.70  0.29
-  ascendancy       121    44 15.12 -55.1 |   402   546  -144 |   248   247 |   388   455 |  0.67  0.00
-
-
-[Epoch  46/50] 361.9s | lm_lr=1.56e-07 head_lr=3.91e-06 cog_lr=7.81e-06
-  Train: loss=561.9 (trt=885 ffd=668 gaze=694 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.398  r_FFD=0.152  r_Gaze=0.341  r_skip=0.548
-  Val:   MAE_TRT=59.4ms  MAE_FFD=40.0ms  MAE_Gaze=46.5ms
-  Val:   Bias_TRT=-13.9ms  Bias_FFD=+13.3ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=95+/-27  L2=42+/-12  mean_skip=0.733
-  Reichle: a1=103.26 a2=3.500 a3=3.879 d=0.492 eps=1.072 M1=113.7 M2=13.7 pF=0.0001 res_abs_mean=21.69 surp_mean=9.56
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    42  8.89 -12.0 |   229   291   -62 |   215   242 |   216   260 |  0.75  0.21
-  a                130    64 11.82 +29.2 |   271   179   +92 |   257   179 |   257   179 |  0.95  0.79
-  boy              120    55  8.73 +10.8 |   262   216   +46 |   248   200 |   248   216 |  0.75  0.36
-  though           138    57 10.54  +4.3 |   292   364   -72 |   266   234 |   278   305 |  0.71  0.07
-  I                 71    35  5.52  -2.7 |   212   248   -36 |   198   248 |   199   248 |  0.81  0.86
-  had              118    54  6.52 +21.1 |   259   343   -84 |   245   238 |   246   268 |  0.84  0.50
-  often             98    42  6.57 -15.3 |   243   237    +6 |   226   237 |   230   237 |  0.72  0.43
-  stayed           119    49  7.65  -6.7 |   272   279    -7 |   247   244 |   259   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    39 12.40 -26.1 |   223   257   -34 |   209   218 |   209   218 |  0.72  0.21
-  had              136    62 13.14 +16.6 |   277   249   +28 |   263   208 |   264   208 |  0.77  0.43
-  been              92    41  6.14  -4.6 |   234   240    -6 |   219   207 |   221   207 |  0.75  0.36
-  completely        76    27  7.66 -47.9 |   344   245   +99 |   204   203 |   331   218 |  0.69  0.00
-  under             93    40 10.18 -28.5 |   238   306   -67 |   220   212 |   225   250 |  0.75  0.21
-  his              104    48  9.96  -4.0 |   246   216   +29 |   232   216 |   232   216 |  0.76  0.50
-  wifes            107    46 28.04 -56.8 |   252   221   +31 |   234   173 |   238   185 |  0.71  0.29
-  ascendancy       121    44 15.10 -55.1 |   402   546  -144 |   248   247 |   388   455 |  0.67  0.00
-
-
-[Epoch  47/50] 362.3s | lm_lr=1.56e-07 head_lr=3.91e-06 cog_lr=7.81e-06
-  Train: loss=561.8 (trt=884 ffd=668 gaze=694 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.398  r_FFD=0.152  r_Gaze=0.341  r_skip=0.548
-  Val:   MAE_TRT=59.4ms  MAE_FFD=40.0ms  MAE_Gaze=46.5ms
-  Val:   Bias_TRT=-14.0ms  Bias_FFD=+13.2ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=95+/-27  L2=42+/-12  mean_skip=0.732
-  Reichle: a1=103.26 a2=3.500 a3=3.879 d=0.493 eps=1.072 M1=113.7 M2=13.7 pF=0.0001 res_abs_mean=21.67 surp_mean=9.57
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    42  8.90 -12.1 |   229   291   -62 |   215   242 |   215   260 |  0.75  0.21
-  a                129    64 11.82 +28.4 |   270   179   +91 |   256   179 |   256   179 |  0.95  0.79
-  boy              120    55  8.73 +10.5 |   262   216   +46 |   247   200 |   248   216 |  0.75  0.36
-  though           138    57 10.54  +4.1 |   292   364   -72 |   266   234 |   278   305 |  0.71  0.07
-  I                 71    35  5.52  -3.0 |   212   248   -37 |   198   248 |   198   248 |  0.80  0.86
-  had              117    54  6.53 +20.8 |   259   343   -84 |   245   238 |   245   268 |  0.83  0.50
-  often             98    42  6.57 -15.4 |   243   237    +6 |   225   237 |   230   237 |  0.72  0.43
-  stayed           119    49  7.66  -6.8 |   272   279    -7 |   246   244 |   258   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    39 12.40 -26.2 |   223   257   -35 |   209   218 |   209   218 |  0.72  0.21
-  had              135    62 13.14 +16.3 |   277   249   +28 |   263   208 |   263   208 |  0.77  0.43
-  been              91    41  6.15  -4.8 |   234   240    -6 |   219   207 |   220   207 |  0.75  0.36
-  completely        76    28  7.67 -47.7 |   345   245   +99 |   204   203 |   331   218 |  0.69  0.00
-  under             93    40 10.18 -28.5 |   238   306   -68 |   220   212 |   225   250 |  0.75  0.21
-  his              104    48  9.96  -4.2 |   246   216   +29 |   231   216 |   232   216 |  0.76  0.50
-  wifes            107    46 28.04 -56.6 |   252   221   +31 |   234   173 |   239   185 |  0.70  0.29
-  ascendancy       121    44 15.12 -54.8 |   403   546  -143 |   248   247 |   389   455 |  0.67  0.00
-
-
-[Epoch  48/50] 361.9s | lm_lr=1.56e-07 head_lr=3.91e-06 cog_lr=7.81e-06
-  Train: loss=561.5 (trt=885 ffd=667 gaze=693 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.398  r_FFD=0.152  r_Gaze=0.341  r_skip=0.548
-  Val:   MAE_TRT=59.4ms  MAE_FFD=40.0ms  MAE_Gaze=46.5ms
-  Val:   Bias_TRT=-14.1ms  Bias_FFD=+13.1ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=95+/-27  L2=42+/-12  mean_skip=0.730
-  Reichle: a1=103.26 a2=3.500 a3=3.879 d=0.493 eps=1.072 M1=113.7 M2=13.7 pF=0.0001 res_abs_mean=21.70 surp_mean=9.57
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    42  8.89 -12.1 |   229   291   -62 |   215   242 |   215   260 |  0.75  0.21
-  a                129    64 11.82 +28.4 |   270   179   +91 |   256   179 |   256   179 |  0.95  0.79
-  boy              120    55  8.73 +10.5 |   262   216   +46 |   247   200 |   248   216 |  0.75  0.36
-  though           138    57 10.54  +4.2 |   292   364   -72 |   266   234 |   278   305 |  0.71  0.07
-  I                 71    35  5.52  -3.0 |   212   248   -37 |   198   248 |   198   248 |  0.80  0.86
-  had              117    54  6.53 +20.7 |   259   343   -84 |   245   238 |   245   268 |  0.83  0.50
-  often             98    42  6.57 -15.5 |   243   237    +6 |   225   237 |   230   237 |  0.71  0.43
-  stayed           119    49  7.66  -6.8 |   272   279    -7 |   246   244 |   258   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    39 12.40 -26.1 |   223   257   -35 |   209   218 |   209   218 |  0.71  0.21
-  had              135    62 13.13 +16.1 |   277   249   +27 |   263   208 |   263   208 |  0.77  0.43
-  been              91    41  6.16  -4.8 |   234   240    -6 |   219   207 |   220   207 |  0.75  0.36
-  completely        76    28  7.67 -47.8 |   344   245   +99 |   204   203 |   331   218 |  0.69  0.00
-  under             93    40 10.18 -28.5 |   238   306   -68 |   220   212 |   225   250 |  0.75  0.21
-  his              104    48  9.97  -4.2 |   246   216   +29 |   231   216 |   232   216 |  0.76  0.50
-  wifes            107    46 28.04 -56.7 |   252   221   +31 |   234   173 |   239   185 |  0.70  0.29
-  ascendancy       121    44 15.12 -54.9 |   402   546  -143 |   248   247 |   389   455 |  0.67  0.00
-
-
-[Epoch  49/50] 361.5s | lm_lr=1.00e-07 head_lr=1.95e-06 cog_lr=3.91e-06
-  Train: loss=561.6 (trt=885 ffd=668 gaze=693 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.398  r_FFD=0.152  r_Gaze=0.341  r_skip=0.548
-  Val:   MAE_TRT=59.4ms  MAE_FFD=39.9ms  MAE_Gaze=46.5ms
-  Val:   Bias_TRT=-14.3ms  Bias_FFD=+12.9ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=95+/-27  L2=42+/-12  mean_skip=0.732
-  Reichle: a1=103.26 a2=3.500 a3=3.879 d=0.493 eps=1.071 M1=113.7 M2=13.7 pF=0.0001 res_abs_mean=21.82 surp_mean=9.56
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    42  8.89 -12.1 |   229   291   -62 |   215   242 |   215   260 |  0.75  0.21
-  a                129    64 11.81 +28.3 |   270   179   +91 |   256   179 |   256   179 |  0.95  0.79
-  boy              120    55  8.72 +10.4 |   261   216   +45 |   247   200 |   248   216 |  0.75  0.36
-  though           138    57 10.54  +4.1 |   292   364   -72 |   265   234 |   278   305 |  0.71  0.07
-  I                 71    35  5.50  -3.2 |   212   248   -37 |   198   248 |   198   248 |  0.80  0.86
-  had              117    54  6.53 +20.6 |   259   343   -84 |   245   238 |   245   268 |  0.83  0.50
-  often             98    42  6.57 -15.5 |   243   237    +6 |   225   237 |   229   237 |  0.71  0.43
-  stayed           119    49  7.66  -6.9 |   272   279    -7 |   246   244 |   258   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    39 12.40 -26.2 |   223   257   -35 |   209   218 |   209   218 |  0.71  0.21
-  had              135    62 13.13 +15.9 |   277   249   +27 |   262   208 |   263   208 |  0.77  0.43
-  been              91    41  6.15  -4.9 |   234   240    -7 |   219   207 |   220   207 |  0.75  0.36
-  completely        76    27  7.67 -48.1 |   344   245   +99 |   203   203 |   330   218 |  0.69  0.00
-  under             93    40 10.18 -28.7 |   238   306   -68 |   220   212 |   224   250 |  0.75  0.21
-  his              104    48  9.96  -4.2 |   246   216   +29 |   231   216 |   232   216 |  0.76  0.50
-  wifes            106    46 28.05 -57.3 |   252   221   +30 |   234   173 |   238   185 |  0.70  0.29
-  ascendancy       120    43 15.10 -55.4 |   401   546  -144 |   248   247 |   388   455 |  0.67  0.00
-
-
-[Epoch  50/50] 362.4s | lm_lr=1.00e-07 head_lr=1.95e-06 cog_lr=3.91e-06
-  Train: loss=561.0 (trt=884 ffd=667 gaze=693 skip=0.015 res=0.175) | 54,930 samples
-  Val:   r_TRT=0.398  r_FFD=0.152  r_Gaze=0.341  r_skip=0.548
-  Val:   MAE_TRT=59.4ms  MAE_FFD=40.0ms  MAE_Gaze=46.5ms
-  Val:   Bias_TRT=-14.1ms  Bias_FFD=+13.1ms
-  Pred:  mean_TRT=249ms (human=263ms) | L1=95+/-27  L2=42+/-12  mean_skip=0.731
-  Reichle: a1=103.26 a2=3.500 a3=3.879 d=0.493 eps=1.071 M1=113.7 M2=13.7 pF=0.0001 res_abs_mean=21.72 surp_mean=9.57
-  Sentence 1: "As a boy though I had..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  As                88    42  8.89 -12.1 |   229   291   -62 |   215   242 |   215   260 |  0.75  0.21
-  a                129    64 11.81 +28.5 |   270   179   +91 |   256   179 |   256   179 |  0.95  0.79
-  boy              120    55  8.72 +10.5 |   261   216   +45 |   247   200 |   248   216 |  0.75  0.36
-  though           138    57 10.54  +4.2 |   292   364   -72 |   266   234 |   278   305 |  0.71  0.07
-  I                 71    35  5.52  -3.0 |   212   248   -37 |   198   248 |   198   248 |  0.80  0.86
-  had              118    54  6.53 +20.9 |   259   343   -84 |   245   238 |   245   268 |  0.83  0.50
-  often             98    42  6.57 -15.4 |   243   237    +6 |   225   237 |   230   237 |  0.71  0.43
-  stayed           119    49  7.65  -6.8 |   272   279    -7 |   246   244 |   258   279 |  0.72  0.36
-
-  Sentence 2: "He had been completely under his..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  He                81    39 12.40 -26.1 |   223   257   -35 |   209   218 |   209   218 |  0.71  0.21
-  had              135    62 13.14 +16.0 |   277   249   +27 |   262   208 |   263   208 |  0.77  0.43
-  been              92    41  6.15  -4.7 |   234   240    -6 |   219   207 |   220   207 |  0.75  0.36
-  completely        76    28  7.67 -47.9 |   344   245   +99 |   204   203 |   331   218 |  0.69  0.00
-  under             93    40 10.18 -28.6 |   238   306   -68 |   220   212 |   224   250 |  0.75  0.21
-  his              104    48  9.97  -4.1 |   246   216   +29 |   232   216 |   232   216 |  0.76  0.50
-  wifes            107    46 28.05 -56.8 |   252   221   +31 |   234   173 |   238   185 |  0.70  0.29
-  ascendancy       121    44 15.10 -55.2 |   402   546  -144 |   248   247 |   388   455 |  0.66  0.00
-
-
-==========================================================================================
-Training complete! Best val r_TRT = 0.442
-==========================================================================================
-  Reichle formula parameters:
-    alpha1 (base ms)       =  103.26    (Reichle 2003: 104)
-    alpha2 (freq coef)     =  3.5003    (Reichle 2003: 3.5)
-    alpha3 (surprisal coef)=  3.8790    (init 4.0 ms/nat, clipped @ 12)
-    delta  (L2/L1)         =  0.4931    (Reichle 2003: 0.34, allowed >= 0.1)
-  Cognitive cascade:
-    epsilon (ecc exponent) =  1.0715    (Reichle: 1.15, constrained >= 1)
-    M1 (labile)    =  113.67 ms  (Reichle: 125)
-    M2 (non-labile)=   13.67 ms  (Reichle: 25)
-    I  (integration)=   13.70 ms  (Reichle: 25)
-    pF (integration failure) = 0.0001  (Reichle: ~0.01)
-    reg_weight (regression cost) = 0.0031
-    lambda_refix     =  1.0362
-    refix_pivot      =    8.53 chars
-    L1 clamp         = [30.0, 500.0] ms
-
-Test set results:
-  r_TRT=0.409  r_FFD=0.150  r_Gaze=0.356  r_skip=0.545
-  MAE_TRT=60.0ms  MAE_FFD=41.0ms  MAE_Gaze=46.7ms
-
-Sample test predictions:
-  Sentence 1: "I will therefore briefly set down..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  I                 69    34  7.97 -14.8 |   210   184   +26 |   196   184 |   196   184 |  0.75  0.86
-  will             112    50 11.95  -8.3 |   254   233   +22 |   239   117 |   241   158 |  0.72  0.64
-  therefore        103    38  8.33 -33.2 |   346   301   +46 |   230   225 |   333   259 |  0.67  0.14
-  briefly           98    39  9.63 -42.9 |   268   421  -153 |   226   231 |   254   314 |  0.69  0.50
-  set              123    57 10.36  +4.0 |   264   276   -11 |   250   199 |   251   213 |  0.73  0.50
-  down             139    62  8.72 +27.3 |   281   249   +32 |   266   194 |   268   221 |  0.64  0.36
-  the               65    30  7.84 -23.6 |   206   161   +45 |   192   161 |   192   161 |  0.75  0.64
-  circumstances     65    21  3.18 -48.0 |   353   261   +92 |   192   208 |   339   261 |  0.69  0.00
-  which             83    36  8.99 -30.5 |   228   303   -75 |   210   284 |   214   284 |  0.76  0.43
-  led               96    44  8.11 -19.9 |   238   208   +30 |   224   208 |   224   208 |  0.73  0.64
-
-  Sentence 2: "I had been invalided home from..."
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  I                 69    34  7.97 -14.8 |   210   267   -57 |   196   207 |   196   207 |  0.75  0.43
-  had              130    60 12.24 +11.1 |   271   274    -3 |   257   224 |   258   224 |  0.75  0.29
-  been              88    39  5.85  -7.1 |   230   301   -70 |   215   219 |   216   219 |  0.75  0.21
-  invalided        124    47 25.90 -49.2 |   373  1063  -690 |   252   217 |   359   388 |  0.68  0.00
-  home             118    52 11.55  -4.9 |   260   571  -310 |   245   271 |   247   332 |  0.74  0.29
-  from             106    47  7.36  +4.1 |   249   435  -187 |   233   224 |   235   234 |  0.77  0.14
-  the               82    38 11.31 -20.8 |   224   196   +28 |   209   129 |   210   129 |  0.76  0.79
-  Front             83    35  8.13 -30.9 |   228   307   -80 |   210   256 |   214   267 |  0.69  0.00
-  and               65    30  9.61 -32.4 |   207   272   -65 |   193   164 |   193   213 |  0.78  0.36
-  after            114    49  8.69  -0.6 |   260   223   +37 |   242   223 |   246   223 |  0.76  0.36
-
-  Sentence 3: "Oh yes"
-  word              L1    L2  surp   res |  cTRT  hTRT   err |  pFFD  hFFD | pGaze hGaze |  skip hSkip
-  ------------------------------------------------------------------------------------------------------------------------
-  Oh                89    42 12.71 -21.5 |   230   235    -5 |   217   235 |   217   235 |  0.73  0.64
-  yes              117    54 13.33  -0.3 |   259   232   +26 |   244   204 |   245   232 |  0.68  0.14
-
