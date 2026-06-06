@@ -3,7 +3,6 @@
 A trainable cognitive cascade for word-level eye-tracking prediction.
 
 > **Differentiable E-Z Reader: A Trainable Cognitive Cascade for Word-Level Eye-Tracking Prediction.**
-> Efe Kahraman, Lorenzo Cipriani.
 > Department of Intelligent Systems, Tilburg University.
 
 This repo accompanies the paper. It contains the model, the baselines, the full
@@ -163,18 +162,3 @@ for Phase C (evaluations).
   metrics not present in the original `exp01` JSONs (specifically `mae_skip`
   on every model, `mae_gaze` on the flat baselines). It re-aggregates all
   rows with the full metric set.
-
-## Acknowledgments
-
-We thank Dr Bruno Nicenboim for supervision and feedback throughout the project.
-
-## Citation
-
-```bibtex
-@inproceedings{kahraman2026diffezreader,
-  title  = {Differentiable {E}-{Z} Reader: A Trainable Cognitive Cascade for Word-Level Eye-Tracking Prediction},
-  author = {Kahraman, Efe and Cipriani, Lorenzo},
-  year   = {2026},
-  note   = {Department of Intelligent Systems, Tilburg University}
-}
-```
